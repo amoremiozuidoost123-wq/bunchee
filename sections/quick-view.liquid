@@ -1,0 +1,19 @@
+{{ 'product-info-content.css' | asset_url | stylesheet_tag }}
+{{ 'section-quick-view.css' | asset_url | stylesheet_tag }}
+{{ 'product-info-media.css' | asset_url | stylesheet_tag }}
+{{ 'collapse.css' | asset_url | stylesheet_tag }}
+{{ 'pickup-availability-list.css' | asset_url | stylesheet_tag }}
+{{ 'product-media.css' | asset_url | stylesheet_tag }}
+
+<xo-modal class='quick-view' xo-name='quick-view' style='z-index: 9999;' xo-backdrop-color='rgba(0, 0, 0, 0.5)'>
+  {% capture content %}<xo-product-quick-view></xo-product-quick-view>{% endcapture %}
+  {% render 'modal-content', content: content, width: '105.7rem', border_radius: '1.2rem', scroll_disabled: false %}
+</xo-modal>
+
+{% schema %}
+{
+  "name": "t:sections.quick_view.name",
+  "class": "section-quick-view",
+  "settings": []
+}
+{% endschema %}

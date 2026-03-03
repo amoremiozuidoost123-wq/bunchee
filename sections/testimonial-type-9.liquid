@@ -1,0 +1,196 @@
+{{ 'section-testimonial-type-9.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container>
+    <xo-carousel
+      {% if section.settings.autoplay %}
+        xo-autoplay='3000'
+      {% endif %}
+      xo-type='fade'
+      xo-per-view='1'
+      xo-per-move='1'
+      xo-render-bullet="<span class='carousel-bullet'></span>"
+    >
+      <xo-carousel-inner>
+        <xo-carousel-list>
+          {% for block in section.blocks %}
+            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+            {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+            {% render 'testimonial-slide-type-9',
+              subheading: section.settings.subheading,
+              slide_heading: block.settings.slide_heading,
+              image: block.settings.image,
+              author_image: block.settings.author_image,
+              author_name: block.settings.author_name,
+              author_job: block.settings.author_job,
+              placeholder_image: placeholder_image,
+              aspect_ratio: section.settings.aspect_ratio
+            %}
+          {% endfor %}
+        </xo-carousel-list>
+      </xo-carousel-inner>
+    </xo-carousel>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.testimonial_type_9.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.testimonial_type_9.settings.subheading.label",
+      "default": "Subheading"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.testimonial_type_9.settings.autoplay.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.testimonial_type_9.blocks.slide.label",
+      "type": "testimonial-slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "t:sections.testimonial_type_9.blocks.slide.settings.author_image.label"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "t:sections.testimonial_type_9.blocks.slide.settings.author_name.label",
+          "default": "Author name"
+        },
+        {
+          "type": "text",
+          "id": "author_job",
+          "label": "t:sections.testimonial_type_9.blocks.slide.settings.author_job.label",
+          "default": "Author job"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.testimonial_type_9.blocks.slide.settings.header_1.label"
+        },
+        {
+          "type": "richtext",
+          "id": "slide_heading",
+          "label": "t:sections.testimonial_type_9.blocks.slide.settings.slide_heading.label",
+          "default": "<p>Testimonial slide</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.testimonial_type_9.blocks.slide.settings.image.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.testimonial_type_9.presets.name",
+      "blocks": [
+        {
+          "type": "testimonial-slide",
+          "settings": {}
+        },
+        {
+          "type": "testimonial-slide",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

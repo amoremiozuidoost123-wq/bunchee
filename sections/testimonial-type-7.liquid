@@ -1,0 +1,286 @@
+{{ 'section-testimonial-type-7.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container>
+    <xo-carousel
+      {% if section.settings.autoplay %}
+        xo-autoplay='3000'
+      {% endif %}
+      xo-type='none'
+      xo-per-view='1'
+      xo-per-move='1'
+      xo-name='testimonial-type-7-{{ section.id }}'
+    >
+      <xo-carousel-inner>
+        <xo-carousel-list>
+          {% for block in section.blocks %}
+            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+            {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+            {% render 'testimonial-slide-type-7',
+              product: block.settings.product,
+              show_image: section.settings.product_card_show_image,
+              show_secondary_image: section.settings.product_card_show_secondary_image,
+              show_vendor: section.settings.product_card_show_vendor,
+              show_description: section.settings.product_card_show_description,
+              show_price: section.settings.product_card_show_price,
+              show_badge: section.settings.product_card_show_badge,
+              media_aspect_ratio: section.settings.product_card_aspect_ratio,
+              color_scheme: section.settings.card_color_scheme,
+              placeholder_image: placeholder_image,
+              subheading: section.settings.subheading,
+              heading: block.settings.heading,
+              customer_name: block.settings.customer_name,
+              customer_job: block.settings.customer_job
+            %}
+          {% endfor %}
+        </xo-carousel-list>
+      </xo-carousel-inner>
+    </xo-carousel>
+    <div class='testimonial-type-7__list' id='{{ section.id }}'>
+      {% if section.blocks.size == 1 %}
+        <xo-animate xo-cascade xo-type='fade-right' class='testimonial-type-7__item testimonial-type-7__item--1'>
+          {% render 'image', image: section.settings.image_1 %}
+        </xo-animate>
+      {% elsif section.blocks.size == 2 %}
+        <xo-animate xo-cascade xo-type='fade-right' class='testimonial-type-7__item testimonial-type-7__item--1'>
+          {% render 'image', image: section.settings.image_1 %}
+        </xo-animate>
+        <xo-animate xo-cascade class='testimonial-type-7__item testimonial-type-7__item--2'>
+          {% render 'image', image: section.settings.image_2 %}
+        </xo-animate>
+      {% elsif section.blocks.size == 3 %}
+        <xo-animate xo-cascade xo-type='fade-right' class='testimonial-type-7__item testimonial-type-7__item--1'>
+          {% render 'image', image: section.settings.image_1 %}
+        </xo-animate>
+        <xo-animate xo-cascade class='testimonial-type-7__item testimonial-type-7__item--2'>
+          {% render 'image', image: section.settings.image_2 %}
+        </xo-animate>
+        <xo-animate xo-cascade class='testimonial-type-7__item testimonial-type-7__item--3'>
+          {% render 'image', image: section.settings.image_3 %}
+        </xo-animate>
+      {% endif %}
+    </div>
+  </xo-container>
+</section>
+
+<script>
+  (function () {
+    const carouselEl = document.querySelector('[xo-name="testimonial-type-7-{{ section.id }}"]');
+    const listEls = document.querySelectorAll('#{{ section.id }}');
+    listEls.forEach((listEl) => {
+      Array.from(listEl.children).forEach((item, index) => {
+        item.addEventListener('click', () => {
+          xoCarousel.goTo('testimonial-type-7-{{ section.id }}', index);
+        });
+      });
+    });
+    carouselEl.addEventListener('xo:carousel:change', (event) => {
+      const { activeIndex } = event.detail;
+      listEls.forEach((listEl) => {
+        Array.from(listEl.children).forEach((item, index) => {
+          item.classList.remove('testimonial-type-7__left-item--active');
+        });
+        Array.from(listEl.children)[activeIndex].classList.add('testimonial-type-7__left-item--active');
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.testimonial_type_7.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.testimonial_type_7.settings.subheading.label",
+      "default": "Subheading"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.testimonial_type_7.settings.autoplay.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.testimonial_type_7.settings.header_1.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "t:sections.testimonial_type_7.settings.image_1.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:sections.testimonial_type_7.settings.image_2.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "t:sections.testimonial_type_7.settings.image_3.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.product_card_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_image",
+      "default": true,
+      "label": "t:sections.all.product_card_show_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_secondary_image",
+      "default": true,
+      "label": "t:sections.all.product_card_show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_vendor",
+      "default": false,
+      "label": "t:sections.all.product_card_show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_description",
+      "label": "t:sections.all.product_card_show_description.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_price",
+      "label": "t:sections.all.product_card_show_price.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_badge",
+      "label": "t:sections.all.product_card_show_badge.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "product_card_aspect_ratio",
+      "label": "t:sections.all.product_card_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.product_card_aspect_ratio.option_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.product_card_aspect_ratio.option_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.product_card_aspect_ratio.option_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.product_card_aspect_ratio.option_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.product_card_aspect_ratio.option_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.product_card_aspect_ratio.option_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.product_card_aspect_ratio.option_7.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.card_color_scheme.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.testimonial_type_7.blocks.slide.label",
+      "type": "testimonial-slide",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.testimonial_type_7.blocks.slide.settings.product.label"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "t:sections.testimonial_type_7.blocks.slide.settings.heading.label",
+          "default": "<p>Slide heading</p>"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "t:sections.testimonial_type_7.blocks.slide.settings.customer_name.label",
+          "default": "Customer name"
+        },
+        {
+          "type": "text",
+          "id": "customer_job",
+          "label": "t:sections.testimonial_type_7.blocks.slide.settings.customer_job.label",
+          "default": "Customer job"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

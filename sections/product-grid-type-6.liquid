@@ -1,0 +1,339 @@
+{{ 'section-product-grid-type-6.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  {% assign image_order = section.settings.image_order %}
+  {% if section.settings.image_order == '1' %}
+    {% assign start_grid_image = 7 %}
+    {% assign start_grid_content = 3 %}
+  {% elsif section.settings.image_order == '0' %}
+    {% assign start_grid_image = 3 %}
+  {% endif %}
+
+  <xo-container class='product-grid-type-6'>
+    {% if section.settings.text_heading %}
+      <div class='product-grid-type-6__heading'>
+        {% render 'text',
+          text: section.settings.text_heading,
+          tag_name: section.settings.text_tag_name,
+          duration: section.settings.text_duration,
+          effect: section.settings.text_effect
+        %}
+      </div>
+    {% endif %}
+    <xo-grid class='product-grid-type-6__content product-grid-type-6__content--mobile'>
+      {% for block in section.blocks %}
+        <div class='product-grid-type-6__right' style='--xs: 12;'>
+          <xo-animate xo-cascade class='product-grid-type-6__image'>
+            {%- render 'image', image: block.settings.product.featured_image, placeholder: 'product-1' -%}
+          </xo-animate>
+          <xo-animate xo-cascade class='product-grid-type-6__item'>
+            <div>
+              {%- render 'product-grid-card-type-3',
+                product: block.settings.product,
+                color_scheme: section.settings.card_color_scheme,
+                animate_enabled: true,
+                product_handle: true,
+                show_tag: block.settings.product_card_show_tag,
+                image_1: block.settings.image_1,
+                image_2: block.settings.image_2,
+                tag_text_1: block.settings.tag_text_1,
+                tag_text_2: block.settings.tag_text_2,
+                show_action: section.settings.show_action
+              -%}
+            </div>
+          </xo-animate>
+        </div>
+      {% endfor %}
+    </xo-grid>
+    {% comment %} Desktop {% endcomment %}
+    <product-grid>
+      <xo-grid class='product-grid-type-6__content product-grid-type-6__content--desktop'>
+        <product-grid-left
+          class='product-grid-type-6__left product-grid-type-6__left--desktop'
+          style='--xs: 12;--lg: 5;--start-lg: {{ start_grid_image }};--order-lg: {{ image_order }};'
+          id='left-{{ section.id }}'
+          rotate='{{ section.settings.is_rotate }}'
+        >
+          {% for block in section.blocks %}
+            <div class='product-grid-type-6__left-container'>
+              <xo-animate
+                xo-cascade
+                class='
+                  product-grid-type-6__image
+                  {% if section.settings.image_order == '1' %}
+                      product-grid-type-6__image--right
+                    {% endif %}
+                '
+              >
+                {%- render 'image', image: block.settings.product.featured_image, placeholder: 'product-1' -%}
+              </xo-animate>
+            </div>
+          {% endfor %}
+        </product-grid-left>
+        <product-grid-right
+          class='product-grid-type-6__right'
+          style='--xs: 12;--lg: 3;--start-lg: {{ start_grid_content }};'
+          id='right-{{ section.id }}'
+        >
+          {% for block in section.blocks %}
+            <xo-animate xo-cascade class='product-grid-type-6__item'>
+              <div class='product-grid-type-6__item-container'>
+                {%- render 'product-grid-card-type-3',
+                  product: block.settings.product,
+                  color_scheme: section.settings.card_color_scheme,
+                  animate_enabled: true,
+                  show_tag: block.settings.product_card_show_tag,
+                  image_1: block.settings.image_1,
+                  image_2: block.settings.image_2,
+                  tag_text_1: block.settings.tag_text_1,
+                  tag_text_2: block.settings.tag_text_2,
+                  show_action: section.settings.show_action
+                -%}
+              </div>
+            </xo-animate>
+          {% endfor %}
+        </product-grid-right>
+      </xo-grid>
+    </product-grid>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.product_grid_type_6.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "is_rotate",
+      "label": "t:sections.product_grid_type_6.settings.is_rotate.label",
+      "info": "t:sections.product_grid_type_6.settings.is_rotate.info",
+      "options": [
+        {
+          "value": "true",
+          "label": "t:sections.product_grid_type_6.settings.is_rotate.option_0.label"
+        },
+        {
+          "value": "false",
+          "label": "t:sections.product_grid_type_6.settings.is_rotate.option_1.label"
+        }
+      ],
+      "default": "true"
+    },
+    {
+      "type": "select",
+      "id": "image_order",
+      "label": "t:sections.product_grid_type_6.settings.image_order.label",
+      "info": "t:sections.product_grid_type_6.settings.image_order.info",
+      "options": [
+        {
+          "value": "0",
+          "label": "t:sections.product_grid_type_6.settings.image_order.option_0.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.product_grid_type_6.settings.image_order.option_1.label"
+        }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header.content"
+    },
+    {
+      "type": "select",
+      "id": "text_tag_name",
+      "label": "t:sections.all.text_tag_name.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_tag_name.option__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_tag_name.option__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_tag_name.option__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_tag_name.option__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_tag_name.option__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_tag_name.option__6.label"
+        },
+        {
+          "value": "d1",
+          "label": "t:sections.all.text_tag_name.option__7.label"
+        },
+        {
+          "value": "d2",
+          "label": "t:sections.all.text_tag_name.option__8.label"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_heading",
+      "label": "t:sections.all.text_heading.label",
+      "default": "Heading"
+    },
+    {
+      "type": "number",
+      "id": "text_duration",
+      "label": "t:sections.all.text_duration.label",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_effect",
+      "label": "t:sections.all.text_effect.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.text_effect.option__1.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.all.text_effect.option__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.all.text_effect.option__3.label"
+        }
+      ],
+      "default": "reveal"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.product_card_heading.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.card_color_scheme.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_action",
+      "default": true,
+      "label": "t:sections.product_grid_type_6.settings.show_action.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.product_grid_type_6.blocks.item.label",
+      "type": "item",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.product_grid_type_6.blocks.item.settings.product.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "product_card_show_tag",
+          "default": true,
+          "label": "t:sections.product_grid_type_6.blocks.item.settings.product_card_show_tag.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "t:sections.product_grid_type_6.blocks.item.settings.image_1.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "t:sections.product_grid_type_6.blocks.item.settings.image_2.label"
+        },
+        {
+          "type": "text",
+          "id": "tag_text_1",
+          "label": "t:sections.product_grid_type_6.blocks.item.settings.tag_text_1.label",
+          "default": "Tag text"
+        },
+        {
+          "type": "text",
+          "id": "tag_text_2",
+          "label": "t:sections.product_grid_type_6.blocks.item.settings.tag_text_2.label",
+          "default": "Tag text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.product_grid_type_6.presets.name",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {}
+        },
+        {
+          "type": "item",
+          "settings": {}
+        },
+        {
+          "type": "item",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

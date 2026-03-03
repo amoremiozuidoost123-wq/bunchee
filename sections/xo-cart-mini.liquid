@@ -1,0 +1,43 @@
+{{ 'cart-note.css' | asset_url | stylesheet_tag }}
+{{ 'cart-free-shipping.css' | asset_url | stylesheet_tag }}
+
+{% render 'cart-mini' %}
+
+{% schema %}
+{
+  "name": "t:sections.xo_cart_mini.name",
+  "class": "section-xo-cart-mini",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "offer",
+      "name": "t:sections.xo_cart_mini.blocks.offer.label",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.xo_cart_mini.blocks.offer.settings.link.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.xo_cart_mini.blocks.offer.settings.image.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.xo_cart_mini.presets.name",
+      "blocks": [
+        {
+          "type": "offer"
+        },
+        {
+          "type": "offer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

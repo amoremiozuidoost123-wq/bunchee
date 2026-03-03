@@ -1,0 +1,138 @@
+{{ 'section-service.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign show_divider = section.settings.show_divider
+%}
+
+<section {% render 'section-attr' %}>
+  <xo-service class='service'>
+    {% if show_divider %}
+      <div class="service__divider-top"></div>
+    {% endif %}
+    <xo-container>
+      <div class='service__content'>
+        {% for block in section.blocks %}
+          <div class='service__block'>
+            <xo-animate xo-cascade class='service__block-icon'>
+              {% render 'image', image: block.settings.icon %}
+            </xo-animate>
+            <xo-animate xo-cascade class='service__block-heading'>
+              {% render 'animate-text', text: block.settings.heading, class: 'h5', type: 'hover', effect: 'random' %}
+            </xo-animate>
+            <xo-animate xo-cascade class='service__block-paragraph'>
+              {{ block.settings.paragraph }}
+            </xo-animate>
+          </div>
+        {% endfor %}
+      </div>
+    </xo-container>
+    {% if show_divider %}
+      <div class="service__divider-bottom"></div>
+    {% endif %}
+  </xo-service>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.service.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "t:sections.service.settings.show_divider.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.service.blocks.content.label",
+      "type": "content",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "t:sections.service.blocks.content.settings.icon.label"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "t:sections.service.blocks.content.settings.heading.label",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "t:sections.service.blocks.content.settings.paragraph.label",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.service.presets.name",
+      "blocks": [
+        {
+          "type": "content",
+          "settings": {}
+        },
+        {
+          "type": "content",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
