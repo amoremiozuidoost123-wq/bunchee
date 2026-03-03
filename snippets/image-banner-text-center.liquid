@@ -1,0 +1,91 @@
+{% comment %}
+   Renders a image banner text center
+
+  Accepts:
+  - background_svg: {Option} Background svg
+  - image_1: {Image} Image
+  - image_2: {Image} Image
+  - image_3: {Image} Image
+  - image_decor: {Image} Image decoraction
+  - color_background: {Color} Background color
+
+  Usage:
+  {% render 'image-banner-text-center',
+        background_svg: background_svg,
+        image_1: section.settings.image_1,
+        image_2: section.settings.image_2,
+        image_3: section.settings.image_3,
+        image_decor: section.settings.image_decor,
+        color_background: section.settings.color_background
+      %}
+{% endcomment %}
+
+<div class='image-banner-type-1__wrap'>
+  <div class='image-banner-type-1__background'>
+    <div class='image-banner-type-1__container'>
+      <div class='image-banner-type-1__button'>
+        {% render 'button',
+          text: section.settings.button_text,
+          link: section.settings.button_link,
+          size: section.settings.button_size,
+          style: section.settings.button_style,
+          icon: 'arrow-testimonial-right',
+          icon_position: 'right',
+          icon_size: '24'
+        %}
+      </div>
+      <div class='image-banner-type-1__middle'>
+        <div class='image-banner-type-1__heading'>
+          {% render 'text',
+            text: section.settings.text_heading,
+            tag_name: section.settings.text_tag_name,
+            duration: section.settings.text_duration,
+            effect: section.settings.text_effect
+          %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <xo-animate class='image-banner-type-1__image-1' xo-type='zoom-in' xo-cascade>
+    {% render 'image', image: image_1, placeholder: 'product-1', lazyload: false %}
+  </xo-animate>
+  <xo-animate class='image-banner-type-1__image-2' xo-type='zoom-in' xo-cascade>
+    {% render 'image', image: image_2, placeholder: 'product-2', lazyload: false %}
+  </xo-animate>
+  <xo-animate class='image-banner-type-1__image-3' xo-type='zoom-in' xo-cascade>
+    <div class='image-banner-type-1__decor'>
+      {% render 'image', image: image_decor, placeholder: 'product-4', lazyload: false %}
+    </div>
+    {% render 'image', image: image_3, placeholder: 'product-3', lazyload: false %}
+  </xo-animate>
+  <div class='image-banner-type-1__svg' style='--color: {{ color_background }}'>
+    {% if background_svg == 'type-1' %}
+      <div class='image-banner-type-1__svg-container'></div>
+    {% elsif background_svg == 'type-2' %}
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 245'>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 102.504C63.6833 142.004 252.266 194.804 497.129 90.0037C803.209 -40.9963 929.742 -0.496277 1021.77 41.5037C1053.2 55.8501 1075.94 74.3381 1100.81 94.5567C1148.74 133.53 1204.58 178.933 1345.85 213.5C1535.37 259.873 1626.79 243.599 1693.53 231.72C1703.28 229.983 1712.52 228.34 1721.45 227C1791.47 216.5 1867.99 187.5 1920 146V0H0V102.504Z"/>
+      </svg>
+    {% elsif background_svg == 'type-3' %}
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 283'>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M458.5 211.037C545.322 236.53 633.703 234.278 714.147 209.466C784.343 255.938 868.511 283 959 283C1049.48 283 1133.65 255.941 1203.84 209.475C1284.28 234.288 1372.67 236.541 1459.49 211.048C1546.32 185.552 1619.46 135.868 1673.72 71.4956C1757.9 72.6405 1843.87 48.9226 1920 0H0C75.7584 48.2789 160.646 72.6448 244.289 71.5059C298.547 135.869 371.68 185.545 458.5 211.037Z"/>
+      </svg>
+    {% elsif background_svg == 'type-4' %}
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 291'>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 0C1903.18 39.8334 1848.06 123.9 1762.12 139.5C1660.48 157.952 1604.02 138.349 1545.33 117.972C1542 116.815 1538.66 115.655 1535.3 114.5C1472.85 93 1383.42 67.5 1273.51 84.5C1179.37 99.0592 1097.7 162.393 1046.69 201.951C1038.13 208.583 1030.44 214.547 1023.7 219.5C976.737 254 885.462 293.5 836.5 290C832.065 289.683 827.598 289.423 823.082 289.161C777.742 286.527 727.617 283.615 658.5 219.5C593.47 159.176 493.115 77.5 402.685 53C312.256 28.5 128.899 62.5 0 178.5V0H1920Z"/>
+      </svg>
+    {% elsif background_svg == 'type-5' %}
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 222'>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 180.582C61.0736 134.36 224.064 48.5356 387.435 66.3799C521.086 80.978 587.091 126.307 638.817 161.83C666.127 180.585 689.457 196.607 716.66 203.929C795.388 225.119 888.906 248.24 1152.29 143.033C1165.41 137.79 1178.41 132.567 1191.3 127.388C1437.11 28.6246 1643.45 -54.2771 1920 46.7476V0H0V180.582Z"/>
+      </svg>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 244' style='position: absolute;'>
+        <path d="M439.305 69.3865C250.925 33.0318 71.0742 123.393 0 180.666V195.494C37.635 169.449 148.607 101.392 242 88.0479C377.821 68.4799 459.417 89.7373 522.584 121.043C558.606 138.896 591.5 155.692 625.191 181.51C698.687 237.83 793.707 249.424 882.904 241.978C964.193 235.191 1046.46 209.986 1117.23 187.109C1265.65 139.129 1417.83 98.7223 1592.5 98.7223C1767.17 98.7223 1870.46 148.928 1920 187.109V39.3003C1847.49 14.5949 1777.75 -5.21344 1613.09 1.22834C1485.26 6.22911 1338.2 56.0971 1203.61 115.817C1139.09 144.447 1013.69 193.906 915.356 212.49C808.575 232.672 728.754 207.662 690.574 187.109C654.078 167.462 625.412 149.493 603 136.572C522.946 90.4213 514.995 83.9937 439.305 69.3865Z" fill="url(#paint0_linear_11410_87750)"/>
+        <defs>
+          <linearGradient id="paint0_linear_11410_87750" x1="0" y1="121.754" x2="1920" y2="121.754" gradientUnits="userSpaceOnUse">
+            <stop stop-opacity="0" class="image-banner-type-1__linear"/>
+            <stop offset="1" class="image-banner-type-1__linear"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    {% endif %}
+  </div>
+</div>
