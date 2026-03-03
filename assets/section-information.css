@@ -1,0 +1,68 @@
+.information__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(2.8rem, calc(2.5vw + 1.8rem), 4.8rem);
+}
+@media (max-width: 991px) {
+  .information__list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.information__block {
+  width: clamp(33.3rem, calc(4.5vw + 31.5rem), 36.9rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.6rem, calc(1vw + 1.2rem), 2.4rem);
+}
+
+.information__heading {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.information__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.2rem, calc(0.5vw + 1rem), 1.6rem);
+}
+
+.information__location,
+.information__time,
+.information__contact,
+.information__email {
+  color: rgba(var(--color-foreground-2));
+  text-align: center;
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-weight: 400;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+.information__location p,
+.information__time p,
+.information__contact p,
+.information__email p {
+  color: inherit;
+}
+
+.information__email {
+  text-decoration: underline;
+}
+
+.information__day {
+  color: rgba(var(--color-foreground-2));
+  text-align: center;
+  font-size: calc(var(--font-body-scale) * 1.8rem);
+  font-weight: 600;
+  line-height: calc(1 + 0.44 / var(--font-body-scale));
+}
+.information__day p {
+  color: inherit;
+}
+
+.information__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}

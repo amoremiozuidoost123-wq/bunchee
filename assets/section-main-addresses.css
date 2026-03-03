@@ -1,0 +1,62 @@
+.xo-address-list {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+.xo-address-list xo-grid {
+  row-gap: 7.1rem;
+}
+@media (min-width: 992px) {
+  .xo-address-list xo-grid {
+    column-gap: 9.2rem;
+  }
+}
+
+.xo-address-list__top .xo-btn {
+  background: none;
+  transition: opacity 0.3s;
+}
+.xo-address-list__top .xo-btn:hover, .xo-address-list__top .xo-btn:focus-within {
+  background: none;
+}
+.xo-address-list__top .xo-btn:hover svg, .xo-address-list__top .xo-btn:focus-within svg {
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+.xo-address-list__top .xo-btn:before {
+  background: none;
+}
+.xo-address-list__top .xo-btn:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+.xo-address-list__top .xo-btn .xo-btn__text {
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+.xo-address-list__top .xo-btn .xo-btn__content {
+  text-shadow: none;
+  padding: 0;
+}
+.xo-address-list__top .xo-btn svg {
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+
+.xo-address-list__heading {
+  margin: 0;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  letter-spacing: calc(var(--font-heading-scale) * -0.108rem);
+  padding-bottom: 0.6rem;
+}
+@media (min-width: 992px) {
+  .xo-address-list__heading {
+    letter-spacing: calc(var(--font-heading-scale) * -0.201rem);
+    padding-bottom: 1rem;
+  }
+}
+
+.xo-address-list__top {
+  padding-bottom: 3.8rem;
+}
+@media (min-width: 992px) {
+  .xo-address-list__top {
+    padding-bottom: 7.2rem;
+  }
+}

@@ -1,0 +1,95 @@
+.featured-collection-type-3 .xo-image {
+  display: flex;
+}
+
+.featured-collection-type-3__heading {
+  padding-bottom: 1.3rem;
+}
+@media (min-width: 992px) {
+  .featured-collection-type-3__heading {
+    padding-bottom: 3.3rem;
+  }
+}
+
+.featured-collection-type-3__item {
+  position: relative;
+}
+
+.featured-collection-type-3__image {
+  position: relative;
+  height: 100%;
+  z-index: 0;
+}
+
+.featured-collection-type-3__point {
+  position: absolute;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  top: calc(var(--top-mb) * 1%);
+}
+[dir=ltr] .featured-collection-type-3__point {
+  left: calc(var(--left-mb) * 1%);
+}
+[dir=rtl] .featured-collection-type-3__point {
+  right: calc(var(--left-mb) * 1%);
+}
+@media (min-width: 992px) {
+  .featured-collection-type-3__point {
+    top: calc(var(--top) * 1%);
+  }
+  [dir=ltr] .featured-collection-type-3__point {
+    left: calc(var(--left) * 1%);
+  }
+  [dir=rtl] .featured-collection-type-3__point {
+    right: calc(var(--left) * 1%);
+  }
+}
+
+.featured-collection-type-3__mobile {
+  display: block;
+}
+@media (min-width: 992px) {
+  .featured-collection-type-3__mobile {
+    display: none;
+  }
+}
+.featured-collection-type-3__mobile > .xo-image {
+  width: 100%;
+  height: 100%;
+}
+.featured-collection-type-3__mobile > .xo-image img,
+.featured-collection-type-3__mobile > .xo-image svg {
+  width: 100%;
+  height: 100%;
+}
+
+.featured-collection-type-3__desktop {
+  display: none;
+}
+@media (min-width: 992px) {
+  .featured-collection-type-3__desktop {
+    display: block;
+    height: 100%;
+  }
+}
+.featured-collection-type-3__desktop > .xo-image {
+  width: 100%;
+  height: 100%;
+}
+.featured-collection-type-3__desktop > .xo-image img,
+.featured-collection-type-3__desktop > .xo-image svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 992px) {
+  .featured-collection-type-3__desktop--left .xo-image {
+    border-radius: 4.6rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .featured-collection-type-3__mobile--left .xo-image {
+    border-radius: 1.5rem;
+  }
+}

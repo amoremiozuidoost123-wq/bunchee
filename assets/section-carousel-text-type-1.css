@@ -1,0 +1,90 @@
+.carousel-text-type-1 {
+  --item-space: 0;
+}
+.carousel-text-type-1 xo-marquee-item {
+  align-items: center;
+}
+
+.carousel-text-type-1__image {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.1rem;
+  margin-inline-start: var(--item-space);
+}
+.carousel-text-type-1__image:hover {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+.carousel-text-type-1__image .xo-image {
+  max-width: 5.9rem;
+  max-height: 5.9rem;
+}
+@media (min-width: 992px) {
+  .carousel-text-type-1__image .xo-image {
+    max-width: 7.1rem;
+    max-height: 7.1rem;
+  }
+}
+.carousel-text-type-1__image .placeholder-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-text-type-1__item {
+  padding-inline-start: var(--item-space);
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  text-align: center;
+  margin: 0;
+}
+
+.carousel-text-type-2__content {
+  position: relative;
+}
+
+.carousel-text-type-2__image {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 100;
+  padding: 0.1rem;
+  margin-inline-start: calc(var(--space) * 1% / 2);
+}
+@media (min-width: 992px) {
+  .carousel-text-type-2__image {
+    margin-inline-start: calc(var(--space) * 1%);
+  }
+}
+.carousel-text-type-2__image .xo-image {
+  width: 8rem;
+}
+@media (min-width: 992px) {
+  .carousel-text-type-2__image .xo-image {
+    width: 19rem;
+  }
+}
+.carousel-text-type-2__image img,
+.carousel-text-type-2__image svg {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-text-type-2__item {
+  font-family: var(--font-heading-family);
+  font-size: calc(var(--font-heading-scale) * var(--font-body-scale) * 7rem);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.25 / var(--font-heading-scale));
+  letter-spacing: calc(var(--font-heading-scale) * -0.35rem);
+  margin: 0;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+}
+@media (min-width: 992px) {
+  .carousel-text-type-2__item {
+    font-size: calc(var(--font-heading-scale) * var(--font-body-scale) * 17.8rem);
+    line-height: calc(1 + 0.1 / var(--font-heading-scale));
+    letter-spacing: calc(var(--font-heading-scale) * -0.89rem);
+  }
+}

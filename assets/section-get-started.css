@@ -1,0 +1,113 @@
+.get-started {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, calc(2.25vw + 1.1rem), 3.8rem);
+}
+
+.get-started__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.get-started__heading .xo-text__heading {
+  justify-content: center;
+}
+
+.get-started__description {
+  text-align: center;
+  color: rgba(var(--color-foreground-2));
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-weight: 400;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+.get-started__description p {
+  color: inherit;
+}
+
+.get-started__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  row-gap: 2rem;
+}
+@media (max-width: 1399px) {
+  .get-started__bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.get-started__block {
+  width: clamp(32rem, calc(-3.3333333333vw + 35rem), 29rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.get-started__block-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.4rem;
+  height: 6.4rem;
+  border: 0.1rem dashed rgba(var(--color-border));
+  border-radius: 1000rem;
+  color: rgba(var(--color-foreground));
+  font-size: calc(var(--font-body-scale) * 2.1rem);
+  font-weight: 600;
+  line-height: calc(1 + 0.52 / var(--font-body-scale));
+}
+
+.get-started__block-heading {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.get-started__block-description {
+  text-align: center;
+  color: rgba(var(--color-foreground-2));
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-weight: 500;
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+}
+.get-started__block-description p {
+  color: inherit;
+}
+.get-started__block-description p strong {
+  color: rgba(var(--color-foreground));
+  font-weight: 600;
+}
+
+.get-started__image .xo-image__placeholder,
+.get-started__image svg {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.get-started__image img {
+  object-fit: contain;
+}
+
+.get-started__image-desktop,
+.get-started__image-mobile {
+  display: flex;
+  justify-content: center;
+  width: clamp(10rem, calc(21.75vw - 11.75rem), 27.4rem);
+  height: clamp(4rem, calc(2.75vw + 1.25rem), 6.2rem);
+}
+
+@media (max-width: 1399px) {
+  .get-started__image-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 1400px) {
+  .get-started__image-mobile {
+    display: none;
+  }
+}

@@ -1,0 +1,173 @@
+.image-with-text-overlay {
+  display: flex;
+  height: 100vh;
+}
+@media (min-width: 992px) {
+  .image-with-text-overlay {
+    height: 80vh;
+  }
+}
+
+.image-with-text-overlay__container {
+  display: flex;
+  padding-bottom: clamp(6.2rem, calc(-7.75vw + 9.3rem), 0rem);
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__container {
+    margin: auto;
+    width: 70%;
+  }
+}
+.image-with-text-overlay__container xo-container {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__container xo-container {
+    align-items: center;
+    justify-content: var(--justify-content);
+  }
+}
+
+.image-with-text-overlay__bg {
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.image-with-text-overlay__bg .xo-image,
+.image-with-text-overlay__bg .image-with-text-overlay__desktop,
+.image-with-text-overlay__bg .image-with-text-overlay__mobile,
+.image-with-text-overlay__bg .xo-image__placeholder,
+.image-with-text-overlay__bg img {
+  width: 100%;
+  height: 100%;
+}
+.image-with-text-overlay__bg svg {
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+}
+
+.image-with-text-overlay__desktop {
+  display: none;
+}
+@media (min-width: 992px) {
+  .image-with-text-overlay__desktop {
+    display: block;
+  }
+}
+
+.image-with-text-overlay__mobile {
+  display: block;
+}
+@media (min-width: 992px) {
+  .image-with-text-overlay__mobile {
+    display: none;
+  }
+}
+
+.image-with-text-overlay__box {
+  position: relative;
+  height: fit-content;
+  border-radius: 2.5rem;
+  background-color: color-mix(in srgb, rgba(var(--color-background)) calc(0.86 * 100%), transparent);
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__box {
+    width: 63.5%;
+  }
+}
+@media (min-width: 1400px) {
+  .image-with-text-overlay__box {
+    width: 40.8%;
+  }
+}
+
+.image-with-text-overlay__decor {
+  position: absolute;
+  bottom: -1rem;
+  right: calc(clamp(1rem, calc(36.25vw - 13.5rem), 30rem) * -1);
+  z-index: 10;
+  width: clamp(10rem, calc(41.25vw - 6.5rem), 43rem);
+  height: clamp(5rem, calc(8.75vw + 1.5rem), 12rem);
+}
+.image-with-text-overlay__decor .xo-image__placeholder,
+.image-with-text-overlay__decor svg {
+  width: 100%;
+  height: 100%;
+}
+
+.image-with-text-overlay__content {
+  padding-top: 3rem;
+  padding-bottom: 3.4rem;
+  padding-inline-start: 3.8rem;
+  padding-inline-end: 3.8rem;
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__content {
+    padding-top: 5.3rem;
+    padding-bottom: 6.1rem;
+    padding-inline-start: 5.8rem;
+    padding-inline-end: 5.8rem;
+  }
+}
+.image-with-text-overlay__content h4 {
+  margin-bottom: 1.2rem;
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__content h4 {
+    margin-bottom: 1.5rem;
+  }
+}
+.image-with-text-overlay__content .xo-btn {
+  display: inline-flex;
+  margin-top: 2.8rem;
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__content .xo-btn--md .xo-btn__content {
+    padding-inline-start: 3.6rem;
+    padding-inline-end: 3.6rem;
+  }
+}
+
+.image-with-text-overlay__text {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.5rem);
+  font-style: var(--font-body-style);
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  font-weight: 400;
+  line-height: calc(1 + 0.46 / var(--font-body-scale));
+  opacity: 0.85;
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__text {
+    font-size: calc(var(--font-body-scale) * 1.7rem);
+    line-height: calc(1 + 0.52 / var(--font-body-scale));
+  }
+}
+.image-with-text-overlay__text p {
+  color: inherit;
+}
+
+.image-with-text-overlay__text--top {
+  padding-bottom: 1.4rem;
+  border-bottom: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__text--top {
+    padding-bottom: 2rem;
+  }
+}
+
+.image-with-text-overlay__text--bottom {
+  padding-top: 1.4rem;
+}
+@media (min-width: 768px) {
+  .image-with-text-overlay__text--bottom {
+    padding-top: 0.8rem;
+  }
+}

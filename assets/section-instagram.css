@@ -1,0 +1,34 @@
+.instagram {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.4rem, calc(1vw + 2rem), 3.2rem);
+}
+
+.instagram__heading {
+  display: flex;
+  justify-content: center;
+  transition: color 0.3s;
+}
+.instagram__heading:hover .xo-text__heading, .instagram__heading:focus-visible .xo-text__heading {
+  color: rgba(var(--color-hover-button));
+  transition: color 0.3s;
+}
+
+.instagram__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 991px) {
+  .instagram__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.instagram__image {
+  display: flex;
+}
+.instagram__image .xo-image__placeholder,
+.instagram__image svg {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,185 @@
+.image-with-text-type-6__container xo-grid {
+  row-gap: 3.8rem;
+}
+
+.image-with-text-type-6__heading {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding-bottom: 2.2rem;
+}
+@media (min-width: 992px) {
+  .image-with-text-type-6__heading {
+    padding-bottom: 6.5rem;
+  }
+}
+
+@-moz-document url-prefix() {
+  .image-with-text-type-6__heading {
+    display: block;
+  }
+  .image-with-text-type-6__heading .xo-text__heading {
+    justify-content: center;
+  }
+}
+.image-with-text-type-6__right {
+  border-radius: 6rem;
+  border: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+  padding-top: clamp(4.6rem, calc(7.5555555556vw - 2.9555555556rem), 11.4rem);
+  padding-bottom: clamp(4.6rem, calc(7.5555555556vw - 2.9555555556rem), 11.4rem);
+  padding-inline-start: clamp(3.5rem, calc(10.3636363636vw - 4.7909090909rem), 14.9rem);
+  padding-inline-end: clamp(3.5rem, calc(10.3636363636vw - 4.7909090909rem), 14.9rem);
+}
+@media (min-width: 992px) {
+  .image-with-text-type-6__right {
+    border-radius: 12rem;
+  }
+}
+
+.image-with-text-type-6__content {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+  padding-bottom: 1.4rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+}
+@media (min-width: 992px) {
+  .image-with-text-type-6__content {
+    font-size: calc(var(--font-body-scale) * 1.7rem);
+    line-height: calc(1 + 0.52 / var(--font-body-scale));
+    padding-bottom: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+}
+.image-with-text-type-6__content p {
+  opacity: 0.85;
+}
+
+.image-with-text-type-6__content:last-child {
+  border-bottom: unset;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.image-with-text-type-6__left {
+  display: flex;
+  justify-content: flex-end;
+}
+@media (min-width: 768px) {
+  .image-with-text-type-6__left {
+    justify-content: var(--justify-content);
+  }
+}
+.image-with-text-type-6__left xo-animate {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.image-with-text-type-6__left-container {
+  position: relative;
+}
+
+.image-with-text-type-6__image {
+  position: relative;
+}
+
+.image-with-text-type-6__circle-container {
+  position: absolute;
+  z-index: -10;
+  bottom: 5%;
+}
+[dir=ltr] .image-with-text-type-6__circle-container {
+  left: -25%;
+}
+[dir=rtl] .image-with-text-type-6__circle-container {
+  right: -25%;
+}
+@media (min-width: 768px) {
+  .image-with-text-type-6__circle-container {
+    bottom: 10%;
+  }
+  [dir=ltr] .image-with-text-type-6__circle-container {
+    left: -30%;
+  }
+  [dir=rtl] .image-with-text-type-6__circle-container {
+    right: -30%;
+  }
+}
+
+@media (min-width: 767px) {
+  [dir=ltr] .image-with-text-type-6__circle-container--right {
+    right: -30%;
+    left: unset;
+  }
+  [dir=rtl] .image-with-text-type-6__circle-container--right {
+    left: -30%;
+    right: unset;
+  }
+}
+
+.image-with-text-type-6__circle {
+  border-radius: 47.4rem;
+  background-color: color-mix(in srgb, rgba(var(--color-layer)) calc(1 * 100%), transparent);
+  width: 24.9rem;
+  height: 24.9rem;
+}
+@media (min-width: 992px) {
+  .image-with-text-type-6__circle {
+    width: 30.4rem;
+    height: 30.4rem;
+  }
+}
+@media (min-width: 1400px) {
+  .image-with-text-type-6__circle {
+    width: 47.4rem;
+    height: 47.4rem;
+  }
+}
+
+.image-with-text-type-6__decoration {
+  position: absolute;
+  top: 20%;
+  max-width: 1.8rem;
+  max-height: 1.6rem;
+}
+[dir=ltr] .image-with-text-type-6__decoration {
+  left: -5%;
+}
+[dir=rtl] .image-with-text-type-6__decoration {
+  right: -5%;
+}
+@media (min-width: 768px) {
+  .image-with-text-type-6__decoration {
+    top: 10%;
+  }
+}
+@media (min-width: 992px) {
+  .image-with-text-type-6__decoration {
+    top: 15%;
+    max-width: 3.4rem;
+    max-height: 3.1rem;
+  }
+}
+.image-with-text-type-6__decoration svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 767px) {
+  [dir=ltr] .image-with-text-type-6__decoration--right {
+    right: -5%;
+    left: unset;
+  }
+  [dir=rtl] .image-with-text-type-6__decoration--right {
+    left: -5%;
+    right: unset;
+  }
+  .image-with-text-type-6__decoration--right .xo-image {
+    transform: rotate(90deg);
+  }
+}

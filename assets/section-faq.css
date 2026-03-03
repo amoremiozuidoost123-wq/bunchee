@@ -1,0 +1,5 @@
+.faq__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.2rem, calc(2vw + 2.4rem), 4.8rem);
+}

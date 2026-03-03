@@ -1,0 +1,114 @@
+.featured-offer {
+  height: 100vh;
+}
+@media (max-width: 991px) {
+  .featured-offer {
+    height: 70vh;
+  }
+}
+.featured-offer .xo-section,
+.featured-offer .featured-offer__container {
+  height: 100%;
+}
+.featured-offer img {
+  object-fit: contain;
+}
+.featured-offer .xo-section {
+  z-index: 100;
+}
+
+.featured-offer__container {
+  position: relative;
+  z-index: 20;
+}
+
+.featured-offer__svg {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  transform: translateY(5px);
+}
+.featured-offer__svg svg {
+  position: relative;
+  top: 0;
+  fill: var(--color);
+}
+[dir=ltr] .featured-offer__svg svg {
+  left: 0;
+}
+[dir=rtl] .featured-offer__svg svg {
+  right: 0;
+}
+
+.featured-offer__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: var(--justify-content);
+  align-items: var(--align-items);
+  padding-top: var(--padding-top);
+}
+@media (max-width: 991px) {
+  .featured-offer__content {
+    padding-top: var(--padding-top-mb);
+  }
+}
+
+.featured-offer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--justify-content);
+}
+
+.featured-offer__heading {
+  text-align: var(--text-align);
+  padding-bottom: clamp(2rem, calc(3.5vw + 0.6rem), 4.8rem);
+}
+.featured-offer__heading p {
+  color: inherit;
+}
+
+.featured-offer__button {
+  width: fit-content;
+}
+
+.featured-offer__img-desktop {
+  position: absolute;
+  z-index: 100;
+  top: var(--top);
+}
+[dir=ltr] .featured-offer__img-desktop {
+  left: var(--left);
+}
+[dir=rtl] .featured-offer__img-desktop {
+  right: var(--left);
+}
+@media (max-width: 991px) {
+  .featured-offer__img-desktop {
+    display: none;
+  }
+}
+
+.featured-offer__img-mobile {
+  position: absolute;
+  z-index: 100;
+  top: var(--top-mb);
+}
+[dir=ltr] .featured-offer__img-mobile {
+  left: var(--left-mb);
+}
+[dir=rtl] .featured-offer__img-mobile {
+  right: var(--left-mb);
+}
+@media (min-width: 992px) {
+  .featured-offer__img-mobile {
+    display: none;
+  }
+}
+.featured-offer__img-mobile .xo-image__placeholder,
+.featured-offer__img-mobile svg {
+  width: 100%;
+  height: 100%;
+}

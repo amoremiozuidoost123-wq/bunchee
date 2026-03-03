@@ -1,0 +1,183 @@
+.image-gallery-with-text__top {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: clamp(4rem, calc(35vw - 10rem), 32rem);
+  padding-bottom: clamp(3.6rem, calc(3.25vw + 2.3rem), 6.2rem);
+}
+@media (min-width: 768px) {
+  .image-gallery-with-text__top {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.image-gallery-with-text__text {
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .image-gallery-with-text__text {
+    max-width: 32rem;
+  }
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__text {
+    max-width: 43.6rem;
+  }
+}
+
+.image-gallery-with-text__heading {
+  width: 80%;
+  margin-bottom: 1.7rem;
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__heading {
+    width: 100%;
+    margin-bottom: 1.1rem;
+  }
+}
+
+.image-gallery-with-text__description {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__description {
+    font-size: calc(var(--font-body-scale) * 1.6rem);
+    line-height: calc(1 + 0.5 / var(--font-body-scale));
+  }
+}
+
+.image-gallery-with-text__image-decor {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+@media (min-width: 768px) {
+  .image-gallery-with-text__image-decor {
+    width: 50%;
+  }
+}
+.image-gallery-with-text__image-decor svg {
+  background-color: gray;
+}
+
+.image-gallery-with-text__image-1 {
+  position: relative;
+  height: fit-content;
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__image-1 {
+    transform: translateY(-25%);
+  }
+}
+.image-gallery-with-text__image-1 .xo-image {
+  width: 14.1rem;
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__image-1 .xo-image {
+    width: 16.7rem;
+  }
+}
+.image-gallery-with-text__image-1 svg {
+  width: 100%;
+  height: 100%;
+}
+
+.image-gallery-with-text__image-2 {
+  position: relative;
+  width: 10.3rem;
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__image-2 {
+    width: 19.6rem;
+  }
+}
+.image-gallery-with-text__image-2 svg {
+  width: 100%;
+  height: 100%;
+}
+
+.image-gallery-with-text__circle {
+  width: 16.7rem;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 15%;
+  border-radius: 50%;
+  background-color: color-mix(in srgb, rgba(var(--color-layer)) calc(1 * 100%), transparent);
+}
+[dir=ltr] .image-gallery-with-text__circle {
+  left: 30%;
+}
+[dir=rtl] .image-gallery-with-text__circle {
+  right: 30%;
+}
+@media (max-width: 991px) {
+  .image-gallery-with-text__circle {
+    width: 14.1rem;
+  }
+}
+
+.image-gallery-with-text__image-small {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+}
+.image-gallery-with-text__image-small .xo-image {
+  max-width: 2rem;
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__image-small .xo-image {
+    max-width: 2.4rem;
+  }
+}
+.image-gallery-with-text__image-small svg {
+  background-color: gray;
+}
+
+.image-gallery-with-text__marquee {
+  display: flex;
+  align-items: center;
+}
+
+.image-gallery-with-text__image {
+  display: flex;
+  align-items: center;
+  padding-inline-start: 0.75rem;
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__image {
+    padding-inline-start: 2.2rem;
+  }
+}
+.image-gallery-with-text__image:hover svg,
+.image-gallery-with-text__image:hover img {
+  scale: 1.1;
+}
+.image-gallery-with-text__image .xo-image {
+  width: 20rem;
+  height: 13rem;
+  border-radius: 1rem;
+}
+@media (min-width: 992px) {
+  .image-gallery-with-text__image .xo-image {
+    width: 58rem;
+    height: 39rem;
+    border-radius: 3rem;
+  }
+}
+.image-gallery-with-text__image svg,
+.image-gallery-with-text__image img {
+  transition: all 0.5s;
+}
+.image-gallery-with-text__image .xo-image__placeholder {
+  width: 100%;
+}
+.image-gallery-with-text__image svg {
+  width: 100%;
+  height: 100%;
+}

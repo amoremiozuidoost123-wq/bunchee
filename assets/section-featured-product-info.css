@@ -1,0 +1,156 @@
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button--available {
+  display: none;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button--unavailable {
+  display: flex;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .buy-button {
+  opacity: 0.6;
+  position: relative;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .buy-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  cursor: not-allowed;
+}
+[dir=ltr] .featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .buy-button::before {
+  left: 0;
+}
+[dir=rtl] .featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .buy-button::before {
+  right: 0;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button {
+  position: relative;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  cursor: not-allowed;
+}
+[dir=ltr] .featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button::before {
+  left: 0;
+}
+[dir=rtl] .featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button::before {
+  right: 0;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .product-info-content-type-1__price {
+  display: none;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button__cart .xo-btn__text {
+  color: unset;
+  position: relative;
+}
+.featured-product-info[xo-unavailable]:not([xo-unavailable=false]) .add-button__cart .xo-btn__text::before {
+  content: attr(data-text-unavailable);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: max-content;
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+  background-color: color-mix(in srgb, rgba(var(--color-background)) calc(1 * 100%), transparent);
+}
+
+.featured-product-info .add-button--unavailable {
+  display: none;
+}
+.featured-product-info .add-button--available {
+  display: flex;
+}
+
+.featured-product-info__heading {
+  padding-bottom: 2.4rem;
+}
+@media (min-width: 992px) {
+  .featured-product-info__heading {
+    padding-bottom: 5.7rem;
+  }
+}
+.featured-product-info__heading .xo-text__heading {
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .featured-product-info__product-info-content-type-1 {
+    align-self: center;
+  }
+}
+
+.featured-product-info__placeholder .xo-image {
+  max-width: 27rem;
+  max-height: 27rem;
+  display: flex;
+}
+@media (min-width: 992px) {
+  .featured-product-info__placeholder .xo-image {
+    max-width: 60rem;
+    max-height: 60rem;
+  }
+}
+.featured-product-info__placeholder .product-info-media-type-1__decor {
+  z-index: -10;
+  width: 20rem;
+  height: 20rem;
+}
+@media (min-width: 768px) {
+  .featured-product-info__placeholder .product-info-media-type-1__decor {
+    width: 28rem;
+    height: 28rem;
+  }
+}
+@media (min-width: 992px) {
+  .featured-product-info__placeholder .product-info-media-type-1__decor {
+    width: 33rem;
+    height: 33rem;
+  }
+}
+@media (min-width: 1200px) {
+  .featured-product-info__placeholder .product-info-media-type-1__decor {
+    width: 38rem;
+    height: 38rem;
+  }
+}
+@media (min-width: 1400px) {
+  .featured-product-info__placeholder .product-info-media-type-1__decor {
+    width: 43rem;
+    height: 43rem;
+  }
+}
+@media (min-width: 1700px) {
+  .featured-product-info__placeholder .product-info-media-type-1__decor {
+    width: 48rem;
+    height: 48rem;
+  }
+}
+.featured-product-info__placeholder button {
+  width: 100%;
+}
+
+.product-info-content-type-1__placeholder {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.product-info-content-type-1__buy-placeholder {
+  width: 100%;
+}
+
+.product-info-content-type-1__add-placeholder .xo-btn__content {
+  padding: 1.2rem;
+}
+@media (min-width: 992px) {
+  .product-info-content-type-1__add-placeholder .xo-btn__content {
+    padding: 1.5rem;
+  }
+}

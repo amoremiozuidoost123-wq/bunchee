@@ -1,0 +1,70 @@
+.exclusive-sign-up {
+  display: flex;
+  justify-content: center;
+}
+
+.exclusive-sign-up__content {
+  max-width: 71.7rem;
+}
+
+.exclusive-sign-up__heading {
+  margin-bottom: 0;
+  padding-bottom: clamp(1.4rem, calc(1.25vw + 0.9rem), 2.4rem);
+}
+.exclusive-sign-up__heading p {
+  color: inherit;
+}
+
+.exclusive-sign-up__description {
+  color: rgba(var(--color-foreground-2));
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-weight: 400;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  padding-bottom: clamp(2rem, calc(3.5vw + 0.6rem), 4.8rem);
+}
+.exclusive-sign-up__description p {
+  color: inherit;
+}
+.exclusive-sign-up__description p a {
+  color: rgba(var(--color-foreground));
+  font-weight: 600;
+}
+.exclusive-sign-up__description p strong {
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+}
+
+.exclusive-sign-up__button {
+  position: relative;
+  width: fit-content;
+}
+
+.exclusive-sign-up__image {
+  width: clamp(6rem, calc(10.625vw + 1.75rem), 14.5rem);
+  height: clamp(5rem, calc(8.75vw + 1.5rem), 12rem);
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+[dir=ltr] .exclusive-sign-up__image {
+  right: -100%;
+}
+[dir=rtl] .exclusive-sign-up__image {
+  left: -100%;
+}
+@media (max-width: 767px) {
+  .exclusive-sign-up__image {
+    top: 1rem;
+  }
+  [dir=ltr] .exclusive-sign-up__image {
+    right: -75%;
+  }
+  [dir=rtl] .exclusive-sign-up__image {
+    left: -75%;
+  }
+}
+.exclusive-sign-up__image .xo-image__placeholder,
+.exclusive-sign-up__image svg {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}

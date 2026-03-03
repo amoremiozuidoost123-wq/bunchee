@@ -1,0 +1,18 @@
+.featured-collection-type-6__left svg {
+  background-color: gray;
+}
+.featured-collection-type-6__left img,
+.featured-collection-type-6__left svg {
+  width: 100%;
+  height: 100%;
+}
+.featured-collection-type-6__left .xo-image {
+  display: flex;
+  border-radius: 1.5rem;
+  height: 100%;
+}
+@media (min-width: 992px) {
+  .featured-collection-type-6__left .xo-image {
+    border-radius: 4rem;
+  }
+}

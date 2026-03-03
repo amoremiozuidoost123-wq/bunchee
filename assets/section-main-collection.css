@@ -1,0 +1,95 @@
+.main-collection__vertical {
+  display: none;
+  padding: 2.4rem 0;
+  border-bottom: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+}
+@media (min-width: 992px) {
+  .main-collection__vertical {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.main-collection__vertical-grid .xo-collapse__content {
+  max-height: 30rem;
+  overflow: scroll;
+}
+.main-collection__vertical-grid .xo-collapse__content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.main-collection__vertical-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.main-collection__vertical-item .xo-field-select-custom__trigger {
+  padding: 0;
+  border-radius: unset;
+  border: none;
+}
+.main-collection__vertical-item .xo-field-select-custom__check {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.main-collection__vertical-item .xo-field-select-custom__input:checked ~ .xo-field-select-custom__icon {
+  background: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+.main-collection__vertical-item .xo-field-select-custom__icon {
+  border-radius: 0.6rem;
+  border: 0.2rem solid color-mix(in srgb, rgba(var(--color-border)) calc(0.5 * 100%), transparent);
+}
+.main-collection__vertical-item .xo-field-select-custom__icon svg {
+  color: white;
+}
+
+.main-collection__vertical-caption {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.5rem);
+  font-style: var(--font-body-style);
+  font-weight: 600;
+  color: rgba(var(--color-foreground), 0.5);
+  line-height: calc(1 + 0.46 / var(--font-body-scale));
+}
+
+.main-collection__horizontal .xo-filters-refine {
+  padding-bottom: 0;
+}
+
+.main-collection__content-vertical {
+  padding-top: 4.4rem;
+}
+.main-collection__content-vertical .xo-btn__text {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .main-collection__filter-vertical {
+    padding-top: 2.4rem;
+    padding-inline-end: 4.7rem;
+  }
+}
+@media (min-width: 1200px) {
+  .main-collection__filter-vertical {
+    padding-inline-end: 7.7rem;
+  }
+}
+
+.main-collection__loading {
+  display: none;
+}
+.main-collection__loading .main-collection__loadding-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-collection__filter[xo-loading]:not([xo-loading=false]) xo-filters-content {
+  opacity: 0.5;
+}
+
+.main-collection__travel xo-grid {
+  row-gap: clamp(1.6rem, calc(4.25vw - 0.1rem), 5rem);
+  column-gap: clamp(1.6rem, calc(7vw - 1.2rem), 7.2rem);
+}
