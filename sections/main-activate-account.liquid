@@ -1,0 +1,84 @@
+{% assign accpass = 'customer.activate_account.password' | t %}
+{% assign accpasscf = 'customer.activate_account.password_confirm' | t %}
+
+{{ 'section-main-activate-account.css' | asset_url | stylesheet_tag }}
+
+<div {% render 'section-attr' %}>
+  <xo-container>
+    <xo-grid>
+      <div class='xo-activate-account' style='--xs: 12'>
+        {%- form 'activate_customer_password' -%}
+          <xo-grid>
+            <xo-animate xo-cascade style='--xs: 12'>
+              {% render 'field-input', type: 'password', name: 'customer[password]', label: accpass, id: 'customer[password]' %}
+            </xo-animate>
+            <xo-animate xo-cascade style='--xs: 12'>
+              {% render 'field-input', type: 'password', name: 'customer[password_confirmation]', label: accpasscf, id: 'customer[password_confirmation]' %}
+            </xo-animate>
+          </xo-grid>
+          {% render 'space', value: '24px' %}
+          <xo-animate xo-cascade>
+            {% assign btn_submit = 'customer.activate_account.submit' | t %}
+            {% render 'button', type: 'submit', text: btn_submit, size: 'lg', block: true, effect: 'fade' %}
+          </xo-animate>
+          {% render 'space', value: '15px' %}
+          <xo-animate xo-cascade>
+            {% assign btn_cancel = 'customer.activate_account.cancel' | t %}
+            {% render 'button', text: btn_cancel, size: 'lg', block: true, effect: 'fade' %}
+          </xo-animate>
+        {%- endform -%}
+      </div>
+    </xo-grid>
+  </xo-container>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_activate_account.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ]
+}
+{% endschema %}

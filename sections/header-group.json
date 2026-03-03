@@ -1,0 +1,63 @@
+
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "header_type": "type-3",
+        "show_menu_hamburger": true,
+        "enabled_border": true,
+        "color_scheme": "background-1",
+        "logo_width": 150,
+        "logo_width_mobile": 120,
+        "menu": "main-menu",
+        "sticky_header_type": "up",
+        "modal_scheme": "",
+        "enable_language_selector": false,
+        "enable_currency_selector": false
+      }
+    },
+    "main-predictive-search": {
+      "type": "main-predictive-search",
+      "settings": {
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": ""
+      }
+    },
+    "mega_menu_eDWxG7": {
+      "type": "mega-menu",
+      "name": "Mega menu",
+      "settings": {
+        "index_nav": "2",
+        "collection_heading": "burger",
+        "description": "<p>WE OFFER GREAT TASTE THAT IS SERVED IN MINUTES.</p>",
+        "collection_list": [
+          "burritoblast",
+          "chickenchow",
+          "frieddough",
+          "maccheesy",
+          "tacotornado"
+        ],
+        "product": "bacon-hot-dog",
+        "button_text": "View now",
+        "button_style": "primary",
+        "button_size": "md",
+        "color_scheme": "background-1",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "header",
+    "main-predictive-search",
+    "mega_menu_eDWxG7"
+  ]
+}

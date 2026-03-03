@@ -1,0 +1,267 @@
+{{ 'section-featured-collection-type-5.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <div class='featured-collection-type-5'>
+    <xo-container class='featured-collection-type-5__container'>
+      <xo-animate xo-cascade xo-type='fade-right'>
+        <div class='featured-collection-type-5__top'>
+          <div class='featured-collection-type-5__heading'>
+            {% render 'text',
+              text: section.settings.text_heading,
+              tag_name: section.settings.text_tag_name,
+              duration: section.settings.text_duration,
+              effect: section.settings.text_effect
+            %}
+          </div>
+          <a href='{{ section.settings.button_link }}' class='featured-collection-type-5__top-button'>
+            {{ section.settings.button_text }}
+          </a>
+        </div>
+      </xo-animate>
+      <div class='featured-collection-type-5__product'>
+        <xo-carousel
+          class='featured-collection-type-5__carousel'
+          xo-per-view='4'
+          xo-per-move='1'
+          xo-overflow='visible'
+          xo-breakpoints="
+            {
+              600: {
+                perView: 2,
+                perMove: 1,
+                gap: 10,
+                overflow: 'visible'
+              },
+              900: {
+                perView: 2,
+                perMove: 1,
+                gap: 10,
+                overflow: 'visible'
+
+              },
+              1200: {
+                perView: 3,
+                perMove: 1,
+                gap: 10,
+                overflow: 'visible'
+              },
+            }
+          "
+          xo-render-bullet="<span class='featured-collection-type-5__bullet'></span>"
+        >
+          <xo-carousel-inner class='featured-collection-type-5__inner'>
+            <xo-carousel-list>
+              {% if section.settings.collection != blank %}
+                {% for product in section.settings.collection.products %}
+                  <xo-carousel-slide>
+                    {% render 'product-card',
+                      product: product,
+                      show_image: true,
+                      show_secondary_image: true,
+                      show_quick_add: true,
+                      show_quick_view: true,
+                      show_price: true,
+                      media_aspect_ratio: 1,
+                      color_scheme: section.settings.card_color_scheme,
+                      price_type: 'all'
+                    %}
+                  </xo-carousel-slide>
+                {% endfor %}
+              {% else %}
+                {% for i in (1..6) %}
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 6 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+                  <xo-carousel-slide>
+                    {% render 'product-card',
+                      product: false,
+                      show_image: true,
+                      show_secondary_image: true,
+                      show_quick_add: true,
+                      show_quick_view: true,
+                      show_price: true,
+                      media_aspect_ratio: 1,
+                      color_scheme: section.settings.card_color_scheme,
+                      placeholder_image: placeholder_image
+                    %}
+                  </xo-carousel-slide>
+                {% endfor %}
+              {% endif %}
+            </xo-carousel-list>
+          </xo-carousel-inner>
+          <div class='featured-collection-type-5__group-button'>
+            <xo-carousel-prev role='button' tabindex='0' aria-label='previus'>
+              <div class='featured-collection-type-5__button'>
+                {% render 'icon', name: 'arrow-testimonial-left', size: '22' %}
+                {% render 'icon', name: 'arrow-testimonial-left', size: '22' %}
+              </div>
+            </xo-carousel-prev>
+            <xo-carousel-next role='button' tabindex='0' aria-label='next'>
+              <div class='featured-collection-type-5__button'>
+                {% render 'icon', name: 'arrow-testimonial-right', size: '22' %}
+                {% render 'icon', name: 'arrow-testimonial-right', size: '22' %}
+              </div>
+            </xo-carousel-next>
+          </div>
+          <xo-carousel-pagination class='featured-collection-type-5__pagination'></xo-carousel-pagination>
+        </xo-carousel>
+      </div>
+    </xo-container>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.featured_collection_type_5.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.header.content"
+    },
+    {
+      "type": "select",
+      "id": "text_tag_name",
+      "label": "t:sections.all.text_tag_name.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_tag_name.option__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_tag_name.option__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_tag_name.option__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_tag_name.option__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_tag_name.option__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_tag_name.option__6.label"
+        },
+        {
+          "value": "d1",
+          "label": "t:sections.all.text_tag_name.option__7.label"
+        },
+        {
+          "value": "d2",
+          "label": "t:sections.all.text_tag_name.option__8.label"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_heading",
+      "label": "t:sections.all.text_heading.label",
+      "default": "Heading"
+    },
+    {
+      "type": "number",
+      "id": "text_duration",
+      "label": "t:sections.all.text_duration.label",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_effect",
+      "label": "t:sections.all.text_effect.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.text_effect.option__1.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.all.text_effect.option__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.all.text_effect.option__3.label"
+        }
+      ],
+      "default": "reveal"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.featured_collection_type_5.settings.card_color_scheme.label"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured_collection_type_5.settings.collection.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured_collection_type_5.settings.header_1.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.featured_collection_type_5.settings.button_link.label"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.featured_collection_type_5.settings.button_text.label",
+      "default": "Button text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

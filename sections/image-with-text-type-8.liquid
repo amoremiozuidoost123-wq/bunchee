@@ -1,0 +1,499 @@
+{{ 'section-image-with-text-type-8.css' | asset_url | stylesheet_tag }}
+{% assign background_svg = section.settings.background_svg %}
+{% assign text_position = section.settings.text_position %}
+{% assign section_style = section.settings.section_style %}
+
+<div
+  class='
+    image-with-text-type-8{% if background_svg != 'type-1' %}
+    image-with-text-type-8--background-none{% endif %}
+  '
+>
+  <div {% render 'section-attr' %}>
+    <div
+      class='
+        image-with-text-type-8__svg{%- if section_style == 'style-2' %}
+          image-with-text-type-8__svg--style-2
+        {% endif -%}
+      '
+    >
+      {% if background_svg == 'type-1' %}
+        <div class='image-with-text-type-8__svg-container'></div>
+      {% elsif background_svg == 'type-2' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 293'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 293C78.4183 226 325.061 107.597 684.287 187.997C1133.32 288.497 1220.23 301.494 1450.49 288.497C1680.75 275.5 1895.53 58 1920 0V293H0Z"/>
+        </svg>
+      {% elsif background_svg == 'type-3' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 269'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 268.961C1807.32 215.628 1556.04 136.161 1420.43 150.961C1307.11 163.329 1193.11 107.316 1101.1 62.1014C1055.47 39.6821 1015.25 19.9174 983.184 12.4591C886.461 -10.0409 759.325 -5.54089 648.642 54.9591C537.959 115.459 324.57 222.461 197.434 222.461C70.2985 222.461 22.4358 210.961 0 192.461V269H1920V268.961Z"/>
+        </svg>
+      {% elsif background_svg == 'type-4' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 306'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M58.8815 293.138C49.6452 299.024 39.2543 303.325 0 305.634V306H1920V305.5C1853.93 305.5 1813.51 278.433 1773.49 251.636C1739.73 229.032 1706.26 206.62 1657.93 200.811C1652.84 199.775 1647.77 198.654 1642.69 197.529C1635.89 196.025 1629.07 194.515 1622.13 193.194C1600.88 188.924 1581.26 183.27 1563.93 176.23C1556.32 173.344 1548.24 170.574 1539.93 168.151C1515.91 160.649 1493.16 152.455 1472.04 143.222C1462.42 139.338 1453.81 134.909 1445.38 130.579C1444.3 130.021 1443.22 129.465 1442.14 128.911C1418.12 116.678 1395.38 104.214 1373.44 91.2879L1345.04 74.7849C1344.1 74.1966 1343.15 73.6082 1342.19 73.0167C1339.94 71.6357 1337.67 70.2376 1335.57 68.7836C1327.49 63.3599 1318.72 58.0514 1309.48 52.9733L1278.54 36.4692C1254.66 24.2666 1229.16 15.5602 1202.8 10.6176L1185.48 7.0399C1174.74 4.73172 1163.31 3.23148 1151.65 2.42354C1148.65 2.23109 1145.63 2.06432 1142.62 1.89754C1136.59 1.56421 1130.56 1.23085 1124.64 0.69244C1118.4 0.230862 1112.05 0 1105.7 0C1082.96 0 1060.21 1.03866 1037.93 3.11598C1026.85 4.03928 1016 5.77038 1005.84 8.07856C1004.09 8.49008 1002.34 8.9016 1000.59 9.31326C982.233 13.6352 963.805 17.9737 945.569 22.5047C928.481 26.7749 912.549 31.9682 898.116 37.8541C870.258 49.1188 843.183 62.2282 817.068 77.0935C811.642 80.0934 805.754 82.9795 799.519 85.6338C797.265 86.5993 795.011 87.5615 792.759 88.5226C782.094 93.0747 771.483 97.6036 761.188 102.367C746.41 108.929 731.39 114.934 716.161 120.371C715.105 120.738 714.04 121.104 712.971 121.472C708.316 123.075 703.58 124.705 699.074 126.489C685.797 131.22 671.942 135.49 657.51 139.298C653.585 140.338 649.429 141.261 645.156 141.837C630.128 144.089 614.975 145.4 599.784 145.761C583.504 146.454 567.11 146.915 550.715 146.915H545.405C531.897 148.07 518.273 148.416 504.65 148.07C498.299 148.07 491.949 148.301 485.6 148.763C456.159 151.185 426.949 154.302 398.201 158.11C382.961 160.188 368.298 163.188 354.443 166.65C329.506 172.998 305.952 180.5 284.017 188.924L225.828 211.314C216.477 216.045 206.431 220.431 195.926 224.586C189.463 227.084 183.141 229.935 176.991 233.126C174.782 234.47 172.493 235.655 170.258 236.812C169.806 237.046 169.356 237.278 168.909 237.511C166.647 238.557 164.359 239.597 162.069 240.639C153.487 244.542 144.863 248.464 137.39 252.746C133.466 255.127 129.231 256.952 124.806 258.169C122.602 259.304 120.436 260.44 118.282 261.569C112.987 264.345 107.757 267.086 102.177 269.711C87.6296 276.405 66.1551 288.523 58.8815 293.138Z"/>
+        </svg>
+      {% elsif background_svg == 'type-5' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 186'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 25.997V186H0V129.75C131 46.2487 308.5 -20 480 46.2487C518.405 61.0843 556.088 79.513 594.015 98.0618C682.989 141.575 773.315 185.75 877.5 185.75C1023.26 185.75 1180.26 137.836 1334.79 90.6784C1546.2 26.1611 1752.97 -36.9422 1920 25.997Z"/>
+        </svg>
+      {% elsif background_svg == 'type-6' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 171'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 171H1920C1630.89 62.0565 1304.69 0 959.5 0C614.711 0 288.865 62.2921 0 171Z"/>
+        </svg>
+      {% elsif background_svg == 'type-7' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 291'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1762.12 139C1848.06 123.398 1903.18 39.8359 1920 0V291H0V178C128.898 62 312.256 28 402.686 52.5C493.115 77 593.469 158.68 658.5 219C727.617 283.117 777.742 286.023 823.082 288.664C827.598 288.922 832.066 289.18 836.5 289.5C885.461 293 976.736 253.5 1023.7 219C1030.44 214.047 1038.13 208.086 1046.69 201.453C1097.7 161.891 1179.37 98.5625 1273.51 84C1383.42 67 1472.85 92.5 1535.3 114L1545.33 117.469C1604.02 137.852 1660.48 157.453 1762.12 139Z"/>
+        </svg>
+      {% endif %}
+    </div>
+    <div
+      class='
+        image-with-text-type-8__background {%- if background_svg != 'type-1' and section_style == 'style-1' %}
+          image-with-text-type-8__background--modify
+        {% endif -%}
+        {%- if section_style == 'style-2' %}
+          image-with-text-type-8__background--style-2
+        {% endif -%}
+      '
+    >
+      <div
+        class='
+          image-with-text-type-8__container{%- if section_style == 'style-2' %}
+            image-with-text-type-8__container--style-2
+          {% endif -%}
+        '
+      >
+        <div class='image-with-text-type-8__left'>
+          {% if background_svg == 'type-1' and section_style == 'style-1' %}
+            <div class='image-with-text-type-8__image'>
+              {% render 'animate-image', image: section.settings.image, border_radius: 0, aspect_ratio: section.settings.aspect_ratio %}
+            </div>
+          {% elsif background_svg != 'type-1' or section_style == 'style-2' %}
+            <div class='image-with-text-type-8__image image-with-text-type-8__image--modify'>
+              {% render 'animate-image', image: section.settings.image, border_radius: 20, aspect_ratio: section.settings.aspect_ratio, max_width: 745 %}
+            </div>
+          {% endif %}
+        </div>
+        <div
+          class='
+            image-with-text-type-8__right{%- if section_style == 'style-2' %}
+              image-with-text-type-8__right--style-2
+            {% endif -%}
+          '
+        >
+          <div
+            class='
+              image-with-text-type-8__content {%- if text_position %}
+                image-with-text-type-8__content--{{ text_position }}
+              {% endif -%}
+              {%- if section_style == 'style-2' %}
+                image-with-text-type-8__content--style-2
+              {% endif -%}
+            '
+          >
+            <div class='image-with-text-type-8__heading'>
+              {% render 'text',
+                text: section.settings.text_heading,
+                tag_name: section.settings.text_tag_name,
+                duration: section.settings.text_duration,
+                effect: section.settings.text_effect
+              %}
+            </div>
+            <xo-animate
+              xo-cascade
+              class='
+                  image-with-text-type-8__description{%- if section_style == 'style-2' %}
+                    image-with-text-type-8__description--style-2
+                  {% endif -%}
+                  {%- if text_position %}
+                  image-with-text-type-8__description--{{ text_position }}
+                {% endif -%}
+              '
+            >
+              {{- section.settings.description -}}
+            </xo-animate>
+            {% for block in section.blocks %}
+              <div class='image-with-text-type-8__time'>
+                <xo-animate xo-cascade class='image-with-text-type-8__time-subheading'>
+                  {{ block.settings.subheading }}
+                </xo-animate>
+                <div class='image-with-text-type-8__time-content'>
+                  <xo-animate xo-cascade class='image-with-text-type-8__time-description'>
+                    {{ block.settings.description_1 }}
+                  </xo-animate>
+                  <xo-animate xo-cascade class='image-with-text-type-8__time-description'>
+                    {{ block.settings.description_2 }}
+                  </xo-animate>
+                </div>
+                <xo-animate
+                  xo-cascade
+                  class='
+                    image-with-text-type-8__time-button{%- if section_style == 'style-2' %}
+                      image-with-text-type-8__time-button--style-2
+                    {% endif -%}
+                  '
+                >
+                  {% render 'button',
+                    text: block.settings.button_text,
+                    link: block.settings.button_link,
+                    style: block.settings.button_style,
+                    size: block.settings.button_size,
+                    class: 'xo-btn--outline',
+                    icon: 'arrow-testimonial-right',
+                    icon_position: 'right',
+                    icon_size: '24'
+                  %}
+                </xo-animate>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image_with_text_type_8.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_style",
+      "label": "t:sections.image_with_text_type_8.settings.section_style.label",
+      "options": [
+        {
+          "value": "style-1",
+          "label": "t:sections.image_with_text_type_8.settings.section_style.option_1.label"
+        },
+        {
+          "value": "style-2",
+          "label": "t:sections.image_with_text_type_8.settings.section_style.option_2.label"
+        }
+      ],
+      "default": "style-1"
+    },
+    {
+      "type": "select",
+      "id": "background_svg",
+      "label": "t:sections.image_with_text_type_8.settings.background_svg.label",
+      "options": [
+        {
+          "value": "type-1",
+          "label": "t:sections.image_with_text_type_8.settings.background_svg.option_1.label"
+        },
+        {
+          "value": "type-2",
+          "label": "t:sections.image_with_text_type_8.settings.background_svg.option_2.label"
+        },
+        {
+          "value": "type-3",
+          "label": "t:sections.image_with_text_type_8.settings.background_svg.option_3.label"
+        },
+        {
+          "value": "type-4",
+          "label": "t:sections.image_with_text_type_8.settings.background_svg.option_4.label"
+        },
+        {
+          "value": "type-5",
+          "label": "t:sections.image_with_text_type_8.settings.background_svg.option_5.label"
+        },
+        {
+          "value": "type-6",
+          "label": "t:sections.image_with_text_type_8.settings.background_svg.option_6.label"
+        },
+        {
+          "value": "type-7",
+          "label": "t:sections.image_with_text_type_8.settings.background_svg.option_7.label"
+        }
+      ],
+      "default": "type-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header.content"
+    },
+    {
+      "type": "select",
+      "id": "text_tag_name",
+      "label": "t:sections.all.text_tag_name.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_tag_name.option__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_tag_name.option__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_tag_name.option__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_tag_name.option__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_tag_name.option__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_tag_name.option__6.label"
+        },
+        {
+          "value": "d1",
+          "label": "t:sections.all.text_tag_name.option__7.label"
+        },
+        {
+          "value": "d2",
+          "label": "t:sections.all.text_tag_name.option__8.label"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_heading",
+      "label": "t:sections.all.text_heading.label",
+      "default": "Heading"
+    },
+    {
+      "type": "number",
+      "id": "text_duration",
+      "label": "t:sections.all.text_duration.label",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_effect",
+      "label": "t:sections.all.text_effect.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.text_effect.option__1.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.all.text_effect.option__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.all.text_effect.option__3.label"
+        }
+      ],
+      "default": "reveal"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.image_with_text_type_8.settings.description.label",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "t:sections.image_with_text_type_8.settings.text_position.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.image_with_text_type_8.settings.text_position.option_1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.image_with_text_type_8.settings.text_position.option_2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.image_with_text_type_8.settings.text_position.option_3.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image_with_text_type_8.settings.header_1.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image_with_text_type_8.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "time",
+      "name": "t:sections.image_with_text_type_8.blocks.time.label",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "t:sections.image_with_text_type_8.blocks.time.settings.subheading.label",
+          "default": "Subheading"
+        },
+        {
+          "type": "richtext",
+          "id": "description_1",
+          "label": "t:sections.image_with_text_type_8.blocks.time.settings.description_1.label",
+          "default": "<p>Opening time</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "description_2",
+          "label": "t:sections.image_with_text_type_8.blocks.time.settings.description_2.label",
+          "default": "<p>Closing time</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:sections.all.button_text.label",
+          "default": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button_link.label",
+          "default": "/collections/all"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button_style.label",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:sections.all.button_style.option__1.label"
+            },
+            {
+              "value": "secondary",
+              "label": "t:sections.all.button_style.option__2.label"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "t:sections.all.button_size.label",
+          "options": [
+            {
+              "value": "xs",
+              "label": "t:sections.all.button_size.option__0.label"
+            },
+            {
+              "value": "sm",
+              "label": "t:sections.all.button_size.option__1.label"
+            },
+            {
+              "value": "md",
+              "label": "t:sections.all.button_size.option__2.label"
+            },
+            {
+              "value": "lg",
+              "label": "t:sections.all.button_size.option__3.label"
+            },
+            {
+              "value": "xlg",
+              "label": "t:sections.all.button_size.option__4.label"
+            }
+          ],
+          "default": "md"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image_with_text_type_8.presets.name",
+      "blocks": [
+        {
+          "type": "time"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

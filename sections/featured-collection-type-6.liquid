@@ -1,0 +1,243 @@
+{{ 'section-featured-collection-type-6.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container class='featured-collection-type-6'>
+    <xo-grid>
+      <xo-animate xo-cascade xo-type='zoom-out' class='featured-collection-type-6__left' style='--xs: 12; --md: 12; --lg: 6;'>
+        {% render 'image', image: section.settings.image, placeholder: 'product-1', aspect_ratio: '1' %}
+      </xo-animate>
+      <div class='featured-collection-type-6__right' style='--xs: 12; --md: 12; --lg: 6;'>
+        <xo-carousel
+          class='featured-collection-type-6__carousel'
+          xo-speed='100'
+          xo-type='none'
+          xo-per-view='1'
+          xo-per-view='1'
+          xo-breakpoints='
+            {
+              600: {
+                perView: 1,
+                perMove: 1,
+                gap: 10,
+                overflow: visible
+              },
+              1000: {
+                perView: 1,
+                perMove: 1,
+              },
+            }
+          '
+        >
+          <xo-carousel-inner>
+            <xo-carousel-list>
+              {% for block in section.blocks %}
+                {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+                {% render 'featured-collection-slide-type-6',
+                  tag: block.settings.tag,
+                  subheading: section.settings.subheading,
+                  description: block.settings.description,
+                  image: block.settings.image,
+                  button_text: block.settings.button_text,
+                  button_link: block.settings.button_link,
+                  button_style: section.settings.button_style,
+                  placeholder_image: placeholder_image,
+                  aspect_ratio: section.settings.aspect_ratio,
+                  heading: block.settings.heading
+                %}
+              {% endfor %}
+            </xo-carousel-list>
+          </xo-carousel-inner>
+        </xo-carousel>
+      </div>
+    </xo-grid>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.featured_collection_type_6.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.featured_collection_type_6.settings.subheading.label",
+      "default": "Subheading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.featured_collection_type_6.settings.image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured_collection_type_6.settings.header_1.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.featured_collection_type_6.settings.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.featured_collection_type_6.settings.button_style.option__0.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.featured_collection_type_6.settings.button_style.option__1.label"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured_collection_type_6.settings.header.label"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.featured_collection_type_6.blocks.item.label",
+      "type": "item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "t:sections.featured_collection_type_6.blocks.item.settings.heading.label",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.featured_collection_type_6.blocks.item.settings.description.label",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.featured_collection_type_6.blocks.item.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "t:sections.featured_collection_type_6.blocks.item.settings.tag.label",
+          "default": "Sale tag"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.featured_collection_type_6.blocks.item.settings.header_2.label"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:sections.featured_collection_type_6.blocks.item.settings.button_text.label",
+          "default": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.featured_collection_type_6.blocks.item.settings.button_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured_collection_type_6.presets.name",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

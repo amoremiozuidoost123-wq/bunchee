@@ -1,0 +1,63 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-0": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer"
+          }
+        },
+        "link_list_3qzQtg": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Our Menu",
+            "menu": "footer-menu-2"
+          }
+        },
+        "link_list_xpwBwG": {
+          "type": "link_list",
+          "disabled": true,
+          "settings": {
+            "heading": "About",
+            "menu": "about"
+          }
+        },
+        "information_ypzR9D": {
+          "type": "information",
+          "settings": {
+            "heading": "Opening time",
+            "information": "<p>Monday - Friday: 9AM - 11PM</p><p>Saturday - Sunday : 9AM - 9PM</p>"
+          }
+        }
+      },
+      "block_order": ["footer-0", "link_list_3qzQtg", "link_list_xpwBwG", "information_ypzR9D"],
+      "settings": {
+        "footer_type": "type-2",
+        "background_svg": "type-1",
+        "color_background": "",
+        "heading": "<p>ORDER IN JUST A FEW <a href=\"/collections\" title=\"All collections\">CLICKS</a></p>",
+        "image_width": 150,
+        "newsletter_enable": true,
+        "newsletter_heading": "Want to stay up to date?",
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "enable_follow_on_shop": true,
+        "color_scheme": "background-2",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 97,
+        "padding_bottom": 0,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 0
+      }
+    }
+  },
+  "order": ["footer"]
+}

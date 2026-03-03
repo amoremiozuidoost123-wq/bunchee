@@ -1,0 +1,396 @@
+{{ 'section-main-search.css' | asset_url | stylesheet_tag }}
+{{ 'facets-vertical.css' | asset_url | stylesheet_tag }}
+{{ 'facets-horizontal.css' | asset_url | stylesheet_tag }}
+{{ 'facets-drawer.css' | asset_url | stylesheet_tag }}
+{{ 'field-price.css' | asset_url | stylesheet_tag }}
+{{ 'fieldset-popover.css' | asset_url | stylesheet_tag }}
+{{ 'filters-refine.css' | asset_url | stylesheet_tag }}
+{{ 'collapse.css' | asset_url | stylesheet_tag }}
+{{ 'transform-pill.css' | asset_url | stylesheet_tag }}
+
+<div {% render 'section-attr' %}>
+  <xo-filters-top></xo-filters-top>
+  <xo-filters xo-section-id='{{ section.id }}' xo-money-format='{{ 100 | money }}' class='main-search'>
+    <div class='main-search__header'>
+      <div class='main-search__search {% if section.settings.search_color_scheme %} color-{{ section.settings.search_color_scheme }}{% endif %}'>
+        <xo-container>
+          <form action='{{ routes.search_url }}' method='get' role='search' class='search'>
+            {% liquid
+              assign value = search.terms | escape
+              if search.performed
+                assign label = 'templates.search.title' | t
+              else
+                assign label = 'general.search.search' | t
+              endif
+              render 'predictive-search', value: value, label: label, id: 'main-search'
+            %}
+          </form>
+          <div class='main-search__tag'>
+            <div class='main-search__tag-container'>
+              {% render 'transform-pill', title_pill: settings.pill %}
+            </div>
+          </div>
+        </xo-container>
+      </div>
+      {%- if search.performed -%}
+        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+          <xo-container>
+            {%- if search.results_count > 0 -%}
+              <p role='status' class='main-search__result-count'>{{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}</p>
+            {%- endif -%}
+          </xo-container>
+        {%- endif -%}
+        {%- if search.results_count == 0 and search.filters == empty -%}
+          <div class='main-search__empty'>
+            <div class='main-search__empty-icon'>{% render 'icon', name: 'empty', size: '112' %}</div>
+            <h5 class='main-search__empty-heading'>{{ 'templates.search.no_results_heading' | t }}</h5>
+            <p role='status' class='main-search__empty-paragraph'>{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+    {%- if search.performed -%}
+      <xo-container class='main-search__container'>
+        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+          {% if search.results_count > 0 %}
+            {%- if section.settings.filter_type == 'vertical' %}
+              <div class='main-search__vertical'>
+                {% if section.settings.enable_sorting %}
+                  <div class='main-search__vertical-item'>
+                    <div class='main-search__vertical-caption'>{{ 'products.facets.sort_by_label' | t }}</div>
+                    {% assign name = 'field-sort-by-vertical-' | append: section.id %}
+                    {% render 'field-sort-by', results: search, name: name %}
+                  </div>
+                {% endif %}
+              </div>
+              <xo-grid>
+                <div style='--xs: 12; --sm: 12; --md: 4; --lg: 3'>
+                  {% render 'filters-refine' %}
+                  {% render 'facets',
+                    results: search,
+                    enable_filtering: section.settings.enable_filtering,
+                    enable_sorting: section.settings.enable_sorting,
+                    filter_type: section.settings.filter_type
+                  %}
+                </div>
+                <div style='--xs: 12; --sm: 12; --md: 8; --lg: 9'>
+                  {% render 'filters-search-content' %}
+                </div>
+              </xo-grid>
+            {% else %}
+              {% render 'facets',
+                results: search,
+                enable_filtering: section.settings.enable_filtering,
+                enable_sorting: section.settings.enable_sorting,
+                filter_type: section.settings.filter_type
+              %}
+              {% render 'filters-search-content' %}
+            {% endif %}
+          {% endif %}
+        {% else %}
+          {% render 'filters-search-content' %}
+        {%- endif -%}
+      </xo-container>
+    {%- endif -%}
+  </xo-filters>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_search.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "pagination_type",
+      "label": "Pagination type",
+      "options": [
+        {
+          "value": "page",
+          "label": "Paginate"
+        },
+        {
+          "value": "scroll",
+          "label": "Scroll"
+        },
+        {
+          "value": "button_load_more",
+          "label": "Button load more"
+        }
+      ],
+      "default": "page"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.main_search.settings.columns_desktop.label"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "default": 18,
+      "label": "t:sections.main_search.settings.products_per_page.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "search_color_scheme",
+      "label": "t:sections.main_search.settings.search_color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main_search.settings.header__3.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main_search.settings.filtering_and_sorting.settings.enable_filtering.label"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.main_search.settings.filtering_and_sorting.settings.desktop_layout.option.label_1"
+        },
+        {
+          "value": "vertical",
+          "label": "t:sections.main_search.settings.filtering_and_sorting.settings.desktop_layout.option.label_2"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.main_search.settings.filtering_and_sorting.settings.desktop_layout.option.label_3"
+        }
+      ],
+      "default": "horizontal",
+      "label": "t:sections.main_search.settings.filtering_and_sorting.settings.desktop_layout.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main_search.settings.filtering_and_sorting.settings.enable_sorting.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.product_card_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_image",
+      "default": true,
+      "label": "t:sections.all.product_card_show_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_secondary_image",
+      "default": true,
+      "label": "t:sections.all.product_card_show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_vendor",
+      "default": false,
+      "label": "t:sections.all.product_card_show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_description",
+      "label": "t:sections.all.product_card_show_description.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_price",
+      "label": "t:sections.all.product_card_show_price.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_card_show_badge",
+      "label": "t:sections.all.product_card_show_badge.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "product_card_aspect_ratio",
+      "label": "t:sections.all.product_card_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.product_card_aspect_ratio.option_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.product_card_aspect_ratio.option_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.product_card_aspect_ratio.option_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.product_card_aspect_ratio.option_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.product_card_aspect_ratio.option_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.product_card_aspect_ratio.option_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.product_card_aspect_ratio.option_7.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.card_color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.article_card_header.content"
+    },
+    {
+      "type": "select",
+      "id": "article_card_style",
+      "options": [
+        {
+          "value": "standard",
+          "label": "t:sections.all.article_card_style.option_1.label"
+        },
+        {
+          "value": "boxed",
+          "label": "t:sections.all.article_card_style.option_2.label"
+        }
+      ],
+      "default": "standard",
+      "label": "t:sections.all.article_card_style.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "article_card_show_image",
+      "default": true,
+      "label": "t:sections.all.article_card_show_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "article_card_show_date",
+      "default": true,
+      "label": "t:sections.all.article_card_show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "article_card_show_author",
+      "default": false,
+      "label": "t:sections.all.article_card_show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "article_card_show_excerpt",
+      "default": false,
+      "label": "t:sections.all.article_card_show_excerpt.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "article_card_show_tags",
+      "default": false,
+      "label": "t:sections.all.article_card_show_tags.label"
+    },
+    {
+      "type": "select",
+      "id": "article_card_media_aspect_ratio",
+      "label": "t:sections.all.article_card_media_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.article_card_media_aspect_ratio.option_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.article_card_media_aspect_ratio.option_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.article_card_media_aspect_ratio.option_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.article_card_media_aspect_ratio.option_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.article_card_media_aspect_ratio.option_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.article_card_media_aspect_ratio.option_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.article_card_media_aspect_ratio.option_7.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "article_color_scheme",
+      "label": "t:sections.all.article_color_scheme.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ]
+}
+{% endschema %}

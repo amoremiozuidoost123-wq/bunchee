@@ -1,0 +1,149 @@
+{{ 'section-exclusive-benefit.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container>
+    <xo-grid>
+      <div class='exclusive-benefit' style='--xs: 12;--md: 12;--xl: 8; --start-xl: 3;'>
+        <xo-grid class='exclusive-benefit__grid'>
+          <div class='exclusive-benefit__left' style='--xs: 12;--md: 12; --xl: 5;'>
+            <xo-animate xo-cascade class='exclusive-benefit__heading h4'>
+              {{ section.settings.heading }}
+            </xo-animate>
+            <xo-animate xo-cascade class='exclusive-benefit__description'>
+              {{ section.settings.description }}
+            </xo-animate>
+          </div>
+          <div class='exclusive-benefit__right' style='--xs: 12;--md: 12; --xl: 7;'>
+            {% for block in section.blocks %}
+              <xo-animate xo-cascade class='exclusive-benefit__block'>
+                <div class='exclusive-benefit__icon'>
+                  {% render 'image', image: block.settings.icon %}
+                </div>
+                <div class='exclusive-benefit__content'>
+                  <div class='exclusive-benefit__block-heading h5'>
+                    {{ block.settings.heading }}
+                  </div>
+                  <div class='exclusive-benefit__block-description'>
+                    {{ block.settings.description }}
+                  </div>
+                </div>
+              </xo-animate>
+            {% endfor %}
+          </div>
+        </xo-grid>
+      </div>
+    </xo-grid>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.exclusive_benefit.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.exclusive_benefit.settings.heading.label",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.exclusive_benefit.settings.description.label",
+      "default": "<p>Description</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "t:sections.exclusive_benefit.blocks.benefit.label",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "t:sections.exclusive_benefit.blocks.benefit.settings.icon.label"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "t:sections.exclusive_benefit.blocks.benefit.settings.heading.label",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.exclusive_benefit.blocks.benefit.settings.description.label",
+          "default": "<p>Description</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.exclusive_benefit.presets.name",
+      "blocks": [
+        {
+          "type": "benefit"
+        },
+        {
+          "type": "benefit"
+        },
+        {
+          "type": "benefit"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

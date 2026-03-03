@@ -1,0 +1,75 @@
+{{ 'section-predictive-search.css' | asset_url | stylesheet_tag }}
+{{ 'transform-pill.css' | asset_url | stylesheet_tag }}
+
+<xo-modal
+  class='xo-main-predictive-search'
+  xo-name='search'
+  xo-scroll-disabled
+  xo-animate='slide-down'
+  xo-placement='top-left'
+  xo-backdrop-color='rgba(0, 0, 0, 0.5)'
+  xo-autofocus
+>
+  {% capture content %}
+    <xo-container>
+      {% assign label = 'general.search.search' | t %}
+      {% render 'predictive-search', label: label %}
+      <xo-animate xo-cascade>
+        <div class='xo-main-predictive-search__caption'>{{ 'general.search.popular_searches' | t }}</div>
+      </xo-animate>
+      <xo-animate xo-cascade>
+        <div class='xo-main-predictive-search__tag-group'>
+          <div class='main-search__tag'>
+            <div class='main-search__tag-container'>
+              {% render 'transform-pill', title_pill: settings.pill %}
+            </div>
+          </div>
+          {% comment %} {% liquid
+            if section.settings.search_tag != blank
+              for link in section.settings.search_tag.links
+                assign link_url = link.url
+                assign link_title = link.title
+                render 'button', link: link_url, text: link_title
+              endfor
+            endif
+          %} {% endcomment %}
+        </div>
+      </xo-animate>
+    </xo-container>
+  {% endcapture %}
+  {% render 'modal-content', full_width: true, content: content, scroll_disabled: true %}
+</xo-modal>
+
+{% schema %}
+{
+  "name": "t:sections.main_predictive_search.name",
+  "class": "section-predictive-search",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.main_predictive_search.settings.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.main_predictive_search.settings.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.main_predictive_search.settings.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.main_predictive_search.settings.padding_top.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.main_predictive_search.settings.padding_bottom.label"
+    }
+  ]
+}
+{% endschema %}

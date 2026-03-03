@@ -1,0 +1,35 @@
+
+{
+  "name": "Overlay",
+  "type": "custom.overlay",
+  "sections": {
+    "cart": {
+      "type": "xo-cart-mini",
+      "blocks": {
+        "offer_mC4EXy": {
+          "type": "offer",
+          "settings": {
+          }
+        },
+        "offer_mtFBgQ": {
+          "type": "offer",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "offer_mC4EXy",
+        "offer_mtFBgQ"
+      ],
+      "settings": {}
+    },
+    "quick-view": {
+      "type": "quick-view",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cart",
+    "quick-view"
+  ]
+}

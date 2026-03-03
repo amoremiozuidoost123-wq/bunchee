@@ -1,0 +1,207 @@
+{{ 'section-image-with-text-type-2.css' | asset_url | stylesheet_tag }}
+
+<div {% render 'section-attr' %}>
+  <xo-container class='image-with-text-type-2'>
+    <div class='image-with-text-type-2__container'>
+      <div class='image-with-text-type-2__image-1'><div class='image-with-text-type-2__image-inner'></div></div>
+      <xo-animate xo-cascade xo-type='zoom-in' class='image-with-text-type-2__image-2'>
+        {% render 'image', image: section.settings.image_2 %}
+      </xo-animate>
+      <xo-animate xo-cascade class='image-with-text-type-2__content'>
+        <div class='image-with-text-type-2__subheading'>{{ section.settings.subheading }}</div>
+        <h2 class='image-with-text-type-2__heading h4'>{{ section.settings.heading }}</h2>
+        <div class='image-with-text-type-2__button'>
+          {% render 'button', text: section.settings.button_text, link: section.settings.button_link, size: section.settings.button_size, style: section.settings.button_style %}
+        </div>
+      </xo-animate>
+      <xo-animate xo-cascade xo-type='zoom-in' class='image-with-text-type-2__image-3'>
+        {% render 'animate-image', image: section.settings.image, border_radius: 210, max_width: 420, aspect_ratio: section.settings.aspect_ratio %}
+      </xo-animate>
+    </div>
+  </xo-container>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image_with_text_type_2.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.image_with_text_type_2.settings.subheading.label",
+      "default": "Subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.image_with_text_type_2.settings.heading.label",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+      "info": "t:sections.image_with_text_type_2.settings.heading.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image_with_text_type_2.settings.header_1.label"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.all.button_text.label",
+      "default": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button_link.label",
+      "default": "/collections/all"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button_style.option__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button_style.option__2.label"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.all.button_size.label",
+      "options": [
+        {
+          "value": "xs",
+          "label": "t:sections.all.button_size.option__0.label"
+        },
+        {
+          "value": "sm",
+          "label": "t:sections.all.button_size.option__1.label"
+        },
+        {
+          "value": "md",
+          "label": "t:sections.all.button_size.option__2.label"
+        },
+        {
+          "value": "lg",
+          "label": "t:sections.all.button_size.option__3.label"
+        },
+        {
+          "value": "xlg",
+          "label": "t:sections.all.button_size.option__4.label"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image_with_text_type_2.settings.header_2.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image_with_text_type_2.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:sections.image_with_text_type_2.settings.image_2.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:sections.image_with_text_type_2.presets.name",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

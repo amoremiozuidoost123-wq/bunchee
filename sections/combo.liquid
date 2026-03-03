@@ -1,0 +1,238 @@
+{{ 'section-combo.css' | asset_url | stylesheet_tag }}
+{{ 'product-combo.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign product_list = section.settings.product_list
+  assign discount_type = section.settings.discount_type
+  assign total_price = 0
+  assign product_list_id = ''
+%}
+
+<section {% render 'section-attr' %}>
+  <xo-parallax>
+    <div class='combo'>
+      <div class='combo__inner' style="--spacing: {{ section.settings.spacing_content }}px;--spacing-mb: {{ section.settings.spacing_content_mb }}px;">
+        <xo-animate xo-cascade class='combo__heading h1'>
+          {{ section.settings.heading }}
+        </xo-animate>
+        <div class='combo__list'>
+          <div class='combo__content'>
+            {% if product_list != blank %}
+              {% for product in product_list %}
+                {% if forloop.index == 1 %}
+                  {% assign product_list_id = product_list_id | append: product.id %}
+                {% else %}
+                  {% assign product_list_id = product_list_id | append: ',' | append: product.id %}
+                {% endif %}
+                {% assign total_price = total_price | plus: product.price %}
+                {% render 'product-combo', product: product %}
+              {% endfor %}
+            {% else %}
+              {% render 'product-combo-placeholder', product: false %}
+            {% endif %}
+          </div>
+          <xo-animate xo-cascade class='combo__price'>
+            <div class='combo__price-after-discount'>
+              {% comment %} Calculate discount {% endcomment %}
+              {% liquid
+                assign total_price_after_discount = 0
+                assign value_discount = section.settings.value_discount
+                if product_list != blank
+                  if section.settings.discount_type == 'fixed-amount'
+                    assign total_price_after_discount = total_price | minus: section.settings.value_discount
+                  else
+                    assign percentage = value_discount | divided_by: 100.00
+                    assign total_price_discount = total_price | times: percentage
+                    assign total_price_after_discount = total_price | minus: total_price_discount
+                  endif
+                endif
+              %}
+              <span class='combo__price-text h4'>{{ 'general.combo.only' | t }}</span>
+              <div class="combo__price-reduced h4">
+                {{ total_price_after_discount | money }}
+              </div>
+            </div>
+            <div class='combo__compare-at-price h5'>{{ total_price | money }}</div>
+          </xo-animate>
+          <div class='combo__button'>
+            <xo-animate xo-cascade class='combo__add-to-cart'>
+              <xo-cart-add xo-product-id='[{{ product_list_id }}]'>
+                {% render 'button',
+                  text: section.settings.button_text,
+                  size: 'xlg',
+                  style: 'primary',
+                  icon: 'add-to-cart',
+                  icon_position: 'right',
+                  icon_size: '28',
+                  product_card: true
+                %}
+              </xo-cart-add>
+            </xo-animate>
+            <div class='combo__decor'>
+              {% render 'image', image: section.settings.decor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='combo__image'>
+        <xo-animate xo-cascade class="combo__image-desktop">
+          {% if section.settings.image != blank %}
+            {% render 'image', image: section.settings.image %}
+          {% else %}
+            {% render 'image', image: section.settings.image_mb %}
+          {% endif %}
+        </xo-animate>
+        <xo-animate xo-cascade class="combo__image-mobile">
+          {% if section.settings.image_mb != blank %}
+            {% render 'image', image: section.settings.image_mb %}
+          {% else %}
+            {% render 'image', image: section.settings.image %}
+          {% endif %}
+        </xo-animate>
+      </div>
+    </div>
+  </xo-parallax>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.combo.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "spacing_content",
+      "min": 0,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.combo.settings.spacing_content.label",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "spacing_content_mb",
+      "min": 0,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.combo.settings.spacing_content_mb.label",
+      "default": 0
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.combo.settings.heading.label",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "t:sections.combo.settings.product_list.label",
+      "info": "t:sections.combo.settings.product_list.info",
+      "limit": 12
+    },
+    {
+      "type": "select",
+      "id": "discount_type",
+      "label": "t:sections.combo.settings.discount_type.label",
+      "info": "t:sections.combo.settings.discount_type.info",
+      "options": [
+        {
+          "value": "fixed-amount",
+          "label": "t:sections.combo.settings.discount_type.options.fixed"
+        },
+        {
+          "value": "percentage",
+          "label": "t:sections.combo.settings.discount_type.options.percent"
+        }
+      ],
+      "default": "fixed-amount"
+    },
+    {
+      "type": "number",
+      "id": "value_discount",
+      "label": "t:sections.combo.settings.value_discount.label",
+      "info": "t:sections.combo.settings.value_discount.info",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "decor",
+      "label": "t:sections.combo.settings.decor.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.combo.settings.image.label",
+      "info": "t:sections.combo.settings.image.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mb",
+      "label": "t:sections.combo.settings.image_mb.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.combo.settings.header_1.label"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.combo.settings.button_text.label",
+      "default": "Button text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.combo.presets.name"
+    }
+  ]
+}
+{% endschema %}

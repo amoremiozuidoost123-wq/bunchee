@@ -1,0 +1,84 @@
+{{ 'section-main-login.css' | asset_url | stylesheet_tag }}
+<div {% render 'section-attr' %}>
+  <xo-container class='main-login'>
+    <xo-animate class='main-login__top'>
+      {% if section.settings.title != blank %}
+        <h2 class='main-login__heading'>{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class='main-login__description'>{{ section.settings.description }}</div>
+      {% endif %}
+    </xo-animate>
+    {% render 'space', value: '4rem' %}
+    {% render 'login-form' %}
+    {% capture recover_form %}
+      {% render 'recover-password-form' %}
+    {% endcapture %}
+    <xo-modal xo-portal xo-backdrop-color='rgba(0, 0, 0, 0.50)' xo-name='forgot-your-password' style='z-index: 99999;'>
+      {% assign title = 'customer.recover_password.title' | t %}
+      {% render 'modal-content', title: title, content: recover_form %}
+    </xo-modal>
+  </xo-container>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_login.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.main_login.settings.title.label",
+      "default": "Page Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.main_login.settings.description.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ]
+}
+{% endschema %}

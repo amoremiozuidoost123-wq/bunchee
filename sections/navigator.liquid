@@ -1,0 +1,138 @@
+{{ 'section-navigator.css' | asset_url | stylesheet_tag }}
+<div class='navigator'>
+  <section {% render 'section-attr' %}>
+    <xo-sticky xo-direction='down' xo-placement='bottom' xo-name='navigator'>
+      <div class='navigator__container'>
+        <xo-navigation class='navigator__content'>
+          <xo-scroll-carousel xo-gap='32'>
+            <div class='navigator__list'>
+              {% for block in section.blocks %}
+                <div data-index='{{ block.settings.index }}' class='navigator__block' role='button' tabindex='0'>
+                  <div class='navigator__image'>
+                    {% render 'image', image: block.settings.image, aspect_ratio: '1' %}
+                  </div>
+                  <div class='navigator__title'>
+                    {{ block.settings.text }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </xo-scroll-carousel>
+        </xo-navigation>
+      </div>
+    </xo-sticky>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.navigator.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ],
+    "templates": [
+      "index"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.navigator.settings.info.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "navigation-item",
+      "name": "t:sections.navigator.blocks.navigation_item.label",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.navigator.blocks.navigation_item.settings.text.label",
+          "default": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.navigator.blocks.navigation_item.settings.image.label"
+        },
+        {
+          "type": "number",
+          "id": "index",
+          "label": "t:sections.navigator.blocks.navigation_item.settings.index.label",
+          "info": "t:sections.navigator.blocks.navigation_item.settings.index.info",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.navigator.presets.name",
+      "blocks": [
+        {
+          "type": "navigation-item"
+        },
+        {
+          "type": "navigation-item"
+        },
+        {
+          "type": "navigation-item"
+        },
+        {
+          "type": "navigation-item"
+        },
+        {
+          "type": "navigation-item"
+        },
+        {
+          "type": "navigation-item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,245 @@
+{{ 'section-collection-list-type-2.css' | asset_url | stylesheet_tag }}
+{% if section.settings.collection_list == blank %}
+  {% assign size = 3 %}
+{% else %}
+  {% assign size = section.settings.collection_list.count %}
+{% endif %}
+{% assign first_collection = section.settings.collection_list | first %}
+{% assign current_handle = first_collection.handle %}
+{% if request.path contains '/collections/' %}
+  {% assign current_handle = request.path | split: '/' | last %}
+{% endif %}
+{% assign current_collection = section.settings.collection_list | where: 'handle', current_handle | first %}
+{% assign first_handle = first_collection.handle %}
+{% assign lazyload = false %}
+{% if current_handle == first_handle %}
+  {% assign lazyload = true %}
+{% endif %}
+
+<section {% render 'section-attr' %}>
+  {% comment %} Carousel {% endcomment %}
+  <xo-container>
+    <xo-collection-tabs xo-section-id='{{ section.id }}'>
+      <div class='collection-list-type-2'>
+        <xo-grid>
+          <div class='collection-list-type-2__left' style='--xs: 12; --md: 12; --lg: 3;'>
+            <div class='collection-list-type-2__subheading'>{{ section.settings.subheading }}</div>
+            {% if section.settings.collection_list != blank %}
+              {% for collection in section.settings.collection_list %}
+                <xo-collection-tabs-trigger
+                  class='collection-list-type-2__item'
+                  xo-handle='{{ collection.handle }}'
+                  {% if collection.handle == current_handle %}
+                    xo-active
+                  {% endif %}
+                  role='button'
+                  tabindex='0'
+                >
+                  <div class='collection-list-type-2__title animate-text-container'>
+                    {% render 'animate-text', text: collection.title, class: 'h4', type: 'hover' %}
+                  </div>
+                </xo-collection-tabs-trigger>
+              {% endfor %}
+            {% else %}
+              {% for i in (1..3) %}
+                <xo-collection-tabs-trigger
+                  class='collection-list-type-2__item'
+                  xo-handle='{{ collection.handle }}'
+                  role='button'
+                  tabindex='0'
+                >
+                  <div class='collection-list-type-2__title animate-text-container'>
+                    {% assign collection_title = 'general.collection' | t %}
+                    {% render 'animate-text', text: collection_title, class: 'h4', type: 'hover' %}
+                  </div>
+                </xo-collection-tabs-trigger>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div class='collection-list-type-2__right' style='--xs: 12; --md: 12; --lg: 9;'>
+            <xo-collection-tabs-content>
+              {% if section.settings.collection_list != blank %}
+                <xo-carousel
+                  class='collection-list-type-2__carousel'
+                  xo-per-view='2'
+                  xo-per-move='1'
+                  xo-gap='116'
+                  xo-type='slide'
+                  xo-breakpoints='
+                    {
+                      800: {
+                        perView: 1,
+                        perMove: 1,
+                        gap: 5,
+                      },
+                      1400: {
+                        gap: 5,
+                      },
+                    }
+                  '
+                >
+                  <xo-carousel-inner>
+                    <xo-carousel-list>
+                      {% for product in current_collection.products limit: 10 %}
+                        <xo-carousel-slide>
+                          {% render 'product-card',
+                            product: product,
+                            show_image: true,
+                            show_secondary_image: true,
+                            show_price: true,
+                            color_scheme: section.settings.card_color_scheme,
+                            media_aspect_ratio: 1,
+                            animate_enabled: false,
+                            price_type: 'all',
+                            lazyload: lazyload
+                          %}
+                        </xo-carousel-slide>
+                      {% endfor %}
+                    </xo-carousel-list>
+                  </xo-carousel-inner>
+                  {% render 'carousel-navigation', style: '', align: 'center', position: 'in-content', disabled: false, mobile_disabled: false %}
+                </xo-carousel>
+              {% else %}
+                <xo-carousel
+                  class='collection-list-type-2__carousel'
+                  xo-per-view='2'
+                  xo-per-move='1'
+                  xo-gap='5'
+                  xo-type='slide'
+                  xo-breakpoints='
+                    {
+                        800: {
+                        perView: 1,
+                        perMove: 1,
+                        gap: 10,
+                      },
+                    }
+                  '
+                >
+                  <xo-carousel-inner>
+                    <xo-carousel-list>
+                      {% for i in (1..4) %}
+                        {%- assign placeholder_image_index = forloop.index | modulo: 4 | plus: 1 -%}
+                        {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+                        <xo-carousel-slide>
+                          {% render 'product-card',
+                            product: false,
+                            show_image: true,
+                            show_secondary_image: true,
+                            show_price: true,
+                            color_scheme: section.settings.card_color_scheme,
+                            media_aspect_ratio: 1,
+                            placeholder_image: placeholder_image,
+                            animate_enabled: false
+                          %}
+                        </xo-carousel-slide>
+                      {% endfor %}
+                    </xo-carousel-list>
+                  </xo-carousel-inner>
+                  <div class='collection-list-type-2__navigation'>
+                    {% render 'carousel-navigation',
+                      style: '',
+                      align: 'center',
+                      icon_name: 'arrow-testimonial-right',
+                      position: 'in-content',
+                      disabled: false,
+                      mobile_disabled: false
+                    %}
+                  </div>
+                </xo-carousel>
+              {% endif %}
+            </xo-collection-tabs-content>
+          </div>
+        </xo-grid>
+      </div>
+    </xo-collection-tabs>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.collection_list_type_2.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.collection_list_type_2.settings.subheading.label",
+      "default": "Subheading"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "t:sections.collection_list_type_2.settings.collection_list.label",
+      "limit": 6
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.collection_list_type_2.settings.card_color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:sections.collection_list_type_2.presets.name",
+      "settings": {
+        "padding_top": 133,
+        "padding_bottom": 0,
+        "padding_top_mobile": 110,
+        "padding_bottom_mobile": 0
+      }
+    }
+  ]
+}
+{% endschema %}

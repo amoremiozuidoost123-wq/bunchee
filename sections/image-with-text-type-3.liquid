@@ -1,0 +1,263 @@
+{{ 'section-image-with-text-type-3.css' | asset_url | stylesheet_tag }}
+
+<div {% render 'section-attr' %}>
+  <div class='image-with-text-type-3'>
+    <xo-container>
+      <div class='image-with-text-type-3__heading'>
+        {% render 'text',
+          text: section.settings.text_heading,
+          tag_name: section.settings.text_tag_name,
+          duration: section.settings.text_duration,
+          effect: section.settings.text_effect
+        %}
+      </div>
+      <xo-grid class='image-with-text-type-3'>
+        <xo-animate xo-cascade class='image-with-text-type-3__image' style='--xs: 12; --md: 12; --lg: 4;'>
+          {% render 'image', image: section.settings.image, aspect_ratio: section.settings.aspect_ratio %}
+        </xo-animate>
+        {% for block in section.blocks %}
+          <xo-animate xo-cascade class='image-with-text-type-3__list' style='--xs: 12; --md: 12; --lg: 4;'>
+            <div class='image-with-text-type-3__list-heading'>
+              <div class='image-with-text-type-3__heading-left'>
+                {{ block.settings.heading_left }}
+              </div>
+              {% if block.settings.heading_right %}
+                <div class='image-with-text-type-3__heading-right'>
+                  {{ block.settings.heading_right }}
+                </div>
+              {% endif %}
+            </div>
+            <text-list class='image-with-text-type-3__list-content'>
+              <text-list-item-title class='image-with-text-type-3__hidden'>{{ block.settings.title_list }}</text-list-item-title>
+              <text-list-item-content class='image-with-text-type-3__hidden'>{{ block.settings.content_list }}</text-list-item-content>
+              <text-list-show></text-list-show>
+            </text-list>
+          </xo-animate>
+        {% endfor %}
+      </xo-grid>
+    </xo-container>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image_with_text_type_3.name",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.header.content"
+    },
+    {
+      "type": "select",
+      "id": "text_tag_name",
+      "label": "t:sections.all.text_tag_name.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_tag_name.option__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_tag_name.option__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_tag_name.option__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_tag_name.option__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_tag_name.option__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_tag_name.option__6.label"
+        },
+        {
+          "value": "d1",
+          "label": "t:sections.all.text_tag_name.option__7.label"
+        },
+        {
+          "value": "d2",
+          "label": "t:sections.all.text_tag_name.option__8.label"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_heading",
+      "label": "t:sections.all.text_heading.label",
+      "default": "Heading"
+    },
+    {
+      "type": "number",
+      "id": "text_duration",
+      "label": "t:sections.all.text_duration.label",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_effect",
+      "label": "t:sections.all.text_effect.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.text_effect.option__1.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.all.text_effect.option__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.all.text_effect.option__3.label"
+        }
+      ],
+      "default": "reveal"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image_with_text_type_3.settings.header_1.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image_with_text_type_3.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list",
+      "name": "t:sections.image_with_text_type_3.blocks.list.label",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_left",
+          "label": "t:sections.image_with_text_type_3.blocks.list.settings.heading_left.label",
+          "default": "Heading left"
+        },
+        {
+          "type": "text",
+          "id": "heading_right",
+          "label": "t:sections.image_with_text_type_3.blocks.list.settings.heading_right.label",
+          "default": "Heading right"
+        },
+        {
+          "type": "richtext",
+          "id": "title_list",
+          "label": "t:sections.image_with_text_type_3.blocks.list.settings.title_list.label",
+          "info": "t:sections.image_with_text_type_3.blocks.list.settings.title_list.info",
+          "default": "<ul><li>Ingredient</li><li>Ingredient</li></ul>"
+        },
+        {
+          "type": "richtext",
+          "id": "content_list",
+          "label": "t:sections.image_with_text_type_3.blocks.list.settings.content_list.label",
+          "info": "t:sections.image_with_text_type_3.blocks.list.settings.content_list.info",
+          "default": "<ul><li>Amount</li><li>Amount</li></ul>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image_with_text_type_3.presets.name",
+      "blocks": [
+        {
+          "type": "list",
+          "settings": {}
+        },
+        {
+          "type": "list",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

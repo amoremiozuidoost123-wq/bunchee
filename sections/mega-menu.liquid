@@ -1,0 +1,434 @@
+{{ 'section-mega-menu.css' | asset_url | stylesheet_tag }}
+
+{%- assign index = section.settings.index_nav -%}
+<template xo-mega-menu-name='header-mega-menu' xo-mega-menu-index='{{ index }}'>
+  <xo-tabs>
+    <xo-container>
+      <div data-id='{{ section.id }}' {% render 'section-attr' %}>
+        <div class='mega-menu mega-menu--desktop'>
+          <div class='mega-menu__container'>
+            <div class='mega-menu__item'>
+              <h2 class='mega-menu__heading h4'>
+                {% if section.settings.collection_heading != blank %}
+                  <a href='{{ section.settings.collection_heading.url }}'>
+                    {{- section.settings.collection_heading.title -}}
+                    <sup>({{ section.settings.collection_heading.products_count }})</sup></a
+                  >
+                {% else %}
+                  <a href='#'>
+                    {{- 'general.collection' | t -}}
+                    <sup>(10)</sup></a
+                  >
+                {% endif %}
+              </h2>
+              <div class='mega-menu__description'>
+                {{ section.settings.description }}
+              </div>
+              <div class='mega-menu__button'>
+                {% render 'button',
+                  text: section.settings.button_text,
+                  link: section.settings.button_link,
+                  size: section.settings.button_size,
+                  style: section.settings.button_style
+                %}
+              </div>
+            </div>
+            <div class='mega-menu__item mega-menu__item--collection'>
+              {% if section.settings.collection_list != blank %}
+                {% for collection in section.settings.collection_list %}
+                  <xo-tabs-trigger
+                    class='mega-menu__item-collection-title h5'
+                    xo-name='{{ forloop.index0 }}'
+                    {% if forloop.index0 == 0 %}
+                      xo-active
+                    {% endif %}
+                    role='button'
+                    tabindex='0'
+                  >
+                    {{- collection.title -}}
+                    <sup>({{ collection.products_count }})</sup>
+                  </xo-tabs-trigger>
+                {% endfor %}
+              {% else %}
+                {% for i in (1..4) %}
+                  <xo-tabs-trigger
+                    class='mega-menu__item-collection-title h5'
+                    xo-name='{{ forloop.index0 }}'
+                    {% if forloop.index0 == 0 %}
+                      xo-active
+                    {% endif %}
+                    role='button'
+                    tabindex='0'
+                  >
+                    {{ 'general.collection' | t -}}
+                    <sup>(10)</sup>
+                  </xo-tabs-trigger>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <xo-tabs-content class='mega-menu__item mega-menu__item--content'>
+              {% if section.settings.collection_list != blank %}
+                {% for collection in section.settings.collection_list %}
+                  <xo-tabs-pane
+                    class='mega-menu__item-products'
+                    xo-name='{{ forloop.index0 }}'
+                  >
+                    <div class='mega-menu__item-products-list'>
+                      {%- for product in collection.products limit: 18 %}
+                        <div class='mega-menu__item-product'>
+                          <a href='{{ product.url }}'>{{ product.title }}</a>
+                        </div>
+                      {% endfor -%}
+                    </div>
+                  </xo-tabs-pane>
+                {% endfor %}
+              {% else %}
+                {% for i in (1..4) %}
+                  <xo-tabs-pane
+                    class='mega-menu__item-products'
+                    xo-name='{{ forloop.index0 }}'
+                  >
+                    <div class='mega-menu__item-products-list'>
+                      {%- for i in (1..4) %}
+                        <div class='mega-menu__item-product'>
+                          <a href='#'>{{ 'products.product.title' | t }}</a>
+                        </div>
+                      {% endfor -%}
+                    </div>
+                  </xo-tabs-pane>
+                {% endfor %}
+              {% endif %}
+            </xo-tabs-content>
+            <div class='mega-menu__item mega-menu__item--introducing'>
+              <div class='mega-menu__product'>
+                <a href='{{ section.settings.product.url }}' aria-label='product'>
+                  {% if section.settings.image != blank %}
+                    {% render 'image', image: section.settings.image %}
+                  {% else %}
+                    {% render 'product-image', product: section.settings.product %}
+                  {% endif %}
+                </a>
+                {% if section.settings.product.title != blank %}
+                  <h2 class='mega-menu__product-title h6'>{{ section.settings.product.title }}</h2>
+                {% else %}
+                  <h2 class='mega-menu__product-title h6'>{{ 'general.collection' | t }}</h2>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='mega-menu mega-menu--mobile'>
+          <xo-collapse-provider>
+            <div class='mega-menu__container'>
+              <div class='mega-menu__item'>
+                <h2 class='mega-menu__heading h4'>
+                  {% if section.settings.collection_heading != blank %}
+                    <a href='{{ section.settings.collection_heading.url }}'>
+                      {% render 'icon', name: 'category-arrow-left', size: '24' %}
+                      {{- section.settings.collection_heading.title -}}
+                      <sup>({{ section.settings.collection_heading.products_count }})</sup></a
+                    >
+                  {% else %}
+                    <a href='#'>
+                      {% render 'icon', name: 'category-arrow-left', size: '24' %}
+                      {{- 'general.collection' | t -}}
+                      <sup>(10)</sup></a
+                    >
+                  {% endif %}
+                </h2>
+                <div class='mega-menu__description'>
+                  {{ section.settings.description }}
+                </div>
+                <div class='mega-menu__button'>
+                  {% render 'button',
+                    text: section.settings.button_text,
+                    link: section.settings.button_link,
+                    size: section.settings.button_size,
+                    style: section.settings.button_style
+                  %}
+                </div>
+              </div>
+              <div class='mega-menu__item'>
+                {% if section.settings.collection_list != blank %}
+                  {% for collection in section.settings.collection_list %}
+                    <xo-collapse-trigger
+                      role='button'
+                      tabindex='0'
+                      xo-name='{{ forloop.index0 }}'
+                      {% if forloop.index0 == 0 %}
+                        xo-active
+                      {% endif %}
+                    >
+                      <h2 class='mega-menu__item-collection-title h5'>
+                        {{- collection.title -}}
+                        <sup>({{ collection.products_count }})</sup>
+                      </h2>
+                    </xo-collapse-trigger>
+                    <xo-collapse
+                      class='mega-menu__item-products'
+                      xo-name='{{ forloop.index0 }}'
+                      {% if forloop.index0 == 0 %}
+                        xo-active
+                      {% endif %}
+                    >
+                      <div class='mega-menu__item-products-list mega-menu__item-products-list--mobile'>
+                        {%- for product in collection.products limit: 18 %}
+                          <div class='mega-menu__item-product'>
+                            <a href='{{ product.url }}'>{{ product.title }}</a>
+                          </div>
+                        {% endfor -%}
+                      </div>
+                    </xo-collapse>
+                  {% endfor %}
+                {% else %}
+                  {% for i in (1..4) %}
+                    <xo-collapse-trigger
+                      role='button'
+                      tabindex='0'
+                      xo-name='{{ forloop.index0 }}'
+                      {% if forloop.index0 == 0 %}
+                        xo-active
+                      {% endif %}
+                    >
+                      <h2 class='mega-menu__item-collection-title h5'>
+                        {{ 'general.collection' | t -}}
+                        <sup>(10)</sup>
+                      </h2>
+                    </xo-collapse-trigger>
+                    <xo-collapse
+                      class='mega-menu__item-products'
+                      xo-name='{{ forloop.index0 }}'
+                      {% if forloop.index0 == 0 %}
+                        xo-active
+                      {% endif %}
+                    >
+                      <div class='mega-menu__item-products-list mega-menu__item-products-list--mobile'>
+                        {%- for i in (1..4) %}
+                          <div class='mega-menu__item-product'>
+                            <a href='#'>{{ 'products.product.title' | t }}</a>
+                          </div>
+                        {% endfor -%}
+                      </div>
+                    </xo-collapse>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class='mega-menu__item mega-menu__item--introducing'>
+                <a class='mega-menu__product' href='{{ section.settings.product.url }}'>
+                  {% if section.settings.image != blank %}
+                    {% render 'image', image: section.settings.image %}
+                  {% else %}
+                    {% render 'product-image', product: section.settings.product %}
+                  {% endif %}
+                  {% if section.settings.product.title != blank %}
+                    <h2 class='mega-menu__product-title h6'>{{ section.settings.product.title }}</h2>
+                  {% else %}
+                    <h2 class='mega-menu__product-title h6'>{{ 'general.collection' | t }}</h2>
+                  {% endif %}
+                </a>
+              </div>
+            </div>
+          </xo-collapse-provider>
+        </div>
+      </div>
+    </xo-container>
+  </xo-tabs>
+</template>
+
+{% schema %}
+{
+  "name": "t:sections.mega_menu.name",
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "index_nav",
+      "label": "t:sections.mega_menu.settings.index_nav.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "t:sections.mega_menu.settings.index_nav.option_1.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.mega_menu.settings.index_nav.option_2.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.mega_menu.settings.index_nav.option_3.label"
+        },
+        {
+          "value": "3",
+          "label": "t:sections.mega_menu.settings.index_nav.option_4.label"
+        },
+        {
+          "value": "4",
+          "label": "t:sections.mega_menu.settings.index_nav.option_5.label"
+        },
+        {
+          "value": "5",
+          "label": "t:sections.mega_menu.settings.index_nav.option_6.label"
+        },
+        {
+          "value": "6",
+          "label": "t:sections.mega_menu.settings.index_nav.option_7.label"
+        },
+        {
+          "value": "7",
+          "label": "t:sections.mega_menu.settings.index_nav.option_8.label"
+        },
+        {
+          "value": "8",
+          "label": "t:sections.mega_menu.settings.index_nav.option_9.label"
+        },
+        {
+          "value": "9",
+          "label": "t:sections.mega_menu.settings.index_nav.option_10.label"
+        }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.mega_menu.settings.header_content.content"
+    },
+    {
+      "type": "collection",
+      "id": "collection_heading",
+      "label": "t:sections.mega_menu.settings.collection_heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.mega_menu.settings.description.label",
+      "default": "<p>Description of your collection, product.</p>"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "t:sections.mega_menu.settings.collection_list.label",
+      "limit": 8
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:sections.mega_menu.settings.product.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.mega_menu.settings.image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.mega_menu.settings.header_button.content"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.all.button_text.label",
+      "default": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button_link.label",
+      "default": "/collections/all"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button_style.option__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button_style.option__2.label"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.all.button_size.label",
+      "options": [
+        {
+          "value": "xs",
+          "label": "t:sections.all.button_size.option__0.label"
+        },
+        {
+          "value": "sm",
+          "label": "t:sections.all.button_size.option__1.label"
+        },
+        {
+          "value": "md",
+          "label": "t:sections.all.button_size.option__2.label"
+        },
+        {
+          "value": "lg",
+          "label": "t:sections.all.button_size.option__3.label"
+        },
+        {
+          "value": "xlg",
+          "label": "t:sections.all.button_size.option__4.label"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:sections.mega_menu.presets.name",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

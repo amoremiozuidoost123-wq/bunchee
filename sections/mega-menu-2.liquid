@@ -1,0 +1,192 @@
+{{ 'section-mega-menu-2.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign index = section.settings.index_nav
+  assign product_list = section.settings.product_list
+  assign sale_url = section.settings.sale_url
+  assign sale_image = section.settings.sale_image
+%}
+<template xo-mega-menu-name='header-mega-menu' xo-mega-menu-index='{{ index }}'>
+  <xo-container>
+    <div data-id='{{ section.id }}' {% render 'section-attr' %}>
+      <div class="mega-menu-2">
+        {% comment %} Desktop {% endcomment %}
+          <xo-carousel
+            class="mega-menu-2__carousel"
+            xo-per-view="6"
+            xo-gap="48"
+            xo-breakpoints="{
+              1400: {
+                perView: 3,
+                gap: 20,
+              },
+              1600: {
+                perView: 4,
+              },
+            }"
+          >
+            <xo-carousel-inner>
+              <xo-carousel-list>
+                {% for product in product_list %}
+                  <xo-carousel-slide>
+                    <div class="mega-menu-2__product">
+                      <a href="{{ product.url }}" class="mega-menu-2__product-image">
+                        {% render 'image', image: product.featured_image %}
+                      </a>
+                      <a href="{{ product.url }}" class="mega-menu-2__product-title h5">{{ product.title }}</a>
+                    </div>
+                  </xo-carousel-slide>
+                {% endfor %}
+              </xo-carousel-list>
+            </xo-carousel-inner>
+            {% render 'carousel-navigation', style: '', align: 'center', position: 'in-content', disabled: false, mobile_disabled: false %}
+          </xo-carousel>
+        {% comment %} Mobile {% endcomment %}
+        <div class="mega-menu-2__list">
+          <xo-grid>
+            {% for product in product_list %}
+              <div class="mega-menu-2__product" style="--xs: 6;">
+                <a href="{{ product.url }}" class="mega-menu-2__product-image">
+                  {% render 'image', image: product.featured_image %}
+                </a>
+                <a href="{{ product.url }}" class="mega-menu-2__product-title h5">{{ product.title }}</a>
+              </div>
+            {% endfor %}
+          </xo-grid>
+        </div>
+        <div class="mega-menu-2__sale">
+            <a href="{{ sale_url }}">
+              {% render 'image', image: sale_image %}
+            </a>
+        </div>
+      </div>
+    </div>
+  </xo-container>
+</template>
+
+{% schema %}
+{
+  "name": "t:sections.mega_menu_2.name",
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "index_nav",
+      "label": "t:sections.mega_menu_2.settings.index_nav.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_1.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_2.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_3.label"
+        },
+        {
+          "value": "3",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_4.label"
+        },
+        {
+          "value": "4",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_5.label"
+        },
+        {
+          "value": "5",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_6.label"
+        },
+        {
+          "value": "6",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_7.label"
+        },
+        {
+          "value": "7",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_8.label"
+        },
+        {
+          "value": "8",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_9.label"
+        },
+        {
+          "value": "9",
+          "label": "t:sections.mega_menu_2.settings.index_nav.option_10.label"
+        }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "t:sections.mega_menu_2.settings.product_list.label",
+      "limit": 20
+    },
+    {
+      "type": "url",
+      "id": "sale_url",
+      "label": "t:sections.mega_menu_2.settings.sale_url.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "sale_image",
+      "label": "t:sections.mega_menu_2.settings.sale_image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:sections.mega_menu_2.presets.name",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

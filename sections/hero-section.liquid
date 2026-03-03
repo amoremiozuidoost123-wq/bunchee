@@ -1,0 +1,363 @@
+{{ 'section-hero-section.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <div class='hero-section'>
+    {% for block in section.blocks %}
+      <xo-animate xo-cascade class="hero-section__image hero-section__image-desktop" style="--top: {{ block.settings.top }}%;--left: {{ block.settings.left }}%;">
+          {% render 'image', image: block.settings.image %}
+      </xo-animate>
+      <xo-animate xo-cascade class="hero-section__image hero-section__image-mobile" style="--top-mb: {{ block.settings.top_mb }}%;--left-mb: {{ block.settings.left_mb }}%;">
+          {% render 'image', image: block.settings.image_mb %}
+      </xo-animate>
+    {% endfor %}
+    <div class='hero-section__content'>
+      <div class='hero-section__inner' style="--padding-top: {{ section.settings.spacing_top }}px;--padding-top-mb: {{ section.settings.spacing_top_mb }}px;--content-width: {{ section.settings.content_width }}px;--content-width-mb: {{ section.settings.content_width_mb }}px;">
+        <div class='hero-section__heading'>
+          {% render 'text',
+            text: section.settings.text_heading,
+            tag_name: section.settings.text_tag_name,
+            duration: section.settings.text_duration,
+            effect: section.settings.text_effect
+          %}
+        </div>
+        <xo-animate xo-cascade class='hero-section__button'>
+          {% render 'button',
+            text: section.settings.button_text,
+            link: section.settings.button_link,
+            size: section.settings.button_size,
+            style: section.settings.button_style,
+            icon: 'arrow-testimonial-right',
+            icon_position: 'right',
+            icon_size: '24'
+          %}
+        </xo-animate>
+      </div>
+    </div>
+    <div class='hero-section__wrapper' style="--bg-color: {{ section.settings.color_background }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 373">
+        <path d="M0 101.66C63.6833 141.16 252.266 193.96 497.129 89.16C803.209 -41.84 929.742 -1.34005 1021.77 40.66C1053.2 55.0063 1075.94 73.4943 1100.81 93.7129C1148.74 132.686 1204.58 178.089 1345.85 212.656C1535.37 259.029 1626.79 242.755 1693.53 230.876C1703.28 229.139 1712.52 227.496 1721.45 226.156C1791.47 215.656 1867.99 186.656 1920 145.156V372.023H0V101.66Z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+{% comment %}
+  <text>
+    {% assign max = 12 %}
+    {% if section.blocks.size > max %}
+      {% assign max = blocks.size %}
+    {% endif %}
+    <textPath href ="#path-{{ section.id }}" class="hero-section__text-path" >
+      {% for _ in (0..max) %}
+        {% assign index = forloop.index0 | modulo: section.blocks.size %}
+        {% assign block = section.blocks[index] %}
+          {{ block.settings.text }}
+      {% endfor %}
+    </textPath>
+  </text>
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "t:sections.hero_section.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "t:sections.hero_section.settings.color_background.label"
+    },
+    {
+      "type": "range",
+      "min": 200,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "id": "content_width",
+      "label": "t:sections.hero_section.settings.content_width.label",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "min": 200,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "id": "content_width_mb",
+      "label": "t:sections.hero_section.settings.content_width_mb.label",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "min": 0,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "id": "spacing_top",
+      "label": "t:sections.hero_section.settings.spacing_top.label",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "min": 0,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "id": "spacing_top_mb",
+      "label": "t:sections.hero_section.settings.spacing_top_mb.label",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header.content"
+    },
+    {
+      "type": "select",
+      "id": "text_tag_name",
+      "label": "t:sections.all.text_tag_name.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_tag_name.option__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_tag_name.option__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_tag_name.option__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_tag_name.option__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_tag_name.option__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_tag_name.option__6.label"
+        },
+        {
+          "value": "d1",
+          "label": "t:sections.all.text_tag_name.option__7.label"
+        },
+        {
+          "value": "d2",
+          "label": "t:sections.all.text_tag_name.option__8.label"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_heading",
+      "label": "t:sections.all.text_heading.label",
+      "default": "Heading"
+    },
+    {
+      "type": "number",
+      "id": "text_duration",
+      "label": "t:sections.all.text_duration.label",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_effect",
+      "label": "t:sections.all.text_effect.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.text_effect.option__1.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.all.text_effect.option__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.all.text_effect.option__3.label"
+        }
+      ],
+      "default": "reveal"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero_section.settings.header_1.label"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.all.button_text.label",
+      "default": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button_link.label",
+      "default": "/collections/all"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button_style.option__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button_style.option__2.label"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.all.button_size.label",
+      "options": [
+        {
+          "value": "xs",
+          "label": "t:sections.all.button_size.option__0.label"
+        },
+        {
+          "value": "sm",
+          "label": "t:sections.all.button_size.option__1.label"
+        },
+        {
+          "value": "md",
+          "label": "t:sections.all.button_size.option__2.label"
+        },
+        {
+          "value": "lg",
+          "label": "t:sections.all.button_size.option__3.label"
+        },
+        {
+          "value": "xlg",
+          "label": "t:sections.all.button_size.option__4.label"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.hero_section.blocks.image.label",
+      "type": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.hero_section.blocks.image.settings.image.label"
+        },
+        {
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "id": "top",
+          "label": "t:sections.hero_section.blocks.image.settings.top.label",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "id": "left",
+          "label": "t:sections.hero_section.blocks.image.settings.left.label",
+          "default": 0
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mb",
+          "label": "t:sections.hero_section.blocks.image.settings.image_mb.label"
+        },
+        {
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "id": "top_mb",
+          "label": "t:sections.hero_section.blocks.image.settings.top_mb.label",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "id": "left_mb",
+          "label": "t:sections.hero_section.blocks.image.settings.left_mb.label",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero_section.presets.name",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,242 @@
+{{ 'section-carousel-text-type-1.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  {% if section.settings.section_style == 'style-1' %}
+    <xo-animate xo-cascade>
+      <xo-marquee
+        class='carousel-text-type-1'
+        style='
+          {%- if section.settings.item_space -%}
+            --item-space: {{ section.settings.item_space }}rem;
+          {%- endif -%}
+        '
+        xo-speed='{{ section.settings.marquee_speed }}'
+        {%- if section.settings.stop_marquee -%}
+          xo-pause-on-hover='true'
+        {%- endif -%}
+        {%- if section.settings.marquee_right_to_left -%}
+          xo-rtl='true'
+        {%- endif -%}
+      >
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'small-text' %}
+              <a class='carousel-text-type-1__image' href='{{ block.settings.item_link | default: '#' }}'>
+                {% render 'image', image: block.settings.item_image %}
+              </a>
+              <h3 class='carousel-text-type-1__item'>
+                {{- block.settings.item_text }}
+              </h3>
+          {% endcase %}
+        {% endfor %}
+      </xo-marquee>
+    </xo-animate>
+  {% else %}
+    <xo-animate xo-cascade>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'large-text' %}
+            <xo-marquee
+              class='carousel-text-type-2'
+              style='
+                {%- if block.settings.image_position -%}
+                  --space: {{ block.settings.image_position }};
+                {%- endif -%}
+              '
+              xo-speed='{{ section.settings.marquee_speed }}'
+              {%- if section.settings.stop_marquee -%}
+                xo-pause-on-hover='true'
+              {%- endif -%}
+              {%- if section.settings.marquee_right_to_left -%}
+                xo-rtl='true'
+              {%- endif -%}
+            >
+              <div class='carousel-text-type-2__content'>
+                <a class='carousel-text-type-2__image' href='{{ block.settings.item_link | default: '#' }}'>
+                  {% render 'image', image: block.settings.item_image %}
+                </a>
+                <div class='carousel-text-type-2__item'>
+                  {{- block.settings.item_text }}
+                </div>
+              </div>
+            </xo-marquee>
+        {% endcase %}
+      {% endfor %}
+    </xo-animate>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.carousel_text_type_1.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_style",
+      "label": "t:sections.carousel_text_type_1.settings.section_style.label",
+      "options": [
+        {
+          "value": "style-1",
+          "label": "t:sections.carousel_text_type_1.settings.section_style.option_1.label"
+        },
+        {
+          "value": "style-2",
+          "label": "t:sections.carousel_text_type_1.settings.section_style.option_2.label"
+        }
+      ],
+      "default": "style-1"
+    },
+    {
+      "type": "range",
+      "id": "item_space",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "t:sections.carousel_text_type_1.settings.space.label",
+      "info": "t:sections.carousel_text_type_1.settings.space.info",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "t:sections.carousel_text_type_1.settings.speed",
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "stop_marquee",
+      "label": "t:sections.carousel_text_type_1.settings.marquee_stop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "marquee_right_to_left",
+      "label": "t:sections.carousel_text_type_1.settings.marquee_right_to_left",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "small-text",
+      "name": "t:sections.carousel_text_type_1.blocks.marquee_small_item.label",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_text",
+          "label": "t:sections.carousel_text_type_1.blocks.marquee_small_item.settings.item_text.label",
+          "default": "Promotion text"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_image",
+          "label": "t:sections.carousel_text_type_1.blocks.marquee_small_item.settings.item_image.label"
+        },
+        {
+          "type": "url",
+          "id": "item_link",
+          "label": "t:sections.carousel_text_type_1.blocks.marquee_small_item.settings.item_link.label"
+        }
+      ]
+    },
+    {
+      "type": "large-text",
+      "name": "t:sections.carousel_text_type_1.blocks.marquee_large_item.label",
+      "settings": [
+        {
+          "type": "range",
+          "id": "image_position",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "label": "t:sections.carousel_text_type_1.blocks.marquee_large_item.settings.image_position.label",
+          "default": 10
+        },
+        {
+          "type": "image_picker",
+          "id": "item_image",
+          "label": "t:sections.carousel_text_type_1.blocks.marquee_large_item.settings.item_image.label"
+        },
+        {
+          "type": "url",
+          "id": "item_link",
+          "label": "t:sections.carousel_text_type_1.blocks.marquee_large_item.settings.item_link.label"
+        },
+        {
+          "type": "text",
+          "id": "item_text",
+          "label": "t:sections.carousel_text_type_1.blocks.marquee_large_item.settings.item_text.label",
+          "default": "Promotion text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.carousel_text_type_1.presets.name",
+      "blocks": [
+        {
+          "type": "small-text"
+        },
+        {
+          "type": "small-text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

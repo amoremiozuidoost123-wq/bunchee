@@ -1,0 +1,143 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container class='contact'>
+    <xo-animate xo-cascade class='contact__top'>
+      <div class='page-heading'>
+        <h2 class='page-heading__title'>{{ page.title }}</h2>
+        <div class='page-heading__description'>{{ page.content }}</div>
+      </div>
+    </xo-animate>
+    {% render 'space', value: '4rem' %}
+    <xo-grid class='contact__bottom'>
+      <div class='contact' style='--xs: 12'>
+        {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
+          {% if form.posted_successfully? %}
+            {% assign message = 'templates.contact.form.post_success' | t %}
+            {% render 'form-success', form: form, message: message %}
+          {% else %}
+            {% assign message = 'templates.contact.form.error_heading' | t %}
+            {% render 'form-error', form: form, message: message %}
+          {% endif %}
+          <xo-grid>
+            <xo-animate xo-cascade style='--xs: 12; --md: 6; --lg: 6;'>
+              {% assign first_name_label = 'templates.contact.form.first_name' | t %}
+              {% render 'field-input', type: 'text', name: 'contact[firstName]', value: form.first_name, label: first_name_label, id: 'contact[firstName]' %}
+            </xo-animate>
+            <xo-animate xo-cascade style='--xs: 12; --md: 6; --lg: 6;'>
+              {% assign last_name_label = 'templates.contact.form.last_name' | t %}
+              {% render 'field-input', type: 'text', name: 'contact[lastName]', value: form.last_name, label: last_name_label, id: 'contact[lastName]' %}
+            </xo-animate>
+          </xo-grid>
+          <xo-animate xo-cascade>
+            {% assign email_label = 'templates.contact.form.email' | t %}
+            {% render 'field-input', type: 'email', name: 'contact[email]', value: form.email, label: email_label, id: 'contact[email]' %}
+          </xo-animate>
+          <xo-animate xo-cascade>
+            {% assign message_label = 'templates.contact.form.message' | t %}
+            {% render 'field-textarea', name: 'contact[message]', value: form.body, label: message_label, id: 'contact[message]' %}
+          </xo-animate>
+          {% render 'space', value: '2.4rem' %}
+          {% assign btn_label = 'templates.contact.form.send' | t %}
+          {% render 'button', type: 'submit', text: btn_label, size: 'md', block: true, effect: 'fade' %}
+        {%- endform -%}
+      </div>
+    </xo-grid>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.contact_form.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "t:sections.contact_form.settings.title_tag.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact_form.presets.name"
+    }
+  ]
+}
+{% endschema %}

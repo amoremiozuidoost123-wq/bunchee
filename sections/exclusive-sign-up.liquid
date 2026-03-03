@@ -1,0 +1,159 @@
+{{ 'section-exclusive-sign-up.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container>
+    <xo-grid>
+      <div class='exclusive-sign-up' style='--xs: 12;--md: 12;--xl: 8; --start-xl: 3;'>
+        <div class='exclusive-sign-up__content'>
+          <xo-animate xo-cascade class='exclusive-sign-up__heading h2'>{{ section.settings.heading }}</xo-animate>
+          <xo-animate xo-cascade class='exclusive-sign-up__description'>{{ section.settings.description }}</xo-animate>
+          <xo-animate xo-cascade class='exclusive-sign-up__button'>
+            {% render 'button', text: section.settings.button_text, link: section.settings.button_link, size: section.settings.button_size, style: section.settings.button_style %}
+            <div class='exclusive-sign-up__image'>
+              {% render 'image', image: section.settings.image %}
+            </div>
+          </xo-animate>
+        </div>
+      </div>
+    </xo-grid>
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.exclusive_sign_up.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.exclusive_sign_up.settings.heading.label",
+      "default": "<p>Heading</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.exclusive_sign_up.settings.description.label",
+      "default": "<p>Description</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.exclusive_sign_up.settings.image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.exclusive_sign_up.settings.header_1.content"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.all.button_text.label",
+      "default": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button_link.label",
+      "default": "/collections/all"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button_style.option__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button_style.option__2.label"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.all.button_size.label",
+      "options": [
+        {
+          "value": "xs",
+          "label": "t:sections.all.button_size.option__0.label"
+        },
+        {
+          "value": "sm",
+          "label": "t:sections.all.button_size.option__1.label"
+        },
+        {
+          "value": "md",
+          "label": "t:sections.all.button_size.option__2.label"
+        },
+        {
+          "value": "lg",
+          "label": "t:sections.all.button_size.option__3.label"
+        },
+        {
+          "value": "xlg",
+          "label": "t:sections.all.button_size.option__4.label"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:sections.exclusive_sign_up.presets.name",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

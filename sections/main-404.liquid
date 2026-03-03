@@ -1,0 +1,164 @@
+{{ 'section-main-404.css' | asset_url | stylesheet_tag }}
+
+<div {% render 'section-attr' %}>
+  <xo-container>
+    <div class='xo-404-page'>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'title' %}
+            <xo-animate xo-cascade>
+              <h2 class='xo-404-page__name'>{{ block.settings.subtitle | default: 'templates.404.subtext' | t }}</h2>
+            </xo-animate>
+            <xo-animate xo-cascade>
+              <h2 class='xo-404-page__title'>{{ block.settings.title | default: 'templates.404.title' | t }}</h2>
+            </xo-animate>
+            <xo-animate xo-cascade class='xo-404-page__description'>
+              {{ block.settings.description }}
+            </xo-animate>
+          {% when 'button' %}
+            <xo-animate xo-cascade>
+              {% render 'button', text: block.settings.button_text, link: block.settings.button_link, size: block.settings.button_size, style: block.settings.button_style %}
+            </xo-animate>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </xo-container>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_404.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "t:sections.main_404.settings.title.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.main_404.settings.title.title.label"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "t:sections.main_404.settings.title.subtitle.label"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "t:sections.main_404.settings.title.description.label"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "limit": 1,
+      "name": "t:sections.main_404.settings.button.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:sections.all.button_text.label",
+          "default": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button_link.label",
+          "default": "/collections/all"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button_style.label",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:sections.all.button_style.option__1.label"
+            },
+            {
+              "value": "secondary",
+              "label": "t:sections.all.button_style.option__2.label"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "t:sections.all.button_size.label",
+          "options": [
+            {
+              "value": "xs",
+              "label": "t:sections.all.button_size.option__0.label"
+            },
+            {
+              "value": "sm",
+              "label": "t:sections.all.button_size.option__1.label"
+            },
+            {
+              "value": "md",
+              "label": "t:sections.all.button_size.option__2.label"
+            },
+            {
+              "value": "lg",
+              "label": "t:sections.all.button_size.option__3.label"
+            },
+            {
+              "value": "xlg",
+              "label": "t:sections.all.button_size.option__4.label"
+            }
+          ],
+          "default": "md"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

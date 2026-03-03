@@ -1,0 +1,211 @@
+{{ 'section-image-banner-type-10.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <div class='image-banner-type-10'>
+    <div class='image-banner-type-10__bg'>
+      {% if section.settings.background_image != blank or section.settings.background_image_mb != blank %}
+        {% if section.settings.background_image != blank %}
+          <div class='image-banner-type-10__desktop'>
+            {% render 'image', image: section.settings.background_image, lazyload: false, placeholder: 'hero-apparel-1' %}
+          </div>
+        {% elsif section.settings.background_image_mb != blank and section.settings.background_image == blank %}
+          <div class='image-banner-type-10__desktop'>
+            {% render 'image', image: section.settings.background_image_mb, lazyload: false, placeholder: 'hero-apparel-1' %}
+          </div>
+        {% endif %}
+        {% if section.settings.background_image_mb != blank %}
+          <div class='image-banner-type-10__mobile'>
+            {% render 'image', image: section.settings.background_image_mb, lazyload: false, placeholder: 'hero-apparel-1' %}
+          </div>
+        {% elsif section.settings.background_image != blank and section.settings.background_image_mb == blank %}
+          <div class='image-banner-type-10__mobile'>
+            {% render 'image', image: section.settings.background_image, lazyload: false, placeholder: 'hero-apparel-1' %}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class='image-banner-type-10__desktop'>
+          {% render 'image', lazyload: false, placeholder: 'hero-apparel-1' %}
+        </div>
+        <div class='image-banner-type-10__mobile'>
+          {% render 'image', lazyload: false, placeholder: 'hero-apparel-1' %}
+        </div>
+      {% endif %}
+    </div>
+    <xo-container class='image-banner-type-10__container'>
+      <div class='image-banner-type-10__left'>
+        <xo-animate xo-cascade class='image-banner-type-10__text image-banner-type-10__text-1 h1'>
+          {{ section.settings.text_1 }}
+        </xo-animate>
+        <xo-animate xo-cascade class='image-banner-type-10__description'>
+          {{ section.settings.description }}
+        </xo-animate>
+        <xo-animate xo-cascade class='image-banner-type-10__button'>
+          {% render 'button',
+            text: section.settings.button_text,
+            link: section.settings.button_link,
+            size: section.settings.button_size,
+            style: section.settings.button_style,
+            icon: 'arrow-testimonial-right',
+            icon_position: 'right',
+            icon_size: '24'
+          %}
+        </xo-animate>
+      </div>
+      <div class='image-banner-type-10__right'>
+        <xo-animate xo-cascade class='image-banner-type-10__text image-banner-type-10__text-2 h1'>
+          {{ section.settings.text_2 }}
+        </xo-animate>
+      </div>
+    </xo-container>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.image_banner_type_10.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "t:sections.image_banner_type_10.settings.text_1.label",
+      "default": "Text 1"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "t:sections.image_banner_type_10.settings.text_2.label",
+      "default": "Text 2"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.image_banner_type_10.settings.description.label",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.all.button_text.label",
+      "default": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button_link.label",
+      "default": "/collections/all"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button_style.option__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button_style.option__2.label"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.all.button_size.label",
+      "options": [
+        {
+          "value": "xs",
+          "label": "t:sections.all.button_size.option__0.label"
+        },
+        {
+          "value": "sm",
+          "label": "t:sections.all.button_size.option__1.label"
+        },
+        {
+          "value": "md",
+          "label": "t:sections.all.button_size.option__2.label"
+        },
+        {
+          "value": "lg",
+          "label": "t:sections.all.button_size.option__3.label"
+        },
+        {
+          "value": "xlg",
+          "label": "t:sections.all.button_size.option__4.label"
+        }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.image_banner_type_10.settings.background_image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mb",
+      "label": "t:sections.image_banner_type_10.settings.background_image_mb.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:sections.image_banner_type_10.presets.name",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

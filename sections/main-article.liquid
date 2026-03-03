@@ -1,0 +1,199 @@
+{{ 'section-main-article.css' | asset_url | stylesheet_tag }}
+{{ 'share.css' | asset_url | stylesheet_tag }}
+
+<div {% render 'section-attr' %}>
+  <xo-container>
+    <article class='main-article'>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'title' -%}
+            <header class='main-article__header'>
+              <xo-animate xo-cascade class='main-article__title'>
+                <h1 itemprop='headline'>{{ article.title | escape }}</h1>
+              </xo-animate>
+              {% if block.settings.blog_show_date or block.settings.blog_show_author %}
+                <xo-animate xo-cascade class='main-article__info'>
+                  {%- if block.settings.blog_show_date -%}
+                    <span class='main-article__date' itemprop='dateCreated pubdate datePublished'>
+                      {{- article.published_at | time_tag: format: 'date' -}}
+                    </span>
+                  {%- endif -%}
+                  {% if block.settings.blog_show_date and block.settings.blog_show_author %}
+                    <div class='main-article__dot'></div>
+                  {% endif %}
+                  {%- if block.settings.blog_show_author -%}
+                    <span class='main-article__author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+                      <span itemprop='name'>{{ article.author }}</span>
+                    </span>
+                  {%- endif -%}
+                </xo-animate>
+              {% endif %}
+              <xo-animate xo-cascade class='main-article__share-top'>
+                {% assign url_full = request.origin | append: article.url %}
+                {% if block.settings.show_social_media %}
+                  {% render 'share', copy_title: article.title, url: url_full, list: 'facebook, linkedin, twitter' %}
+                {% else %}
+                  {% render 'share', copy_title: article.title, url: url_full, list: 'copy' %}
+                {% endif %}
+              </xo-animate>
+            </header>
+
+          {%- when 'featured_image' -%}
+            {%- if article.image -%}
+              <xo-animate
+                xo-cascade
+                class='main-article__image'
+              >
+                {% render 'image', image: article.image %}
+              </xo-animate>
+            {%- endif -%}
+
+          {%- when 'content' -%}
+            <xo-animate xo-cascade class='main-article__content'>
+              {{ article.content }}
+            </xo-animate>
+
+          {%- when 'share' -%}
+            <xo-animate xo-cascade class='main-article__share'>
+              {% assign url_full = request.origin | append: article.url %}
+              {% if block.settings.show_social_media %}
+                {% render 'share', copy_title: article.title, url: url_full, list: 'facebook, linkedin, twitter' %}
+              {% else %}
+                {% render 'share', copy_title: article.title, url: url_full, list: 'copy' %}
+              {% endif %}
+            </xo-animate>
+        {%- endcase -%}
+      {%- endfor -%}
+      <xo-animate xo-cascade class='main-article__back-button'>
+        {% assign back_to_blog = 'blogs.article.back_to_blog' | t %}
+        {% render 'button', link: blog.url, style: 'link', type: 'button', size: 'sm', text: back_to_blog, icon_position: 'left', icon: 'arrow-with-reer-left', icon_size: '20' %}
+      </xo-animate>
+      {% render 'main-article-ld-json' %}
+    </article>
+  </xo-container>
+</div>
+
+{% render 'main-article-ld-json' %}
+
+{% schema %}
+{
+  "name": "t:sections.main_article.name",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "featured_image",
+      "name": "t:sections.main_article.blocks.featured_image.name",
+      "limit": 1
+    },
+    {
+      "type": "title",
+      "name": "t:sections.main_article.blocks.title.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "blog_show_date",
+          "default": true,
+          "label": "t:sections.main_article.blocks.title.settings.blog_show_date.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_author",
+          "default": false,
+          "label": "t:sections.main_article.blocks.title.settings.blog_show_author.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social_media",
+          "default": true,
+          "label": "t:sections.main_article.blocks.title.settings.show_social_media.label"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "name": "t:sections.main_article.blocks.content.name",
+      "limit": 1
+    },
+    {
+      "type": "share",
+      "name": "t:sections.main_article.blocks.share.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "share_icon",
+          "default": true,
+          "label": "t:sections.main_article.blocks.share.share_icon.icon.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social_media",
+          "default": true,
+          "label": "t:sections.main_article.blocks.share.share_icon.show_social_media.label"
+        },
+        {
+          "type": "text",
+          "id": "share_label",
+          "label": "t:sections.main_article.blocks.share.settings.text.label",
+          "default": "Share"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.main_article.blocks.share.settings.featured_image_info.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.main_article.blocks.share.settings.title_info.content"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ]
+}
+{% endschema %}

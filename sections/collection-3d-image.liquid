@@ -1,0 +1,373 @@
+{{ 'section-collection-3d-image.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container>
+    <div class='collection-3d-image'>
+      <div class='collection-3d-image__top'>
+        <div class='collection-3d-image__heading'>
+          {% render 'text',
+            text: section.settings.text_heading,
+            duration: section.settings.text_duration,
+            effect: section.settings.text_effect,
+            text_tag_name: section.settings.text_tag_name
+          %}
+        </div>
+      </div>
+      <div class='collection-3d-image__container'>
+        {% if section.settings.product_list != blank %}
+          <xo-grid style='--xs: 1; --xl: 2'>
+            {% for product in section.settings.product_list %}
+              <div class='collection-3d-image__product-wrap'>
+                <div xo-parallax class='collection-3d-image__product'>
+                  <xo-animate xo-cascade xo-type='zoom-in'>
+                    <xo-parallax-scroll
+                      xo-keyframes="
+                        {
+                          '20%': { scale: 0.8 },
+                          '60%': { scale: 1 }
+                        }
+                      "
+                    >
+                      {% assign n = forloop.index0 %}
+                      {% assign index = 1 | times: n | modulo: 4 %}
+                      {% if index == 0 %}
+                        {% assign strength = 90 %}
+                        {% assign image_decor = section.settings.image_decor_1 %}
+                      {% elsif index == 1 %}
+                        {% assign strength = 120 %}
+                        {% assign image_decor = section.settings.image_decor_1 %}
+                      {% elsif index == 2 %}
+                        {% assign strength = 110 %}
+                        {% assign image_decor = section.settings.image_decor_2 %}
+                      {% elsif index == 3 %}
+                        {% assign strength = 100 %}
+                        {% assign image_decor = section.settings.image_decor_2 %}
+                      {% endif %}
+                      {% render 'product-card-3d',
+                        product: product,
+                        show_quick_add: true,
+                        show_quick_view: true,
+                        show_image: true,
+                        show_secondary_image: false,
+                        show_description: true,
+                        show_price: true,
+                        color_scheme: section.settings.card_color_scheme,
+                        media_aspect_ratio: 1,
+                        animate_enabled: false,
+                        price_type: 'all',
+                        strength: strength,
+                        image_decor: image_decor
+                      %}
+                    </xo-parallax-scroll>
+                  </xo-animate>
+                </div>
+              </div>
+            {% endfor %}
+          </xo-grid>
+        {% else %}
+          <xo-grid style='--xs: 1; --xl: 2'>
+            {% for i in (1..3) %}
+              <div class='collection-3d-image__product-wrap'>
+                <div xo-parallax class='collection-3d-image__product'>
+                  <xo-animate xo-cascade xo-type='zoom-in'>
+                    <xo-parallax-scroll
+                      xo-keyframes="
+                        {
+                          '20%': { scale: 0.8 },
+                          '60%': { scale: 1 }
+                        }
+                      "
+                    >
+                      {% assign n = forloop.index0 %}
+                      {% assign index = 1 | times: n | modulo: 4 %}
+                      {% if index == 0 or index == 1 %}
+                        {% assign image_decor = section.settings.image_decor_1 %}
+                      {% elsif index == 2 or index == 3 %}
+                        {% assign image_decor = section.settings.image_decor_2 %}
+                      {% endif %}
+                      {% render 'product-card-3d-placeholder',
+                        product: false,
+                        product_handle: true,
+                        show_image: true,
+                        show_secondary_image: false,
+                        show_description: true,
+                        show_price: true,
+                        color_scheme: section.settings.card_color_scheme,
+                        media_aspect_ratio: 1,
+                        animate_enabled: false,
+                        price_type: 'all',
+                        strength: 80,
+                        image_decor: image_decor
+                      %}
+                    </xo-parallax-scroll>
+                  </xo-animate>
+                </div>
+              </div>
+            {% endfor %}
+          </xo-grid>
+        {% endif %}
+      </div>
+    </div>
+  </xo-container>
+  {% content_for 'blocks' %}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.collection_3d_image.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.header.content"
+    },
+    {
+      "type": "select",
+      "id": "text_tag_name",
+      "label": "t:sections.all.text_tag_name.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_tag_name.option__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_tag_name.option__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_tag_name.option__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_tag_name.option__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_tag_name.option__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_tag_name.option__6.label"
+        },
+        {
+          "value": "d1",
+          "label": "t:sections.all.text_tag_name.option__7.label"
+        },
+        {
+          "value": "d2",
+          "label": "t:sections.all.text_tag_name.option__8.label"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_heading",
+      "label": "t:sections.all.text_heading.label",
+      "default": "Heading"
+    },
+    {
+      "type": "number",
+      "id": "text_duration",
+      "label": "t:sections.all.text_duration.label",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_effect",
+      "label": "t:sections.all.text_effect.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.text_effect.option__1.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.all.text_effect.option__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.all.text_effect.option__3.label"
+        }
+      ],
+      "default": "reveal"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "t:sections.collection_3d_image.settings.product_list.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_decor_1",
+      "label": "t:sections.collection_3d_image.settings.image_decor_1.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_decor_2",
+      "label": "t:sections.collection_3d_image.settings.image_decor_2.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.collection_3d_image.settings.card_color_scheme.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection_3d_image.presets.name",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "parallax",
+          "settings": {
+            "top": 10,
+            "left": 80,
+            "width": 100,
+            "desktop_left_from": 20,
+            "desktop_left_to": 20,
+            "desktop_top_from": 20,
+            "desktop_top_to": 20,
+            "desktop_scale_from": 1,
+            "desktop_scale_to": 1,
+            "top_mb": 20,
+            "left_mb": 60,
+            "width_mb": 100,
+            "mobile_left_from": 20,
+            "mobile_left_to": 20,
+            "mobile_top_from": 20,
+            "mobile_top_to": 20,
+            "mobile_scale_from": 1,
+            "mobile_scale_to": 1
+          },
+          "blocks": [
+            {
+              "type": "image",
+              "settings": {
+                "aspect_ratio": "3/4"
+              }
+            }
+          ]
+        },
+        {
+          "type": "parallax",
+          "settings": {
+            "top": 50,
+            "left": 90,
+            "width": 100,
+            "desktop_left_from": 20,
+            "desktop_left_to": 20,
+            "desktop_top_from": 20,
+            "desktop_top_to": 20,
+            "desktop_scale_from": 1,
+            "desktop_scale_to": 1,
+            "top_mb": 55,
+            "left_mb": 5,
+            "width_mb": 100,
+            "mobile_left_from": 20,
+            "mobile_left_to": 20,
+            "mobile_top_from": 20,
+            "mobile_top_to": 20,
+            "mobile_scale_from": 1,
+            "mobile_scale_to": 1
+          },
+          "blocks": [
+            {
+              "type": "image",
+              "settings": {
+                "aspect_ratio": "3/4"
+              }
+            }
+          ]
+        },
+        {
+          "type": "parallax",
+          "settings": {
+            "top": 80,
+            "left": 10,
+            "width": 100,
+            "desktop_left_from": 20,
+            "desktop_left_to": 20,
+            "desktop_top_from": 20,
+            "desktop_top_to": 20,
+            "desktop_scale_from": 1,
+            "desktop_scale_to": 1,
+            "top_mb": 90,
+            "left_mb": 60,
+            "width_mb": 100,
+            "mobile_left_from": 20,
+            "mobile_left_to": 20,
+            "mobile_top_from": 20,
+            "mobile_top_to": 20,
+            "mobile_scale_from": 1,
+            "mobile_scale_to": 1
+          },
+          "blocks": [
+            {
+              "type": "image",
+              "settings": {
+                "aspect_ratio": "3/4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

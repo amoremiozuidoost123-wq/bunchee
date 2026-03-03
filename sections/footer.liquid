@@ -1,0 +1,396 @@
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{% assign background_svg = section.settings.background_svg %}
+
+<div
+  class='
+    xo-footer{% if background_svg != 'type-1' %}
+    xo-footer--background-none{% endif %}
+  '
+>
+  {% comment %} This is for sticky cart at product page {% endcomment %}
+  <xo-sticky-hidden xo-name='sticky-cart'></xo-sticky-hidden>
+  <xo-sticky-hidden xo-name='navigator'></xo-sticky-hidden>
+  <footer {% render 'section-attr' %}>
+    <div class='xo-footer__svg' style='--color: {{ section.settings.color_background }}'>
+      {% if background_svg == 'type-1' %}
+        <div class='xo-footer__svg-container'></div>
+      {% elsif background_svg == 'type-2' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 320'>
+          <path d="M1920 320H0V293C78.4183 226 325.061 107.597 684.287 187.997C1133.32 288.497 1220.23 301.494 1450.49 288.497C1680.75 275.5 1895.53 58 1920 0V320Z">
+        </svg>
+        {% comment %}
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 293'>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 293C78.4183 226 325.061 107.597 684.287 187.997C1133.32 288.497 1220.23 301.494 1450.49 288.497C1680.75 275.5 1895.53 58 1920 0V293H0Z"/>
+          </svg>
+        {% endcomment %}
+      {% elsif background_svg == 'type-3' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 269'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 268.961C1807.32 215.628 1556.04 136.161 1420.43 150.961C1307.11 163.329 1193.11 107.316 1101.1 62.1014C1055.47 39.6821 1015.25 19.9174 983.184 12.4591C886.461 -10.0409 759.325 -5.54089 648.642 54.9591C537.959 115.459 324.57 222.461 197.434 222.461C70.2985 222.461 22.4358 210.961 0 192.461V269H1920V268.961Z"/>
+        </svg>
+      {% elsif background_svg == 'type-4' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 306'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M58.8815 293.138C49.6452 299.024 39.2543 303.325 0 305.634V306H1920V305.5C1853.93 305.5 1813.51 278.433 1773.49 251.636C1739.73 229.032 1706.26 206.62 1657.93 200.811C1652.84 199.775 1647.77 198.654 1642.69 197.529C1635.89 196.025 1629.07 194.515 1622.13 193.194C1600.88 188.924 1581.26 183.27 1563.93 176.23C1556.32 173.344 1548.24 170.574 1539.93 168.151C1515.91 160.649 1493.16 152.455 1472.04 143.222C1462.42 139.338 1453.81 134.909 1445.38 130.579C1444.3 130.021 1443.22 129.465 1442.14 128.911C1418.12 116.678 1395.38 104.214 1373.44 91.2879L1345.04 74.7849C1344.1 74.1966 1343.15 73.6082 1342.19 73.0167C1339.94 71.6357 1337.67 70.2376 1335.57 68.7836C1327.49 63.3599 1318.72 58.0514 1309.48 52.9733L1278.54 36.4692C1254.66 24.2666 1229.16 15.5602 1202.8 10.6176L1185.48 7.0399C1174.74 4.73172 1163.31 3.23148 1151.65 2.42354C1148.65 2.23109 1145.63 2.06432 1142.62 1.89754C1136.59 1.56421 1130.56 1.23085 1124.64 0.69244C1118.4 0.230862 1112.05 0 1105.7 0C1082.96 0 1060.21 1.03866 1037.93 3.11598C1026.85 4.03928 1016 5.77038 1005.84 8.07856C1004.09 8.49008 1002.34 8.9016 1000.59 9.31326C982.233 13.6352 963.805 17.9737 945.569 22.5047C928.481 26.7749 912.549 31.9682 898.116 37.8541C870.258 49.1188 843.183 62.2282 817.068 77.0935C811.642 80.0934 805.754 82.9795 799.519 85.6338C797.265 86.5993 795.011 87.5615 792.759 88.5226C782.094 93.0747 771.483 97.6036 761.188 102.367C746.41 108.929 731.39 114.934 716.161 120.371C715.105 120.738 714.04 121.104 712.971 121.472C708.316 123.075 703.58 124.705 699.074 126.489C685.797 131.22 671.942 135.49 657.51 139.298C653.585 140.338 649.429 141.261 645.156 141.837C630.128 144.089 614.975 145.4 599.784 145.761C583.504 146.454 567.11 146.915 550.715 146.915H545.405C531.897 148.07 518.273 148.416 504.65 148.07C498.299 148.07 491.949 148.301 485.6 148.763C456.159 151.185 426.949 154.302 398.201 158.11C382.961 160.188 368.298 163.188 354.443 166.65C329.506 172.998 305.952 180.5 284.017 188.924L225.828 211.314C216.477 216.045 206.431 220.431 195.926 224.586C189.463 227.084 183.141 229.935 176.991 233.126C174.782 234.47 172.493 235.655 170.258 236.812C169.806 237.046 169.356 237.278 168.909 237.511C166.647 238.557 164.359 239.597 162.069 240.639C153.487 244.542 144.863 248.464 137.39 252.746C133.466 255.127 129.231 256.952 124.806 258.169C122.602 259.304 120.436 260.44 118.282 261.569C112.987 264.345 107.757 267.086 102.177 269.711C87.6296 276.405 66.1551 288.523 58.8815 293.138Z"/>
+        </svg>
+      {% elsif background_svg == 'type-5' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 186'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1920 25.997V186H0V129.75C131 46.2487 308.5 -20 480 46.2487C518.405 61.0843 556.088 79.513 594.015 98.0618C682.989 141.575 773.315 185.75 877.5 185.75C1023.26 185.75 1180.26 137.836 1334.79 90.6784C1546.2 26.1611 1752.97 -36.9422 1920 25.997Z"/>
+        </svg>
+      {% elsif background_svg == 'type-6' %}
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 171'>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 171H1920C1630.89 62.0565 1304.69 0 959.5 0C614.711 0 288.865 62.2921 0 171Z"/>
+        </svg>
+      {% endif %}
+    </div>
+    <div
+      class='
+        xo-footer__background {% if background_svg != 'type-1' %}
+          xo-footer__background--padding
+        {% endif %}
+      '
+    >
+      <xo-container class='xo-footer__container'>
+        {%- liquid
+          assign has_social_icons = true
+          if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+            assign has_social_icons = false
+          endif
+        -%}
+        {% comment %} Type 1 {% endcomment %}
+        {% if section.settings.footer_type == 'type-1' %}
+          {% render 'footer-type-1', show_social: section.settings.show_social, has_social_icons: has_social_icons %}
+          {% comment %} Type 2 {% endcomment %}
+        {% elsif section.settings.footer_type == 'type-2' %}
+          {% render 'footer-type-2', show_social: section.settings.show_social, has_social_icons: has_social_icons %}
+          {% comment %} Type 3 {% endcomment %}
+        {% elsif section.settings.footer_type == 'type-3' %}
+          {% render 'footer-type-3', show_social: section.settings.show_social, has_social_icons: has_social_icons %}
+          {% comment %} Type 4 {% endcomment %}
+        {% elsif section.settings.footer_type == 'type-4' %}
+          {% render 'footer-type-4', show_social: section.settings.show_social, has_social_icons: has_social_icons %}
+          {% comment %} Type 5 {% endcomment %}
+        {% elsif section.settings.footer_type == 'type-5' %}
+          {% render 'footer-type-5', show_social: section.settings.show_social, has_social_icons: has_social_icons %}
+        {% endif %}
+        {% comment %} content bottom cua theme {% endcomment %}
+        <xo-animate xo-cascade class='xo-footer__bottom'>
+          {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
+            <div class='footer__follow-on-shop'>
+              {{ shop | login_button: action: 'follow' }}
+            </div>
+          {%- endif -%}
+          <div class='xo-footer__bottom-container'>
+            <div class='xo-footer__copyright'>
+              <small class='xo-footer__copyright-content'>&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}</small>
+              <small class='xo-footer__copyright-content'>{{ powered_by_link }}</small>
+              {%- if section.settings.show_policy -%}
+                <ul class=''>
+                  {%- for policy in shop.policies -%}
+                    {%- if policy != blank -%}
+                      <li>
+                        <small class='xo-footer__copyright-content'>
+                          <a href='{{ policy.url }}'>{{ policy.title }}</a>
+                        </small>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+            <div class='xo-footer__bottom-right'>
+              {%- if section.settings.enable_country_selector -%}
+                <div class='xo-footer__currency'>
+                  {% render 'currency-select' %}
+                </div>
+              {%- endif -%}
+              {%- if section.settings.enable_language_selector -%}
+                <div class='xo-footer__language'>
+                  {% render 'language-select' %}
+                </div>
+              {%- endif -%}
+              {%- if section.settings.payment_enable -%}
+                <div class='xo-footer__payment'>
+                  <span class='xo-visually-hidden'>{{ 'sections.footer.payment' | t }}</span>
+                  <ul class='xo-list-payment' role='list'>
+                    {%- for type in shop.enabled_payment_types -%}
+                      <li class='xo-list-payment__item'>
+                        {{ type | payment_type_svg_tag: class: '' }}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </xo-animate>
+      </xo-container>
+    </div>
+  </footer>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "class": "section-footer",
+  "settings": [
+    {
+      "type": "select",
+      "id": "footer_type",
+      "label": "t:sections.footer.settings.footer_type.label",
+      "options": [
+        {
+          "value": "type-1",
+          "label": "t:sections.footer.settings.footer_type.option_1.label"
+        },
+        {
+          "value": "type-2",
+          "label": "t:sections.footer.settings.footer_type.option_2.label"
+        },
+        {
+          "value": "type-3",
+          "label": "t:sections.footer.settings.footer_type.option_3.label"
+        },
+        {
+          "value": "type-4",
+          "label": "t:sections.footer.settings.footer_type.option_4.label"
+        },
+        {
+          "value": "type-5",
+          "label": "t:sections.footer.settings.footer_type.option_5.label"
+        }
+      ],
+      "default": "type-1"
+    },
+    {
+      "type": "select",
+      "id": "background_svg",
+      "label": "t:sections.footer.settings.background_svg.label",
+      "options": [
+        {
+          "value": "type-1",
+          "label": "t:sections.footer.settings.background_svg.option_1.label"
+        },
+        {
+          "value": "type-2",
+          "label": "t:sections.footer.settings.background_svg.option_2.label"
+        },
+        {
+          "value": "type-3",
+          "label": "t:sections.footer.settings.background_svg.option_3.label"
+        },
+        {
+          "value": "type-4",
+          "label": "t:sections.footer.settings.background_svg.option_4.label"
+        },
+        {
+          "value": "type-5",
+          "label": "t:sections.footer.settings.background_svg.option_5.label"
+        },
+        {
+          "value": "type-6",
+          "label": "t:sections.footer.settings.background_svg.option_6.label"
+        }
+      ],
+      "default": "type-1"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "t:sections.footer.settings.color_background.label",
+      "info": "t:sections.footer.settings.color_background.info"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.footer.settings.heading.label",
+      "default": "<p>Your brand tagline is here</p>",
+      "info": "t:sections.footer.settings.heading.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.footer.settings.image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__0.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.footer.settings.logo.label"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 50,
+      "max": 550,
+      "step": 5,
+      "unit": "px",
+      "label": "t:sections.footer.settings.image_width.label",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.newsletter_enable.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "newsletter_heading",
+      "label": "t:sections.footer.settings.newsletter_heading.label",
+      "default": "Newsletter heading"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__3.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__5.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__6.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_follow_on_shop",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_follow_on_shop.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "information",
+      "name": "t:sections.footer.blocks.information.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.information.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "information",
+          "default": "<p>Give information in here</p>",
+          "label": "t:sections.footer.blocks.information.settings.information.label"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "link_list"
+      }
+    ]
+  }
+}
+{% endschema %}

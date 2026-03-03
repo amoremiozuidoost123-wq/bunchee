@@ -1,0 +1,379 @@
+{{ 'section-collapsible-content-type-1.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-collapse-provider>
+    {% if section.settings.section_style == 'style-1' %}
+      <xo-container>
+        <div class='collapsible-content-type-1'>
+          <div class='collapsible-content-type-1__left'>
+            <div class='collapsible-content-type-1__heading'>
+              {% render 'text',
+                text: section.settings.text_heading,
+                tag_name: section.settings.text_tag_name,
+                duration: section.settings.text_duration,
+                effect: section.settings.text_effect
+              %}
+            </div>
+            <div class='collapsible-content-type-1__content' id='{{ section.id }}'>
+              {% for block in section.blocks %}
+                {% assign name = block.id %}
+                <xo-animate xo-cascade>
+                  {% render 'collapse-item', collapse_trigger: block.settings.collapse_trigger, collapse_content: block.settings.collapse_content, name: name %}
+                </xo-animate>
+              {% endfor %}
+            </div>
+          </div>
+          <div class='collapsible-content-type-1__right'>
+            <div class='collapsible-content-type-1__image'>
+              {% render 'animate-image', image: section.settings.image, border_radius: 209, max_width: 418, aspect_ratio: section.settings.aspect_ratio %}
+            </div>
+            <xo-animate xo-cascade xo-type='fade-left' class='collapsible-content-type-1__circle'>
+              <div class='collapsible-content-type-1__circle-inner'></div>
+            </xo-animate>
+          </div>
+        </div>
+      </xo-container>
+    {% else %}
+      <xo-container class='collapsible-content-type-2'>
+        <xo-animate xo-cascade xo-type='zoom-in' class='collapse-content-type-2__decor'>
+          {% render 'image', image: section.settings.image_2, aspect_ratio: section.settings.aspect_ratio_2 %}
+        </xo-animate>
+        <div class='collapsible-content-type-2__heading'>
+          {% render 'text',
+            text: section.settings.text_heading,
+            tag_name: section.settings.text_tag_name,
+            duration: section.settings.text_duration,
+            effect: section.settings.text_effect
+          %}
+        </div>
+        <xo-grid>
+          <div class='collapsible-content-type-2__content' style='--xs: 12; --lg: 10;--start-lg: 3;'>
+            <div class='collapsible-content-type-2__bottom'>
+              <div class='collapsible-content-type-2__left'>
+                <xo-animate xo-cascade xo-type='zoom-in' class='collapsible-content-type-2__image-1'>
+                  {% render 'image', image: section.settings.image_1, aspect_ratio: section.settings.aspect_ratio %}
+                </xo-animate>
+                <xo-animate xo-cascade xo-type='zoom-in' class='collapsible-content-type-2__image-2'>
+                  {% render 'image', image: section.settings.image, aspect_ratio: section.settings.aspect_ratio %}
+                </xo-animate>
+              </div>
+              <xo-animate xo-cascade class='collapsible-content-type-2__collapse' id='{{ section.id }}'>
+                {% for block in section.blocks %}
+                  {% assign name = block.id %}
+                  <xo-animate xo-cascade>
+                    {% render 'collapse-item', collapse_trigger: block.settings.collapse_trigger, collapse_content: block.settings.collapse_content, name: name %}
+                  </xo-animate>
+                {% endfor %}
+              </xo-animate>
+            </div>
+          </div>
+        </xo-grid>
+      </xo-container>
+    {% endif %}
+  </xo-collapse-provider>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.collapsible_content_type_1.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "custom.overlay",
+      "custom.popups"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_style",
+      "label": "t:sections.collapsible_content_type_1.settings.section_style.label",
+      "options": [
+        {
+          "value": "style-1",
+          "label": "t:sections.collapsible_content_type_1.settings.section_style.option_1.label"
+        },
+        {
+          "value": "style-2",
+          "label": "t:sections.collapsible_content_type_1.settings.section_style.option_2.label"
+        }
+      ],
+      "default": "style-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header.content"
+    },
+    {
+      "type": "select",
+      "id": "text_tag_name",
+      "label": "t:sections.all.text_tag_name.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_tag_name.option__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_tag_name.option__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_tag_name.option__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_tag_name.option__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_tag_name.option__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_tag_name.option__6.label"
+        },
+        {
+          "value": "d1",
+          "label": "t:sections.all.text_tag_name.option__7.label"
+        },
+        {
+          "value": "d2",
+          "label": "t:sections.all.text_tag_name.option__8.label"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_heading",
+      "label": "t:sections.all.text_heading.label",
+      "default": "Heading"
+    },
+    {
+      "type": "number",
+      "id": "text_duration",
+      "label": "t:sections.all.text_duration.label",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_effect",
+      "label": "t:sections.all.text_effect.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.text_effect.option__1.label"
+        },
+        {
+          "value": "reveal",
+          "label": "t:sections.all.text_effect.option__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.all.text_effect.option__3.label"
+        }
+      ],
+      "default": "reveal"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.collapsible_content_type_1.settings.image"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "t:sections.collapsible_content_type_1.settings.image_1.label",
+      "info": "t:sections.collapsible_content_type_1.settings.image_1.info"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_1",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:sections.collapsible_content_type_1.settings.image_2.label",
+      "info": "t:sections.collapsible_content_type_1.settings.image_2.info"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_2",
+      "label": "t:sections.all.image_aspect_ratio.label",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.image_aspect_ratio.options_1.label"
+        },
+        {
+          "value": "2/3",
+          "label": "t:sections.all.image_aspect_ratio.options_2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:sections.all.image_aspect_ratio.options_3.label"
+        },
+        {
+          "value": "1",
+          "label": "t:sections.all.image_aspect_ratio.options_4.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.all.image_aspect_ratio.options_5.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.all.image_aspect_ratio.options_6.label"
+        },
+        {
+          "value": "21/9",
+          "label": "t:sections.all.image_aspect_ratio.options_7.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collapse-item",
+      "name": "t:sections.collapsible_content_type_1.blocks.collapse_item.label",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collapse_trigger",
+          "label": "t:sections.collapsible_content_type_1.blocks.collapse_item.settings.collapse_trigger.label",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "collapse_content",
+          "label": "t:sections.collapsible_content_type_1.blocks.collapse_item.settings.collapse_content.label",
+          "default": "<p>Showcase a benefit of your product.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collapsible_content_type_1.presets.name",
+      "blocks": [
+        {
+          "type": "collapse-item"
+        },
+        {
+          "type": "collapse-item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

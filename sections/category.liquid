@@ -1,0 +1,297 @@
+{{ 'section-category.css' | asset_url | stylesheet_tag }}
+
+<section {% render 'section-attr' %}>
+  <xo-container>
+    {% if section.settings.category_type == 'type-1' %}
+      <div class='category-type-1'>
+        <xo-carousel
+          xo-per-view='4'
+          xo-gap='14'
+          xo-breakpoints='
+             {
+            500: {
+                 perView: 1.4,
+                 perMove: 1,
+               },
+               800: {
+                 perView: 1.8,
+                 perMove: 1,
+               },
+               1000: {
+                 perView: 2.5,
+                 perMove: 1,
+               },
+               1500: {
+                 perView: 3.5,
+                 perMove: 2,
+               },
+             }
+          '
+        >
+          <xo-carousel-inner>
+            <xo-carousel-list>
+              {% if section.settings.collection_list != blank %}
+                {% for collection in section.settings.collection_list %}
+                  <xo-carousel-slide>
+                    <div class='category-type-1__block'>
+                      <a href='{{ collection.url }}' class='category-type-1__image'>
+                        {% render 'image', image: collection.image, aspect_ratio: 1 %}
+                      </a>
+                      <div class='category-type-1__content'>
+                        <div class='category-type-1__title'>
+                          {% render 'animate-text', text: collection.title, class: 'h5', type: 'hover', effect: 'random' %}
+                        </div>
+                        <div class='category-type-1__description'>
+                          {{ collection.description }}
+                        </div>
+                      </div>
+                    </div>
+                  </xo-carousel-slide>
+                {% endfor %}
+              {% else %}
+                {% for i in (1..6) %}
+                  <xo-carousel-slide>
+                    <div class='category-type-1__block'>
+                      <a href='#' class='category-type-1__image'>
+                        {% render 'image', placeholder: 'product-1', aspect_ratio: 1 %}
+                      </a>
+                      <div class='category-type-1__content'>
+                        <div class='category-type-1__title'>
+                          {% assign collection_title = 'general.collection' | t %}
+                          {% render 'animate-text', text: collection_title, class: 'h5', type: 'hover', effect: 'random' %}
+                        </div>
+                        <div class='category-type-1__description'>
+                          {% assign collection_description = 'general.collection_description' | t %}
+                          {{ collection_description }}
+                        </div>
+                      </div>
+                    </div>
+                  </xo-carousel-slide>
+                {% endfor %}
+              {% endif %}
+            </xo-carousel-list>
+          </xo-carousel-inner>
+          <div class='category-type-1__group-button' aria-label='previous'>
+            <xo-carousel-prev tabindex='0' role='button'>
+              <div class='category-type-1__button'>{% render 'icon', name: 'arrow-testimonial-left', size: '22' %}</div>
+            </xo-carousel-prev>
+            <xo-carousel-next tabindex='0' role='button' aria-label='next'>
+              <div class='category-type-1__button'>{% render 'icon', name: 'arrow-testimonial-right', size: '22' %}</div>
+            </xo-carousel-next>
+          </div>
+        </xo-carousel>
+      </div>
+    {% else %}
+      {% comment %} Desktop {% endcomment %}
+      <div class='category-type-2 category-type-2--desktop'>
+        {% if section.settings.collection_list != blank %}
+          {% for collection in section.settings.collection_list %}
+            <div
+              {% if request.path contains collection.handle %}
+                right-page='true'
+              {% endif %}
+              class='
+                category-type-2__block {% if section.settings.category_animation %}
+                  category-type-2__block--{{ section.settings.category_animation }}
+                {% endif %}
+              '
+            >
+              <a href='{{ collection.url }}' class='category-type-2__image'>
+                {% render 'image', image: collection.image, aspect_ratio: 1 %}
+              </a>
+              <div class='category-type-2__title'>
+                {{ collection.title }}
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for i in (1..6) %}
+            <div
+              class='
+                category-type-2__block {% if section.settings.category_animation %}
+                  category-type-2__block--{{ section.settings.category_animation }}
+                {% endif %}
+              '
+            >
+              <a href='#' class='category-type-2__image'>
+                {% render 'image', placeholder: 'product-1', aspect_ratio: 1 %}
+              </a>
+              <div class='category-type-2__title'>
+                {{ 'general.collection' | t }}
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      {% comment %} Mobile {% endcomment %}
+      <xo-carousel
+        class='category-type-2 category-type-2--mobile'
+        xo-per-view='3'
+        xo-per-move='1'
+      >
+        <xo-carousel-inner>
+          <xo-carousel-list>
+            {% if section.settings.collection_list != blank %}
+              {% for collection in section.settings.collection_list %}
+                <xo-carousel-slide>
+                  <div class='category-type-2__item'>
+                    <div
+                      {% if request.path contains collection.handle %}
+                        right-page='true'
+                      {% endif %}
+                      class='
+                        category-type-2__block {% if section.settings.category_animation %}
+                          category-type-2__block--{{ section.settings.category_animation }}
+                        {% endif %}
+                      '
+                    >
+                      <a href='{{ collection.url }}' class='category-type-2__image'>
+                        {% render 'image', image: collection.image, aspect_ratio: 1 %}
+                      </a>
+                      <div class='category-type-2__title'>
+                        {{ collection.title }}
+                      </div>
+                    </div>
+                  </div>
+                </xo-carousel-slide>
+              {% endfor %}
+            {% else %}
+              {% for i in (1..6) %}
+                <xo-carousel-slide>
+                  <div class='category-type-2__item'>
+                    <div
+                      class='
+                        category-type-2__block {% if section.settings.category_animation %}
+                          category-type-2__block--{{ section.settings.category_animation }}
+                        {% endif %}
+                      '
+                    >
+                      <a href='#' class='category-type-2__image'>
+                        {% render 'image', placeholder: 'product-1', aspect_ratio: 1 %}
+                      </a>
+                      <div class='category-type-2__title'>
+                        {{ 'general.collection' | t }}
+                      </div>
+                    </div>
+                  </div>
+                </xo-carousel-slide>
+              {% endfor %}
+            {% endif %}
+          </xo-carousel-list>
+        </xo-carousel-inner>
+        <div class='category-type-2__group-button'>
+          <div class='category-type-2__group-container'>
+            <xo-carousel-prev tabindex='0' role='button' aria-label='previous'>
+              <div class='category-type-2__button'>{% render 'icon', name: 'category-arrow-left', size: '24' %}</div>
+            </xo-carousel-prev>
+            <xo-carousel-next tabindex='0' role='button' aria-label='next'>
+              <div class='category-type-2__button'>{% render 'icon', name: 'category-arrow-right', size: '24' %}</div>
+            </xo-carousel-next>
+          </div>
+        </div>
+      </xo-carousel>
+    {% endif %}
+  </xo-container>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.category.name",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "category_type",
+      "label": "t:sections.category.settings.category_type.label",
+      "options": [
+        {
+          "value": "type-1",
+          "label": "t:sections.category.settings.category_type.option__1.label"
+        },
+        {
+          "value": "type-2",
+          "label": "t:sections.category.settings.category_type.option__2.label"
+        }
+      ],
+      "default": "type-1"
+    },
+    {
+      "type": "select",
+      "id": "category_animation",
+      "label": "t:sections.category.settings.category_animation.label",
+      "info": "t:sections.category.settings.category_animation.info",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.category.settings.category_animation.option__1.label"
+        },
+        {
+          "value": "rotate",
+          "label": "t:sections.category.settings.category_animation.option__2.label"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "t:sections.category.settings.collection_list.label",
+      "limit": 20
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.header_1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.bg_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "t:sections.all.bg_gradient.label"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:sections.all.padding_top.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding_bottom.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_top_mobile",
+      "label": "t:sections.all.padding_top_mobile.label",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom_mobile",
+      "label": "t:sections.all.padding_bottom_mobile.label",
+      "default": 50
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:sections.category.presets.name"
+    }
+  ]
+}
+{% endschema %}
