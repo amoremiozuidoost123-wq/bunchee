@@ -1,0 +1,128 @@
+{
+  "sections": {
+    "main_page_title_type_1_z9XcfY": {
+      "type": "main-page-title-type-1",
+      "name": "Page heading breadcrumb",
+      "settings": {
+        "width": 860,
+        "show_breadcrumb": false,
+        "heading": "Burger collection",
+        "description": "<p>Our products come to you daily with the promise of quality every time.</p>",
+        "align": "left",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 32,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "sort": "alphabetical",
+        "image_ratio": "4/3",
+        "columns_desktop": 2,
+        "columns_mobile": "1",
+        "color_scheme": "accent-1",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 28,
+        "padding_bottom": 80,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "featured_collection_type_1_9QfWFh": {
+      "type": "featured-collection-type-1",
+      "name": "Products carousel",
+      "settings": {
+        "section_style": "style-1",
+        "autoplay": false,
+        "text_tag_name": "h3",
+        "text_heading": "Fresh and light",
+        "text_duration": 1000,
+        "text_effect": "reveal",
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": true,
+        "product_card_show_vendor": false,
+        "product_card_show_description": false,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "auto",
+        "card_color_scheme": "",
+        "carousel_pag_disabled": true,
+        "carousel_pag_mobile_disabled": false,
+        "carousel_pag_align": "center",
+        "subheading": "Featured Product",
+        "product_list": [
+          "cheesy-chicken-salad-copy",
+          "biscoff-milkshake",
+          "bacon-hot-dog",
+          "cheesy-burger",
+          "cheetos-hot-dog",
+          "chicken-drum",
+          "chilli-hot-dog",
+          "cheesy-chicken-salad"
+        ],
+        "collection": "",
+        "limit": 12,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "gallery_JWAktn": {
+      "type": "gallery",
+      "blocks": {
+        "image_7PV3Jt": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "image_zbbNky": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "image_HhCKxz": {
+          "type": "image",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "image_7PV3Jt",
+        "image_zbbNky",
+        "image_HhCKxz"
+      ],
+      "name": "Gallery",
+      "settings": {
+        "section_style": "style-1",
+        "marquee_speed": 1,
+        "stop_marquee": false,
+        "marquee_right_to_left": false,
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "main_page_title_type_1_z9XcfY",
+    "main",
+    "featured_collection_type_1_9QfWFh",
+    "gallery_JWAktn"
+  ]
+}

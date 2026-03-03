@@ -1,0 +1,119 @@
+{
+  "sections": {
+    "main_page_collection_heading_by7pzW": {
+      "type": "main-page-collection-heading",
+      "disabled": true,
+      "settings": {
+        "turn_on_image": false,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 73,
+        "padding_top_mobile": 150,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "main_page_title_type_1_8ggwcR": {
+      "type": "main-page-title-type-1",
+      "settings": {
+        "width": 860,
+        "show_breadcrumb": false,
+        "heading": "Our Menu",
+        "description": "<p>Over the years, we have worked ardently to develop our fresh pasta recipes and feel very proud to share them with you. Our products come to you daily with the promise of quality every time.</p>",
+        "align": "center",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 73,
+        "padding_top_mobile": 150,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "category_pyU7mP": {
+      "type": "category",
+      "settings": {
+        "category_type": "type-2",
+        "category_animation": "default",
+        "collection_list": ["burger", "sides", "salads", "kids-meal", "milkshake", "coolers-drinks"],
+        "color_scheme": "background-1",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 26,
+        "padding_bottom": 26,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 4,
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": false,
+        "product_card_show_vendor": false,
+        "product_card_show_description": false,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "1",
+        "card_color_scheme": "",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 36,
+        "padding_bottom": 68,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 55
+      }
+    },
+    "service_pj7DAV": {
+      "type": "service",
+      "blocks": {
+        "content_6HpqXA": {
+          "type": "content",
+          "settings": {
+            "heading": "Secured Payment",
+            "paragraph": "<p>Pay easily and safely with Debit Card, Credit Card, or PayPal. Your information is protected every step of the way.</p>"
+          }
+        },
+        "content_7kn7cy": {
+          "type": "content",
+          "settings": {
+            "heading": "Free Shipping Over $50",
+            "paragraph": "<p>No extra charges – enjoy your favorite pasta delivered to your door for free when you spend $50 or more.</p>"
+          }
+        },
+        "content_cyM9NH": {
+          "type": "content",
+          "settings": {
+            "heading": "Golden Service",
+            "paragraph": "<p>From order to delivery, we provide top-notch customer service to ensure your experience is as perfect as our pasta.</p>"
+          }
+        },
+        "content_qXDDDf": {
+          "type": "content",
+          "settings": {
+            "heading": "Authentic Burger Taste",
+            "paragraph": "<p>Our food is crafted with authentic recipes and premium ingredients for an unforgettable dining experience.</p>"
+          }
+        }
+      },
+      "block_order": ["content_6HpqXA", "content_7kn7cy", "content_cyM9NH", "content_qXDDDf"],
+      "settings": {
+        "color_scheme": "inverse",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 114,
+        "padding_bottom": 116,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": ["main_page_collection_heading_by7pzW", "main_page_title_type_1_8ggwcR", "category_pyU7mP", "main-collection", "service_pj7DAV"]
+}

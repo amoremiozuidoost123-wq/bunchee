@@ -1,0 +1,229 @@
+{
+  "sections": {
+    "image_banner_type_2_XwpbEp": {
+      "type": "image-banner-type-2",
+      "settings": {
+        "section_style": "style-1",
+        "background_svg": "type-5",
+        "color_background": "",
+        "text_tag_name": "h1",
+        "text_heading": "If there’s anything that unites people it’s a saucy bowl of spaghetti",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "button_text": "Our new menu",
+        "button_style": "primary",
+        "button_size": "lg",
+        "image_effect": "rotate",
+        "color_scheme": "background-2",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "featured_collection_type_2_RgBb7c": {
+      "type": "featured-collection-type-2",
+      "blocks": {
+        "hotspot_B4mVhw": {
+          "type": "hotspot",
+          "settings": {
+            "top": 80,
+            "left": 30,
+            "top_mb": 80,
+            "left_mb": 30,
+            "hotspot_product": "creamy-pesto-chicken-florentine-copy",
+            "card_color_scheme": "",
+            "color_trigger": "#ffb115"
+          }
+        },
+        "text_item_FG98qc": {
+          "type": "text-item",
+          "settings": {
+            "item_text": "Pasta or Pizza"
+          }
+        },
+        "image_item_d8xYdY": {
+          "type": "image-item",
+          "settings": {
+            "aspect_ratio": "auto",
+            "item_link": ""
+          }
+        }
+      },
+      "block_order": ["hotspot_B4mVhw", "text_item_FG98qc", "image_item_d8xYdY"],
+      "settings": {
+        "subheading": "Featured Product",
+        "marquee_speed": 1,
+        "text_tag_name": "h3",
+        "text_heading": "Fresh and light",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 376,
+        "padding_bottom": 136,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 54
+      }
+    },
+    "collection_list_type_2_Cdm3Xy": {
+      "type": "collection-list-type-2",
+      "settings": {
+        "subheading": "Shop collection",
+        "collection_list": ["primavera", "pappardelle", "ravioli-spinaci", "alla-carbonara-1", "insalara", "piedmont"],
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 133,
+        "padding_bottom": 0,
+        "padding_top_mobile": 46,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "image_with_text_type_8_atqYKE": {
+      "type": "image-with-text-type-8",
+      "settings": {
+        "section_style": "style-1",
+        "background_svg": "type-7",
+        "text_tag_name": "h3",
+        "text_heading": "Our restaurants",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "description": "<p>Our restaurant is a culinary adventure that spans across network of restaurants. With a commitment to authenticity, we blend global flavors and local ingredients to create memorable dining experiences.</p>",
+        "text_position": "center",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 25,
+        "padding_bottom": 0,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product_grid_type_2_FRPcBz": {
+      "type": "product-grid-type-2",
+      "blocks": {
+        "item_zLxNMN": {
+          "type": "item",
+          "settings": {
+            "product": "classic-margherita",
+            "product_card_show_tag": true,
+            "tag_text_1": "Vegan option available",
+            "tag_text_2": "Non-vegan"
+          }
+        },
+        "item_fyiweQ": {
+          "type": "item",
+          "settings": {
+            "product": "wild-pepperoni",
+            "product_card_show_tag": true,
+            "tag_text_1": "Vegan option available",
+            "tag_text_2": "Non-vegan"
+          }
+        },
+        "item_RgF8z3": {
+          "type": "item",
+          "settings": {
+            "product": "rustic-veggie",
+            "product_card_show_tag": true,
+            "tag_text_1": "Vegan option available",
+            "tag_text_2": "Non-vegan"
+          }
+        }
+      },
+      "block_order": ["item_zLxNMN", "item_fyiweQ", "item_RgF8z3"],
+      "settings": {
+        "heading": "Specialty Pizzas",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "card_color_scheme": "",
+        "show_index": true,
+        "show_badge": true,
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "testimonial_type_2_cDwiBH": {
+      "type": "testimonial-type-2",
+      "blocks": {
+        "testimonial_slide_H8tKEU": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "Ronald Richards",
+            "author_job": "Developer",
+            "slide_heading": "The food, service, ambience and more was all superb!",
+            "description": "<p>I have to say it’s the best meal I have had in quite some time. You will definitely be seeing more of me eating at your establishment. What an outstanding dinner you prepared, it was honor to me! You will definitely be seeing more of me eating at your establishment. </p>"
+          }
+        },
+        "testimonial_slide_iKVcrJ": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "James",
+            "author_job": "Worker",
+            "slide_heading": "The food, service, ambience and more was all superb!",
+            "description": "<p>I have to say it’s the best meal I have had in quite some time. You will definitely be seeing more of me eating at your establishment. What an outstanding dinner you prepared, it was honor to me! You will definitely be seeing more of me eating at your establishment. </p>"
+          }
+        }
+      },
+      "block_order": ["testimonial_slide_H8tKEU", "testimonial_slide_iKVcrJ"],
+      "settings": {
+        "subheading": "Customers review",
+        "autoplay": false,
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 125,
+        "padding_bottom": 120,
+        "padding_top_mobile": 46,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "blog_post_d9A83V": {
+      "type": "blog-post",
+      "settings": {
+        "blog": "news",
+        "text_tag_name": "h4",
+        "text_heading": "Our journals",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "button_text": "All journals",
+        "article_card_style": "boxed",
+        "article_card_show_image": true,
+        "article_card_show_date": true,
+        "article_card_show_author": true,
+        "article_card_show_excerpt": true,
+        "article_card_show_tags": true,
+        "article_card_media_aspect_ratio": "1.3",
+        "article_color_scheme": "inverse",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 80,
+        "padding_bottom": 130,
+        "padding_top_mobile": 51,
+        "padding_bottom_mobile": 76
+      }
+    }
+  },
+  "order": [
+    "image_banner_type_2_XwpbEp",
+    "featured_collection_type_2_RgBb7c",
+    "collection_list_type_2_Cdm3Xy",
+    "image_with_text_type_8_atqYKE",
+    "product_grid_type_2_FRPcBz",
+    "testimonial_type_2_cDwiBH",
+    "blog_post_d9A83V"
+  ]
+}

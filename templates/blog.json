@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "main-breadcrumb": {
+      "type": "main-breadcrumb",
+      "settings": {
+        "breadcrumb_style": "left",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 120,
+        "padding_bottom": 50,
+        "padding_top_mobile": 149,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "blog_limit": 9,
+        "description": "<p>From weekly specials to limited-time codes, we’ve gathered all our current promotions right here. Browse our latest blog posts for mouthwatering deals here!</p>",
+        "article_card_style": "standard",
+        "article_card_show_image": true,
+        "article_card_show_date": true,
+        "article_card_show_author": false,
+        "article_card_show_excerpt": false,
+        "article_card_show_tags": false,
+        "article_card_media_aspect_ratio": "auto",
+        "article_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 64,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "product_grid_type_6_cgFxFE": {
+      "type": "product-grid-type-6",
+      "blocks": {
+        "item_4dNJch": {
+          "type": "item",
+          "settings": {
+            "product": "the-alpine-melt-burger",
+            "product_card_show_tag": false,
+            "tag_text_1": "",
+            "tag_text_2": ""
+          }
+        },
+        "item_qRzemY": {
+          "type": "item",
+          "settings": {
+            "product": "smoky-maple-crunch-burger",
+            "product_card_show_tag": true,
+            "tag_text_1": "Crispy Texture",
+            "tag_text_2": "Unique Flavor"
+          }
+        },
+        "item_hngpUQ": {
+          "type": "item",
+          "settings": {
+            "product": "truffle-royale-wagyu-burger",
+            "product_card_show_tag": true,
+            "tag_text_1": "Sophisticated Flavor",
+            "tag_text_2": "Luxurious Ingredients"
+          }
+        }
+      },
+      "block_order": ["item_4dNJch", "item_qRzemY", "item_hngpUQ"],
+      "settings": {
+        "is_rotate": "false",
+        "image_order": "0",
+        "text_tag_name": "h1",
+        "text_heading": "SIGNATURE MEALS",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "card_color_scheme": "",
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "padding_top_mobile": 57,
+        "padding_bottom_mobile": 54
+      }
+    },
+    "collapsible_content_type_3_K8iALE": {
+      "type": "collapsible-content-type-3",
+      "blocks": {
+        "address_type_1_tXnzaW": {
+          "type": "address-type-1",
+          "settings": {
+            "address": "<p>High Street 123, Phoenix <strong>85010, Arizona, USA</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_2_zdAVEw": {
+          "type": "address-type-2",
+          "settings": {
+            "address": "<p>3891 Ranchview Dr. Richardson, <strong>California 62639</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_1_xWeqAg": {
+          "type": "address-type-1",
+          "settings": {
+            "address": "<p>4517 Washington Ave. Manchester, <strong>Kentucky 39495</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_2_nDWeVN": {
+          "type": "address-type-2",
+          "settings": {
+            "address": "<p>4140 Parker Rd. Allentown, <strong>New Mexico 31134</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_1_X9Y8jM": {
+          "type": "address-type-1",
+          "settings": {
+            "address": "<p>4517 Washington Ave. Manchester, <strong>Kentucky 39495</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        }
+      },
+      "block_order": ["address_type_1_tXnzaW", "address_type_2_zdAVEw", "address_type_1_xWeqAg", "address_type_2_nDWeVN", "address_type_1_X9Y8jM"],
+      "settings": {
+        "text_tag_name": "h3",
+        "text_heading": "OUR RESTAURANTS",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Pastalina is a culinary adventure that spans across our network of restaurants. With a commitment to authenticity, we blend global flavors and local ingredients to create memorable dining experiences.</p>",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "padding_top_mobile": 52,
+        "padding_bottom_mobile": 52
+      }
+    }
+  },
+  "order": ["main-breadcrumb", "main", "product_grid_type_6_cgFxFE", "collapsible_content_type_3_K8iALE"]
+}

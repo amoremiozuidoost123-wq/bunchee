@@ -1,0 +1,188 @@
+
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 50,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "main_page_title_type_1_LzwdKk": {
+      "type": "main-page-title-type-1",
+      "name": "t:sections.main_page_title_type_1.presets.name",
+      "settings": {
+        "width": 860,
+        "show_breadcrumb": true,
+        "heading": "",
+        "description": "",
+        "align": "left",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "map_7amFhc": {
+      "type": "map",
+      "blocks": {
+        "location_BPthKp": {
+          "type": "location",
+          "settings": {
+            "heading": "Gent",
+            "location": "High Street 123, Phoenix 85010, Arizona, USA",
+            "link": "Get direction",
+            "url": "",
+            "day_1": "Monday - Friday",
+            "time_1": "9AM - 11PM (last order 10.45PM)",
+            "day_2": "Saturday - Sunday",
+            "time_2": "9AM - 9PM (last order 8.45PM)",
+            "phone_number": ""
+          }
+        },
+        "location_QVerCK": {
+          "type": "location",
+          "settings": {
+            "heading": "Antwerp",
+            "location": "4517 Washington Ave. Manchester, Kentucky 39495",
+            "link": "Get direction",
+            "url": "",
+            "day_1": "Monday - Friday",
+            "time_1": "9AM - 11PM (last order 10.45PM)",
+            "day_2": "Saturday - Sunday",
+            "time_2": "9AM - 9PM (last order 8.45PM)",
+            "phone_number": "Phone number"
+          }
+        },
+        "location_AhL6rE": {
+          "type": "location",
+          "settings": {
+            "heading": "Brussels",
+            "location": "High Street 123, Phoenix 85010, Arizona, USA",
+            "link": "Get direction",
+            "url": "",
+            "day_1": "Monday - Friday",
+            "time_1": "9AM - 11PM (last order 10.45PM)",
+            "day_2": "Saturday - Sunday",
+            "time_2": "9AM - 9PM (last order 8.45PM)",
+            "phone_number": "Phone number"
+          }
+        },
+        "location_4eyxfj": {
+          "type": "location",
+          "settings": {
+            "heading": "Leuven",
+            "location": "4517 Washington Ave. Manchester, Kentucky 39495",
+            "link": "Get direction",
+            "url": "",
+            "day_1": "Monday - Friday",
+            "time_1": "9AM - 11PM (last order 10.45PM)",
+            "day_2": "Saturday - Sunday",
+            "time_2": "9AM - 9PM (last order 8.45PM)",
+            "phone_number": "Phone number"
+          }
+        }
+      },
+      "block_order": [
+        "location_BPthKp",
+        "location_QVerCK",
+        "location_AhL6rE",
+        "location_4eyxfj"
+      ],
+      "name": "t:sections.map.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "faq_QHcjQc": {
+      "type": "faq",
+      "blocks": {
+        "accordion_item_4FwCQX": {
+          "type": "accordion-item",
+          "settings": {
+            "accordion_trigger": "Are there any vegetarian or vegan options?",
+            "accordion_content": "<p>We sure do have some satisfying veggie & vegan spaghetti bowls to serve you! Discover all options on our menu.</p>"
+          }
+        },
+        "accordion_item_AMrWQY": {
+          "type": "accordion-item",
+          "settings": {
+            "accordion_trigger": "Where can I buy gift vouchers?",
+            "accordion_content": "<p>You can purchase our gift vouchers directly at any Pastarina restaurant or conveniently online through our website. </p>"
+          }
+        },
+        "accordion_item_3AV7jC": {
+          "type": "accordion-item",
+          "settings": {
+            "accordion_trigger": "What payment methods are accepted?",
+            "accordion_content": "<p>We accept all major credit and debit cards, as well as mobile payments like Apple Pay and Google Pay. Cash is, of course, also welcome.</p>"
+          }
+        },
+        "accordion_item_3RFCaU": {
+          "type": "accordion-item",
+          "settings": {
+            "accordion_trigger": "Are dogs (or other animals) allowed in the restaurants?",
+            "accordion_content": "<p>Well-behaved dogs are welcome in our outdoor seating areas. Please check with your local Pastarina for specific pet-friendly arrangements.</p>"
+          }
+        },
+        "accordion_item_gWrCnF": {
+          "type": "accordion-item",
+          "settings": {
+            "accordion_trigger": "Is your restaurant accessible for people in a wheelchair?",
+            "accordion_content": "<p>Yes, all Pastarina locations are designed to be accessible. We have step-free entrances and accessible restrooms to ensure everyone feels at home.</p>"
+          }
+        },
+        "accordion_item_hFaHP7": {
+          "type": "accordion-item",
+          "settings": {
+            "accordion_trigger": "Is Pastarina child friendly?",
+            "accordion_content": "<p>Absolutely! We welcome families and have high chairs, children’s menu options, and friendly staff ready to make dining with little ones easy and enjoyable.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_4FwCQX",
+        "accordion_item_AMrWQY",
+        "accordion_item_3AV7jC",
+        "accordion_item_3RFCaU",
+        "accordion_item_gWrCnF",
+        "accordion_item_hFaHP7"
+      ],
+      "name": "t:sections.faq.presets.name",
+      "settings": {
+        "text_tag_name": "h2",
+        "text_heading": "Frequently asked questions",
+        "text_duration": 1000,
+        "text_effect": "reveal",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_page_title_type_1_LzwdKk",
+    "map_7amFhc",
+    "faq_QHcjQc"
+  ]
+}

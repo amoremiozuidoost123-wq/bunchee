@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "image_with_text_type_6_R9EenW": {
+      "type": "image-with-text-type-6",
+      "blocks": {
+        "content_WXGAwn": {
+          "type": "content",
+          "settings": {
+            "paragraph": "<p>We believe that taste tells a story. Our passion for pâté and rillettes goes beyond just the ingredients. We create culinary experiences that stimulate the senses and evoke memories. </p>"
+          }
+        },
+        "content_yFMBfb": {
+          "type": "content",
+          "settings": {
+            "paragraph": "<p>We believe that taste tells a story. Our passion for pâté and rillettes goes beyond just the ingredients. We create culinary experiences that stimulate the senses and evoke memories. </p>"
+          }
+        }
+      },
+      "block_order": ["content_WXGAwn", "content_yFMBfb"],
+      "settings": {
+        "alignment": "left",
+        "text_tag_name": "h1",
+        "text_heading": "Chef Eleanor",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 50,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "image_with_text_type_8_NiXUhX": {
+      "type": "image-with-text-type-8",
+      "settings": {
+        "background_svg": "type-1",
+        "text_tag_name": "h3",
+        "text_heading": "Our restaurants",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Our restaurant is a culinary adventure that spans across network of restaurants. With a commitment to authenticity, we blend global flavors and local ingredients to create memorable dining experiences.</p>",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "image_with_text_type_2_8d7bzC": {
+      "type": "image-with-text-type-2",
+      "settings": {
+        "subheading": "About us",
+        "heading": "<p>Grown into a collection of restaurants. We’re now talking 14 locations, each with its own distinctive<strong> atmosphere, muse,</strong> and experience.</p>",
+        "button_text": "Shop all",
+        "button_style": "primary",
+        "button_size": "md",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "image_with_text_type_5_zNRDrx": {
+      "type": "image-with-text-type-5",
+      "settings": {
+        "text_tag_name": "h2",
+        "text_heading": "There’s little room to hide when it comes to pasta, so every ingredient matters",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Australian milled ﬂours and other speciality grains, farm fresh free-range eggs and seasonal produce all pasta, each piece unique. Our extensive assortment of sughetti (pasta sauces) and take-home meals are all prepared in house and ready to enjoy around.In our pantry you will ﬁnd, specialty products such as house-rendered butters, Virgin olive oil, boutique both classic and low intervention wines from Italy, alongside local vineyards producing Italian varietal.</p>",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 50,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "image_with_text_type_4_hzd86f": {
+      "type": "image-with-text-type-4",
+      "settings": {
+        "text_tag_name": "h2",
+        "text_heading": "Ideas in the restaurants,\nbeautiful and good to taste",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description_1": "Without the addition of preservatives",
+        "description_2": "National raw ham",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": ["image_with_text_type_6_R9EenW", "image_with_text_type_8_NiXUhX", "image_with_text_type_2_8d7bzC", "image_with_text_type_5_zNRDrx", "image_with_text_type_4_hzd86f"]
+}

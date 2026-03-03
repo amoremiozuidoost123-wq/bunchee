@@ -1,0 +1,181 @@
+{
+  "sections": {
+    "product_grid_type_1_7QHVai": {
+      "type": "product-grid-type-1",
+      "settings": {
+        "subheading": "Today's hot deal",
+        "is_rotate": "false",
+        "product": "classic-beef-burger",
+        "product_card_show_tag": true,
+        "tag_text_1": "Tag text",
+        "tag_text_2": "Tag text",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": true,
+        "product_card_show_vendor": false,
+        "product_card_show_description": true,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "1",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 50,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "product_grid_type_3_8Mr643": {
+      "type": "product-grid-type-3",
+      "blocks": {
+        "item_ApaCXE": {
+          "type": "item",
+          "settings": {
+            "product": "bacon-hot-dog",
+            "product_card_show_tag": true,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        },
+        "item_Y6L8JA": {
+          "type": "item",
+          "settings": {
+            "product": "cheesy-chicken-salad-copy",
+            "product_card_show_tag": true,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        },
+        "item_eYKpLG": {
+          "type": "item",
+          "settings": {
+            "product": "chicken-drum",
+            "product_card_show_tag": true,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        },
+        "item_pTTtAT": {
+          "type": "item",
+          "settings": {
+            "product": "fried-onion-hamburger",
+            "product_card_show_tag": true,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        }
+      },
+      "block_order": ["item_ApaCXE", "item_Y6L8JA", "item_eYKpLG", "item_pTTtAT"],
+      "settings": {
+        "heading": "OUR PASTA",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "product_grid_type_6_TcRF7i": {
+      "type": "product-grid-type-6",
+      "blocks": {
+        "item_G3ThQN": {
+          "type": "item",
+          "settings": {
+            "product": "bacon-hot-dog",
+            "product_card_show_tag": true,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        },
+        "item_eyWt69": {
+          "type": "item",
+          "settings": {
+            "product": "cheesy-chicken-salad-copy",
+            "product_card_show_tag": true,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        },
+        "item_idLRiG": {
+          "type": "item",
+          "settings": {
+            "product": "chicken-drum",
+            "product_card_show_tag": true,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        }
+      },
+      "block_order": ["item_G3ThQN", "item_eyWt69", "item_idLRiG"],
+      "settings": {
+        "is_rotate": "true",
+        "image_order": "0",
+        "text_tag_name": "h1",
+        "text_heading": "BEST BURGERS",
+        "text_duration": 1000,
+        "text_effect": "reveal",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "product_grid_type_2_fxJkHJ": {
+      "type": "product-grid-type-2",
+      "blocks": {
+        "item_AfngxR": {
+          "type": "item",
+          "settings": {
+            "product": "bacon-hot-dog",
+            "product_card_show_tag": false,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        },
+        "item_ABKNpm": {
+          "type": "item",
+          "settings": {
+            "product": "biscoff-milkshake",
+            "product_card_show_tag": false,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        },
+        "item_WRiUUE": {
+          "type": "item",
+          "settings": {
+            "product": "cheesy-chicken-salad-copy",
+            "product_card_show_tag": false,
+            "tag_text_1": "Tag text",
+            "tag_text_2": "Tag text"
+          }
+        }
+      },
+      "block_order": ["item_AfngxR", "item_ABKNpm", "item_WRiUUE"],
+      "settings": {
+        "heading": "Menu",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": ["product_grid_type_1_7QHVai", "product_grid_type_3_8Mr643", "product_grid_type_6_TcRF7i", "product_grid_type_2_fxJkHJ"]
+}

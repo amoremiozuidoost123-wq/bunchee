@@ -1,0 +1,151 @@
+{
+  "sections": {
+    "collection_list_type_1_fKQcMA": {
+      "type": "collection-list-type-1",
+      "blocks": {
+        "collection_item_4hHAeE": {
+          "type": "collection-item",
+          "settings": {
+            "collection": "burritoblast"
+          }
+        },
+        "collection_item_JCnBtA": {
+          "type": "collection-item",
+          "settings": {
+            "collection": "chickenchow"
+          }
+        },
+        "collection_item_EAxzTq": {
+          "type": "collection-item",
+          "settings": {
+            "collection": "frieddough"
+          }
+        },
+        "collection_item_AArVM4": {
+          "type": "collection-item",
+          "settings": {
+            "collection": "maccheesy"
+          }
+        },
+        "collection_item_hUxR8L": {
+          "type": "collection-item",
+          "settings": {
+            "collection": "tacotornado"
+          }
+        },
+        "collection_item_dYFiLM": {
+          "type": "collection-item",
+          "settings": {
+            "collection": "wingwave"
+          }
+        }
+      },
+      "block_order": ["collection_item_4hHAeE", "collection_item_JCnBtA", "collection_item_EAxzTq", "collection_item_AArVM4", "collection_item_hUxR8L", "collection_item_dYFiLM"],
+      "settings": {
+        "section_style": "style-1",
+        "subheading": "Shop collection",
+        "button_text": "View all",
+        "button_style": "primary",
+        "button_size": "md",
+        "show_image": true,
+        "width": 80,
+        "width_mb": 100,
+        "is_collection_default": true,
+        "collection_default_active": 0,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 100,
+        "padding_bottom": 70,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "collection_list_type_2_fN3qJx": {
+      "type": "collection-list-type-2",
+      "settings": {
+        "subheading": "Shop collection",
+        "collection_list": ["burritoblast", "chickenchow", "frieddough", "maccheesy", "tacotornado", "wingwave"],
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 133,
+        "padding_bottom": 50,
+        "padding_top_mobile": 110,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "featured_collection_type_1_Uke9CW": {
+      "type": "featured-collection-type-1",
+      "name": "t:sections.featured_collection_type_1.presets.name",
+      "settings": {
+        "section_style": "style-1",
+        "autoplay": false,
+        "text_tag_name": "h3",
+        "text_heading": "Tasty",
+        "text_duration": 1000,
+        "text_effect": "reveal",
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": true,
+        "product_card_show_vendor": false,
+        "product_card_show_description": false,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "auto",
+        "card_color_scheme": "",
+        "carousel_pag_disabled": true,
+        "carousel_pag_mobile_disabled": false,
+        "carousel_pag_align": "center",
+        "subheading": "Shop collection",
+        "product_list": ["bacon-hot-dog", "cheesy-burger", "cheesy-chicken-salad", "cheetos-hot-dog", "chicken-drum", "chilli-hot-dog", "classic-beef-burger"],
+        "collection": "",
+        "limit": 12,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "featured_collection_type_1_YJ6cmn": {
+      "type": "featured-collection-type-1",
+      "name": "t:sections.featured_collection_type_1.presets.name",
+      "settings": {
+        "section_style": "style-2",
+        "autoplay": false,
+        "text_tag_name": "h3",
+        "text_heading": "Fresh and tasty",
+        "text_duration": 1000,
+        "text_effect": "reveal",
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": true,
+        "product_card_show_vendor": false,
+        "product_card_show_description": false,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "auto",
+        "card_color_scheme": "",
+        "carousel_pag_disabled": true,
+        "carousel_pag_mobile_disabled": false,
+        "carousel_pag_align": "center",
+        "subheading": "Shop collection",
+        "product_list": [],
+        "collection": "burger",
+        "limit": 12,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": ["collection_list_type_1_fKQcMA", "collection_list_type_2_fN3qJx", "featured_collection_type_1_Uke9CW", "featured_collection_type_1_YJ6cmn"]
+}

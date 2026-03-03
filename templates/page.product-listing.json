@@ -1,0 +1,444 @@
+{
+  "sections": {
+    "main_page_title_type_1_VNPPJ3": {
+      "type": "main-page-title-type-1",
+      "settings": {
+        "width": 860,
+        "show_breadcrumb": false,
+        "heading": "OUR MENU",
+        "description": "<p>Over the years, we have worked ardently to develop our fresh pasta recipes and feel very proud to share them with you. Our products come to you daily with the promise of quality every time.</p>",
+        "align": "center",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 50,
+        "padding_top_mobile": 120,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "product_grid_type_6_TcRF7i": {
+      "type": "product-grid-type-6",
+      "blocks": {
+        "item_G3ThQN": {
+          "type": "item",
+          "settings": {
+            "product": "the-alpine-melt-burger",
+            "product_card_show_tag": false,
+            "tag_text_1": "",
+            "tag_text_2": ""
+          }
+        },
+        "item_eyWt69": {
+          "type": "item",
+          "settings": {
+            "product": "smoky-maple-crunch-burger",
+            "product_card_show_tag": true,
+            "tag_text_1": "Crispy Texture",
+            "tag_text_2": "Unique Flavor"
+          }
+        },
+        "item_idLRiG": {
+          "type": "item",
+          "settings": {
+            "product": "truffle-royale-wagyu-burger",
+            "product_card_show_tag": true,
+            "tag_text_1": "Sophisticated Flavor",
+            "tag_text_2": "Luxurious Ingredients"
+          }
+        }
+      },
+      "block_order": ["item_G3ThQN", "item_eyWt69", "item_idLRiG"],
+      "settings": {
+        "is_rotate": "false",
+        "image_order": "0",
+        "text_tag_name": "h1",
+        "text_heading": "SIGNATURE MEALS",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "card_color_scheme": "",
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "padding_top_mobile": 57,
+        "padding_bottom_mobile": 54
+      }
+    },
+    "navigator_GYLcwD": {
+      "type": "navigator",
+      "blocks": {
+        "navigation_item_MPcq8C": {
+          "type": "navigation-item",
+          "settings": {
+            "text": "Signature",
+            "index": 1
+          }
+        },
+        "navigation_item_YTWxQj": {
+          "type": "navigation-item",
+          "settings": {
+            "text": "Fries",
+            "index": 2
+          }
+        },
+        "navigation_item_tXnzBg": {
+          "type": "navigation-item",
+          "settings": {
+            "text": "Loaded wings",
+            "index": 3
+          }
+        },
+        "navigation_item_GdCgjh": {
+          "type": "navigation-item",
+          "settings": {
+            "text": "Hot dogs",
+            "index": 4
+          }
+        },
+        "navigation_item_Hbntef": {
+          "type": "navigation-item",
+          "settings": {
+            "text": "Sides",
+            "index": 6
+          }
+        },
+        "navigation_item_jEccJB": {
+          "type": "navigation-item",
+          "settings": {
+            "text": "Salads",
+            "index": 7
+          }
+        }
+      },
+      "block_order": ["navigation_item_MPcq8C", "navigation_item_YTWxQj", "navigation_item_tXnzBg", "navigation_item_GdCgjh", "navigation_item_Hbntef", "navigation_item_jEccJB"],
+      "name": "t:sections.navigator.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "product_grid_type_1_7QHVai": {
+      "type": "product-grid-type-1",
+      "settings": {
+        "subheading": "Today's hot deal",
+        "is_rotate": "false",
+        "product": "the-big-island-feast",
+        "product_card_show_tag": true,
+        "tag_text_1": "Exotic Flair",
+        "tag_text_2": "Tropical Twist",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": true,
+        "product_card_show_vendor": false,
+        "product_card_show_description": true,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "1",
+        "card_color_scheme": "",
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product_grid_type_6_iVg7Vb": {
+      "type": "product-grid-type-6",
+      "blocks": {
+        "item_cCkdrK": {
+          "type": "item",
+          "settings": {
+            "product": "sweet-teriyaki-glazed-chicken",
+            "product_card_show_tag": false,
+            "tag_text_1": "",
+            "tag_text_2": ""
+          }
+        },
+        "item_bW4HMc": {
+          "type": "item",
+          "settings": {
+            "product": "garlic-butter-poppers-wing",
+            "product_card_show_tag": true,
+            "tag_text_1": "Rich and Creamy",
+            "tag_text_2": "Irresistibly Crispy"
+          }
+        },
+        "item_JGWeAK": {
+          "type": "item",
+          "settings": {
+            "product": "honey-fire-drums-chicken",
+            "product_card_show_tag": true,
+            "tag_text_1": "Guilt-Free Indulgence",
+            "tag_text_2": "Flavorful"
+          }
+        }
+      },
+      "block_order": ["item_cCkdrK", "item_bW4HMc", "item_JGWeAK"],
+      "settings": {
+        "is_rotate": "false",
+        "image_order": "1",
+        "text_tag_name": "h1",
+        "text_heading": "Fries",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "card_color_scheme": "",
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 90,
+        "padding_bottom": 90,
+        "padding_top_mobile": 52,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "product_grid_type_6_GeB7JF": {
+      "type": "product-grid-type-6",
+      "blocks": {
+        "item_Q43GJz": {
+          "type": "item",
+          "settings": {
+            "product": "the-fun-feast-adventure",
+            "product_card_show_tag": false,
+            "tag_text_1": "",
+            "tag_text_2": ""
+          }
+        },
+        "item_PXwDmH": {
+          "type": "item",
+          "settings": {
+            "product": "the-junior-hero-meal",
+            "product_card_show_tag": true,
+            "tag_text_1": "Balanced Choices",
+            "tag_text_2": "Kid-Approved Flavor"
+          }
+        },
+        "item_9mVYcm": {
+          "type": "item",
+          "settings": {
+            "product": "happy-smiles-snack-box",
+            "product_card_show_tag": false,
+            "tag_text_1": "",
+            "tag_text_2": ""
+          }
+        }
+      },
+      "block_order": ["item_Q43GJz", "item_PXwDmH", "item_9mVYcm"],
+      "settings": {
+        "is_rotate": "false",
+        "image_order": "0",
+        "text_tag_name": "h1",
+        "text_heading": "Loaded wings",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "card_color_scheme": "",
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "padding_top_mobile": 52,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "product_grid_type_6_Tg8geH": {
+      "type": "product-grid-type-6",
+      "blocks": {
+        "item_r8Ywdm": {
+          "type": "item",
+          "settings": {
+            "product": "chilli-hot-dog",
+            "product_card_show_tag": false,
+            "tag_text_1": "",
+            "tag_text_2": ""
+          }
+        },
+        "item_B6WPMB": {
+          "type": "item",
+          "settings": {
+            "product": "bacon-hot-dog",
+            "product_card_show_tag": true,
+            "tag_text_1": "Rich and Creamy",
+            "tag_text_2": "Irresistibly Crispy"
+          }
+        },
+        "item_M3bwGi": {
+          "type": "item",
+          "settings": {
+            "product": "cheetos-hot-dog",
+            "product_card_show_tag": true,
+            "tag_text_1": "Guilt-Free Indulgence",
+            "tag_text_2": "Flavorful"
+          }
+        }
+      },
+      "block_order": ["item_r8Ywdm", "item_B6WPMB", "item_M3bwGi"],
+      "settings": {
+        "is_rotate": "false",
+        "image_order": "1",
+        "text_tag_name": "h1",
+        "text_heading": "Top dogs",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "card_color_scheme": "",
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 90,
+        "padding_bottom": 90,
+        "padding_top_mobile": 52,
+        "padding_bottom_mobile": 56
+      }
+    },
+    "product_grid_type_2_NJ8giA": {
+      "type": "product-grid-type-2",
+      "blocks": {
+        "item_qji6c6": {
+          "type": "item",
+          "settings": {
+            "product": "crispy-waffle-fries",
+            "product_card_show_tag": true,
+            "tag_text_1": "Healthier Fry",
+            "tag_text_2": "Fun Shape"
+          }
+        },
+        "item_jFwhKV": {
+          "type": "item",
+          "settings": {
+            "product": "crispy-gold-rush-fries",
+            "product_card_show_tag": true,
+            "tag_text_1": "Fresh Potatoes",
+            "tag_text_2": "Lightly Seasoned"
+          }
+        },
+        "item_TUyTTT": {
+          "type": "item",
+          "settings": {
+            "product": "savory-chicken-poppers",
+            "product_card_show_tag": true,
+            "tag_text_1": "No Additives",
+            "tag_text_2": "Light Batter"
+          }
+        }
+      },
+      "block_order": ["item_qji6c6", "item_jFwhKV", "item_TUyTTT"],
+      "disabled": true,
+      "settings": {
+        "heading": "SIDE DISHES",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "card_color_scheme": "",
+        "show_index": true,
+        "show_badge": true,
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product_grid_type_3_8Mr643": {
+      "type": "product-grid-type-3",
+      "blocks": {
+        "item_ApaCXE": {
+          "type": "item",
+          "settings": {
+            "product": "biscoff-milkshake",
+            "product_card_show_tag": true,
+            "tag_text_1": "Dairy-free",
+            "tag_text_2": "Exotic flavors"
+          }
+        },
+        "item_Y6L8JA": {
+          "type": "item",
+          "settings": {
+            "product": "strawberry-shortcake-milkshake",
+            "product_card_show_tag": true,
+            "tag_text_1": "Lactose free",
+            "tag_text_2": "Sugar free"
+          }
+        },
+        "item_eYKpLG": {
+          "type": "item",
+          "settings": {
+            "product": "peppermint-mocha-frappuccino",
+            "product_card_show_tag": true,
+            "tag_text_1": "Boost of energy",
+            "tag_text_2": "Low-calorie"
+          }
+        },
+        "item_pTTtAT": {
+          "type": "item",
+          "settings": {
+            "product": "super-chocoberry-shake",
+            "product_card_show_tag": true,
+            "tag_text_1": "Antioxidant-rich",
+            "tag_text_2": "Unique twist"
+          }
+        },
+        "item_ypYntD": {
+          "type": "item",
+          "settings": {
+            "product": "white-choconut-milkshake",
+            "product_card_show_tag": true,
+            "tag_text_1": "Dairy-free",
+            "tag_text_2": "Sugar free"
+          }
+        },
+        "item_3g77xY": {
+          "type": "item",
+          "settings": {
+            "product": "oreo-vanilla-frappuccino",
+            "product_card_show_tag": true,
+            "tag_text_1": "Classic favorite",
+            "tag_text_2": "Exotic flavors"
+          }
+        }
+      },
+      "block_order": ["item_ApaCXE", "item_Y6L8JA", "item_eYKpLG", "item_pTTtAT", "item_ypYntD", "item_3g77xY"],
+      "disabled": true,
+      "settings": {
+        "heading": "HANDSPUN SHAKES",
+        "card_color_scheme": "inverse",
+        "show_index": true,
+        "show_badge": true,
+        "show_action": true,
+        "color_scheme": "inverse",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 103,
+        "padding_bottom": 96,
+        "padding_top_mobile": 39,
+        "padding_bottom_mobile": 76
+      }
+    }
+  },
+  "order": [
+    "main_page_title_type_1_VNPPJ3",
+    "product_grid_type_6_TcRF7i",
+    "navigator_GYLcwD",
+    "product_grid_type_1_7QHVai",
+    "product_grid_type_6_iVg7Vb",
+    "product_grid_type_6_GeB7JF",
+    "product_grid_type_6_Tg8geH",
+    "product_grid_type_2_NJ8giA",
+    "product_grid_type_3_8Mr643"
+  ]
+}

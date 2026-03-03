@@ -1,0 +1,225 @@
+
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "bedc5e2d-642d-4448-8569-c7fcfd527042": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_xGdHtL": {
+          "type": "price",
+          "settings": {
+            "show_tax_included": true
+          }
+        },
+        "4dabf9d3-3372-4f5a-9edf-1e1f03527b1b": {
+          "type": "description",
+          "settings": {}
+        },
+        "ca89121c-8974-4f5c-852d-875abeb6041c": {
+          "type": "variants",
+          "settings": {
+            "variant_style": "boxed",
+            "variant_color_style": "color"
+          }
+        },
+        "941018d2-7613-4b60-aa2c-94962df06c94": {
+          "type": "quantity_picker",
+          "settings": {}
+        },
+        "ae0ed4c8-948a-46c7-b292-5f2687b8c94e": {
+          "type": "buy_button",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "text_tV34Ah": {
+          "type": "text",
+          "settings": {
+            "category_1": "Crafted",
+            "content_1": "<p>Crafted with premium durum wheat and slow-dried for the perfect texture, our pasta brings the taste of Italy straight to your kitchen.</p>",
+            "category_2": "Artisan",
+            "content_2": "<p>Made with generations of pasta-making expertise, our artisanal pasta is more than just food—it’s tradition, passion, and flavor combined.</p>",
+            "category_3": "Love",
+            "content_3": "<p>Great pasta doesn’t need much—just quality ingredients and a little love. Elevate your home cooking with pasta that’s as delicious as it is simple.</p>"
+          }
+        },
+        "pickup_pVaHn9": {
+          "type": "pickup",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "bedc5e2d-642d-4448-8569-c7fcfd527042",
+        "price_xGdHtL",
+        "4dabf9d3-3372-4f5a-9edf-1e1f03527b1b",
+        "ca89121c-8974-4f5c-852d-875abeb6041c",
+        "941018d2-7613-4b60-aa2c-94962df06c94",
+        "ae0ed4c8-948a-46c7-b292-5f2687b8c94e",
+        "text_tV34Ah",
+        "pickup_pVaHn9"
+      ],
+      "settings": {
+        "product_info_type": "product_info_type_1",
+        "hide_variants": false,
+        "color_scheme": "background-1",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 203,
+        "padding_top_mobile": 130,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "collapsible_content_type_1_TXraTz": {
+      "type": "collapsible-content-type-1",
+      "blocks": {
+        "collapse_item_6QMPEa": {
+          "type": "collapse-item",
+          "settings": {
+            "collapse_trigger": "Quality ingredients",
+            "collapse_content": "<p>National raw ham, a rich filling, fresh eggs from free-range hens and a thin pastry for a fresh, quality product without the addition of preservatives.</p>"
+          }
+        },
+        "collapse_item_HNphea": {
+          "type": "collapse-item",
+          "settings": {
+            "collapse_trigger": "Soft and tasty filling",
+            "collapse_content": "<p>Each bite is a perfect balance of delicate pasta and a savory filling. Made with premium cheeses, herbs, and fresh ingredients, our pasta melts in your mouth for a truly indulgent experience.</p>"
+          }
+        },
+        "collapse_item_eiyXwe": {
+          "type": "collapse-item",
+          "settings": {
+            "collapse_trigger": "Easier to cook completely",
+            "collapse_content": "<p>No more worrying about uneven cooking—our pasta is expertly crafted to cook thoroughly and evenly every time. Whether you’re a home chef or just starting out, perfect pasta is effortless.</p>"
+          }
+        },
+        "collapse_item_WjdHtL": {
+          "type": "collapse-item",
+          "settings": {
+            "collapse_trigger": "Good to taste in 4 minutes",
+            "collapse_content": "<p>Short on time? No problem. Our pasta cooks to perfection in just <strong>4 minutes</strong>, delivering restaurant-quality taste in record time. Fast, flavorful, and always satisfying.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "collapse_item_6QMPEa",
+        "collapse_item_HNphea",
+        "collapse_item_eiyXwe",
+        "collapse_item_WjdHtL"
+      ],
+      "settings": {
+        "section_style": "style-1",
+        "text_tag_name": "h3",
+        "text_heading": "Authentic flavor with a thin layer of fresh pasta",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "aspect_ratio": "auto",
+        "aspect_ratio_1": "auto",
+        "aspect_ratio_2": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 70,
+        "padding_bottom": 70,
+        "padding_top_mobile": 55,
+        "padding_bottom_mobile": 80
+      }
+    },
+    "image_with_text_type_3_FYpiwh": {
+      "type": "image-with-text-type-3",
+      "blocks": {
+        "list_F4mjGF": {
+          "type": "list",
+          "settings": {
+            "heading_left": "Nutritional values",
+            "heading_right": "Per 100g",
+            "title_list": "<ul><li>Power</li><li>Fats</li><li>Of which saturated fatty acids</li><li>Carbohydrates</li><li>Of which sugars</li><li>Fibers</li></ul>",
+            "content_list": "<ul><li>262 kcal</li><li>4.8g</li><li>1.7g</li><li>38.5g</li><li>1.0g</li><li>3.8g</li></ul>"
+          }
+        },
+        "list_NKpkXQ": {
+          "type": "list",
+          "settings": {
+            "heading_left": "Ingredients",
+            "heading_right": "",
+            "title_list": "<ul><li>Mafaldine</li><li>Parsley & Oregano</li><li>Ground Beef</li><li>Olive Oil</li><li>Tomato Sauce</li><li>Garlic</li></ul>",
+            "content_list": "<ul><li>500 grams</li><li>20 grams</li><li>200 grams</li><li>2 tbsp</li><li>1/4 cup</li><li>1 tsp</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "list_F4mjGF",
+        "list_NKpkXQ"
+      ],
+      "settings": {
+        "text_tag_name": "h4",
+        "text_heading": "Ingredient Details",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "aspect_ratio": "auto",
+        "color_scheme": "background-2",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 97,
+        "padding_bottom": 97,
+        "padding_top_mobile": 45,
+        "padding_bottom_mobile": 45
+      }
+    },
+    "image_with_text_type_4_e4aDWi": {
+      "type": "image-with-text-type-4",
+      "settings": {
+        "text_tag_name": "h2",
+        "text_heading": "Ideas in the restaurants,\nbeautiful and good to taste",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description_1": "Without the addition of preservatives",
+        "description_2": "National raw ham",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 132,
+        "padding_bottom": 150,
+        "padding_top_mobile": 46,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "main_product_recommendations_gBnhRM": {
+      "type": "main-product-recommendations",
+      "settings": {
+        "text_tag_name": "h4",
+        "text_heading": "Related Product",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": true,
+        "product_card_show_vendor": false,
+        "product_card_show_description": false,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "auto",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 132,
+        "padding_bottom": 113,
+        "padding_top_mobile": 46,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_type_1_TXraTz",
+    "image_with_text_type_3_FYpiwh",
+    "image_with_text_type_4_e4aDWi",
+    "main_product_recommendations_gBnhRM"
+  ]
+}

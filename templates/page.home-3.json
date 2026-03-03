@@ -1,0 +1,188 @@
+{
+  "sections": {
+    "image_banner_type_2_6nyrcn": {
+      "type": "image-banner-type-2",
+      "settings": {
+        "section_style": "style-3",
+        "background_svg": "type-4",
+        "color_background": "",
+        "text_tag_name": "h1",
+        "text_heading": "If there’s anything that unites people it’s a saucy bowl of spaghetti",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "button_text": "Our new menu",
+        "button_style": "primary",
+        "button_size": "lg",
+        "image_effect": "rotate",
+        "color_scheme": "background-2",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "collection_list_type_2_Cdm3Xy": {
+      "type": "collection-list-type-2",
+      "settings": {
+        "subheading": "Shop collection",
+        "collection_list": ["primavera", "pappardelle", "ravioli-spinaci", "alla-carbonara-1", "insalara", "piedmont"],
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 280,
+        "padding_bottom": 155,
+        "padding_top_mobile": 280,
+        "padding_bottom_mobile": 57
+      }
+    },
+    "featured_collection_type_3_LGkwYH": {
+      "type": "featured-collection-type-3",
+      "blocks": {
+        "left_image_hotspot_UHPLzR": {
+          "type": "left-image-hotspot",
+          "settings": {
+            "top": 70,
+            "left": 50,
+            "top_mb": 70,
+            "left_mb": 50,
+            "hotspot_product": "cavatapi"
+          }
+        },
+        "right_image_hotspot_R7hRmy": {
+          "type": "right-image-hotspot",
+          "settings": {
+            "top": 80,
+            "left": 30,
+            "top_mb": 80,
+            "left_mb": 30,
+            "hotspot_product": "cheese-meat"
+          }
+        }
+      },
+      "block_order": ["left_image_hotspot_UHPLzR", "right_image_hotspot_R7hRmy"],
+      "settings": {
+        "text_tag_name": "h2",
+        "text_heading": "Featured Product",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "card_color_scheme": "",
+        "color_trigger": "#ffb115",
+        "aspect_ratio_desktop": "auto",
+        "aspect_ratio_mobile_left": "auto",
+        "aspect_ratio_mobile_right": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 67,
+        "padding_bottom": 105,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 41
+      }
+    },
+    "product_grid_type_6_6cKeHg": {
+      "type": "product-grid-type-6",
+      "blocks": {
+        "item_WVqMfU": {
+          "type": "item",
+          "settings": {
+            "product": "vermicelli",
+            "product_card_show_tag": true,
+            "tag_text_1": "Vegan option available",
+            "tag_text_2": "Non-vegan"
+          }
+        },
+        "item_byEwUF": {
+          "type": "item",
+          "settings": {
+            "product": "meat-balls-fettuccine",
+            "product_card_show_tag": true,
+            "tag_text_1": "Vegan option available",
+            "tag_text_2": "Non-vegan"
+          }
+        },
+        "item_rmLfCA": {
+          "type": "item",
+          "settings": {
+            "product": "meatball",
+            "product_card_show_tag": true,
+            "tag_text_1": "Vegan option available",
+            "tag_text_2": "Non-vegan"
+          }
+        }
+      },
+      "block_order": ["item_WVqMfU", "item_byEwUF", "item_rmLfCA"],
+      "settings": {
+        "is_rotate": "true",
+        "image_order": "0",
+        "text_tag_name": "h2",
+        "text_heading": "Fresh Pasta",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "card_color_scheme": "",
+        "show_action": true,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 57,
+        "padding_bottom_mobile": 54
+      }
+    },
+    "image_with_text_type_2_EtNB37": {
+      "type": "image-with-text-type-2",
+      "settings": {
+        "subheading": "Subheading",
+        "heading": "<p>Grown into a collection of restaurants. We’re now talking 14 locations, each with its own distinctive <strong>atmosphere, muse,</strong> and experience.</p>",
+        "button_text": "Explore us",
+        "button_style": "primary",
+        "button_size": "lg",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 78,
+        "padding_bottom": 78,
+        "padding_top_mobile": 37,
+        "padding_bottom_mobile": 48
+      }
+    },
+    "blog_post_d9A83V": {
+      "type": "blog-post",
+      "settings": {
+        "blog": "news",
+        "text_tag_name": "h4",
+        "text_heading": "Our journals",
+        "text_duration": 1000,
+        "text_effect": "split",
+        "button_text": "All journals",
+        "article_card_style": "boxed",
+        "article_card_show_image": true,
+        "article_card_show_date": true,
+        "article_card_show_author": true,
+        "article_card_show_excerpt": true,
+        "article_card_show_tags": true,
+        "article_card_media_aspect_ratio": "1.3",
+        "article_color_scheme": "inverse",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 80,
+        "padding_bottom": 130,
+        "padding_top_mobile": 51,
+        "padding_bottom_mobile": 76
+      }
+    }
+  },
+  "order": [
+    "image_banner_type_2_6nyrcn",
+    "collection_list_type_2_Cdm3Xy",
+    "featured_collection_type_3_LGkwYH",
+    "product_grid_type_6_6cKeHg",
+    "image_with_text_type_2_EtNB37",
+    "blog_post_d9A83V"
+  ]
+}

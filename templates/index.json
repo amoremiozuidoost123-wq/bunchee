@@ -1,0 +1,506 @@
+
+{
+  "sections": {
+    "featured_offer_ziLgRg": {
+      "type": "featured-offer",
+      "custom_css": [
+        "p {line-height: 0.8;}"
+      ],
+      "name": "Featured offer",
+      "settings": {
+        "show_svg": true,
+        "svg_color": "#ffffff",
+        "justify_content": "flex-start",
+        "align_items": "center",
+        "spacing_padding_top": 20,
+        "spacing_padding_top_mb": 0,
+        "heading": "<p>GREAT TASTE,</p><p>SERVED IN</p><p>MINUTES.</p>",
+        "top": 15,
+        "left": 40,
+        "top_mb": 60,
+        "left_mb": 0,
+        "button_text": "OUR NEW MENU",
+        "button_style": "primary",
+        "button_size": "md",
+        "color_scheme": "background-2",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "image_banner_type_10_gKYTRM": {
+      "type": "image-banner-type-10",
+      "disabled": true,
+      "settings": {
+        "text_1": "TASTE THE CRUNCH!",
+        "text_2": "LOVE THE MUNCH!",
+        "description": "<p>Australian milled ﬂours and other speciality grains, farm fresh free-range eggs and seasonal produce all pasta, each piece unique. Our extensive assortment of sughetti and take-home meals are all prepared.</p>",
+        "button_text": "OUR NEW MENU",
+        "button_style": "primary",
+        "button_size": "lg",
+        "color_scheme": "inverse-2",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "collection_list_type_2_4G8b4A": {
+      "type": "collection-list-type-2",
+      "settings": {
+        "subheading": "Shop collection",
+        "collection_list": [
+          "burritoblast",
+          "chickenchow",
+          "frieddough",
+          "maccheesy",
+          "tacotornado",
+          "wingwave"
+        ],
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 155,
+        "padding_bottom": 155,
+        "padding_top_mobile": 55,
+        "padding_bottom_mobile": 55
+      }
+    },
+    "image_banner_type_8_h89Qi9": {
+      "type": "image-banner-type-8",
+      "blocks": {
+        "item_xQpRAC": {
+          "type": "item",
+          "settings": {
+            "text": "CRUNCHY",
+            "link": ""
+          }
+        },
+        "item_LR47CX": {
+          "type": "item",
+          "settings": {
+            "text": "KRISPY",
+            "link": ""
+          }
+        },
+        "item_UMmgqJ": {
+          "type": "item",
+          "settings": {
+            "text": "DELICIOUS",
+            "link": ""
+          }
+        },
+        "item_jjKKNA": {
+          "type": "item",
+          "settings": {
+            "text": "MUSTARD",
+            "link": ""
+          }
+        },
+        "item_j4FGje": {
+          "type": "item",
+          "settings": {
+            "text": "BURGER",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_xQpRAC",
+        "item_LR47CX",
+        "item_UMmgqJ",
+        "item_jjKKNA",
+        "item_j4FGje"
+      ],
+      "settings": {
+        "color_scheme": "inverse-2",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "featured_collection_type_1_RbVAUw": {
+      "type": "featured-collection-type-1",
+      "settings": {
+        "section_style": "style-1",
+        "autoplay": false,
+        "text_tag_name": "h3",
+        "text_heading": "TASTY FOOD",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "product_card_show_image": true,
+        "product_card_show_secondary_image": true,
+        "product_card_show_vendor": false,
+        "product_card_show_description": false,
+        "product_card_show_price": true,
+        "product_card_show_badge": false,
+        "product_card_aspect_ratio": "auto",
+        "card_color_scheme": "",
+        "carousel_pag_disabled": true,
+        "carousel_pag_mobile_disabled": false,
+        "carousel_pag_align": "center",
+        "subheading": "Featured Product",
+        "product_list": [
+          "cheesy-chicken-salad-copy",
+          "cheesy-burger",
+          "cheesy-chicken-salad",
+          "cheetos-hot-dog",
+          "double-cheese-burger",
+          "the-alpine-melt-burger"
+        ],
+        "collection": "",
+        "limit": 12,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 88,
+        "padding_bottom_mobile": 88
+      }
+    },
+    "collapsible_content_type_3_FT36re": {
+      "type": "collapsible-content-type-3",
+      "blocks": {
+        "address_type_1_PEyPGY": {
+          "type": "address-type-1",
+          "settings": {
+            "address": "<p>High Street 123, Phoenix <strong>85010, Arizona, USA</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_2_mpb4hK": {
+          "type": "address-type-2",
+          "settings": {
+            "address": "<p>3891 Ranchview Dr. Richardson, <strong>California 62639</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_1_AwNAGM": {
+          "type": "address-type-1",
+          "settings": {
+            "address": "<p>4517 Washington Ave. Manchester, <strong>Kentucky 39495</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_2_ThEbbx": {
+          "type": "address-type-2",
+          "settings": {
+            "address": "<p>4140 Parker Rd. Allentown, <strong>New Mexico 31134</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        },
+        "address_type_1_Barn4r": {
+          "type": "address-type-1",
+          "settings": {
+            "address": "<p>4517 Washington Ave. Manchester, <strong>Kentucky 39495</strong></p>",
+            "phone_number": "(316) 555-0116",
+            "time": "Opening time: 7h - 23h"
+          }
+        }
+      },
+      "block_order": [
+        "address_type_1_PEyPGY",
+        "address_type_2_mpb4hK",
+        "address_type_1_AwNAGM",
+        "address_type_2_ThEbbx",
+        "address_type_1_Barn4r"
+      ],
+      "settings": {
+        "text_tag_name": "h3",
+        "text_heading": "OUR RESTAURANTS",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Pastalina is a culinary adventure that spans across our network of restaurants. With a commitment to authenticity, we blend global flavors and local ingredients to create memorable dining experiences.</p>",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 129,
+        "padding_bottom": 0,
+        "padding_top_mobile": 52,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "image_with_text_overlay_9yryVP": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "text_tag_name": "h4",
+        "text_heading": "CHEF MARVIN",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "paragraph_1": "<p>We believe that taste tells a story. Our passion for pâté and rillettes goes beyond just the ingredients.</p>",
+        "paragraph_2": "<p>Our authentic recipes, composed with care, promise not only delicious flavors, but also the art of enjoyment. With every bite.</p>",
+        "align": "flex-start",
+        "button_text": "Explore",
+        "button_style": "primary",
+        "button_size": "md",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "featured_product_info_FmANnn": {
+      "type": "featured-product-info",
+      "blocks": {
+        "title_9yWzww": {
+          "type": "title",
+          "settings": {}
+        },
+        "description_hR8bQT": {
+          "type": "description",
+          "settings": {}
+        },
+        "variants_GFBybc": {
+          "type": "variants",
+          "settings": {
+            "variant_style": "boxed",
+            "variant_color_style": "color"
+          }
+        },
+        "quantity_picker_kMtWHr": {
+          "type": "quantity_picker",
+          "settings": {}
+        },
+        "buy_button_VaHaxk": {
+          "type": "buy_button",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "title_9yWzww",
+        "description_hR8bQT",
+        "variants_GFBybc",
+        "quantity_picker_kMtWHr",
+        "buy_button_VaHaxk"
+      ],
+      "settings": {
+        "text_tag_name": "h4",
+        "text_heading": "ENJOY YOUR MEAL TODAY!",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "product": "classic-beef-burger",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 128,
+        "padding_bottom": 176,
+        "padding_top_mobile": 59,
+        "padding_bottom_mobile": 59
+      }
+    },
+    "testimonial_type_9_VtnYL9": {
+      "type": "testimonial-type-9",
+      "blocks": {
+        "testimonial_slide_xn7TPc": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "Linda",
+            "author_job": "Worker",
+            "slide_heading": "<p>“YOU DEFINITELY BE SEEING MORE OF ME EATING AT YOUR PLACE.”</p>"
+          }
+        },
+        "testimonial_slide_fexgHk": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "Paul",
+            "author_job": "Teacher",
+            "slide_heading": "<p>\"ABSOLUTELY THE MOST FLAVORFUL BURGERS IN ARIZONA.”</p>"
+          }
+        },
+        "testimonial_slide_rMTz9k": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "Sarah",
+            "author_job": "Skater",
+            "slide_heading": "<p>\"HOW ON EARTH DIDN'T I DISCOVER YOUR CHICKEN BEFORE?!\"</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_slide_xn7TPc",
+        "testimonial_slide_fexgHk",
+        "testimonial_slide_rMTz9k"
+      ],
+      "settings": {
+        "subheading": "Customers say about us",
+        "autoplay": false,
+        "aspect_ratio": "auto",
+        "color_scheme": "inverse",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 146,
+        "padding_bottom": 124,
+        "padding_top_mobile": 59,
+        "padding_bottom_mobile": 79
+      }
+    },
+    "featured_collection_type_6_Vbhrky": {
+      "type": "featured-collection-type-6",
+      "blocks": {
+        "item_HFLYYd": {
+          "type": "item",
+          "settings": {
+            "heading": "HAPPY COMBO",
+            "description": "<p>A mouthwatering burger paired with crispy fries and a refreshing drink, all at an unbeatable price—perfect for kicking off your evening!</p>",
+            "tag": "40% OFF",
+            "button_text": "ORDER NOW"
+          }
+        },
+        "item_3CWtFB": {
+          "type": "item",
+          "settings": {
+            "heading": "SUPER BURGER",
+            "description": "<p>A towering masterpiece of premium beef, melted cheese, crispy bacon, fresh veggies, and our signature sauce, all nestled in a toasted bun</p>",
+            "tag": "40% OFF",
+            "button_text": "ORDER NOW"
+          }
+        }
+      },
+      "block_order": [
+        "item_HFLYYd",
+        "item_3CWtFB"
+      ],
+      "settings": {
+        "subheading": "Today’s best deal",
+        "button_style": "primary",
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 44,
+        "padding_bottom_mobile": 44
+      }
+    },
+    "service_Qmiw8j": {
+      "type": "service",
+      "blocks": {
+        "content_DrafPy": {
+          "type": "content",
+          "settings": {
+            "heading": "SECURED PAYMENT",
+            "paragraph": "<p>Pay easily and safely with Debit Card, Credit Card, or PayPal. Your information is protected every step of the way.</p>"
+          }
+        },
+        "content_3MXTWT": {
+          "type": "content",
+          "settings": {
+            "heading": "FREE SHIPPING OVER $50",
+            "paragraph": "<p>No extra charges – enjoy your favorite pasta delivered to your door for free when you spend $50 or more.</p>"
+          }
+        },
+        "content_pNMzAH": {
+          "type": "content",
+          "settings": {
+            "heading": "GOLDEN SERVICE",
+            "paragraph": "<p>From order to delivery, we provide top-notch customer service to ensure your experience is as perfect as our hamburger.</p>"
+          }
+        },
+        "content_CmRVDN": {
+          "type": "content",
+          "settings": {
+            "heading": "GREAT TASTE",
+            "paragraph": "<p>Big flavors, crispy bites, and juicy burgers made fresh every time. Every bite is pure satisfaction.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_DrafPy",
+        "content_3MXTWT",
+        "content_pNMzAH",
+        "content_CmRVDN"
+      ],
+      "settings": {
+        "show_divider": false,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "gallery_mzQNwg": {
+      "type": "gallery",
+      "blocks": {
+        "image_PUqUwF": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "image_mp7Pan": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "image_LfCnAg": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "image_x4A9Q3": {
+          "type": "image",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "image_PUqUwF",
+        "image_mp7Pan",
+        "image_LfCnAg",
+        "image_x4A9Q3"
+      ],
+      "settings": {
+        "section_style": "style-1",
+        "marquee_speed": 1,
+        "stop_marquee": false,
+        "marquee_right_to_left": false,
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "featured_offer_ziLgRg",
+    "image_banner_type_10_gKYTRM",
+    "collection_list_type_2_4G8b4A",
+    "image_banner_type_8_h89Qi9",
+    "featured_collection_type_1_RbVAUw",
+    "collapsible_content_type_3_FT36re",
+    "image_with_text_overlay_9yryVP",
+    "featured_product_info_FmANnn",
+    "testimonial_type_9_VtnYL9",
+    "featured_collection_type_6_Vbhrky",
+    "service_Qmiw8j",
+    "gallery_mzQNwg"
+  ]
+}

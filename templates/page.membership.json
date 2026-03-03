@@ -1,0 +1,219 @@
+
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 50,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "main_page_title_type_4_zPjkp8": {
+      "type": "main-page-title-type-4",
+      "name": "Page heading",
+      "settings": {
+        "heading": "Membership",
+        "description": "<p>Become a valued member and enjoy amazing perks every time you dine with us.  Earn points, unlock rewards, and indulge in the best pasta experience!</p>",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "get_started_xeWH8J": {
+      "type": "get-started",
+      "blocks": {
+        "text_XKaGUX": {
+          "type": "text",
+          "settings": {
+            "number": 1,
+            "heading": "Sign Up for Free",
+            "description": "<p>Become a member by registering online or at our restaurant. Choose from three unique membership tiers to match your pasta passion.</p>"
+          }
+        },
+        "image_pfwUxP": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "text_JkYqDT": {
+          "type": "text",
+          "settings": {
+            "number": 2,
+            "heading": "Earn Points",
+            "description": "<p>For every <strong>$1 spent</strong>, you earn <strong>1 point</strong>. The more you dine, the more rewards you unlock!</p>"
+          }
+        },
+        "image_BTxWAT": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "text_7iBxz4": {
+          "type": "text",
+          "settings": {
+            "number": 3,
+            "heading": "Redeem Your Rewards",
+            "description": "<p>Use your points to get discounts, free dishes, and exclusive experiences.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_XKaGUX",
+        "image_pfwUxP",
+        "text_JkYqDT",
+        "image_BTxWAT",
+        "text_7iBxz4"
+      ],
+      "name": "Get started",
+      "settings": {
+        "text_tag_name": "h3",
+        "text_heading": "How It Works?",
+        "text_duration": 1000,
+        "text_effect": "reveal",
+        "description": "<p>Joining is easy! Follow these three simple steps:</p>",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 128,
+        "padding_bottom": 64,
+        "padding_top_mobile": 70,
+        "padding_bottom_mobile": 70
+      }
+    },
+    "benefit_wB4wqL": {
+      "type": "benefit",
+      "blocks": {
+        "tier_3CzDRV": {
+          "type": "tier",
+          "settings": {
+            "heading": "Bronze",
+            "subheading": "Free to join",
+            "content": "<ul><li>5% discount on all pasta dishes every Sunday</li><li>Monthly newsletter with pasta recipes</li><li>Early access to seasonal promotions</li></ul>"
+          }
+        },
+        "tier_cGzcmN": {
+          "type": "tier",
+          "settings": {
+            "heading": "Silver",
+            "subheading": "500 Points",
+            "content": "<ul><li>10% discount on all pasta dishes</li><li>Free appetizer with every order above $30</li><li>Exclusive invitation to pasta-making workshops</li><li>Monthly newsletter with premium recipes</li></ul>"
+          }
+        },
+        "tier_8CanA6": {
+          "type": "tier",
+          "settings": {
+            "heading": "Golden",
+            "subheading": "1500 Points",
+            "content": "<ul><li>15% discount on all pasta dishes</li><li>Free dessert with every order above $30</li><li>VIP reservation priority</li><li>Personalized pasta recommendations</li><li>Complimentary bottle of wine on special occasions</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "tier_3CzDRV",
+        "tier_cGzcmN",
+        "tier_8CanA6"
+      ],
+      "name": "Benefit",
+      "settings": {
+        "text_tag_name": "h3",
+        "text_heading": "Membership\nTiers & Benefits",
+        "text_duration": 1000,
+        "text_effect": "reveal",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
+      }
+    },
+    "exclusive_benefit_PRehn8": {
+      "type": "exclusive-benefit",
+      "blocks": {
+        "benefit_tjEEPh": {
+          "type": "benefit",
+          "settings": {
+            "heading": "Birthday Surprises",
+            "description": "<p>Receive a complimentary dessert or a bottle of wine on your special day.</p>"
+          }
+        },
+        "benefit_dKjMUW": {
+          "type": "benefit",
+          "settings": {
+            "heading": "Early Access to New Dishes",
+            "description": "<p>Be the first to try our seasonal and limited-time pasta creations.</p>"
+          }
+        },
+        "benefit_3iYpxG": {
+          "type": "benefit",
+          "settings": {
+            "heading": "Personalized Recommendations",
+            "description": "<p>Let our chefs surprise you with dishes based on your taste preferences.</p>"
+          }
+        },
+        "benefit_GaWwRN": {
+          "type": "benefit",
+          "settings": {
+            "heading": "Members-Only Events",
+            "description": "<p>Get invites to pasta-making classes, wine tastings, and chef’s table experiences.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_tjEEPh",
+        "benefit_dKjMUW",
+        "benefit_3iYpxG",
+        "benefit_GaWwRN"
+      ],
+      "name": "Exclusive benefit",
+      "settings": {
+        "heading": "<p>Members-Only Perks</p>",
+        "description": "<p>Being a member isn’t just about discounts – it’s about enjoying exclusive VIP benefits:</p>",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 64,
+        "padding_bottom": 96,
+        "padding_top_mobile": 70,
+        "padding_bottom_mobile": 70
+      }
+    },
+    "exclusive_sign_up_igmgkL": {
+      "type": "exclusive-sign-up",
+      "name": "Exclusive sign up",
+      "settings": {
+        "heading": "<p>Join Now & Start Earning Rewards!</p>",
+        "description": "<p>Sign up today and enjoy exclusive perks, VIP treatment, and the best pasta experience! Earn <strong>25 points</strong> just for signing up.</p>",
+        "button_text": "Sign up now",
+        "button_style": "primary",
+        "button_size": "md",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_page_title_type_4_zPjkp8",
+    "get_started_xeWH8J",
+    "benefit_wB4wqL",
+    "exclusive_benefit_PRehn8",
+    "exclusive_sign_up_igmgkL"
+  ]
+}

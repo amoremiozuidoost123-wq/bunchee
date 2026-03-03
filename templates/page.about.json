@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "image_with_text_type_5_RdmkpY": {
+      "type": "image-with-text-type-5",
+      "settings": {
+        "text_tag_name": "h2",
+        "text_heading": "The story of us and built on family love and cooperation. Our restaurant is a real gourmet’s food paradise",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Australian milled ﬂours and other speciality grains, farm fresh free-range eggs and seasonal produce all pasta, each piece unique. Our extensive assortment of sughetti (pasta sauces) and take-home meals are all prepared in house and ready to enjoy around.In our pantry you will ﬁnd, specialty products such as house-rendered butters, Virgin olive oil, boutique both classic and low intervention wines from Italy, alongside local vineyards producing Italian varietal.</p>",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 213,
+        "padding_bottom": 150,
+        "padding_top_mobile": 154,
+        "padding_bottom_mobile": 85
+      }
+    },
+    "image_gallery_with_text_KcE739": {
+      "type": "image-gallery-with-text",
+      "blocks": {
+        "image_item_dkR6Fj": {
+          "type": "image-item",
+          "settings": {
+          }
+        },
+        "image_item_VYkjrN": {
+          "type": "image-item",
+          "settings": {
+          }
+        },
+        "image_item_3gbbB7": {
+          "type": "image-item",
+          "settings": {
+          }
+        },
+        "image_item_PU34Fp": {
+          "type": "image-item",
+          "settings": {
+          }
+        }
+      },
+      "block_order": ["image_item_dkR6Fj", "image_item_VYkjrN", "image_item_3gbbB7", "image_item_PU34Fp"],
+      "settings": {
+        "text_tag_name": "h4",
+        "text_heading": "We have developed and nurtured relationships",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Plenty of vino, our selection includes both classic and low intervention wines from Italy, alongside local vineyards producing Italian varietals. To cap oﬀ your meal, we have everything you need to mix up your own aperitivi.</p>",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "marquee_speed": 1,
+        "marquee_right_to_left": false,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 125,
+        "padding_bottom": 161,
+        "padding_top_mobile": 78,
+        "padding_bottom_mobile": 63
+      }
+    }
+  },
+  "order": ["image_with_text_type_5_RdmkpY", "image_gallery_with_text_KcE739"]
+}

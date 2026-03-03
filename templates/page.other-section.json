@@ -1,0 +1,247 @@
+{
+  "sections": {
+    "blog_post_gQThrJ": {
+      "type": "blog-post",
+      "settings": {
+        "blog": "news",
+        "text_tag_name": "h4",
+        "text_heading": "Our journals",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "button_text": "All journals",
+        "article_card_style": "standard",
+        "article_card_show_image": true,
+        "article_card_show_date": true,
+        "article_card_show_author": true,
+        "article_card_show_excerpt": true,
+        "article_card_show_tags": true,
+        "article_card_media_aspect_ratio": "1.3",
+        "article_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "carousel_text_type_1_BNkTka": {
+      "type": "carousel-text-type-1",
+      "blocks": {
+        "small_text_JgnPC9": {
+          "type": "small-text",
+          "settings": {
+            "item_text": "Promotion text",
+            "item_link": ""
+          }
+        }
+      },
+      "block_order": ["small_text_JgnPC9"],
+      "settings": {
+        "section_style": "style-1",
+        "item_space": 3,
+        "marquee_speed": 1,
+        "stop_marquee": false,
+        "marquee_right_to_left": false,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "carousel_text_type_1_ie6dJB": {
+      "type": "carousel-text-type-1",
+      "blocks": {
+        "large_text_pWF89J": {
+          "type": "large-text",
+          "settings": {
+            "image_position": 10,
+            "item_link": "",
+            "item_text": "Promotion text"
+          }
+        },
+        "large_text_ejcGkt": {
+          "type": "large-text",
+          "settings": {
+            "image_position": 10,
+            "item_link": "",
+            "item_text": "Promotion text"
+          }
+        }
+      },
+      "block_order": ["large_text_pWF89J", "large_text_ejcGkt"],
+      "settings": {
+        "section_style": "style-2",
+        "item_space": 3,
+        "marquee_speed": 1,
+        "stop_marquee": false,
+        "marquee_right_to_left": false,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "image_with_text_overlay_XwNE3D": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "text_tag_name": "h4",
+        "text_heading": "Chef Marvin",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "paragraph_1": "<p>We believe that taste tells a story. Our passion for pâté and rillettes goes beyond just the ingredients. We create culinary experiences that stimulate the senses and evoke memories.</p>",
+        "paragraph_2": "<p>Our authentic recipes, composed with care, promise not only delicious flavors, but also the art of enjoyment. With every bite, you embrace a moment of delight, where subtle flavors and textures merge.</p>",
+        "align": "flex-start",
+        "button_text": "Explore",
+        "button_style": "primary",
+        "button_size": "lg",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 100
+      }
+    },
+    "image_gallery_with_text_EncUCk": {
+      "type": "image-gallery-with-text",
+      "blocks": {
+        "image_item_xngdkz": {
+          "type": "image-item",
+          "settings": {
+          }
+        },
+        "image_item_FEtCpK": {
+          "type": "image-item",
+          "settings": {
+          }
+        },
+        "image_item_HagTkm": {
+          "type": "image-item",
+          "settings": {
+          }
+        },
+        "image_item_y3PWjA": {
+          "type": "image-item",
+          "settings": {
+          }
+        }
+      },
+      "block_order": ["image_item_xngdkz", "image_item_FEtCpK", "image_item_HagTkm", "image_item_y3PWjA"],
+      "settings": {
+        "text_tag_name": "h4",
+        "text_heading": "We have developed and nurtured relationships",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Plenty of vino, our selection includes both classic and low intervention wines from Italy, alongside local vineyards producing Italian varietals. To cap oﬀ your meal, we have everything you need to mix up your own aperitivi.</p>",
+        "aspect_ratio": "auto",
+        "aspect_ratio_2": "auto",
+        "marquee_speed": 1,
+        "marquee_right_to_left": false,
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "main_page_title_type_1_qe49F4": {
+      "type": "main-page-title-type-1",
+      "settings": {
+        "width": 860,
+        "show_breadcrumb": false,
+        "heading": "Page title",
+        "description": "<p>Place your page description here</p>",
+        "align": "left",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "main_page_title_type_2_eNeiam": {
+      "type": "main-page-title-type-2",
+      "settings": {
+        "show_image": true,
+        "aspect_ratio_desktop": "auto",
+        "aspect_ratio_mobile": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "main_page_title_type_3_TmMaQW": {
+      "type": "main-page-title-type-3",
+      "settings": {
+        "heading": "Our menu",
+        "description": "<p>Over the years, we have worked ardently to develop our fresh pasta recipes and feel very proud to share them with you. Our products come to you daily with the promise of quality every time.</p>",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "video_6fnpF8": {
+      "type": "video",
+      "settings": {
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "newsletter_mkRzAr": {
+      "type": "newsletter",
+      "settings": {
+        "text_tag_name": "h3",
+        "text_heading": "Newsletter",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "description": "<p>Be the first to know mew collections and exclusive offers</p>",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "blog_post_gQThrJ",
+    "carousel_text_type_1_BNkTka",
+    "carousel_text_type_1_ie6dJB",
+    "image_with_text_overlay_XwNE3D",
+    "image_gallery_with_text_EncUCk",
+    "main_page_title_type_1_qe49F4",
+    "main_page_title_type_2_eNeiam",
+    "main_page_title_type_3_TmMaQW",
+    "video_6fnpF8",
+    "newsletter_mkRzAr"
+  ]
+}

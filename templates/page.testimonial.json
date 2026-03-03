@@ -1,0 +1,161 @@
+{
+  "sections": {
+    "testimonial_type_2_dzxGra": {
+      "type": "testimonial-type-2",
+      "blocks": {
+        "testimonial_slide_KqqkdL": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "Ronald Richards",
+            "author_job": "Developer",
+            "slide_heading": "The food, service, ambience and more was all superb!",
+            "description": "<p>I have to say it’s the best meal I have had in quite some time. You will definitely be seeing more of me eating at your establishment. What an outstanding dinner you prepared, it was honor to me! You will definitely be seeing more of me eating at your establishment. </p>"
+          }
+        },
+        "testimonial_slide_iPQJ8i": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "Ronald Richards",
+            "author_job": "Developer",
+            "slide_heading": "The food, service, ambience and more was all superb!",
+            "description": "<p>I have to say it’s the best meal I have had in quite some time. You will definitely be seeing more of me eating at your establishment. What an outstanding dinner you prepared, it was honor to me! You will definitely be seeing more of me eating at your establishment. </p>"
+          }
+        }
+      },
+      "block_order": ["testimonial_slide_KqqkdL", "testimonial_slide_iPQJ8i"],
+      "settings": {
+        "subheading": "Customers review",
+        "autoplay": false,
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 150,
+        "padding_bottom": 50,
+        "padding_top_mobile": 150,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "testimonial_type_4_TiXJAx": {
+      "type": "testimonial-type-4",
+      "blocks": {
+        "testimonial_slide_byBP6y": {
+          "type": "testimonial-slide",
+          "settings": {
+            "product": "bacon-hot-dog",
+            "review": "<p>“Thank you for dinner last night. It was amazing!! I have to say it’s the best meal I have had in quite some time. You all will definitely be seeing more of me eating at your establishment.</p>",
+            "customer_name": "Ronald Richards",
+            "verified_user": true
+          }
+        },
+        "testimonial_slide_dNiwPe": {
+          "type": "testimonial-slide",
+          "settings": {
+            "product": "cheesy-chicken-salad-copy",
+            "review": "<p>“Thank you for dinner last night. It was amazing!! I have to say it’s the best meal I have had in quite some time. You all will definitely be seeing more of me eating at your establishment.</p>",
+            "customer_name": "Michael H.",
+            "verified_user": true
+          }
+        },
+        "testimonial_slide_fidcfq": {
+          "type": "testimonial-slide",
+          "settings": {
+            "product": "cheesy-chicken-salad",
+            "review": "<p>“Thank you for dinner last night. It was amazing!! I have to say it’s the best meal I have had in quite some time. You all will definitely be seeing more of me eating at your establishment.</p>",
+            "customer_name": "Michael H.",
+            "verified_user": true
+          }
+        },
+        "testimonial_slide_B7PV7b": {
+          "type": "testimonial-slide",
+          "settings": {
+            "product": "cheetos-hot-dog",
+            "review": "<p>“Thank you for dinner last night. It was amazing!! I have to say it’s the best meal I have had in quite some time. You all will definitely be seeing more of me eating at your establishment.</p>",
+            "customer_name": "Emily W.",
+            "verified_user": true
+          }
+        },
+        "testimonial_slide_JceJz9": {
+          "type": "testimonial-slide",
+          "settings": {
+            "product": "chicken-drum",
+            "review": "<p>“Thank you for dinner last night. It was amazing!! I have to say it’s the best meal I have had in quite some time. You all will definitely be seeing more of me eating at your establishment.</p>",
+            "customer_name": "Emily W.",
+            "verified_user": true
+          }
+        },
+        "testimonial_slide_8HcbKJ": {
+          "type": "testimonial-slide",
+          "settings": {
+            "product": "cowboy-burger",
+            "review": "<p>“Thank you for dinner last night. It was amazing!! I have to say it’s the best meal I have had in quite some time. You all will definitely be seeing more of me eating at your establishment.</p>",
+            "customer_name": "Samantha B.",
+            "verified_user": true
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_slide_byBP6y",
+        "testimonial_slide_dNiwPe",
+        "testimonial_slide_fidcfq",
+        "testimonial_slide_B7PV7b",
+        "testimonial_slide_JceJz9",
+        "testimonial_slide_8HcbKJ"
+      ],
+      "settings": {
+        "text_tag_name": "h3",
+        "text_heading": "Customers feedback",
+        "text_duration": 1000,
+        "text_effect": "none",
+        "autoplay": false,
+        "overflow": false,
+        "slide_per_view": 3,
+        "product_card_show_image": true,
+        "product_card_show_price": true,
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "testimonial_type_9_4KKpGa": {
+      "type": "testimonial-type-9",
+      "blocks": {
+        "testimonial_slide_M6kHEi": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "James",
+            "author_job": "Worker",
+            "slide_heading": "<p>“YOU DEFINITELY BE SEEING MORE OF ME EATING AT YOUR ESTABLISHMENT.”</p>"
+          }
+        },
+        "testimonial_slide_FAFtUh": {
+          "type": "testimonial-slide",
+          "settings": {
+            "author_name": "Linda",
+            "author_job": "Teacher",
+            "slide_heading": "<p>ABSOLUTELY THE MOST FLAVORFUL BURGERS IN ARIZONA.”</p>"
+          }
+        }
+      },
+      "block_order": ["testimonial_slide_M6kHEi", "testimonial_slide_FAFtUh"],
+      "settings": {
+        "subheading": "Customers say about us",
+        "autoplay": false,
+        "aspect_ratio": "auto",
+        "color_scheme": "",
+        "background_color": "",
+        "background_gradient": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    }
+  },
+  "order": ["testimonial_type_2_dzxGra", "testimonial_type_4_TiXJAx", "testimonial_type_9_4KKpGa"]
+}
