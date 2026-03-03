@@ -1,0 +1,30 @@
+{% comment %}
+  Renders a page collection heading.
+
+  Accepts:
+  - title_tag: {String} HTML tag to use for the title (optional)
+
+  Usage:
+  {% render 'page-colleciton-heading' %}
+{% endcomment %}
+
+{% assign default = 'general.product_all' | t %}
+<div class='xo-page-collection-heading'>
+  <div class='xo-page-collection-heading__container'>
+    <xo-animate xo-cascade class='xo-page-collection-heading__title'>
+      {% if collection.title == 'Products' %}
+        <h2>{{ default }}</h2>
+      {% else %}
+        <h2>{{ collection.title }}</h2>
+      {% endif %}
+    </xo-animate>
+    <xo-animate xo-cascade class='xo-page-collection-heading__description'>{{ collection.description }}</xo-animate>
+  </div>
+  <div class='xo-page-collection-heading__image'>
+    {% if collection.featured_image != blank and turn_on_image == true %}
+      {% render 'image', image: collection.featured_image, lazyload: false, aspect_ratio: '21/9' %}
+    {% elsif turn_on_image == true %}
+      {% render 'image', lazyload: false, aspect_ratio: '21/9' %}
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,93 @@
+{% comment %}
+  Renders a product card type 2
+
+  Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - media_aspect_ratio:  {String} The setting changes the aspect ratio of the article image, if shown
+  - show_image: {Boolean} The setting either show the article image or not. If it's not included it will show the image by default
+  - show_price: {Boolean} Show the product price. Default: true (optional)
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-1' (optional)
+  - color_scheme: {String} The color scheme to use (optional)
+  - animate_enabled: {Boolean} Enable animation. Default: true (optional)
+
+  Usage:
+  {% render 'product-card-type-2',
+    product: product,
+    show_image: product_card_show_image,
+    show_price: product_card_show_price,
+    media_aspect_ratio: product_card_aspect_ratio,
+    color_scheme: card_color_scheme,
+    placeholder_image: placeholder_image,
+    animate_enabled: true
+  %}
+{% endcomment %}
+
+{% liquid
+  if animate_enabled == null
+    assign animate_enabled = true
+  endif
+  assign tag_name = 'div'
+  if animate_enabled
+    assign tag_name = 'xo-animate'
+  endif
+%}
+
+{% if product and product != empty %}
+  <xo-product xo-product-id='{{ product.id }}' xo-section-id='{{ section.id }}' xo-selected-or-first-available-variant-id="{{ product.selected_or_first_available_variant.id }}">
+    {% capture render_header %}
+    <div class="product-card-type-2__header">
+      {% if show_image %}
+          <div>
+            <a href='{{ product.url }}'>
+              {% render 'product-image', product: product, show_secondary_image: show_secondary_image, aspect_ratio: media_aspect_ratio %}
+            </a>
+          </div>
+         <xo-product-liquid-static>
+            <script type="application/json">
+              {
+                {% for variant in product.variants
+                %}
+                  {{ variant.id }}: {
+                    price: `{% render 'price', variant: variant, reverse: false %}`
+                  },
+                {% endfor %}
+              }
+            </script>
+          </xo-product-liquid-static>
+      {% endif %}
+    </div>
+  {% endcapture %}
+
+    {% capture render_information %}
+    <div class='product-card-type-2__information'>
+      <a class='product-card-type-2__title' href='{{ product.url }}'>
+          {{ product.title | escape }}
+      </a>
+      {% if show_price %}
+        <div class='product-card-type-2__price'>
+          <div class='product-card-type-2__price-inner'>
+            {% render 'price', product: product, use_variant: true, reverse: true %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% endcapture %}
+
+    <{{ tag_name }}
+      xo-cascade
+      class='product-card-type-2{% if color_scheme %} color-{{ color_scheme }}{% endif %}'
+    >
+      {{ render_header }}
+      {{ render_information }}
+      {% render 'product-data', product: product %}
+    </{{ tag_name }}>
+  </xo-product>
+{% else %}
+  {% render 'product-card-placeholder-type-2',
+    placeholder_image: placeholder_image,
+    show_image: show_image,
+    show_price: show_price,
+    color_scheme: color_scheme,
+    animate_enabled: animate_enabled
+  %}
+{% endif %}

@@ -1,0 +1,23 @@
+{% if product or product != empty %}
+  <xo-animate xo-cascade>
+    <xo-product class='product-combo' xo-product-id='{{ product.id }}' xo-section-id='{{ section.id }}'>
+      <div class='product-combo__container'>
+        <div class='product-combo__image'>
+          {% render 'product-image', product: product, show_secondary_image: false, aspect_ratio: '1', lazyload: true %}
+        </div>
+        <div class='product-combo__info'>
+          <a href='{{ product.url }}' class='product-combo__title'>{{ product.title }}</a>
+          <div class='product-combo__price'>
+            <div class='product-combo__price-inner'>
+              {% render 'price', product: product, use_variant: false, reverse: true %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% comment %} Product data {% endcomment %}
+      {% render 'product-data', product: product %}
+    </xo-product>
+  </xo-animate>
+{% else %}
+  {% render 'product-combo-placeholder' %}
+{% endif %}

@@ -1,0 +1,65 @@
+{{ 'login-form.css' | asset_url | stylesheet_tag }}
+
+<div class='login' style='--xs: 12'>
+  {% form 'customer_login' %}
+    {% render 'form-error', form: form %}
+    <xo-grid class='login__grid' style='--xs: 1;'>
+      <xo-animate xo-cascade class='login__mail'>
+        {% assign email_label = 'customer.login_page.email' | t %}
+        {% render 'field-input', type: 'text', name: 'customer[email]', value: '', label: email_label, id: 'customer[email]' %}
+        <div class='login__email-icon'>
+          {% render 'icon', name: 'mail', size: '18' %}
+        </div>
+      </xo-animate>
+      <xo-animate xo-cascade class='login__password'>
+        {% assign password_label = 'customer.login_page.password' | t %}
+        {% render 'field-input', type: 'password', name: 'customer[password]', value: '', label: password_label, id: 'password' %}
+        <div class='login__password-icon'>
+          <div class='login__icon-show'>
+            {% render 'icon', name: 'eye', size: '24' %}
+          </div>
+          <div class='login__icon-hide'>
+            {% render 'icon', name: 'eye-hide', size: '24' %}
+          </div>
+        </div>
+      </xo-animate>
+    </xo-grid>
+    {% render 'space', value: '2.4rem' %}
+    <xo-animate xo-cascade class='login__button'>
+      {% assign btn_sign_in_text = 'customer.login_page.sign_in' | t %}
+      {% render 'button', text: btn_sign_in_text, size: 'lg', block: true %}
+    </xo-animate>
+  {% endform %}
+  {% render 'space', value: '2rem' %}
+  <xo-animate xo-cascade>
+    <div class='login__bottom'>
+      <div class='login__bottom-left'>
+        <span>{{ 'customer.login_page.dont_have' | t }}</span>
+        {% assign label = 'customer.login_page.sign_up' | t %}
+        <a class='login__sign-up' href='{{ routes.account_register_url }}'>{{ label }}</a>
+      </div>
+      <xo-modal-trigger xo-name='forgot-your-password' role='button' tabindex='0'>
+        {% assign label = 'customer.login_page.forgot_password' | t %}
+        <div class='login__forgot'>{{ label }}</div>
+      </xo-modal-trigger>
+    </div>
+  </xo-animate>
+</div>
+
+<script>
+  const password = document.getElementById('password');
+  const iconPassword = document.querySelector('.login__password-icon');
+  const iconPasswordShow = document.querySelector('.login__icon-show');
+  const iconPasswordHide = document.querySelector('.login__icon-hide');
+  iconPassword.addEventListener('click', () => {
+    if (password.type === 'password') {
+      password.type = 'text';
+      iconPasswordShow.classList.add('login__icon-show--hidden');
+      iconPasswordHide.classList.add('login__icon-hide--show');
+    } else {
+      password.type = 'password';
+      iconPasswordShow.classList.remove('login__icon-show--hidden');
+      iconPasswordHide.classList.remove('login__icon-hide--show');
+    }
+  });
+</script>

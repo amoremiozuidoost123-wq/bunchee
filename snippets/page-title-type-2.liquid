@@ -1,0 +1,71 @@
+{% comment %}
+  Renders a page title type 2.
+
+  Accepts:
+  - heading: {String} Heading of the page (optional)
+  - heading_tag: {String} HTML tag to use for the heading (optional)
+  - description: {String} Description of the page (optional)
+  - show_image: {Boolean} Whether to show image (optional)
+  - align: {String} Alignment of the page heading (optional)
+
+  Usage:
+  {% render 'page-title-type-2' %}
+{% endcomment %}
+{{ 'page-title-type-2.css' | asset_url | stylesheet_tag }}
+
+<div class='page-title-type-2'>
+  <div class='page-title-type-2__content'>
+    <h1 class='page-title-type-2__heading'>
+      {{ page.title }}
+    </h1>
+    {% if page.content != null %}
+      <div class='page-title-type-2__description'>{{ page.content }}</div>
+    {% endif %}
+  </div>
+  {% if show_image %}
+    <xo-container class='page-title-type-2__image'>
+      <div class='page-title-type-2__image-large'>
+        {% if image_desktop != blank or image_mobile != blank %}
+          {% if image_desktop == blank and image_mobile != blank %}
+            <div class='page-title-type-2__image-desktop'>
+              {% render 'image', image: image_mobile, aspect_ratio: aspect_ratio_desktop %}
+            </div>
+            <div class='page-title-type-2__image-mobile'>
+              {% render 'image', image: image_mobile, aspect_ratio: aspect_ratio_mobile %}
+            </div>
+          {% elsif image_desktop != blank and image_mobile == blank %}
+            <div class='page-title-type-2__image-desktop'>
+              {% render 'image', image: image_desktop, aspect_ratio: aspect_ratio_desktop %}
+            </div>
+            <div class='page-title-type-2__image-mobile'>
+              {% render 'image', image: image_desktop, aspect_ratio: aspect_ratio_mobile %}
+            </div>
+          {% elsif image_desktop != blank and image_mobile != blank %}
+            <div class='page-title-type-2__image-desktop'>
+              {% render 'image', image: image_desktop, aspect_ratio: aspect_ratio_desktop %}
+            </div>
+            <div class='page-title-type-2__image-mobile'>
+              {% render 'image', image: image_mobile, aspect_ratio: aspect_ratio_mobile %}
+            </div>
+          {% endif %}
+        {% else %}
+          <div class='page-title-type-2__image-desktop'>
+            {% render 'image', aspect_ratio: aspect_ratio_desktop %}
+          </div>
+          <div class='page-title-type-2__image-mobile'>
+            {% render 'image', aspect_ratio: aspect_ratio_mobile %}
+          </div>
+        {% endif %}
+      </div>
+      {% if small_image %}
+        <div class='page-title-type-2__image-small'>
+          {% render 'image', image: small_image %}
+        </div>
+      {% endif %}
+    </xo-container>
+  {% endif %}
+
+  {% if show_divider %}
+    <div class="page-title-type-2__divider"></div>
+  {% endif %}
+</div>

@@ -1,0 +1,168 @@
+{% comment %}
+  Renders a product grid card type 4
+
+  Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - media_aspect_ratio:  {String} The setting changes the aspect ratio of the article image, if shown
+  - show_description: {Boolean} Show the description. Default: false (optional)
+  - show_price: {Boolean} Show the product price. Default: true (optional)
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-1' (optional)
+  - color_scheme: {String} The color scheme to use (optional)
+  - animate_enabled: {Boolean} Enable animation. Default: true (optional)
+
+  Usage:
+  {% render 'product-grid-card-type-4',
+    product: product,
+    show_description: product_card_show_description,
+    show_price: product_card_show_price,
+    media_aspect_ratio: product_card_aspect_ratio,
+    color_scheme: card_color_scheme,
+    placeholder_image: placeholder_image,
+    animate_enabled: true
+  %}
+{% endcomment %}
+{% liquid
+  if animate_enabled == null
+    assign animate_enabled = true
+  endif
+  assign tag_name = 'div'
+  if animate_enabled
+    assign tag_name = 'xo-animate'
+  endif
+  if product_handle
+    assign product_handle_name = product.handle
+  endif
+%}
+
+{% if product and product != empty %}
+  <xo-product xo-product-id='{{ product.id }}' xo-section-id='{{ section.id }}' xo-selected-or-first-available-variant-id="{{ product.selected_or_first_available_variant.id }}">
+    {% capture render_information_desktop %}
+      <div class='product-grid-card-type-4__information'>
+      <div class='product-grid-card-type-4__top'>
+        <h2 class='product-grid-card-type-4__title h5'>
+          <a href='{{ product.url }}'>
+            {{ product.title | escape }}
+          </a>
+        </h2>
+        {% if show_price %}
+          <div class='product-grid-card-type-4__price'>
+            <div class='product-grid-card-type-4__price-inner'>
+              {% render 'price', product: product, use_variant: true, reverse: true %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+        <div class='product-grid-card-type-4__bottom'>
+            {% if show_description %}
+                <div class='product-grid-card-type-4__description'>
+                  {{ product.description | strip_html }}
+                </div>
+            {% endif %}
+            {% if show_tag %}
+              <div class="product-grid-card-type-4__tag">
+                {% if image_1 or tag_text_1 %}
+                  <div class="product-grid-card-type-4__tag-container">
+                    {% if image_1 %}
+                      <div class="product-grid-card-type-4__tag-icon">
+                        {% render 'image', image: image_1, aspect_ratio: '1' %}
+                      </div>
+                    {% endif %}
+                    {% if tag_text_1 %}
+                      <div class="product-grid-card-type-4__tag-text">
+                        {{ tag_text_1 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if image_2 or tag_text_2 %}
+                  <div class="product-grid-card-type-4__tag-container">
+                    {% if image_2 %}
+                      <div class="product-grid-card-type-4__tag-icon">
+                        {% render 'image', image: image_2, aspect_ratio: '1' %}
+                      </div>
+                    {% endif %}
+                    {% if tag_text_2 %}
+                      <div class="product-grid-card-type-4__tag-text">
+                        {{ tag_text_2 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+            <div class="product-grid-card-type-4__action">
+              {% assign form_id = 'product_form_id-' | append: product.id %}
+              {% render 'quantity', form_id: form_id %}
+              <xo-cart-add
+                class="product-grid-card-type-4__add"
+                {% if product.selected_or_first_available_variant.available == false %}
+                  xo-disabled
+                {% endif %}
+              >
+                {% render 'button', style: 'dark', size: 'sm', block: true, icon: 'add-to-cart', icon_position: 'left', icon_size: '24', loading_size: 6 %}
+              </xo-cart-add>
+            </div>
+        </div>
+      </div>
+    {% endcapture %}
+    {% capture render_information_mobile %}
+      <div class='product-grid-card-type-4__information'>
+        <h5 class='product-grid-card-type-4__title'>
+          <a href='{{ product.url }}'>
+            {{ product.title | escape }}
+          </a>
+        </h5>
+        {% if show_description %}
+                <div class='product-grid-card-type-4__description'>
+                  {{ product.description | strip_html |  truncatewords: 18 }}
+                </div>
+            {% endif %}
+        {% if show_price %}
+          <div class='product-grid-card-type-4__price'>
+            <div class='product-grid-card-type-4__price-inner'>
+              {% render 'price', product: product, use_variant: true, reverse: true %}
+            </div>
+          </div>
+        {% endif %}
+        <div class='product-grid-card-type-4__bottom'>
+          {% assign form_id = 'product_form_id-' | append: product.id %}
+          {% render 'quantity', form_id: form_id %}
+          <xo-cart-add
+            class="product-grid-card-type-4__add"
+            {% if product.selected_or_first_available_variant.available == false %}
+              xo-disabled
+            {% endif %}
+          >
+            {% render 'button', style: 'dark', size: 'sm', block: true, icon: 'add-to-cart', icon_position: 'left', icon_size: '24', loading_size: 6 %}
+          </xo-cart-add>
+        </div>
+      </div>
+    {% endcapture %}
+
+    <{{ tag_name }}
+      xo-cascade
+      class='product-grid-card-type-4{% if color_scheme %} color-{{ color_scheme }}{% endif %}'
+    >
+      <div class='product-grid-card-type-4__desktop'>
+        {{ render_information_desktop }}
+      </div>
+      <div class='product-grid-card-type-4__mobile'>
+        {{ render_information_mobile }}
+      </div>
+      {% render 'product-data', product: product %}
+    </{{ tag_name }}>
+  </xo-product>
+{% else %}
+  {% render 'product-grid-card-type-4-placeholder',
+    placeholder_image: placeholder_image,
+    show_description: show_description,
+    show_price: show_price,
+    color_scheme: color_scheme,
+    animate_enabled: animate_enabled,
+    show_tag: show_tag,
+    image_1: image_1,
+    image_2: image_2,
+    tag_text_1: tag_text_1,
+    tag_text_2: tag_text_2
+  %}
+{% endif %}

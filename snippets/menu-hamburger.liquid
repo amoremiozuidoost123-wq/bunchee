@@ -1,0 +1,439 @@
+{% comment %}
+   Renders a hamburger menu
+
+   Accepts:
+   - menu: {Object} Menu object
+  - modal_scheme: {color} modal scheme
+   Usage:
+   {% render 'menu-hamburger', menu: section.settings.menu %}
+{% endcomment %}
+
+{% assign search_label = 'general.search.search_placeholder' | t %}
+
+{% capture back_button %}
+  <div class="xo-menu-hamburger__top">
+    <div class="xo-menu-hamburger__top-container {% if menu != blank %}
+        xo-menu-hamburger__top-container--menu
+      {% endif %}">
+      <div class="xo-menu-hamburger__top-left">
+        <xo-modal-trigger class='xo-menu-hamburger__link xo-menu-hamburger__link--close' tabindex="0"
+         role="button">
+          <div class='xo-menu-hamburger__back'>
+              {% render 'icon', name: 'close', size: '24' %}
+          </div>
+        </xo-modal-trigger>
+        <div class='xo-header__left'>
+          <a href='{{ routes.root_url }}'>
+            {%- if section.settings.logo != blank -%}
+              {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+              {{ section.settings.logo | image_url: width: section.settings.width | image_tag: class: 'xo-header__logo-img', widths: '50, 100, 150, 200, 250, 300, 400, 500', height: logo_height, width: section.settings.logo_width, alt: logo_alt }}
+              {%- else -%}
+                <span class='xo-header__logo-heading-logo'>{{ shop.name }}</span>
+              {%- endif -%}
+            </a>
+        </div>
+        <div class='xo-header__right'>
+          <a class='xo-header__right-item xo-header__right-item--cart' href='{{ routes.cart_url }}' aria-label="Add to cart">
+            {% render 'icon', name: 'add-to-cart', size: '24' %}
+              <div class='xo-header__right-item-number'>
+                <xo-cart-size>{{ cart.item_count }}</xo-cart-size>
+              </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% if menu != blank %}
+  <div class='xo-menu-hamburger'>
+    <xo-modal-trigger class='xo-menu-hamburger__trigger' xo-name='xo-menu-hamburger-1' role='button' tabindex='0' aria-label='hamburger-trigger'>
+      {% render 'icon', name: 'hamburger', size: '2rem' %}
+    </xo-modal-trigger>
+
+    <xo-modal
+      class='xo-menu-hamburger__modal'
+      xo-portal
+      xo-name='xo-menu-hamburger-1'
+      xo-animate='slide-right'
+      xo-duration='300'
+      xo-placement='top-left'
+      xo-backdrop-color='rgba(0, 0, 0, 0.5)'
+    >
+      <div class='xo-menu-hamburger__content {% if modal_scheme %} color-{{ modal_scheme }}{% endif %}'>
+        {{ back_button }}
+        {% comment %} Not active modal predictive search {% endcomment %}
+        <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+          <div class='xo-menu-hamburger__search-icon'>
+            {% render 'icon', name: 'search', size: '20' %}
+          </div>
+          <div class='xo-menu-hamburger__search'>
+            <input
+              class='xo-menu-hamburger__search-input'
+              type='search'
+              name='q'
+              placeholder='{{ search_label }}'
+              id='hamburger-search-0-{{ link.levels }}'
+            >
+          </div>
+        </form>
+        {% comment %} Active modal predictive search {% endcomment %}
+        {% comment %}
+          <xo-modal-trigger xo-name='search'>
+            <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+              <div class='xo-menu-hamburger__search-icon'>
+                {% render 'icon', name: 'search', size: '20' %}
+              </div>
+              <input
+              class='xo-menu-hamburger__search-input'
+              type='search'
+              name='q'
+              placeholder='{{ search_label }}'
+              id='hamburger-search-0-{{ link.levels }}'
+            >
+            </form>
+          </xo-modal-trigger>
+        {% endcomment %}
+        <div class='xo-menu-hamburger__list'>
+          {% for link in menu.links %}
+            {% if link.links == blank %}
+              <a
+                role='button'
+                tabindex='0'
+                rel='preload'
+                class='xo-menu-hamburger__link{% if link.current %} xo-menu-hamburger__item--current{% endif %}'
+                href='{{ link.url }}'
+                {% if link.current %}
+                  aria-current='page'
+                {% endif %}
+              >
+                <span class='xo-menu-hamburger__label'>
+                  {{ link.title }}
+                </span>
+                <span class='xo-menu-hamburger__arrow xo-menu-hamburger__arrow--mega-menu'>
+                  {% render 'icon', name: 'chevron-right', size: '1.6rem' %}
+                </span>
+              </a>
+              <xo-modal
+                xo-portal
+                class='xo-menu-hamburger__modal'
+                xo-name='xo-mega-menu-{{ forloop.index0 }}'
+                xo-animate='slide-right'
+                xo-duration='300'
+                xo-placement='top-left'
+                xo-backdrop-color='transparent'
+              >
+                <div class='xo-menu-hamburger__content {% if show_menu_hamburger %} xo-menu-hamburger__content--modify{% endif %}{% if modal_scheme %} color-{{ modal_scheme }}{% endif %}'>
+                  {{ back_button }}
+                  <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+                    <div class='xo-menu-hamburger__search-icon'>
+                      {% render 'icon', name: 'search', size: '2.1rem' %}
+                    </div>
+                    <div class='xo-menu-hamburger__search'>
+                      <input
+                        class='xo-menu-hamburger__search-input'
+                        type='search'
+                        name='q'
+                        placeholder='{{ search_label }}'
+                        id='hamburger-search-1-{{ link.levels }}'
+                      >
+                    </div>
+                  </form>
+                  <xo-mega-menu class='xo-menu-hamburger__mega-menu' xo-name='header-mega-menu' xo-index='{{ forloop.index0 }}'></xo-mega-menu>
+                </div>
+              </xo-modal>
+            {% else %}
+              <xo-modal-trigger
+                role='button'
+                tabindex='0'
+                xo-name='xo-menu-hamburger-child-{{ forloop.index }}-{{ link.handle }}'
+                class='xo-menu-hamburger__link'
+              >
+                <span class='xo-menu-hamburger__label'>
+                  {{ link.title }}
+                </span>
+                {% if link.links != blank %}
+                  <span class='xo-menu-hamburger__arrow xo-menu-hamburger__arrow--mega-menu' style="display: block;">
+                    {% render 'icon', name: 'chevron-right', size: '1.6rem' %}
+                  </span>
+                {% endif %}
+              </xo-modal-trigger>
+              <xo-modal
+                xo-portal
+                class='xo-menu-hamburger__modal'
+                xo-name='xo-menu-hamburger-child-{{ forloop.index }}-{{ link.handle }}'
+                xo-animate='slide-right'
+                xo-duration='300'
+                xo-placement='top-left'
+                xo-backdrop-color='transparent'
+              >
+                <div class='xo-menu-hamburger__content {% if modal_scheme %} color-{{ modal_scheme }}{% endif %}'>
+                  {{ back_button }}
+                  <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+                    <div class='xo-menu-hamburger__search-icon'>
+                      {% render 'icon', name: 'search', size: '2.1rem' %}
+                    </div>
+                    <div class='xo-menu-hamburger__search'>
+                      <input
+                        class='xo-menu-hamburger__search-input'
+                        type='search'
+                        name='q'
+                        placeholder='{{ search_label }}'
+                        id='hamburger-search-2-{{ link.levels }}'
+                      >
+                    </div>
+                  </form>
+                  <xo-mega-menu class='xo-menu-hamburger__mega-menu' xo-name='header-mega-menu' xo-index='{{ forloop.index0 }}'></xo-mega-menu>
+                  <div class='xo-menu-hamburger__list'>
+                    {% for childlink in link.links %}
+                      {% if childlink.links == blank %}
+                        <a
+                          role='button'
+                          tabindex='0'
+                          rel='preload'
+                          class='xo-menu-hamburger__link{% if childlink.current %} xo-menu-hamburger__item--current{% endif %}'
+                          href='{{ childlink.url }}'
+                          {% if childlink.current %}
+                            aria-current='page'
+                          {% endif %}
+                        >
+                          <span class='xo-menu-hamburger__label'>
+                            {{ childlink.title }}
+                          </span>
+                        </a>
+                      {% else %}
+                        <xo-modal-trigger
+                          role='button'
+                          tabindex='0'
+                          xo-name='xo-menu-hamburger-grand-{{ forloop.index }}-{{ link.handle }}'
+                          class='xo-menu-hamburger__link'
+                        >
+                          <span class='xo-menu-hamburger__label'>
+                            {{ childlink.title }}
+                          </span>
+                          {% if childlink.links != blank %}
+                            <span class='xo-menu-hamburger__arrow'>
+                              {% render 'icon', name: 'chevron-right', size: '1.6rem' %}
+                            </span>
+                          {% endif %}
+                        </xo-modal-trigger>
+                        <xo-modal
+                          xo-portal
+                          class='xo-menu-hamburger__modal'
+                          xo-name='xo-menu-hamburger-grand-{{ forloop.index }}-{{ link.handle }}'
+                          xo-animate='slide-right'
+                          xo-duration='300'
+                          xo-placement='top-left'
+                          xo-backdrop-color='transparent'
+                        >
+                          <div class='xo-menu-hamburger__content {% if modal_scheme %} color-{{ modal_scheme }}{% endif %}'>
+                            {{ back_button }}
+                            <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+                              <div class='xo-menu-hamburger__search-icon'>
+                                {% render 'icon', name: 'search', size: '2.1rem' %}
+                              </div>
+                              <div class='xo-menu-hamburger__search'>
+                                <input
+                                  class='xo-menu-hamburger__search-input'
+                                  type='search'
+                                  name='q'
+                                  placeholder='{{ search_label }}'
+                                  id='hamburger-search-3-{{ link.levels }}'
+                                >
+                              </div>
+                            </form>
+                            <div class='xo-menu-hamburger__list'>
+                              {% for grandchildlink in childlink.links %}
+                                <a
+                                  role='button'
+                                  tabindex='0'
+                                  rel='preload'
+                                  class='xo-menu-hamburger__link{% if grandchildlink.current %} xo-menu-hamburger__item--current{% endif %}'
+                                  href='{{ grandchildlink.url }}'
+                                  {% if grandchildlink.current %}
+                                    aria-current='page'
+                                  {% endif %}
+                                >
+                                  <span class='xo-menu-hamburger__label'>
+                                    {{ grandchildlink.title }}
+                                  </span>
+                                </a>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </xo-modal>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </xo-modal>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {%- if shop.customer_accounts_enabled -%}
+          <a rel='preload' href='{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}' class='xo-menu-hamburger__account'>
+            {% if customer %}
+              {% render 'icon', name: 'account', size: '17' %}
+              <div class='xo-menu-hamburger__account-text'>
+                {{ 'templates.account.account' | t }}
+              </div>
+            {% else %}
+              {% render 'icon', name: 'account', size: '17' %}
+            {% endif %}
+          </a>
+        {%- endif -%}
+        <div class='xo-menu-hamburger__region'>
+          {% if section.settings.enable_language_selector or section.settings.enable_currency_selector %}
+            {%- if section.settings.enable_language_selector -%}
+              {% render 'language-select' %}
+            {%- endif -%}
+            {%- if section.settings.enable_currency_selector -%}
+              {% render 'currency-select' %}
+            {%- endif -%}
+          {% endif %}
+        </div>
+        <div class='xo-menu-hamburger__image'>
+          {% render 'image', image: section.settings.image, placeholder: 'product-1' %}
+        </div>
+      </div>
+    </xo-modal>
+  </div>
+{% else %}
+  <div class='xo-menu-hamburger'>
+    <xo-modal-trigger class='xo-menu-hamburger__trigger' xo-name='xo-menu-hamburger-1' role='button' tabindex='0' aria-label='hamburger-trigger'>
+      {% render 'icon', name: 'hamburger', size: '2rem' %}
+    </xo-modal-trigger>
+
+    <xo-modal
+      class='xo-menu-hamburger__modal'
+      xo-portal
+      xo-name='xo-menu-hamburger-1'
+      xo-animate='slide-right'
+      xo-duration='300'
+      xo-placement='top-left'
+      xo-backdrop-color='rgba(0, 0, 0, 0.5)'
+    >
+      <div class='xo-menu-hamburger__content {% if modal_scheme %} color-{{ modal_scheme }}{% endif %}'>
+        {{ back_button }}
+        {% comment %} Not active modal predictive search {% endcomment %}
+        <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+          <div class='xo-menu-hamburger__search-icon'>
+            {% render 'icon', name: 'search', size: '20' %}
+          </div>
+          <div class='xo-menu-hamburger__search'>
+            <input
+              class='xo-menu-hamburger__search-input'
+              type='search'
+              name='q'
+              placeholder='{{ search_label }}'
+              id='hamburger-search-4-{{ link.levels }}'
+            >
+          </div>
+        </form>
+        {% comment %} Active modal predictive search {% endcomment %}
+        {% comment %}
+          <xo-modal-trigger xo-name='search'>
+            <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+              <div class='xo-menu-hamburger__search-icon'>
+                {% render 'icon', name: 'search', size: '20' %}
+              </div>
+              <input
+              class='xo-menu-hamburger__search-input'
+              type='search'
+              name='q'
+              placeholder='{{ search_label }}'
+              id='hamburger-search-4-{{ link.levels }}'
+            >
+            </form>
+          </xo-modal-trigger>
+        {% endcomment %}
+        <div class='xo-menu-hamburger__list'>
+          {% for i in (1..4) %}
+            <a
+              role='button'
+              tabindex='0'
+              rel='preload'
+              class='xo-menu-hamburger__link{% if link.current %} xo-menu-hamburger__item--current{% endif %}'
+              href='#'
+              {% if link.current %}
+                aria-current='page'
+              {% endif %}
+            >
+              <span class='xo-menu-hamburger__label'>
+                {{ 'general.share.share_url' | t }}
+              </span>
+              <span class='xo-menu-hamburger__arrow xo-menu-hamburger__arrow--mega-menu'>
+                {% render 'icon', name: 'chevron-right', size: '1.6rem' %}
+              </span>
+            </a>
+            <xo-modal
+              xo-portal
+              class='xo-menu-hamburger__modal'
+              xo-name='xo-mega-menu-{{ forloop.index0 }}'
+              xo-animate='slide-right'
+              xo-duration='300'
+              xo-placement='top-left'
+              xo-backdrop-color='transparent'
+            >
+              <div class='xo-menu-hamburger__content {% if show_menu_hamburger %} xo-menu-hamburger__content--modify{% endif %}{% if modal_scheme %} color-{{ modal_scheme }}{% endif %}'>
+                {{ back_button }}
+                <form class='xo-menu-hamburger__search-form' action='{{ routes.search_url }}' method='get'>
+                  <div class='xo-menu-hamburger__search-icon'>
+                    {% render 'icon', name: 'search', size: '2.1rem' %}
+                  </div>
+                  <div class='xo-menu-hamburger__search'>
+                    <input
+                      class='xo-menu-hamburger__search-input'
+                      type='search'
+                      name='q'
+                      placeholder='{{ search_label }}'
+                      id='hamburger-search-5-{{ link.levels }}'
+                    >
+                  </div>
+                </form>
+                <xo-mega-menu class='xo-menu-hamburger__mega-menu' xo-name='header-mega-menu' xo-index='{{ forloop.index0 }}'></xo-mega-menu>
+              </div>
+            </xo-modal>
+          {% endfor %}
+        </div>
+        {%- if shop.customer_accounts_enabled -%}
+          <a rel='preload' href='{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}' class='xo-menu-hamburger__account'>
+            {% if customer %}
+              {% render 'icon', name: 'account', size: '17' %}
+              <div class='xo-menu-hamburger__account-text'>
+                {{ 'templates.account.account' | t }}
+              </div>
+            {% else %}
+              {% render 'icon', name: 'account', size: '17' %}
+            {% endif %}
+          </a>
+        {%- endif -%}
+        <div class='xo-menu-hamburger__region'>
+          {% if section.settings.enable_language_selector or section.settings.enable_currency_selector %}
+            {%- if section.settings.enable_language_selector -%}
+              {% render 'language-select' %}
+            {%- endif -%}
+            {%- if section.settings.enable_currency_selector -%}
+              {% render 'currency-select' %}
+            {%- endif -%}
+          {% endif %}
+        </div>
+        <div class='xo-menu-hamburger__image'>
+          {% render 'image', image: section.settings.image, placeholder: 'product-1' %}
+        </div>
+      </div>
+    </xo-modal>
+  </div>
+{% endif %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const _megaMenus = document.querySelectorAll('.xo-menu-hamburger__mega-menu');
+    const _iconMegaMenu = document.querySelectorAll('.xo-menu-hamburger__arrow--mega-menu');
+    _megaMenus.forEach((item, index) => {
+      if (item.children.length > 0) {
+        _iconMegaMenu[index].style.display = 'block';
+      }
+    });
+  });
+</script>

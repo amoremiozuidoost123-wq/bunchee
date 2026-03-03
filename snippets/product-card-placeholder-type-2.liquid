@@ -1,0 +1,58 @@
+{% comment %}
+  Renders a product card type 2 placeholder.
+
+  Accepts:
+  - media_aspect_ratio:  {String} The setting changes the aspect ratio of the article image, if shown
+  - show_image: {Boolean} The setting either show the article image or not. If it's not included it will show the image by default
+  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+  - show_price: {Boolean} Show the product price. Default: true (optional)
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-1' (optional)
+  - color_scheme: {String} The color scheme to use (optional)
+  - animate_enabled: {Boolean} Enable animation. Default: true (optional)
+  Usage:
+  {% render 'product-card-placeholder-type-2',
+    placeholder_image: placeholder_image,
+    show_image: show_image,
+    show_price: show_price,
+    animate_enabled: animate_enabled %}
+{% endcomment %}
+
+{% liquid
+  if animate_enabled == null
+    assign animate_enabled = true
+  endif
+  assign tag_name = 'div'
+  if animate_enabled
+    assign tag_name = 'xo-animate'
+  endif
+%}
+<{{ tag_name }}
+  xo-cascade
+  class='product-card-type-2{% if color_scheme %} color-{{ color_scheme }}{% endif %}'
+>
+  <div class='product-card-type-2__header'>
+    {% if show_image %}
+      <div>
+        {% render 'product-image', placeholder_image: placeholder_image, product: false %}
+      </div>
+    {% endif %}
+  </div>
+  <div class='product-card-type-2__information'>
+    <a class='product-card-type-2__title' href='#'>
+      {{ 'products.product.title' | t }}
+    </a>
+    {% if show_description %}
+      <div class='product-card-type-2__description'>
+        {{ 'products.product.description' | t }}
+      </div>
+    {% endif %}
+
+    {% if show_price %}
+      <div class='product-card-type-2__price'>
+        <div class='product-card-type-2__price-inner'>
+          {% render 'price', product: false %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</{{ tag_name }}>

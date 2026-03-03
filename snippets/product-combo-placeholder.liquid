@@ -1,0 +1,17 @@
+<xo-animate xo-cascade>
+  <div class='product-combo'>
+    <div class='product-combo__container'>
+      <div class='product-combo__image'>
+        {% render 'product-image', placeholder_image: placeholder_image, product: false %}
+      </div>
+      <div class='product-combo__info'>
+        <div class='product-combo__title'>{{ 'products.product.title' | t }}</div>
+        <div class='product-combo__price'>
+          <div class='product-combo__price-inner'>
+            {% render 'price', product: false %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</xo-animate>

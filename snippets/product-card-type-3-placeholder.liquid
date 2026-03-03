@@ -1,0 +1,67 @@
+{% comment %}
+  Renders a product card type 3 placeholder.
+
+  Accepts:
+  - show_price: {Boolean} Show the product price. Default: true (optional)
+  - color_scheme: {String} The color scheme to use (optional)
+  - animate_enabled: {Boolean} Enable animation. Default: true (optional)
+  Usage:
+  {% render 'product-card-type-3-placeholder',
+    color_scheme: color_scheme,
+    show_price: show_price,
+    animate_enabled: animate_enabled
+  %}
+{% endcomment %}
+
+{%- capture render_top %}
+  <div
+    class='product-card-type-3__top'
+  >
+    <div class='product-card-type-3__title'>
+       <a rel="preload" role='link' aria-disabled='true'>
+        {{ 'products.product.title' | t }}
+      </a>
+    </div>
+    <div class='product-card-type-3__price'>
+      <div class='product-card-type-3__price-inner'>
+        {% render 'price', product: false, show_badge: show_badge, use_variant: true, reverse: true %}
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+{% capture render_bottom %}
+  <div class='product-card-type-3__bottom'>
+    <div class="product-card-type-3__variant product-card-type-3__variant--placeholder">
+      {% assign product_variant = 'products.product.product_variants' | t %}
+        <div class='xo-product-variant__inner-name'>Portion:</div>
+          {% render 'field-radio', style: 'boxed', checked: true, label: product_variant %}
+          {% render 'field-radio', style: 'boxed', label: product_variant %}
+          {% render 'field-radio', style: 'boxed', label: product_variant %}
+    </div>
+    <div class='product-card-type-3__add' sold-out="true">
+      {% assign button_text = 'products.product.sold_out' | t %}
+        <div class='add-button add-button--available add-to-cart__button add-to-cart__sold-out'>
+          <div class='add-to-cart__text'>{{ button_text }}</div>
+          <xo-product-will-change
+            class='add-button__inside'
+            xo-unique-id='product-add-button-{{ product.id }}-{{ section.id }}'
+              xo-disabled
+          >
+            <xo-cart-add
+              class='add-button__cart'
+            >
+              {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '24', product_card: true %}
+            </xo-cart-add>
+          </xo-product-will-change>
+        </div>
+    </div>
+  </div>
+{% endcapture %}
+<div class='product-card-type-3'>
+  <div
+    class='product-card-type-3__container{% if color_scheme %} color-{{ color_scheme }}{% endif %}'
+  >
+    {{ render_top }}
+    {{ render_bottom }}
+  </div>
+</div>

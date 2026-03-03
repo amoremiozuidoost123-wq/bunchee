@@ -1,0 +1,50 @@
+{% comment %}
+  Renders a page title type 1.
+
+  Accepts:
+  - heading: {String} Heading of the page (optional)
+  - heading_tag: {String} HTML tag to use for the heading (optional)
+  - description: {String} Description of the page (optional)
+  - show_breadcrumb: {Boolean} Whether to show breadcrumbs (optional)
+  - align: {String} Alignment of the page heading (optional)
+
+  Usage:
+  {% render 'page-title-type-1' %}
+{% endcomment %}
+{{ 'page-title-type-1.css' | asset_url | stylesheet_tag }}
+
+<div class='page-title-type-1{% if align != blank %} page-title-type-1--{{ align }}{% endif %}'>
+  <div class='page-title-type-1__container' style='--width: {{ width }}px;'>
+    {% if show_breadcrumb == true %}
+      <div class='page-title-type-1__breadcrumb'>
+        {% render 'breadcrumb', breadcrumb_style: align %}
+      </div>
+    {% endif %}
+    <xo-animate xo-cascade>
+      {% if heading != blank %}
+        <h1 class='page-title-type-1__heading'>
+          {{ heading }}
+        </h1>
+      {% else %}
+        <h1 class='page-title-type-1__heading'>
+          {% if page %}
+            {{ page.title }}
+          {% else %}
+            {{ collection.title }}
+          {% endif %}
+        </h1>
+      {% endif %}
+    </xo-animate>
+    {% if description != blank %}
+      <xo-animate xo-cascade class='page-title-type-1__description'>{{ description }}</xo-animate>
+    {% else %}
+      <xo-animate xo-cascade class='page-title-type-1__description'>
+        {%- if page %}
+          {{ page.content }}
+        {% else %}
+          {{ collection.description }}
+        {% endif -%}
+      </xo-animate>
+    {% endif %}
+  </div>
+</div>

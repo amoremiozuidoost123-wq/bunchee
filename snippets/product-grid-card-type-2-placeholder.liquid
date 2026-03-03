@@ -1,0 +1,144 @@
+{% comment %}
+  Renders a product card placeholder.
+
+  Accepts:
+  - media_aspect_ratio:  {String} The setting changes the aspect ratio of the article image, if shown
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-1' (optional)
+  - color_scheme: {String} The color scheme to use (optional)
+  - animate_enabled: {Boolean} Enable animation. Default: true (optional)
+  Usage:
+  {% render 'product-grid-card-type-2-placeholder',
+    placeholder_image: placeholder_image,
+    animate_enabled: animate_enabled %}
+{% endcomment %}
+{% liquid
+  if animate_enabled == null
+    assign animate_enabled = true
+  endif
+  assign tag_name = 'div'
+  if animate_enabled
+    assign tag_name = 'xo-animate'
+  endif
+%}
+<div class='product-grid-card-type-2'>
+  <{{ tag_name }}
+    xo-cascade
+    class='product-grid-card-type-2__container{% if color_scheme %} color-{{ color_scheme }}{% endif %}'
+  >
+    <div class='product-grid-card-type-2__header'>
+      <div class='product-grid-card-type-2__between'>
+        <h2 class='product-grid-card-type-2__title h5'>
+          <a rel='preload' role='link' aria-disabled='true'>
+            {% if show_index %}
+              {% if product_index > 9 %}
+                {{ product_index }}.
+              {% else %}
+                0{{ product_index }}.
+              {% endif %}
+            {% endif %}
+            {{ 'products.product.title' | t }}
+          </a>
+        </h2>
+        <div class='product-grid-card-type-2__price'>
+          <div class='product-grid-card-type-2__price-inner'>
+            {% render 'price', product: false %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='product-grid-card-type-2__information'>
+      <div>
+        <div class='product-grid-card-type-2__description'>
+          {{ 'products.product.description' | t }}
+        </div>
+        {% if show_tag %}
+          <div class='product-grid-card-type-2__tag product-grid-card-type-2__tag--desktop'>
+            {% if image_1 or tag_text_1 %}
+              <div class='product-grid-card-type-2__tag-container'>
+                {% if image_1 %}
+                  <div class='product-grid-card-type-2__tag-icon'>
+                    {% render 'image', image: image_1, aspect_ratio: '1' %}
+                  </div>
+                {% endif %}
+                {% if tag_text_1 %}
+                  <div class='product-grid-card-type-2__tag-text'>
+                    {{ tag_text_1 }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+            {% if image_2 or tag_text_2 %}
+              <div class='product-grid-card-type-2__tag-container'>
+                {% if image_2 %}
+                  <div class='product-grid-card-type-2__tag-icon'>
+                    {% render 'image', image: image_2, aspect_ratio: '1' %}
+                  </div>
+                {% endif %}
+                {% if tag_text_2 %}
+                  <div class='product-grid-card-type-2__tag-text'>
+                    {{ tag_text_2 }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+      {% render 'product-image', placeholder_image: placeholder_image, aspect_ratio: '1', product: false %}
+    </div>
+    {% if show_tag %}
+      <div class='product-grid-card-type-2__tag product-grid-card-type-2__tag--mobile'>
+        {% if image_1 or tag_text_1 %}
+          <div class='product-grid-card-type-2__tag-container'>
+            {% if image_1 %}
+              <div class='product-grid-card-type-2__tag-icon'>
+                {% render 'image', image: image_1, aspect_ratio: '1' %}
+              </div>
+            {% endif %}
+            {% if tag_text_1 %}
+              <div class='product-grid-card-type-2__tag-text'>
+                {{ tag_text_1 }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if image_2 or tag_text_2 %}
+          <div class='product-grid-card-type-2__tag-container'>
+            {% if image_2 %}
+              <div class='product-grid-card-type-2__tag-icon'>
+                {% render 'image', image: image_2, aspect_ratio: '1' %}
+              </div>
+            {% endif %}
+            {% if tag_text_2 %}
+              <div class='product-grid-card-type-2__tag-text'>
+                {{ tag_text_2 }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if show_action == true %}
+      <div class='product-grid-card-type-2__variants'>
+        <div class='xo-product-variant__inner-value'>
+          {% render 'field-radio', style: 'boxed', label: 'Variant' %}
+          {% render 'field-radio', style: 'boxed', label: 'Variant' %}
+          {% render 'field-radio', style: 'boxed', label: 'Variant' %}
+        </div>
+      </div>
+
+      <div class='product-grid-card-type-2__action'>
+        <div class='product-grid-card-type-2__quantity'>
+          {% assign form_id = 'product_variant_modal_id-' | append: section.id | append: '-' | append: product.id %}
+          {% render 'quantity', form_id: form_id %}
+        </div>
+        {% assign button_text = 'products.product.sold_out' | t %}
+        <xo-tooltip xo-title='{{ button_text }}'>
+          <div class='product-grid-card-type-2__add'>
+            {% render 'button', size: 'sm', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '22', product_card: true %}
+          </div>
+        </xo-tooltip>
+      </div>
+    {% endif %}
+  </{{ tag_name }}>
+</div>

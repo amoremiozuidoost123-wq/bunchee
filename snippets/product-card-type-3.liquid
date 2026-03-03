@@ -1,0 +1,122 @@
+{% comment %}
+  Renders a product card type 3
+
+  Accepts:
+  - color_scheme: {String} The product card color scheme (optional)
+  - product_handle: {Boolean} Show product handle. Default: false (optional)
+  Usage:
+  {% render 'product-card-type-3',
+    product: product,
+    color_scheme: color_scheme,
+    product_handle: true
+  %}
+{% endcomment %}
+
+{% assign button_text_unavailable = 'products.product.unavailable' | t %}
+
+{% if product and product != empty %}
+  <xo-product
+    xo-product-id='{{ product.id }}'
+    xo-section-id='{{ section.id }}'
+    xo-selected-or-first-available-variant-id="{{ product.selected_or_first_available_variant.id }}"
+    class='product-card-type-3'
+  >
+    {% capture render_top %}
+      <div
+        class='product-card-type-3__top'
+      >
+        <div class='product-card-type-3__title'>
+          <a href='{{ product.url }}'>
+            {{ product.title | escape }}
+          </a>
+        </div>
+        <div class='product-card-type-3__price'>
+          <div class='product-card-type-3__price-inner'>
+              {% render 'price', product: product, show_badge: true, use_variant: true, reverse: true %}
+            </div>
+          </div>
+      </div>
+    {% endcapture %}
+    {% capture render_bottom %}
+      <div class='product-card-type-3__bottom'>
+        {% if product.has_only_default_variant == false %}
+          <div class='product-card-type-3__variants'>
+            {% if product.options_with_values.size > 0 %}
+              {% assign button_text = 'products.product.add_to_cart' | t %}
+              <xo-tooltip xo-title="{{ button_text }}">
+                <xo-product-quick-view-trigger xo-modal-name='quick-view' xo-product-url='{{ shop.url }}/products/{{ product.handle }}/?section_id=quick-view-content' class="product-card-type-3__quick-view-btn">
+                  {% render 'button', icon: 'add-to-cart', style: 'primary', size: 'md', icon_size: '24', product_card: true %}
+                </xo-product-quick-view-trigger>
+              </xo-tooltip>
+            {% endif %}
+            {% if product.options_with_values.size == 1 %}
+              <div class="product-card-type-3__variant variant-list">
+                {%- for option in product.options_with_values -%}
+                  {% if option.name == 'Color' %}
+                      {% render 'product-variant', option: option, style: 'color', product: product %}
+                  {% else %}
+                      {% render 'product-variant', option: option, style: 'boxed', product: product, truncate: true %}
+                  {% endif %}
+                {%- endfor -%}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if product.has_only_default_variant == true %}
+          <div class='product-card-type-3__add'>
+            {% if product.selected_or_first_available_variant.available == true %}
+              {% assign button_text = 'products.product.add_to_cart' | t %}
+              {% assign sold_out = false %}
+            {% elsif product.selected_or_first_available_variant.available == false %}
+              {% assign button_text = 'products.product.sold_out' | t %}
+              {% assign sold_out = true %}
+            {% endif %}
+            <div
+              class='add-button add-button--available add-to-cart__sold-out'
+              sold-out='{{ sold_out }}'
+            >
+              <xo-tooltip xo-title="{{ button_text }}" xo-portal-class="add-button__tooltip">
+                <div
+                  class='add-button__inside'
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    xo-disabled
+                  {% endif %}
+                >
+                  <xo-cart-add class='add-button__cart'>
+                    {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '24', product_card: true %}
+                  </xo-cart-add>
+                </div>
+              </xo-tooltip>
+            </div>
+            <div
+              class='add-button add-button--unavailable add-to-cart__sold-out'
+              sold-out='{{ sold-out }}'
+              >
+              {% assign button_text_unavailable = 'products.product.unavailable' | t %}
+              <xo-tooltip xo-title="{{ button_text_unavailable }}">
+                <div
+                  class='add-button__inside'
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    xo-disabled
+                  {% endif %}
+                >
+                  <xo-cart-add class='add-button__cart'>
+                    {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '24', product_card: true %}
+                  </xo-cart-add>
+                </div>
+              </xo-tooltip>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endcapture %}
+
+    <div class='product-card-type-3__container{% if color_scheme %} color-{{ color_scheme }}{% endif %}'>
+      {{ render_top }}
+      {{ render_bottom }}
+      {% render 'product-data', product: product %}
+    </div>
+  </xo-product>
+{% else %}
+  {% render 'product-card-type-3-placeholder', color_scheme: color_scheme %}
+{% endif %}

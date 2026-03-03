@@ -1,0 +1,50 @@
+{% paginate customer.orders by 8 %}
+  {%- if customer.orders.size > 0 -%}
+    <xo-animate xo-cascade>
+      <table class='orders-table xo-table'>
+        <thead>
+          <tr class='orders-table__head-row xo-table__head-row'>
+            <th class='orders-table__head-column xo-table__head-column'>{{ 'customer.orders.order_number' | t }}</th>
+            <th class='orders-table__head-column xo-table__head-column'>{{ 'customer.orders.date' | t }}</th>
+            <th class='orders-table__head-column xo-table__head-column'>{{ 'customer.orders.payment_status' | t }}</th>
+            <th class='orders-table__head-column xo-table__head-column'>{{ 'customer.orders.fulfillment_status' | t }}</th>
+            <th class='orders-table__head-column xo-table__head-column'>{{ 'customer.orders.total' | t }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for order in customer.orders -%}
+            <tr class='orders-table__body-row xo-table__body-row'>
+              <td class='orders-table__body-row-item xo-table__body-row-item' data-th='{{ 'customer.orders.order_number' | t }}'>
+                <a href='{{ order.customer_url }}' class='orders-table__order-number xo-table__order-number'>{{ order.name }}</a>
+              </td>
+              <td class='orders-table__body-row-item xo-table__body-row-item' data-th='{{ 'customer.orders.date' | t }}'>
+                {{ order.created_at | time_tag: format: 'date' }}
+              </td>
+              <td class='orders-table__body-row-item xo-table__body-row-item' data-th='{{ 'customer.orders.payment_status' | t }}'>
+                {{ order.financial_status_label }}
+              </td>
+              <td class='orders-table__body-row-item xo-table__body-row-item' data-th='{{ 'customer.orders.fulfillment_status' | t }}'>
+                {{ order.fulfillment_status_label }}
+              </td>
+              <td class='orders-table__body-row-item xo-table__body-row-item' data-th='{{ 'customer.orders.total' | t }}'>
+                {% if settings.currency_code_enabled %}
+                  {{ order.total_price | money_with_currency }}
+                {% else %}
+                  {{ order.total_price | money }}
+                {% endif %}
+              </td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </xo-animate>
+  {% else %}
+    <div class='orders-table__empty'>
+      {% render 'icon', name: 'empty', size: '128' %}
+      <h5 class='orders-table__empty-heading'>{{ 'customer.orders.no_order' | t }}</h5>
+      <div class='orders-table__empty-description'>{{ 'customer.orders.none' | t }}</div>
+      {% render 'button', text: 'Start shopping now', style: 'primary', size: 'md', link: routes.all_products_collection_url, icon: 'arrow-testimonial-right', icon_size: '24' %}
+    </div>
+  {%- endif -%}
+  {% render 'pagination', paginate: paginate %}
+{% endpaginate %}

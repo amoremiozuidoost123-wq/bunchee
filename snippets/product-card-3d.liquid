@@ -1,0 +1,265 @@
+{% comment %}
+  Renders a product card
+
+  Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - media_aspect_ratio:  {String} The setting changes the aspect ratio of the article image, if shown
+  - show_image: {Boolean} The setting either show the article image or not. If it's not included it will show the image by default
+  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+  - show_vendor: {Boolean} Show the product vendor. Default: false (optional)
+  - show_description: {Boolean} Show the description. Default: false (optional)
+  - show_price: {Boolean} Show the product price. Default: true (optional)
+  - show_badge: {Boolean} Show the product badge. Default: true (optional)
+  - turn_off_variant: {Boolean} show the product variant. Default: true (optional)
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-1' (optional)
+  - color_scheme: {String} The color scheme to use (optional)
+  - animate_enabled: {Boolean} Enable animation. Default: true (optional)
+  - strength: {String} xo-strength for parallax 3d
+
+  Usage:
+  {% render 'product-card-3d',
+    product: product,
+    show_image: product_card_show_image,
+    show_secondary_image: product_card_show_secondary_image,
+    show_vendor: product_card_show_vendor,
+    show_description: product_card_show_description,
+    show_price: product_card_show_price,
+    show_badge: product_card_show_badge,
+    media_aspect_ratio: product_card_aspect_ratio,
+    color_scheme: card_color_scheme,
+    placeholder_image: placeholder_image,
+     turn_off_variant: true,
+    animate_enabled: true,
+    strength: xo-strength,
+  %}
+{% endcomment %}
+
+{% liquid
+  if animate_enabled == null
+    assign animate_enabled = true
+  endif
+  assign tag_name = 'div'
+  if animate_enabled
+    assign tag_name = 'xo-animate'
+  endif
+  if turn_off_variant == null
+    assign turn_off_variant = false
+  else
+    assign turn_off_variant = true
+  endif
+%}
+
+{% if product and product != empty %}
+  <xo-product
+    class='product-card-3d'
+    xo-product-id='{{ product.id }}'
+    xo-section-id='{{ section.id }}'
+    xo-selected-or-first-available-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  >
+    {% capture render_header %}
+      <xo-parallax-hover xo-3d xo-strength='{{ strength }}'>
+        <div class="product-card-3d__header">
+          {% if show_image %}
+              <div class="product-card-3d__image">
+                <a href='{{ product.url }}'>
+                  {% render 'product-image', product: product, show_secondary_image: show_secondary_image, aspect_ratio: media_aspect_ratio, lazyload: lazyload %}
+                </a>
+                {% if image_decor %}
+                  <div class="product-card-3d__decor">
+                      {% render 'image', image: image_decor %}
+                  </div>
+                {% endif %}
+              </div>
+          {% endif %}
+
+          <div class='product-card-3d__actions product-card-3d__actions--desktop'>
+            {% if product.options_with_values.size > 0 and product.has_only_default_variant == false %}
+              {% assign button_text = 'products.product.add_to_cart' | t %}
+              <xo-tooltip xo-title="{{ button_text }}">
+                <xo-product-quick-view-trigger xo-modal-name='quick-view' xo-product-url='{{ shop.url }}/products/{{ product.handle }}/?section_id=quick-view-content' class="product-card-3d__quick-view-btn">
+                  {% render 'button', icon: 'add-to-cart', style: 'primary', size: 'sm', icon_size: '26', product_card: true %}
+                </xo-product-quick-view-trigger>
+              </xo-tooltip>
+            {% elsif product.has_only_default_variant == true %}
+               <div class='product-card-3d__add'>
+                {% if product.selected_or_first_available_variant.available == true %}
+                  {% assign button_text = 'products.product.add_to_cart' | t %}
+                  {% assign sold_out = false %}
+                {% elsif product.selected_or_first_available_variant.available == false %}
+                  {% assign button_text = 'products.product.sold_out' | t %}
+                  {% assign sold_out = true %}
+                {% endif %}
+                <div
+                  class='add-button add-button--available add-to-cart__sold-out'
+                  sold-out='{{ sold_out }}'
+                >
+
+                  <xo-tooltip xo-title="{{ button_text }}">
+                    <div
+                      class='add-button__inside'
+                      {% if product.selected_or_first_available_variant.available == false %}
+                        xo-disabled
+                      {% endif %}
+                    >
+                      <xo-cart-add
+                        class='add-button__cart'
+                      >
+                        {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '26', product_card: true %}
+                      </xo-cart-add>
+                    </div>
+                  </xo-tooltip>
+                </div>
+              </div>
+            {% endif %}
+              <xo-tooltip xo-title="{{ 'general.quick_view' | t }}">
+                <xo-product-quick-view-trigger xo-modal-name='quick-view' xo-product-url='{{ shop.url }}/products/{{ product.handle }}/?section_id=quick-view-content' class="product-card-3d__quick-view-btn">
+                  {% render 'button', icon: 'eye', size: 'sm', icon_size: '26', product_card: true %}
+                </xo-product-quick-view-trigger>
+              </xo-tooltip>
+          </div>
+        </div>
+      </xo-parallax-hover>
+  {% endcapture %}
+
+    {% capture render_information %}
+    <div class='product-card-3d__information'>
+      {% if show_badge %}
+        <div class='product-card-3d__badge'>
+          {% render 'badge-sale', product: product, use_variant: true %}
+          {% render 'badge-sold-out', product: product, use_variant: true %}
+          {% render 'badge-new', product:product  %}
+        </div>
+      {% endif %}
+
+      {% if show_vendor %}
+        <div class='product-card-3d__vendor'>
+          {{ product.vendor }}
+        </div>
+      {% endif %}
+
+      <h2 class='product-card-3d__title h5'>
+        <a href='{{ product.url }}'>
+          {{ product.title | escape }}
+        </a>
+      </h2>
+
+      {% if show_description %}
+        <div class='product-card-3d__description'>
+          {{ product.description | strip_html }}
+        </div>
+      {% endif %}
+
+      {% if show_price %}
+        <div class='product-card-3d__price'>
+          <div class='product-card-3d__price-inner'>
+            {% if product.price_varies %}
+                <div class='product-card-3d__price-varies'>
+                  {% if settings.currency_code_enabled %}
+                    <span>{{ product.price_min | money_with_currency }}</span>
+                    <span>-</span>
+                    <span>{{ product.price_max | money_with_currency }}</span>
+                  {% else %}
+                    <span>{{ product.price_min | money }}</span>
+                    <span>-</span>
+                    <span>{{ product.price_max | money }}</span>
+                  {% endif %}
+                </div>
+                {% render 'unit-price', product: product %}
+              {% else %}
+                <div>
+                  {% render 'price', product: product, use_variant: true, reverse: true %}
+                </div>
+              {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      {% if product.has_only_default_variant == false and turn_off_variant == false %}
+        {% if product.options_with_values.size == 1 %}
+          <div class="product-card-3d__variant product-card-3d__variant--one variant-list">
+            {%- for option in product.options_with_values -%}
+              <xo-animate xo-cascade>
+                {% if option.name == 'Color' %}
+                  {% render 'product-variant', option: option, style: 'color', product: product %}
+                {% else %}
+                  {% render 'product-variant', option: option, style: 'boxed', truncate: true, product: product %}
+                {% endif %}
+              </xo-animate>
+            {%- endfor -%}
+          </div>
+        {% endif %}
+      {% endif %}
+        <div class='product-card-3d__actions product-card-3d__actions--mobile'>
+            {% if product.options_with_values.size > 0 and product.has_only_default_variant == false %}
+              {% assign button_text = 'products.product.add_to_cart' | t %}
+              <xo-tooltip xo-title="{{ button_text }}">
+                <xo-product-quick-view-trigger xo-modal-name='quick-view' xo-product-url='{{ shop.url }}/products/{{ product.handle }}/?section_id=quick-view-content' class="product-card-3d__quick-view-btn">
+                  {% render 'button', icon: 'add-to-cart', style: 'primary', size: 'md', icon_size: '20', product_card: true %}
+                </xo-product-quick-view-trigger>
+              </xo-tooltip>
+            {% elsif product.has_only_default_variant == true %}
+              <div class='product-card-3d__add'>
+                {% if product.selected_or_first_available_variant.available == true %}
+                  {% assign button_text = 'products.product.add_to_cart' | t %}
+                  {% assign sold_out = false %}
+                {% elsif product.selected_or_first_available_variant.available == false %}
+                  {% assign button_text = 'products.product.sold_out' | t %}
+                  {% assign sold_out = true %}
+                {% endif %}
+                <div
+                  class='add-button add-button--available add-to-cart__sold-out'
+                  sold-out='{{ sold_out }}'
+                >
+                  <xo-tooltip xo-title="{{ button_text }}">
+                    <div
+                      class='add-button__inside'
+                      {% if product.selected_or_first_available_variant.available == false %}
+                        xo-disabled
+                      {% endif %}
+                    >
+                      <xo-cart-add class='add-button__cart'>
+                        {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '20', product_card: true %}
+                      </xo-cart-add>
+                    </div>
+                  </xo-tooltip>
+                </div>
+              </div>
+            {% endif %}
+              <xo-tooltip xo-title="{{ 'general.quick_view' | t }}">
+                <xo-product-quick-view-trigger xo-modal-name='quick-view' xo-product-url='{{ shop.url }}/products/{{ product.handle }}/?section_id=quick-view-content' class="product-card-3d__quick-view-btn">
+                  {% render 'button', icon: 'eye', size: 'sm', icon_size: '20', product_card: true %}
+                </xo-product-quick-view-trigger>
+              </xo-tooltip>
+          </div>
+    </div>
+  {% endcapture %}
+
+    <{{ tag_name }}
+      xo-cascade
+      {% if animate_constant %}
+        xo-constant='{{ animate_constant }}'
+      {% endif %}
+      class='product-card-3d__container{% if color_scheme %} color-{{ color_scheme }}{% endif %}'
+    >
+      {{ render_header }}
+      {{ render_information }}
+      <xo-product-liquid-static>
+        <script type='application/json'>
+          {
+            {% for variant in product.variants
+            %}
+              {{ variant.id }}: {
+                price: `{% render 'price', variant: variant, reverse: false %}`,
+                img: `<a href='{{ product.url }}'>{% render 'product-image', product: product, variant: variant, show_secondary_image: show_secondary_image, aspect_ratio: media_aspect_ratio %}
+                </a>`,
+                soldOut: `{%- if variant.inventory_quantity > 0 or variant.inventory_policy == 'continue' -%}false{%- elsif variant.inventory_quantity == 0 and variant.inventory_policy == 'deny' -%}true{%- endif -%}`,
+                variantId: {{ variant.id }},
+                saleEnabled: `{% if variant.compare_at_price > variant.price %}true{% else %}false{% endif %}`
+              },
+            {% endfor %}
+          }
+        </script>
+      </xo-product-liquid-static>
+      {% render 'product-data', product: product %}
+    </{{ tag_name }}>
+  </xo-product>
+{% endif %}
