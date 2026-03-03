@@ -1,0 +1,35 @@
+.xo-facets-vertical {
+  display: none;
+  padding-bottom: 4rem;
+}
+@media (min-width: 992px) {
+  .xo-facets-vertical {
+    display: block;
+  }
+}
+.xo-facets-vertical .xo-field-checkbox {
+  gap: 0.8rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.xo-facets-vertical .xo-field-checkbox__label {
+  padding-inline-start: 0;
+}
+.xo-facets-vertical xo-filters-count {
+  opacity: 0.4;
+}
+.xo-facets-vertical .xo-collapse__trigger-option {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-style: var(--font-body-style);
+  font-weight: 600;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+.xo-facets-vertical xo-collapse-provider .xo-collapse:first-child {
+  border-top: none;
+}
+
+.xo-facets-vertical__filters {
+  padding-top: 5.4rem;
+}

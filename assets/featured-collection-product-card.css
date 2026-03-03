@@ -1,0 +1,38 @@
+.featured-collection-product-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background-color: var(--color);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.featured-collection-product-card:hover {
+  opacity: 0.7;
+}
+.featured-collection-product-card::before {
+  content: "";
+  width: 1.6rem;
+  height: 1.6rem;
+  position: absolute;
+  border-radius: 50%;
+  border: 0.2rem solid var(--color);
+  animation: hotspot 4s infinite;
+}
+
+@keyframes hotspot {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}

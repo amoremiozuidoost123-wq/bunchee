@@ -1,0 +1,90 @@
+.cart-mini .xo-modal-content__inner {
+  padding-inline-start: 2.1rem;
+  padding-inline-end: 2.1rem;
+}
+@media (min-width: 992px) {
+  .cart-mini .xo-modal-content__inner {
+    padding-inline-start: 4rem;
+    padding-inline-end: 4rem;
+  }
+}
+.cart-mini .xo-modal-content__footer {
+  padding: 0 !important;
+}
+.cart-mini .xo-empty {
+  gap: 0;
+  padding-top: 5.7rem;
+}
+@media (min-width: 992px) {
+  .cart-mini .xo-empty {
+    padding-top: 7.2rem;
+  }
+}
+.cart-mini .xo-empty__icon {
+  color: color-mix(in srgb, rgba(var(--color-accent)) calc(1 * 100%), transparent);
+  padding-bottom: 2rem;
+}
+.cart-mini .xo-empty__title {
+  margin-bottom: 1.6rem;
+}
+.cart-mini .xo-cart-note__trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.cart-mini .xo-cart-note__text,
+.cart-mini .xo-cart-discount__text,
+.cart-mini .xo-cart-shipping-rates__text {
+  text-align: center;
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.5rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.46 / var(--font-body-scale));
+}
+.cart-mini .xo-cart-note__icon,
+.cart-mini .xo-cart-discount__icon,
+.cart-mini .xo-cart-note__icon {
+  display: flex;
+}
+.cart-mini .xo-cart-shipping-rates__icon {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+.cart-mini .cart-drawer__middle {
+  display: flex;
+  align-items: center;
+  border-top: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+  border-bottom: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+  padding: 1.6rem 0;
+}
+
+.cart-mini__header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 3.2rem;
+  border-radius: 999rem;
+  border: 0.1rem dashed rgba(var(--color-border));
+}
+
+.cart-mini__header-item {
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.7);
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-size: calc(var(--font-heading-scale) * var(--font-body-scale) * 2rem);
+  line-height: calc(1 + 0.26 / var(--font-heading-scale));
+  letter-spacing: calc(var(--font-heading-scale) * -0.06rem);
+  width: 50%;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-radius: 999rem;
+  transition: all 0.3s;
+}
+.cart-mini__header-item:hover, .cart-mini__header-item:focus-within {
+  color: rgba(var(--color-foreground));
+  transition: all 0.3s;
+}

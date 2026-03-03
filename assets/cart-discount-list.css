@@ -1,0 +1,10 @@
+.discounts {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.discounts__discount {
+  display: flex;
+  gap: 0.4rem;
+}
