@@ -1,0 +1,33 @@
+.main-product__product-info-content-right-type-1 {
+  display: none;
+}
+@media (min-width: 992px) {
+  .main-product__product-info-content-right-type-1 {
+    padding-inline-end: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+}
+@media (min-width: 1400px) {
+  .main-product__product-info-content-right-type-1 {
+    padding-inline-end: 12.1rem;
+  }
+}
+
+.product-info-content-right-type-1__price {
+  padding-bottom: 1.5rem;
+}
+@media (max-width: 991px) {
+  .product-info-content-right-type-1__price {
+    text-align: center;
+  }
+  .product-info-content-right-type-1__price .xo-price {
+    justify-content: center;
+  }
+}
+
+.product-info-content-right-type-1__price-tax {
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+}

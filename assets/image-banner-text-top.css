@@ -1,0 +1,401 @@
+.image-banner-type-3 {
+  position: relative;
+  z-index: 10;
+}
+.image-banner-type-3 .xo-section {
+  background: unset;
+}
+
+.image-banner-type-3--modify {
+  z-index: 0;
+}
+
+.image-banner-type-3__container {
+  position: relative;
+  height: 100vh;
+  transform: translateY(1px);
+}
+.image-banner-type-3__container .xo-image {
+  display: flex;
+}
+.image-banner-type-3__container .xo-image img,
+.image-banner-type-3__container .xo-image svg {
+  width: 100%;
+  height: 100%;
+}
+.image-banner-type-3__container .xo-image svg {
+  background-color: gray;
+}
+
+.image-banner-type-3__background {
+  background: color-mix(in srgb, rgba(var(--color-background)) calc(1 * 100%), transparent);
+  width: 100%;
+  height: 70%;
+}
+@media (max-width: 991px) {
+  .image-banner-type-3__background {
+    height: 90%;
+  }
+}
+
+.image-banner-type-3__background--none {
+  height: 100%;
+}
+
+.image-banner-type-3__svg {
+  position: relative;
+  z-index: -1;
+  height: 30%;
+  transform: translateY(-1px);
+  background-color: var(--color);
+}
+.image-banner-type-3__svg svg {
+  position: absolute;
+  top: 0;
+  fill: color-mix(in srgb, rgba(var(--color-background)) calc(1 * 100%), transparent);
+}
+[dir=ltr] .image-banner-type-3__svg svg {
+  left: 0;
+}
+[dir=rtl] .image-banner-type-3__svg svg {
+  right: 0;
+}
+@media (max-width: 991px) {
+  .image-banner-type-3__svg {
+    height: 10%;
+  }
+}
+
+.image-banner-type-3__linear {
+  stop-color: color-mix(in srgb, rgba(var(--color-secondary-button-text)) calc(1 * 100%), transparent);
+}
+
+.image-banner-type-3__content {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(10rem, calc(3.75vw + 8.5rem), 13rem);
+}
+@media (min-width: 992px) {
+  .image-banner-type-3__content {
+    justify-content: flex-end;
+  }
+}
+
+.section-header:has(.announcement-bar) ~ #xo-main-content .image-banner-type-3__content {
+  padding-top: clamp(16rem, calc(-3.75vw + 17.5rem), 13rem);
+}
+
+.image-banner-type-3__button {
+  width: fit-content;
+}
+.image-banner-type-3__button svg {
+  background-color: unset;
+}
+
+.image-banner-type-3__heading {
+  margin: 0;
+  width: 100%;
+  padding-bottom: 3rem;
+}
+@media (min-width: 1200px) {
+  .image-banner-type-3__heading {
+    width: 101.3rem;
+  }
+}
+
+.image-banner-type-3__image-1 {
+  position: absolute;
+  z-index: 10;
+  bottom: -20%;
+  width: clamp(38rem, calc(5.625vw + 35.75rem), 42.5rem);
+}
+[dir=ltr] .image-banner-type-3__image-1 {
+  left: -20%;
+}
+[dir=rtl] .image-banner-type-3__image-1 {
+  right: -20%;
+}
+@media (min-width: 400px) {
+  [dir=ltr] .image-banner-type-3__image-1 {
+    left: -10%;
+  }
+  [dir=rtl] .image-banner-type-3__image-1 {
+    right: -10%;
+  }
+}
+@media (min-width: 992px) {
+  .image-banner-type-3__image-1 {
+    bottom: -20%;
+  }
+  [dir=ltr] .image-banner-type-3__image-1 {
+    left: -10%;
+  }
+  [dir=rtl] .image-banner-type-3__image-1 {
+    right: -10%;
+  }
+}
+@media (min-width: 1000px) {
+  .image-banner-type-3__image-1 {
+    bottom: -15%;
+  }
+}
+@media (min-width: 1200px) {
+  [dir=ltr] .image-banner-type-3__image-1 {
+    left: -7%;
+  }
+  [dir=rtl] .image-banner-type-3__image-1 {
+    right: -7%;
+  }
+}
+@media (min-width: 1800px) {
+  .image-banner-type-3__image-1 {
+    bottom: -10%;
+  }
+  [dir=ltr] .image-banner-type-3__image-1 {
+    left: -3%;
+  }
+  [dir=rtl] .image-banner-type-3__image-1 {
+    right: -3%;
+  }
+}
+
+.image-banner-type-3__image-2 {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  width: clamp(21.2rem, calc(13.75vw + 15.7rem), 32.2rem);
+}
+[dir=ltr] .image-banner-type-3__image-2 {
+  left: -20%;
+}
+[dir=rtl] .image-banner-type-3__image-2 {
+  right: -20%;
+}
+@media (min-width: 400px) {
+  .image-banner-type-3__image-2 {
+    top: 42%;
+  }
+}
+@media (min-width: 576px) {
+  .image-banner-type-3__image-2 {
+    top: 38%;
+  }
+}
+@media (min-width: 768px) {
+  .image-banner-type-3__image-2 {
+    top: 43%;
+  }
+  [dir=ltr] .image-banner-type-3__image-2 {
+    left: -10%;
+  }
+  [dir=rtl] .image-banner-type-3__image-2 {
+    right: -10%;
+  }
+}
+@media (min-width: 992px) {
+  .image-banner-type-3__image-2 {
+    top: unset;
+    bottom: 60%;
+  }
+  [dir=ltr] .image-banner-type-3__image-2 {
+    left: 72%;
+  }
+  [dir=rtl] .image-banner-type-3__image-2 {
+    right: 72%;
+  }
+}
+@media (min-width: 1200px) {
+  .image-banner-type-3__image-2 {
+    bottom: 50%;
+  }
+  [dir=ltr] .image-banner-type-3__image-2 {
+    left: 70%;
+  }
+  [dir=rtl] .image-banner-type-3__image-2 {
+    right: 70%;
+  }
+}
+@media (min-width: 1400px) {
+  .image-banner-type-3__image-2 {
+    bottom: 45%;
+  }
+}
+@media (min-width: 1600px) {
+  .image-banner-type-3__image-2 {
+    bottom: 43%;
+  }
+}
+@media (min-width: 1600px) {
+  .image-banner-type-3__image-2 {
+    bottom: 40%;
+  }
+  [dir=ltr] .image-banner-type-3__image-2 {
+    left: 67%;
+  }
+  [dir=rtl] .image-banner-type-3__image-2 {
+    right: 67%;
+  }
+}
+@media (min-width: 1700px) {
+  .image-banner-type-3__image-2 {
+    bottom: 43%;
+  }
+  [dir=ltr] .image-banner-type-3__image-2 {
+    left: 67%;
+  }
+  [dir=rtl] .image-banner-type-3__image-2 {
+    right: 67%;
+  }
+}
+@media (min-width: 1800px) {
+  .image-banner-type-3__image-2 {
+    bottom: 35%;
+  }
+  [dir=ltr] .image-banner-type-3__image-2 {
+    left: 60%;
+  }
+  [dir=rtl] .image-banner-type-3__image-2 {
+    right: 60%;
+  }
+}
+
+.image-banner-type-3__image-3 {
+  width: clamp(18.6rem, calc(11.875vw + 13.85rem), 28.1rem);
+  position: absolute;
+  z-index: 10;
+  top: 35%;
+}
+[dir=ltr] .image-banner-type-3__image-3 {
+  right: -20%;
+}
+[dir=rtl] .image-banner-type-3__image-3 {
+  left: -20%;
+}
+@media (min-width: 992px) {
+  .image-banner-type-3__image-3 {
+    top: 60%;
+  }
+  [dir=ltr] .image-banner-type-3__image-3 {
+    right: -6.5%;
+  }
+  [dir=rtl] .image-banner-type-3__image-3 {
+    left: -6.5%;
+  }
+}
+@media (min-width: 1200px) {
+  .image-banner-type-3__image-3 {
+    top: 60%;
+  }
+  [dir=ltr] .image-banner-type-3__image-3 {
+    right: -6.5%;
+  }
+  [dir=rtl] .image-banner-type-3__image-3 {
+    left: -6.5%;
+  }
+}
+@media (min-width: 1800px) {
+  .image-banner-type-3__image-3 {
+    top: 55%;
+  }
+}
+
+.image-banner-type-3__decor {
+  max-width: 16.5%;
+  position: absolute;
+  z-index: 10;
+  top: -20%;
+  transform: rotate(-18.943deg);
+}
+[dir=ltr] .image-banner-type-3__decor {
+  left: 40%;
+}
+[dir=rtl] .image-banner-type-3__decor {
+  right: 40%;
+}
+@media (min-width: 992px) {
+  .image-banner-type-3__decor {
+    max-width: 20%;
+    top: -29%;
+  }
+  [dir=ltr] .image-banner-type-3__decor {
+    left: 30%;
+  }
+  [dir=rtl] .image-banner-type-3__decor {
+    right: 30%;
+  }
+}
+
+.image-banner-type-3__image-4 {
+  width: clamp(17.9rem, calc(22.5vw + 8.9rem), 35.9rem);
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 0;
+  top: 45%;
+}
+[dir=ltr] .image-banner-type-3__image-4 {
+  right: -20%;
+}
+[dir=rtl] .image-banner-type-3__image-4 {
+  left: -20%;
+}
+.image-banner-type-3__image-4 .xo-image {
+  opacity: 0.4;
+  border-radius: 50%;
+}
+@media (min-width: 400px) {
+  .image-banner-type-3__image-4 {
+    top: 50%;
+  }
+  [dir=ltr] .image-banner-type-3__image-4 {
+    right: -20%;
+  }
+  [dir=rtl] .image-banner-type-3__image-4 {
+    left: -20%;
+  }
+}
+@media (min-width: 576px) {
+  .image-banner-type-3__image-4 {
+    top: 25%;
+  }
+}
+@media (min-width: 768px) {
+  .image-banner-type-3__image-4 {
+    top: 55%;
+  }
+  [dir=ltr] .image-banner-type-3__image-4 {
+    right: -15%;
+  }
+  [dir=rtl] .image-banner-type-3__image-4 {
+    left: -15%;
+  }
+}
+@media (min-width: 992px) {
+  .image-banner-type-3__image-4 {
+    top: 45%;
+  }
+  [dir=ltr] .image-banner-type-3__image-4 {
+    right: -10%;
+  }
+  [dir=rtl] .image-banner-type-3__image-4 {
+    left: -10%;
+  }
+}
+@media (min-width: 1200px) {
+  [dir=ltr] .image-banner-type-3__image-4 {
+    right: -10%;
+  }
+  [dir=rtl] .image-banner-type-3__image-4 {
+    left: -10%;
+  }
+}
+@media (min-width: 1400px) {
+  [dir=ltr] .image-banner-type-3__image-4 {
+    right: -7%;
+  }
+  [dir=rtl] .image-banner-type-3__image-4 {
+    left: -7%;
+  }
+}

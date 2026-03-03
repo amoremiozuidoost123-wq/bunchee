@@ -1,0 +1,76 @@
+.main-product-type-2 {
+  border: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+  border-radius: 3rem;
+  padding-top: 3.6rem;
+  padding-bottom: 3.6rem;
+  padding-inline-start: 2rem;
+  padding-inline-end: 2rem;
+}
+
+.main-product__product-info-content-mobile {
+  display: block;
+}
+@media (min-width: 992px) {
+  .main-product__product-info-content-mobile {
+    display: none;
+  }
+}
+
+.product-info-content-mobile .xo-field-select-custom__trigger xo-product-variant-selected {
+  display: block;
+}
+.product-info-content-mobile xo-product-variant-selected {
+  display: none;
+}
+.product-info-content-mobile .xo-product-variant__inner-name {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+}
+
+.product-info-content-mobile__variant {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+  gap: 1.4rem;
+}
+
+.product-info-content-mobile__marquee {
+  position: relative;
+  width: 100vw;
+  overflow: visible;
+}
+
+.product-info-content-mobile__title {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+  color: rgba(var(--color-foreground));
+  letter-spacing: calc(var(--font-heading-scale) * -0.108rem);
+}
+
+.product-info-content-mobile__description {
+  color: rgba(var(--color-foreground-2), 0.8);
+  padding-bottom: 3.3rem;
+}
+
+.product-info-content-mobile__price {
+  padding-bottom: 1.5rem;
+}
+@media (max-width: 991px) {
+  .product-info-content-mobile__price {
+    text-align: center;
+  }
+  .product-info-content-mobile__price .xo-price {
+    justify-content: center;
+  }
+}
+
+.product-info-content-mobile__price-tax {
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+}

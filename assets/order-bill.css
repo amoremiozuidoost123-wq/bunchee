@@ -1,0 +1,85 @@
+.xo-order-bill {
+  padding-top: 2rem;
+}
+@media (min-width: 992px) {
+  .xo-order-bill {
+    padding-inline-start: 3.4rem;
+  }
+}
+@media (min-width: 1400px) {
+  .xo-order-bill {
+    padding-inline-start: 6.4rem;
+  }
+}
+
+.xo-order-bill__nav-title {
+  letter-spacing: calc(var(--font-heading-scale) * -0.036rem);
+  color: rgb(var(--color-foreground));
+  margin: 0;
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+}
+
+.xo-order-bill__payment-status {
+  opacity: 0.8;
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  padding-top: 2.4rem;
+  padding-bottom: 1.6rem;
+}
+@media (min-width: 992px) {
+  .xo-order-bill__payment-status {
+    padding-bottom: 1.8rem;
+  }
+}
+
+.xo-order-bill__name,
+.xo-order-bill__phone {
+  padding-bottom: 1.2rem;
+}
+
+.xo-order-bill__address {
+  padding-bottom: 2.4rem;
+}
+
+.xo-order-bill__name-user,
+.xo-order-bill__phone-number,
+.xo-order-bill__address-info {
+  opacity: 0.8;
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.5rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.46 / var(--font-body-scale));
+}
+
+.xo-order-bill__name,
+.xo-order-bill__phone,
+.xo-order-bill__address {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.xo-order-bill__phone-icon,
+.xo-order-bill__name-icon,
+.xo-order-bill__address-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.xo-order-bill__ship-address {
+  padding-top: 5.7rem;
+}
+@media (min-width: 992px) {
+  .xo-order-bill__ship-address {
+    padding-top: 3.6rem;
+  }
+}

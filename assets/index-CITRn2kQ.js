@@ -1,0 +1,1 @@
+import{i as o}from"./index-9cYLEtM2.js";import{e as i}from"./each-DvLt4fgf.js";import{d as c}from"./index-up99TGJ_.js";const r=t=>Object.keys(t);function l(t,s){if(o()){i(r(t),e=>{!customElements.get(e)&&e==="xo-carousel"&&customElements.define(e,t[e],s)});return}i(r(t),async e=>{await c(),customElements.get(e)||customElements.define(e,t[e],s)})}export{l as c};

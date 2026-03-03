@@ -1,0 +1,40 @@
+.xo-pickup-availability-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.xo-pickup-availability-list__item {
+  padding-bottom: 1.5rem;
+  border-bottom: 0.1rem solid rgba(var(--color-border), 0.1);
+}
+.xo-pickup-availability-list__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.xo-pickup-availability-list__title {
+  font-size: calc(var(--font-heading-scale) * var(--font-body-scale) * 2rem);
+  padding-inline-start: 3rem;
+  padding-top: 1rem;
+}
+
+.xo-pickup-availability-list__available {
+  display: flex;
+  gap: 0.5rem;
+  padding-inline-start: var(--drawer-padding);
+}
+
+.xo-pickup-availability-list__icon {
+  flex-shrink: 0;
+  color: color-mix(in srgb, rgba(var(--color-success)) calc(1 * 100%), transparent);
+  margin-top: 0.2rem;
+}
+
+.xo-pickup-availability-list__icon--x {
+  color: color-mix(in srgb, rgba(var(--color-error)) calc(1 * 100%), transparent);
+}
+
+.xo-pickup-availability-list__address {
+  font-style: var(--font-body-style);
+  padding-inline-start: 3rem;
+}

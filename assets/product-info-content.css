@@ -1,0 +1,22 @@
+.xo-product-info-content {
+  padding-top: 2.7rem;
+  width: 80%;
+}
+
+.xo-product-info-content__title {
+  color: rgba(var(--color-foreground));
+  font-weight: 400;
+  font-size: calc(var(--font-heading-scale) * var(--font-body-scale) * 6rem);
+  line-height: 1.11;
+  letter-spacing: -0.01em;
+  padding-bottom: 2.3rem;
+}
+
+.xo-product-info-content__description {
+  color: rgba(var(--color-foreground-2), 0.8);
+  padding-bottom: 3.9rem;
+}
+
+.xo-product-info-content__price-tax {
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+}
