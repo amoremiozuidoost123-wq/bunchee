@@ -1,0 +1,76 @@
+{% comment %}
+  Renders facets drawer (filtering and sorting)
+
+  Accepts:
+  - results: {Object} Collection or Search object
+  - enable_filtering: {Boolean} Show filtering when true
+  - enable_sorting: {Boolean} Show sorting when true
+  - mobile_only: {Boolean} Show only on mobile when true
+  - color_scheme: {String} Color scheme
+
+  Usage:
+  {% render 'facets-drawer', results: collection, enable_filtering: true, enable_sorting: true %}
+{% endcomment %}
+
+<div class='xo-facets-drawer{% if mobile_only %} xo-facets-drawer--mobile{% endif %}'>
+  <xo-modal-trigger
+    xo-name='facets-modal'
+    class='xo-facets-drawer__trigger'
+  >
+    <div class='xo-facets-drawer__filter-icon'>
+      {% render 'icon', name: 'filter', size: '20' %}
+    </div>
+    <span class='xo-facets-drawer__text'>
+      {%- if enable_filtering and enable_sorting -%}
+        {{ 'products.facets.filter_and_sort' | t }}
+      {%- elsif enable_filtering -%}
+        {{ 'products.facets.filter_button' | t }}
+      {%- elsif enable_sorting -%}
+        {{ 'products.facets.sort_button' | t }}
+      {%- endif -%}
+    </span>
+  </xo-modal-trigger>
+  <xo-modal
+    class='xo-facets-drawer__modal'
+    xo-name='facets-modal'
+    xo-animate='slide-left'
+    xo-duration='300'
+    xo-placement='top-right'
+    xo-backdrop-color='rgba(0, 0, 0, 0.5)'
+    xo-portal
+  >
+    <div class='xo-facets-drawer__body'>
+      <div class='xo-facets-drawer__heading'>
+        <h5 class='xo-facets-drawer__title'>
+          {%- if enable_filtering and enable_sorting -%}
+            {{ 'products.facets.filter_and_sort' | t }}
+          {%- elsif enable_filtering -%}
+            {{ 'products.facets.filter_button' | t }}
+          {%- elsif enable_sorting -%}
+            {{ 'products.facets.sort_button' | t }}
+          {%- endif -%}
+        </h5>
+        <xo-modal-trigger class='xo-facets-drawer__close-button'>
+          {% render 'icon', name: 'close', size: '28' %}
+        </xo-modal-trigger>
+      </div>
+      <div class='xo-facets-drawer__filters-refine'>
+        {% render 'filters-refine' %}
+      </div>
+      <div>
+        {% liquid
+          if enable_filtering
+            for filter in results.filters
+              render 'filters-fieldset', type: 'collapse', filter: filter
+            endfor
+          endif
+
+          if enable_sorting
+            assign name = 'field-sort-by-drawer-' | append: section.id
+            render 'field-sort-by', type: 'collapse', results: results, name: name, placement: 'bottom-left', is_drawer: true, mobile_only: true
+          endif
+        %}
+      </div>
+    </div>
+  </xo-modal>
+</div>

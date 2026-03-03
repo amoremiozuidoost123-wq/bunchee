@@ -1,0 +1,63 @@
+{% comment %}
+  Renders a featured collection slide type 6
+
+  Accepts:
+  - subheading: {String} Subheading
+  - heading: {String} Slide heading
+  - description: {String} Description
+  - Image: {Image} Image
+  - tag: {String} Tag
+  - button_text: {String} Button text
+  - button_link: {String} Button link
+  - button_style: {String} Button style
+  - placeholder_image: {Image} Placeholder image
+
+  Usage:
+  {% render 'featured-collection-slide-type-6',
+  subheading:  Subheading,
+  heading: heading,
+  description: description,
+  Image: image,
+  tag: tag,
+  button_text: button_text,
+  button_link: button_link,
+  button_style: button_style,
+  placeholder_image: placeholder
+  %}
+{% endcomment %}
+{{ 'featured-collection-slide-type-6.css' | asset_url | stylesheet_tag }}
+<xo-carousel-slide>
+  <div class='featured-collection-slide-type-6'>
+    <xo-animate xo-type='fade-down' xo-order='1' class='featured-collection-slide-type-6__subheading'>
+      {{ section.settings.subheading }}
+    </xo-animate>
+    <div class='featured-collection-slide-type-6__middle'>
+      <xo-animate xo-order='2'>
+        <h2 class='featured-collection-slide-type-6__heading'>
+          {{ heading }}
+        </h2>
+      </xo-animate>
+      {% if description %}
+        <xo-animate xo-order='3' class='featured-collection-slide-type-6__description'>
+          {{ description }}
+        </xo-animate>
+      {% endif %}
+      <xo-animate xo-order='4' class='featured-collection-slide-type-6__image'>
+        <div class='featured-collection-slide-type-6__image-large'>
+          {% render 'image', image: image, placeholder: placeholder_image, aspect_ratio: aspect_ratio %}
+        </div>
+        {% if tag %}
+          <div class='featured-collection-slide-type-6__tag'>
+            <div class='featured-collection-slide-type-6__tag-text h6'>
+              {{ tag }}
+            </div>
+          </div>
+        {% endif %}
+      </xo-animate>
+      <xo-animate xo-order='5' xo-type='zoom-in' class='featured-collection-slide-type-6__bottom'>
+        {% render 'button', text: button_text, link: button_link, size: 'xlg', style: button_style %}
+      </xo-animate>
+    </div>
+    {% render 'carousel-navigation', style: '', align: 'center', position: 'in-content', disabled: false, mobile_disabled: false %}
+  </div>
+</xo-carousel-slide>

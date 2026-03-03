@@ -1,0 +1,53 @@
+{% comment %}
+  Renders a input
+
+  Accepts:
+  - type: {String} Type of the input
+  - name: {String} Name of the input
+  - id: {String} Id of the input
+  - value: {String} Value of the input
+  - label: {String} Label of the input (optional)
+  - autocomplete: {String} Autocomplete of the input (optional)
+  - autocapitalize: {String} Autocapitalize of the input (optional)
+  - attrs: {String} Attributes of the input. Default: '' (optional)
+  - pattern: {String} Pattern of the input (optional)
+
+  Usage:
+  {% render 'field-input',
+    type: 'text',
+    id: 'id',
+    name: 'input',
+    value: 'input',
+    label: 'Input',
+    pattern: 'pattern',
+  %}
+{% endcomment %}
+
+<label class='xo-field-input' for='{{ id }}'>
+  <input
+    class='xo-field-input__input'
+    type='{{ type | default: 'text' }}'
+    id='{{ id }}'
+    name='{{ name }}'
+    value='{{ value }}'
+    placeholder='{{ label | default: 'input' }}'
+    {% if form_id %}
+      form='{{ form_id }}'
+    {% endif %}
+    {% if autocomplete %}
+      autocomplete='{{ autocomplete -}}'
+    {% endif %}
+    {% if autocapitalize %}
+      autocapitalize='{{ autocapitalize -}}'
+    {% endif %}
+    {% if attr %}
+      {{ attr -}}
+    {% endif %}
+    {% if pattern %}
+      pattern='{{ pattern }}'
+    {% endif %}
+    {% if required %}
+      required
+    {% endif %}
+  >
+</label>

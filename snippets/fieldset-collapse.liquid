@@ -1,0 +1,6 @@
+
+{% assign title = filter.label | escape %}
+{% capture content %}{% render 'fieldset-fields', filter: filter %}{% endcapture %}
+{% capture icon %}{% render 'icon', icon: 'chevron-down', size: '1.4rem' %}{% endcapture %}
+
+{% render 'collapse', name: filter.param_name, title: title, content: content, icon: icon, style: true %}

@@ -1,0 +1,67 @@
+{% comment %}
+  Renders a color button
+
+  Accepts:
+  - name: {string} Name of the color button
+  - value: {string} Value of the color button
+  - label: {string} Label of the color button (optional)
+  - size: {string} Size of the color button. Default: 16px (optional)
+  - count_id: {string} Unique ID for the count element (optional, support filters)
+  - count_value: {string} Value of the count element (optional, support filters)
+  - checked: {Boolean} If the radio button is checked (optional)
+  - image: {Image} Image of the color button (optional)
+  - use_image: {Boolean} If the image should be used (optional)
+  - signal: {String} Signal to be used for color button(optional)
+  - signal: {String} Signal to be used for color button(optional)
+
+  Usage:
+  {% render 'variant-image',
+    name: '{{ signal }}color',
+    value: 'color',
+    label: 'Color',
+    size: '2.2rem'
+  %}
+{% endcomment %}
+
+{% liquid
+  assign color = value
+  if value.swatch.color
+    assign color = value.swatch.color
+  endif
+  assign value_image = value.swatch.image
+%}
+
+<label
+  class='xo-variant-image'
+  style='--size: {{ size | default: '2rem' }}; --color: {{ color }};'
+  data-button='true'
+  tabindex='0'
+  aria-label='{{ value | escape }}'
+>
+  <input
+    class='xo-variant-image__input'
+    type='radio'
+    name='{{ name }}'
+    value='{{ value }}'
+    xo-label="{{ value.name | escape }}"
+    xo-option-value-id="{{ value.id }}"
+    xo-variant-id="{{ value.variant.id }}"
+    {%- if value.available == false and value.variant.id == blank -%}
+      xo-unavailable
+    {%- endif -%}
+    {% if value.variant.available == false and value.variant.id != blank %}
+      xo-disabled
+    {%- endif -%}
+    {% if value.selected %}
+      checked
+    {% endif %}
+  >
+  <div class='xo-variant-image__item'>
+    <span class='xo-variant-image__icon'>
+      {%- render 'icon', name: 'check', size: '1.4rem', color: '#FFFFFF' -%}
+    </span>
+    {% if use_image and value_image != blank %}
+      {% render 'image', image: value_image, aspect_ratio: 1, container_class: 'xo-variant-image__image' %}
+    {% endif %}
+  </div>
+</label>

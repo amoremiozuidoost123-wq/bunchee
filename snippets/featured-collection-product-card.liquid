@@ -1,0 +1,23 @@
+{% comment %}
+  Renders a featured collection product card
+
+  Accepts:
+  - product: {Object} Product (optional)
+  - color_trigger: {Color} Color pop trigger
+  - color_scheme: {Color} Product card color scheme
+  Usage:
+  {% render 'featured-collection-product-card', product: product, color_trigger: color_trigger, color_scheme: color_scheme %}
+{% endcomment %}
+{{ 'featured-collection-product-card.css' | asset_url | stylesheet_tag }}
+
+<xo-popover-trigger
+  xo-name='{{ block_id }}'
+  role='button'
+  tabindex='0'
+  aria-label='popover trigger'
+>
+  <div class='featured-collection-product-card' style='--color: {{ color_trigger }}'></div>
+</xo-popover-trigger>
+<xo-popover class='featured-collection-product-card__popover' xo-name='{{ block_id }}' xo-portal xo-placement='right-center'>
+  {% render 'product-card-type-3', product: product, color_scheme: color_scheme, product_handle: true %}
+</xo-popover>

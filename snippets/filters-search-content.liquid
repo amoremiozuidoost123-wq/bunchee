@@ -1,0 +1,85 @@
+{% assign products_per_page = section.settings.products_per_page | default: 20 %}
+{% assign pagination_type = section.settings.pagination_type %}
+
+<xo-filters-content>
+  {% paginate search.results by products_per_page %}
+    <div>
+      {%- if search.results.size == 0 and search.filters != empty -%}
+        {% assign empty_title = 'sections.collection_template.empty' | t %}
+        {% assign empty_content = 'sections.collection_template.content' | t: link: search_url, class: 'underlined-link link' %}
+        {% render 'empty', title: empty_title, content: empty_content %}
+      {% else %}
+        <xo-grid style='--xs: 1; --sm: 2; --lg: {{ section.settings.columns_desktop }}'>
+          {%- for item in search.results -%}
+            {%- case item.object_type -%}
+              {%- when 'product' -%}
+                {% liquid
+                  assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1
+                  assign placeholder_image = 'product-apparel-' | append: placeholder_image_index
+                %}
+                <div class='filters-search-content__item'>
+                  {% render 'product-grid-card-type-1',
+                    product: item,
+                    show_image: section.settings.product_card_show_image,
+                    show_secondary_image: section.settings.product_card_show_secondary_image,
+                    show_description: section.settings.product_card_show_description,
+                    show_price: section.settings.product_card_show_price,
+                    show_badge: section.settings.product_card_show_badge,
+                    show_variant: false,
+                    media_aspect_ratio: section.settings.product_card_aspect_ratio,
+                    color_scheme: section.settings.card_color_scheme,
+                    animate_enabled: true
+                  %}
+                </div>
+              {%- when 'article' -%}
+                {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+                <div class='filters-search-content__item'>
+                  {% render 'article-card',
+                    article: item,
+                    article_card_style: section.settings.article_card_style,
+                    media_aspect_ratio: section.settings.article_card_media_aspect_ratio,
+                    show_image: section.settings.article_card_show_image,
+                    show_date: section.settings.article_card_show_date,
+                    show_author: section.settings.article_card_show_author,
+                    show_excerpt: section.settings.article_card_show_excerpt,
+                    show_tags: section.settings.article_card_show_tags,
+                    placeholder_image: placeholder_image,
+                    color_scheme: section.settings.card_color_scheme
+                  %}
+                </div>
+              {%- when 'page' -%}
+                <div class='filters-search-content__item'>
+                  <a href='{{ item.url }}' class='page'>
+                    <h5 class='page__heading'>{{ item.title | truncate: 50 | escape }}</h5>
+                    <div class='page__tag'>Page</div>
+                  </a>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+          <xo-filters-content-anchor></xo-filters-content-anchor>
+        </xo-grid>
+        {% if pagination_type == 'page' %}
+          <xo-filters-paginate>
+            {% render 'pagination', paginate: paginate, anchor: '' %}
+          </xo-filters-paginate>
+        {% elsif pagination_type == 'scroll' %}
+          {%- if paginate.pages > 1 -%}
+            <xo-filters-load-more class='filters-content__scroll-loader' xo-pages="{{ paginate.pages }}">
+              <div>
+                {%- render 'loader-1', size: 40 -%}
+              </div>
+            </xo-filters-load-more>
+          {%- endif -%}
+        {% else %}
+          {%- if paginate.pages > 1 -%}
+            <xo-filters-load-more class="filters-content__btn-load-more" xo-pages="{{ paginate.pages }}">
+              {%- assign button_load_more_text = 'products.facets.load_more' | t -%}
+              {%- render 'button', text: button_load_more_text, variant: 'primary' -%}
+            </xo-filters-load-more>
+          {%- endif -%}
+        {% endif %}
+      {%- endif -%}
+    </div>
+  {% endpaginate %}
+</xo-filters-content>

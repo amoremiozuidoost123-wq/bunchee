@@ -1,0 +1,77 @@
+{% comment %}
+  Renders a radio button
+
+  Accepts:
+  - name: {String} Name of the radio button
+  - value: {String} Value of the radio button
+  - label: {String} Label of the radio button (optional)
+  - icon_size: {String} Size of the radio button. Default: 1.6rem (optional)
+  - count_id: {String} Unique ID for the count element (optional, support filters)
+  - count_value: {String} Value of the count element (optional, support filters)
+  - checked: {Boolean} If the radio button is checked (optional)
+  - style: {String} Style class to add to the radio button (optional)
+
+  Usage:
+  {% render 'field-radio',
+    name: 'radio',
+    value: 'radio',
+    label: 'Radio',
+    icon_size: '10px'
+  %}
+{% endcomment %}
+
+{% if truncate == blank %}
+  {% assign truncate = true %}
+{% endif %}
+
+{% assign is_check = is_check %}
+
+<label
+  class='xo-field-radio{% if style %} xo-field-radio--{{ style }}{% endif %}'
+  style='--icon-size: {{ icon_size | default: '1.6rem' }}'
+  xo-button='true'
+  tabindex='0'
+>
+  <input
+    class='xo-field-radio__input'
+    type='radio'
+    name='{{ name }}'
+    value='{{ value | escape }}'
+    {% if form_id %}
+      form='{{ form_id }}'
+    {% endif %}
+    xo-label="{{ value.name | escape }}"
+    xo-option-value-id="{{ value.id }}"
+    xo-variant-id="{{ value.variant.id }}"
+    {%- if value.available == false and value.variant.id == blank -%}
+      xo-unavailable
+    {%- endif -%}
+    {% if value.variant.available == false and value.variant.id != blank %}
+      xo-disabled
+    {%- endif -%}
+    {% if is_check %}
+      {% if value.selected %}
+        checked
+      {% endif %}
+    {% endif %}
+  >
+  {% if style != 'boxed' %}
+    <span class='xo-field-radio__item'>
+      <span class='xo-field-radio__icon'></span>
+    </span>
+  {% endif %}
+  {% if label != null %}
+    <span class='xo-field-radio__label'>
+      {% if truncate and label.size > 32 %}
+        <xo-tooltip xo-portal-class='xo-field-radio__tooltip' xo-title='{{ label }}'>
+          <span>{{ label | escape | truncate: 32 }}</span>
+        </xo-tooltip>
+      {% else %}
+        <span>{{ label | escape }}</span>
+      {% endif %}
+      {% if count_value %}
+        <xo-filters-count xo-unique-id='{{ count_id }}'>({{ count_value }})</xo-filters-count>
+      {% endif %}
+    </span>
+  {% endif %}
+</label>
