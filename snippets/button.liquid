@@ -1,0 +1,143 @@
+{% comment %}
+  Renders a button
+
+  Accepts:
+  - text: {String} title of the button
+  - link: {String} link href of button
+  - style: {String} primary, secondary. Default: primary (optional)
+  - size: {String} Size of the button. Default: md (optional)
+  - disabled: {Boolean} whether the button is disabled
+  - loading: {Boolean} whether the button is loading
+  - loading_type: {String} Loading type. Default: 'loader-3' (optional)
+  - loading_size: {Number} Size of the loading (optional)
+  - icon: {String} icon name
+  - icon_position: {String} icon position. Default: right (optional)
+  - width: {Number} width of the button
+  - block: {Boolean} whether the button is a block element
+  - class: {String} additional classes to add to the button
+  - name: {String} name of the button
+  - form_id: {String} form id to submit
+  - attrs: {String} additional attributes to add to the button
+  - icon_size: {String} size of the button (optional)
+  - data-text-unavailable: {String} text to show when the button is unavailable
+
+  Usage:
+  {% render 'button',
+    text: 'Button',
+    link: '/',
+    style: 'primary',
+    size: 'md'
+  %}
+{% endcomment %}
+
+{% assign icon_position = icon_position | default: 'right' %}
+{% assign loading_type = loading_type | default: settings.buttons_loading %}
+{% if product_card == blank %}
+  {% assign product_card = false %}
+{% endif %}
+
+{% capture general_attr %}
+  class='xo-btn
+    {%- if style %} xo-btn--{{ style }}{% endif -%}
+    {%- if size %} xo-btn--{{ size }}{% endif -%}
+    {%- if loading %} xo-btn--loading{% endif -%}
+    {%- if block %} xo-btn--block{% endif -%}
+    {%- if class %} {{ class }}{% endif -%}
+  '
+  {% if disabled %}
+    disabled
+  {% endif %}
+  {% if attrs %}
+    {{ attrs }}
+  {% endif %}
+  style='
+    {%- if width != null %}--width: {{ width }};{% endif -%}
+  '
+{% endcapture %}
+
+{% capture content %}
+  <span
+    class="xo-btn__content
+      {%- if icon != nil and icon_position == 'right' %} xo-btn__content--reverse{% endif -%}
+      {%- if product_card == true %} xo-btn__content--product-card{% endif -%}
+    "
+  >
+    {% if icon != nil %}
+        {% if product_card == true %}
+          <span class="xo-btn__icon-product-card">
+            <span class="xo-btn__icon xo-btn__icon--product-card {% if icon_position == 'right' %}
+            xo-btn__icon-right
+            {% endif %}">
+              {% render 'icon', name: icon, size: icon_size %}
+            </span>
+            <span class="xo-btn__icon xo-btn__icon--product-card {% if icon_position == 'right' %}
+            xo-btn__icon-right
+            {% endif %}">
+              {% render 'icon', name: icon, size: icon_size %}
+            </span>
+          </span>
+        {% else %}
+          <span class="xo-btn__icon {% if icon_position == 'right' %}
+          xo-btn__icon-right
+          {% endif %}">
+            {% render 'icon', name: icon, size: icon_size %}
+          </span>
+        {% endif %}
+    {% endif %}
+    {% if text != nil %}
+      <span
+        class="xo-btn__text"
+        data-text="{{ text }}"
+        {% if data-text-unavailable != blank %}
+          data-text-unavailable="{{ data-text-unavailable }}"
+        {% endif %}
+      >
+        {{ text }}
+      </span>
+    {% endif %}
+  </span>
+  <span class="xo-btn__loading">
+    {% liquid
+      case loading_type
+        when 'loader-1'
+          render 'loader-1', size: loading_size
+        when 'loader-2'
+          render 'loader-2', size: loading_size
+        when 'loader-3'
+          render 'loader-3', size: loading_size
+        else
+          render 'loader-3', size: loading_size
+      endcase
+    %}
+  </span>
+{% endcapture %}
+
+{% if text != '' %}
+  {% if link %}
+    <a {{ general_attr }} href='{{ link }}' aria-label='{{ text }}'>
+      {{ content }}
+    </a>
+  {% else %}
+    <button
+      aria-label='
+        {%- if text != blank -%}
+          {{ text }}
+          {%- else -%}
+            quick view
+        {%- endif -%}
+      '
+      {{ general_attr -}}
+      {% if form_id != blank %}
+        form='{{ form_id }}'
+      {% endif %}
+      {% if name != blank %}
+        name='{{ name }}'
+      {% endif %}
+      {% if type == 'submit' %}
+        type='submit'
+      {% endif %}
+    >
+      {{ content }}
+    </button>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,43 @@
+{% comment %}
+  Renders a collapse item
+
+  Accepts:
+  * General
+  - collapse_trigger: {Boolean} Trigger collapse.
+  - collapse_content: {String} Content of collapse.
+  - name: {String} Name of collapse
+
+  Usage:
+  {% render 'collapse-item', collapse_trigger: collapse_trigger, collapse_content: collapse_content %}
+{% endcomment %}
+{{ 'collapse-item.css' | asset_url | stylesheet_tag }}
+
+<div class='collapse-item'>
+  <xo-collapse-trigger
+    role='button'
+    tabindex='0'
+    class='collapse-item__trigger'
+    xo-name='{{ name }}'
+  >
+    <div class='collapse-item__header'>
+      <div class='collapse-item__header-content'>
+        {{ collapse_trigger }}
+      </div>
+      <div class='collapse-item__header-icon'>
+        <div class='collapse-item__header-icon-default'>
+          {% render 'icon', name: 'plus-quantity', size: '24' %}
+        </div>
+        <div class='collapse-item__header-icon-active'>
+          {% render 'icon', name: 'minus-quantity', size: '24' %}
+        </div>
+      </div>
+    </div>
+  </xo-collapse-trigger>
+  <xo-collapse
+    xo-name='{{ name }}'
+  >
+    <div class='collapse-item__content'>
+      {{ collapse_content }}
+    </div>
+  </xo-collapse>
+</div>

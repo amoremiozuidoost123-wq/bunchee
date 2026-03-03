@@ -1,0 +1,153 @@
+<div class='xo-address-table' data-customer-addresses>
+  <xo-animate xo-cascade>
+    <h6 class='xo-address-table__title'>{{ section.settings.subheading }}</h6>
+  </xo-animate>
+  {% paginate customer.addresses by 8 %}
+    {%- if customer.addresses.size > 0 -%}
+      <xo-animate xo-cascade>
+        <table class='xo-table'>
+          <thead>
+            <tr class='xo-table__head-row'>
+              <th class='xo-address-table__head-column xo-address-table__head-column--name'>{{ 'customer.addresses.name' | t }}</th>
+              <th class='xo-address-table__head-column xo-address-table__head-column--phone'>{{ 'customer.addresses.phone' | t }}</th>
+              <th class='xo-address-table__head-column xo-address-table__head-column--address'>{{ 'customer.addresses.address' | t }}</th>
+              <th class='xo-address-table__head-column xo-address-table__head-column--action'></th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for address in customer.addresses -%}
+              <tr class='xo-table__body-row'>
+                <td class='xo-address-table__body-column' data-th='Name'>
+                  {{ address.first_name | capitalize }}
+                  {{ address.last_name | capitalize }}
+                </td>
+                <td class='xo-address-table__body-column' data-th='Phone'>
+                  {{ address.phone }}
+                </td>
+                <td class='xo-address-table__body-column' data-th='Address'>
+                  {{ address.company }}
+                  {{ address.street }}
+                  {{ address.city | capitalize }}
+                  {{ address.country }}
+                </td>
+                <td class='xo-address-table__body-column' data-th='Action' data-address>
+                  <div class='xo-address-table__action'>
+                    <div class='xo-address-table__delete'>
+                      <form
+                        class='address-delete-form'
+                        method='post'
+                        action='/account/addresses/{{ address.id }}'
+                      >
+                        <input type='hidden' name='_method' value='delete'>
+                        {% render 'button', type: 'submit', icon: 'address-delete', icon_size: '16' %}
+                      </form>
+                    </div>
+                    <div class='xo-address-table__edit'>
+                      <xo-modal-trigger xo-name='edit-address-{{ address.id }}'>
+                        {{ form.first_name }}
+                        {% render 'button', type: 'submit', icon: 'address-edit', icon_size: '22' %}
+                      </xo-modal-trigger>
+                      <xo-modal
+                        xo-name='edit-address-{{ address.id }}'
+                        xo-portal
+                        style='z-index: 1000'
+                      >
+                        {% liquid
+                          assign title = 'customer.addresses.edit_address' | t
+                          capture edit_form
+                            render 'address-form', address: address, type: 'update'
+                          endcapture
+                          render 'modal-content', title: title, content: edit_form
+                        %}
+                      </xo-modal>
+                    </div>
+                    <div class='xo-address-table__set-default'>
+                      {% if address != customer.default_address %}
+                        {%- form 'customer_address', address -%}
+                          <input type='hidden' id='address_default_address_new' name='address[default]' value='1'>
+                          {% render 'button', type: 'submit', icon: 'address-default', icon_size: '22' %}
+                        {%- endform -%}
+                      {% elsif address == customer.default_address %}
+                        {% render 'button', icon: 'address-default-active', icon_size: '22' %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </xo-animate>
+      <div class='xo-address-table__bottom'>
+        <div class='xo-address-table__add-new-address'>
+          <xo-modal-trigger xo-name='create-address'>
+            <xo-animate xo-cascade class='xo-address-table__button'>
+              {% assign add_new_label = 'customer.addresses.add_new' | t %}
+              {% render 'button', text: add_new_label, type: 'button', icon: 'plus-quantity', icon_size: '24', icon_position: 'left' %}
+            </xo-animate>
+          </xo-modal-trigger>
+
+          <xo-modal
+            xo-name='create-address'
+            xo-portal
+            style='z-index: 1000'
+            xo-backdrop-color='rgba(0, 0, 0, 0.5)'
+          >
+            {% liquid
+              assign title = 'customer.addresses.add_new' | t
+              capture add_form
+                render 'address-form', address: customer.new_address, type: 'add'
+              endcapture
+              render 'modal-content', title: title, content: add_form
+            %}
+          </xo-modal>
+        </div>
+        <div class='xo-address-table__pagination'>
+          {% render 'pagination', paginate: paginate %}
+        </div>
+      </div>
+    {%- else -%}
+      <div class='xo-address-table__empty'>
+        {% render 'icon', name: 'address-empty', size: '128' %}
+        <div>
+          <h5 class='xo-address-table__empty-heading'>{{ 'customer.addresses.no_address' | t }}</h5>
+          <div class='xo-address-table__empty-text'>
+            {{ 'customer.orders.none' | t }}
+          </div>
+        </div>
+        <xo-modal-trigger xo-name='create-address-empty'>
+          <xo-animate xo-cascade class='xo-address-table__empty-button'>
+            {% assign add_new_label = 'customer.addresses.add_new' | t %}
+            {% render 'button', text: add_new_label, type: 'button', icon: 'plus-quantity', icon_size: '24', icon_position: 'left', size: 'md' %}
+          </xo-animate>
+        </xo-modal-trigger>
+        <xo-modal
+          xo-name='create-address-empty'
+          xo-portal
+          style='z-index: 1000'
+          xo-backdrop-color='rgba(0, 0, 0, 0.5)'
+        >
+          {% liquid
+            assign title = 'customer.addresses.add_new' | t
+            capture add_form
+              render 'address-form', address: customer.new_address, type: 'add'
+            endcapture
+            render 'modal-content', title: title, content: add_form
+          %}
+        </xo-modal>
+      </div>
+    {%- endif -%}
+  {% endpaginate %}
+</div>
+
+<script>
+  window.onload = () => {
+    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+  };
+  const buttonSetDefault = (e) => {
+    const formId = e.target.name;
+    const form = document.getElementById(`address_form_${formId}`);
+    form.querySelector(`#address_default_address_${formId}`).checked = true;
+    form.submit();
+  };
+</script>

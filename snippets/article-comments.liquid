@@ -1,0 +1,23 @@
+<div class='article-comments' id='comments'>
+  {% paginate article.comments by 5 %}
+    <xo-animate xo-cascade>
+      <h2 class='article-comments__title'>{{ 'customer.comment.title' | t }} ({{ article.comments_count }})</h2>
+    </xo-animate>
+    {%- if article.comments_count > 0 -%}
+      {%- assign anchor_id = '#Comments-' | append: article.id -%}
+      <div class='article-comments__container'>
+        {% for comment in article.comments %}
+          <div class='article-comments__item'>
+            <div class='article-comments__content'>{{ comment.content }}</div>
+            <div class='article-comments__info'>
+              <div class='article-comments__author'>{{ comment.author }}</div>
+              <div class='article-comments__dot'></div>
+              <div class='article-comments__date'>{{ comment.created_at | time_tag: format: 'date' }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% render 'pagination', paginate: paginate, anchor: anchor_id %}
+  {% endpaginate %}
+</div>

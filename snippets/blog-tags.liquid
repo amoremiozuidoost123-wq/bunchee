@@ -1,0 +1,16 @@
+{% comment %}
+  Renders a tag list
+  Accepts:
+  - all_tags: {array} List of tags
+  Usage:
+  {% render 'blog-tags', all_tags: blog.all_tags %}
+{% endcomment %}
+
+<div class='blog-tags'>
+  {% assign size = all_tags | size %}
+  {%- if size > 0 -%}
+    {%- for tag in all_tags -%}
+      <div class='blog-tags__item'>{{ tag }}</div>
+    {%- endfor -%}
+  {%- endif -%}
+</div>

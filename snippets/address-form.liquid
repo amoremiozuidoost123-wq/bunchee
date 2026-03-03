@@ -1,0 +1,81 @@
+{% comment %}
+  Renders a form to add or update an address.
+
+  Accepts:
+  - type: {String} 'add' or 'update'
+  - form: {Object} The form object from the controller
+
+  Usage:
+  {% render 'address-form',
+    type: 'add',
+    form: form
+  %}
+{% endcomment %}
+
+{% liquid
+  if type == 'add'
+    assign button_text = 'customer.addresses.add' | t
+  elsif type == 'update'
+    assign button_text = 'customer.addresses.update' | t
+  endif
+%}
+
+{%- form 'customer_address', address -%}
+  <xo-address-form class='address-form'>
+    <xo-grid>
+      <div style='--xs: 12; --lg: 6'>
+        {% assign first_name = 'customer.addresses.first_name' | t %}
+        {% render 'field-input', type: 'text', name: 'address[first_name]', value: form.first_name, label: first_name, autocomplete: 'given-name', id: 'address[first_name]' %}
+      </div>
+      <div style='--xs: 12; --lg: 6'>
+        {% assign last_name = 'customer.addresses.last_name' | t %}
+        {% render 'field-input', type: 'text', name: 'address[last_name]', value: form.last_name, label: last_name, autocomplete: 'family-name', id: 'address[last_name]' %}
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        {% assign company = 'customer.addresses.company' | t %}
+        {% render 'field-input', type: 'text', name: 'address[company]', value: form.company, label: company, autocomplete: 'organization', id: 'address[company]' %}
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        {% assign address_1 = 'customer.addresses.address1' | t %}
+        {% render 'field-input', type: 'text', name: 'address[address1]', value: form.address1, label: address_1, autocomplete: 'address-line1', id: 'address[address1]' %}
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        {% assign address_2 = 'customer.addresses.address2' | t %}
+        {% render 'field-input', type: 'text', name: 'address[address2]', value: form.address2, label: address_2, autocomplete: 'address-line2', id: 'address[address2]' %}
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        {% assign city = 'customer.addresses.city' | t %}
+        {% render 'field-input', type: 'text', name: 'address[city]', value: form.city, label: city, autocomplete: 'address-level2', id: 'address[city]' %}
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        <label class='address-form__country'>
+          {% capture select_attrs %}
+            autocomplete='country'
+            data-default='{{ form.country }}'
+            data-country-id='{{ form.id }}'
+          {% endcapture %}
+          <span class='address-form__placeholder'>{{ 'customer.addresses.country' | t }}</span>
+          {% render 'field-select', name: 'address[country]', attrs: select_attrs, options: all_country_option_tags, autocomplete: 'country' %}
+        </label>
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        {% assign zip = 'customer.addresses.zip' | t %}
+        {% render 'field-input', type: 'text', name: 'address[zip]', value: form.zip, label: zip, autocapitalize: 'characters', autocomplete: 'postal-code', id: 'address[zip]' %}
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        {% assign phone = 'customer.addresses.phone' | t %}
+        {% render 'field-input', type: 'text', name: 'address[phone]', value: form.phone, label: phone, autocomplete: 'tel', id: 'address[phone]' %}
+      </div>
+      <div style='--xs: 12; --lg: 12' class='address-form__checkbox'>
+        {% assign label = 'customer.addresses.set_default' | t %}
+        {% render 'field-checkbox', name: 'address[default]', value: '1', label: label %}
+      </div>
+      <div style='--xs: 12; --lg: 12'>
+        {% render 'button', text: button_text, block: true, style: 'primary', size: 'lg' %}
+      </div>
+    </xo-grid>
+  </xo-address-form>
+{%- endform -%}
+<xo-modal-trigger class='address-form__cancel-button'>
+  {% render 'button', style: 'primary', size: 'lg', text: 'Cancel', block: true, class: 'xo-btn--outline' %}
+</xo-modal-trigger>

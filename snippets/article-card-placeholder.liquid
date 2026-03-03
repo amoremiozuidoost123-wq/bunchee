@@ -1,0 +1,23 @@
+{% comment %}
+  Renders a article card placeholder.
+
+  Accepts:
+  - placeholder_image: {String} The placeholder image to use when no article exists. Default: 'product-apparel-1' (optional)
+
+  Usage:
+  {% render 'article-card-placeholder', placeholder_image: placeholder_image %}
+{% endcomment %}
+{{ 'article-card.css' | asset_url | stylesheet_tag }}
+
+<xo-animate
+  xo-cascade
+  class='article-card article-card--{{ article_card_style }}{% if color_scheme %} color-{{ color_scheme }}{% endif %}'
+>
+  <div class='article-card__header'>
+    {% render 'image', placeholder: placeholder_image, aspect_ratio: media_aspect_ratio %}
+  </div>
+  <div class='article-card__information'>
+    <h6 class='article-card__title'>{{ 'sections.featured_blog.onboarding_title' | t }}</h6>
+    <div class='article-card__description'>{{ 'sections.featured_blog.onboarding_content' | t }}</div>
+  </div>
+</xo-animate>

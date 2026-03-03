@@ -1,0 +1,36 @@
+{% comment %}
+  Renders cart drawer
+
+  Usage:
+  {% render 'cart-drawer' %}
+{% endcomment %}
+{{ 'cart-mini.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  if settings.cart_drawer_placement == 'left'
+    assign animate = 'slide-right'
+    assign placement = 'top-left'
+  else
+    assign animate = 'slide-left'
+    assign placement = 'top-right'
+  endif
+%}
+
+<xo-modal
+  xo-section-select
+  xo-portal
+  xo-name='cart'
+  xo-animate='{{ animate }}'
+  xo-placement='{{ placement }}'
+  xo-duration='300'
+  xo-backdrop-color='rgba(0, 0, 0, 0.5)'
+  xo-for-cart-mini
+  class='color-{{ settings.cart_color_scheme }} cart-mini'
+  style='z-index: 9999;'
+>
+  <xo-cart-mini
+    id='xo-cart-mini'
+  >
+    {% render 'cart-drawer' %}
+  </xo-cart-mini>
+</xo-modal>

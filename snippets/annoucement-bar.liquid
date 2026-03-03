@@ -1,0 +1,39 @@
+{% comment %}
+  Renders a list of annoucement bar
+
+  Accepts:
+  - phone_number: {String} Annoucement bar phone number
+  - text: {String} text of annoucement bar
+
+  Usage:
+  {% render 'annoucement-bar',
+    text: "abc",
+    phone_number: "abc",
+  %}
+{% endcomment %}
+
+<xo-container class='announcement-bar color-{{ color_scheme }}'>
+  {% if block_style == 'block-1' %}
+    <div class='announcement-bar__left'>
+      <span class='announcement-bar__icon'>{% render 'image', image: icon_1, aspect_ratio: '1' %}</span>
+      {{ annoucement_bar_discount }}
+    </div>
+    <div class='announcement-bar__right'>
+      <span class='announcement-bar__icon'>{% render 'image', image: icon_2, aspect_ratio: '1' %}</span>
+      {{ annoucement_bar_phone_number }}
+    </div>
+  {% else %}
+    <xo-marquee xo-speed='4' xo-pause-on-hover='true'>
+      <div class='announcement-bar__list'>
+        <div class='announcement-bar__left'>
+          <span class='announcement-bar__icon'>{% render 'image', image: icon_1, aspect_ratio: '1' %}</span>
+          {{ annoucement_bar_discount }}
+        </div>
+        <div class='announcement-bar__right'>
+          <span class='announcement-bar__icon'>{% render 'image', image: icon_2, aspect_ratio: '1' %}</span>
+          {{ annoucement_bar_phone_number }}
+        </div>
+      </div>
+    </xo-marquee>
+  {% endif %}
+</xo-container>

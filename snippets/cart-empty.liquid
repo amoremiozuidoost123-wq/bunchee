@@ -1,0 +1,15 @@
+{% assign title_empty = 'sections.cart.empty' | t %}
+{% capture content_empty %}
+  {% assign button_text = 'sections.cart.continue_shoping' | t %}
+  {% render 'button', text: button_text, link: '/collections/all', size: 'md', style: 'primary' %}
+  <div class="xo-cart-drawer__login">
+    <div class='xo-cart-drawer__login-title'>{{ 'sections.cart.login.title' | t }}</div>
+    <div class='xo-cart-drawer__login-paragraph'>
+      <a href='{{ routes.account_login_url }}' class='link underlined-link'>{{ 'sections.cart.login.login' | t }}</a>{{ 'sections.cart.login.paragraph' | t }}
+    </div>
+  </div>
+{% endcapture %}
+
+<xo-animate xo-cascade class='xo-cart-empty'>
+  {% render 'empty', title: title_empty, content: content_empty, icon_name: 'cart-mini-empty', icon_size: '11rem' %}
+</xo-animate>

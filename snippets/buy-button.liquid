@@ -1,0 +1,122 @@
+{% assign form_id = 'product_form_id-' | append: section.id %}
+
+{%- form 'product', product, id: form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+  <input type='hidden' name='id' value='{{ product.selected_or_first_available_variant.id }}'>
+
+  {% comment %} button này dùng để query của app subscription, không xoá {% endcomment %}
+  <button type='submit' class='xo-visually-hidden' aria-label='Button subcription'></button>
+
+  {% liquid
+    assign gift_card_recipient_feature_active = false
+    if block.settings.show_gift_card_recipient and product.gift_card?
+      assign gift_card_recipient_feature_active = true
+    endif
+
+    assign button_text_unavailable = 'products.product.unavailable' | t
+  %}
+
+  {% if gift_card_recipient_feature_active == true %}
+    <div class='buy-button__gift'>
+      <div class='buy-button__container'>
+        <xo-product-will-change
+          role='button'
+          tabindex='0'
+          class='buy-button'
+          xo-unique-id='product-buy-now-button-{{ product.id }}'
+          {% if product.selected_or_first_available_variant.available == false %}
+            xo-disabled
+          {% endif %}
+        >
+          {{ form | payment_button }}
+          {{ form | payment_terms }}
+        </xo-product-will-change>
+      </div>
+      <div class='add-button add-button--unavailable add-to-cart__unavailable add-to-cart__button'>
+        <div class='add-to-cart__unavailable-text'>{{ button_text_unavailable }}</div>
+        <div class='add-button__inside'>
+          <div class='add-button__cart'>
+            {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '22', product_card: true %}
+          </div>
+        </div>
+      </div>
+      <xo-product-will-change xo-unique-id='product-add-button-text-{{ product.id }}' class='add-to-cart__container'>
+        {% if product.selected_or_first_available_variant.available == true %}
+          {% assign button_text = 'products.product.add_to_cart' | t %}
+          {% assign sold_out = false %}
+        {% elsif product.selected_or_first_available_variant.available == false %}
+          {% assign button_text = 'products.product.sold_out' | t %}
+          {% assign sold_out = true %}
+          {% assign text_show = 'add-to-cart__text--show' %}
+        {% endif %}
+        <div
+          class='add-button add-button--available add-to-cart__button add-to-cart__sold-out'
+          sold-out='{{ sold_out }}'
+        >
+          <div class='add-to-cart__text {{ text_show }}'>{{ button_text }}</div>
+          <xo-product-will-change
+            class='add-button__inside'
+            xo-unique-id='product-add-button-{{ product.id }}'
+            {% if product.selected_or_first_available_variant.available == false %}
+              xo-disabled
+            {% endif %}
+          >
+            <xo-cart-add class='add-button__cart'>
+              {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '22', product_card: true %}
+            </xo-cart-add>
+          </xo-product-will-change>
+        </div>
+      </xo-product-will-change>
+      {%- render 'recipient-form', product: product, form: form, section: section -%}
+    </div>
+  {% else %}
+    <div class='buy-button__container'>
+      {% if block.settings.show_dynamic_checkout %}
+        <xo-product-will-change
+          class='buy-button'
+          xo-unique-id='product-buy-now-button-{{ product.id }}'
+          {% if product.selected_or_first_available_variant.available == false %}
+            xo-disabled
+          {% endif %}
+        >
+          {{ form | payment_button }}
+          {{ form | payment_terms }}
+        </xo-product-will-change>
+      {% endif %}
+      <div class='add-button add-button--unavailable add-to-cart__unavailable add-to-cart__button'>
+        <div class='add-to-cart__unavailable-text'>{{ button_text_unavailable }}</div>
+        <div class='add-button__inside'>
+          <div class='add-button__cart'>
+            {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '22', product_card: true %}
+          </div>
+        </div>
+      </div>
+      <xo-product-will-change xo-unique-id='product-add-button-text-{{ product.id }}' class='add-to-cart__container'>
+        {% if product.selected_or_first_available_variant.available == true %}
+          {% assign button_text = 'products.product.add_to_cart' | t %}
+          {% assign sold_out = false %}
+        {% elsif product.selected_or_first_available_variant.available == false %}
+          {% assign button_text = 'products.product.sold_out' | t %}
+          {% assign sold_out = true %}
+          {% assign text_show = 'add-to-cart__text--show' %}
+        {% endif %}
+        <div
+          class='add-button add-button--available add-to-cart__button add-to-cart__sold-out'
+          sold-out='{{ sold_out }}'
+        >
+          <div class='add-to-cart__text {{ text_show }}'>{{ button_text }}</div>
+          <xo-product-will-change
+            class='add-button__inside'
+            xo-unique-id='product-add-button-{{ product.id }}'
+            {% if product.selected_or_first_available_variant.available == false %}
+              xo-disabled
+            {% endif %}
+          >
+            <xo-cart-add class='add-button__cart'>
+              {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '22', product_card: true %}
+            </xo-cart-add>
+          </xo-product-will-change>
+        </div>
+      </xo-product-will-change>
+    </div>
+  {% endif %}
+{%- endform -%}

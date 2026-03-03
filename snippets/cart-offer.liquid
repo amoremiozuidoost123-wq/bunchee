@@ -1,0 +1,20 @@
+{% comment %}
+  Render cart offer.
+
+  Usage:
+  {% render 'cart-offer' %}
+{% endcomment %}
+
+{{ 'cart-offer.css' | asset_url | stylesheet_tag }}
+
+<div class='cart-offer'>
+  {% if section.blocks.size == 0 %}
+    <div class='cart-offer__empty'>{{ 'general.cart.offer_empty' | t }}</div>
+  {% else %}
+    {% for block in section.blocks %}
+      <a href='{{ block.settings.link }}' class='cart-offer__item'>
+        {% render 'image', image: block.settings.image %}
+      </a>
+    {% endfor %}
+  {% endif %}
+</div>

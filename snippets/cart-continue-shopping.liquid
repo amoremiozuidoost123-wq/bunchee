@@ -1,0 +1,16 @@
+{% comment %}
+  Renders a link to the all products collection. This is used in the cart
+
+  Usage:
+  {% render 'cart-continue-shopping' %}
+{% endcomment %}
+
+<a href='{{ routes.all_products_collection_url }}' class='cart-continue-shopping' role='button' tabindex='0'>
+  {% assign continue_label = 'general.continue_shopping' | t %}
+  <div class='cart-continue-shopping__container'>
+    <div class='cart-continue-shopping__text'>{{ continue_label }}</div>
+    <div class='cart-continue-shopping__icon'>
+      {% render 'icon', name: 'arrow-testimonial-right', size: '24' %}
+    </div>
+  </div>
+</a>

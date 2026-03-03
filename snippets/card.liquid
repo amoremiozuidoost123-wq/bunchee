@@ -1,0 +1,43 @@
+{% comment %}
+  card
+
+  Accepts:
+  - image: {Image} Image source (required)
+  - lazyload: {Boolean} Lazyload image. Default: true (optional)
+  - placeholder: {String} Placeholder SVG. Default: "detailed-apparel-1" (optional)
+  - aspect_ratio: {Number} Aspect ratio of the image (optional)
+  - max_width: {Number} max width of card (required)
+  - max_width_content: {Number} max width of card content (required)
+  - vertical_alignment: {Left, Right, Center} vertical alignment of card content (required)
+  - heading: {String} Heading of card (required)
+  - paragraph: {String} Paragraph of card (required)
+
+  Usage:
+  {% render 'card', image: section.settings.image, heading: section.settings.heading, paragraph: section.settings.paragraph
+  , max_width: section.settings.max_width, max_width_content: section.settings.max_width_content, vertical_alignment: section.settings.vertical_alignment %}
+{% endcomment %}
+
+{% liquid
+  if vertical_alignment == 'center'
+    assign class_paragraph = ''
+    assign class_heading = ''
+  elsif vertical_alignment == 'flex-end'
+    assign class_paragraph = ' xo-card__paragraph--right'
+    assign class_heading = ' xo-card__heading--right'
+  elsif vertical_alignment == 'flex-start'
+    assign class_paragraph = ' xo-card__paragraph--left'
+    assign class_heading = ' xo-card__heading--left'
+  endif
+%}
+
+<div class='xo-card' style='--max-width: {{ max_width }}px;'>
+  <div class='xo-card__image'>
+    {% render 'image', image: image, lazyload: lazyload, placeholder: placeholder, aspect_ratio: aspect_ratio %}
+  </div>
+  <div class='xo-card__container' style='--vertical-alignment: {{ vertical_alignment }};'>
+    <div class='xo-card__content' style='--max-width-content: {{ max_width_content }}px;'>
+      <div class='xo-card__heading{{ class_heading }}'>{{ heading }}</div>
+      <div class='xo-card__paragraph{{ class_paragraph }}'>{{ paragraph }}</div>
+    </div>
+  </div>
+</div>

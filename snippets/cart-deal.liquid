@@ -1,0 +1,26 @@
+{% comment %}
+  Render cart deal.
+
+  Usage:
+  {% render 'cart-deal' %}
+{% endcomment %}
+
+{{ 'cart-deal.css' | asset_url | stylesheet_tag }}
+
+{% render 'cart-free-shipping' %}
+<xo-cart-will-change xo-unique-id='xo-cart-mini-content'>
+  {% liquid
+    if cart == empty
+      render 'cart-empty'
+    else
+      for item in cart.items
+        assign index = forloop.index
+        if forloop.index < 5
+          render 'cart-mini-item', item: item, animate_enabled: true, index: index
+        else
+          render 'cart-mini-item', item: item, index: index
+        endif
+      endfor
+    endif
+  %}
+</xo-cart-will-change>

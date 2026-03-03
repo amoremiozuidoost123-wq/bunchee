@@ -1,0 +1,48 @@
+<div class='address-detail'>
+  <xo-animate xo-cascade class='address-detail__title'>
+    <h6>{{ 'customer.account.details' | t }}</h6>
+  </xo-animate>
+  {% if customer.addresses_count > 0 %}
+    <xo-animate xo-cascade class='address-detail__user'>
+      <div class='address-detail__name'>
+        <div class='address-detail__name-icon'>
+          {% render 'icon', name: 'user', size: '20' %}
+        </div>
+        <div class='address-detail__name-user'>
+          {{ customer.default_address.first_name | capitalize }}
+          {{ customer.default_address.last_name | capitalize }}
+        </div>
+      </div>
+      <div class='address-detail__phone'>
+        <div class='address-detail__phone-icon'>
+          {% render 'icon', name: 'phone', size: '24' %}
+        </div>
+        <div class='address-detail__phone-number'>{{ customer.default_address.phone }}</div>
+      </div>
+      <div class='address-detail__address'>
+        <div class='address-detail__address-icon'>
+          {% render 'icon', name: 'location', size: '24' %}
+        </div>
+        <div class='address-detail__address-info'>
+          {{- customer.default_address.company }}
+          {{ customer.default_address.street }}
+          {{ customer.default_address.city | capitalize }}
+          {{ customer.default_address.country -}}
+        </div>
+      </div>
+    </xo-animate>
+  {% else %}
+    <div class='address-detail__empty'>
+      {% render 'icon', name: 'address-empty', size: '128' %}
+      <div class='address-detail__empty-heading'>{{ 'customer.addresses.no_address' | t }}</div>
+      <a href='{{ routes.account_addresses_url }}'>
+        <div class='address-detail__empty-icon'>
+          {% render 'icon', name: 'plus-quantity', size: '20' %}
+        </div>
+        <div class='address-detail__empty-text'>
+          {{ 'customer.addresses.add_new_address' | t }}
+        </div>
+      </a>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,66 @@
+<div class='article-comments-form'>
+  {% form 'new_comment', article %}
+    <div>
+      <xo-animate xo-cascade>
+        <h3 class='article-comments-form__title'>{{ 'blogs.article.comment_form_title' | t }}</h3>
+      </xo-animate>
+      <xo-grid>
+        <xo-animate xo-cascade style='--xs: 12; --lg: 6;'>
+          {% assign comment_name_label = 'blogs.article.name' | t %}
+          {% render 'field-input', type: 'text', name: 'comment[author]', label: comment_name_label, value: form.author, id: 'comment[comment_author]' %}
+        </xo-animate>
+        <xo-animate xo-cascade style='--xs: 12; --lg: 6;'>
+          {% assign comment_email_label = 'blogs.article.email' | t %}
+          {% render 'field-input', type: 'text', name: 'comment[email]', label: comment_email_label, value: form.email, id: 'comment[comment_email]' %}
+        </xo-animate>
+        <xo-animate xo-cascade style='--xs: 12; --lg: 12;'>
+          {% capture attrs %}
+          onkeyup='countCharacterMessage()'
+          maxlength='200'
+          rows='5'
+          aria-required='true'
+          required
+          {% if form.errors %}
+            autofocus
+            aria-invalid='true'
+            aria-describedby='ContactFooter-error'
+          {% elsif form.posted_successfully? %}
+            aria-describedby='ContactFooter-success'
+          {% endif %}
+        {% endcapture %}
+          {% assign label = 'blogs.article.message' | t %}
+          {% render 'field-textarea', name: 'comment[body]', value: form.body, label: label, attrs: attrs, id: 'comment[comment_body]' %}
+        </xo-animate>
+      </xo-grid>
+      {%- if blog.moderated? -%}
+        <xo-animate xo-cascade class='article-comments-form__info'>
+          <div class='article-comments-form__info-icon'>
+            {% render 'icon', name: 'info', size: '24' %}
+          </div>
+          <div class='article-comments-form__info-text'>
+            <p>{{ 'blogs.article.moderated' | t }}</p>
+          </div>
+        </xo-animate>
+      {%- endif -%}
+      <xo-animate xo-cascade class='article-comments-form__submit'>
+        {% assign button_label = 'blogs.article.post' | t %}
+        {% render 'button', text: button_label, type: 'submit', size: 'lg' %}
+      </xo-animate>
+    </div>
+    {%- if form.errors -%}
+      <small class='article-comments-form__message'>
+        {%- render 'icon-error' -%}
+        {{- form.errors.translated_fields.email | capitalize }}
+        {{ form.errors.messages.email -}}
+      </small>
+    {%- endif -%}
+    {%- if form.posted_successfully? -%}
+      <h6
+        class='article-comments-form__message--success article-comments-form__message'
+        tabindex='-1'
+      >
+        {{- 'general.comment_success' | t }}
+      </h6>
+    {%- endif -%}
+  {% endform %}
+</div>

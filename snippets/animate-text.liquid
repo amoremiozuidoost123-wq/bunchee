@@ -1,0 +1,63 @@
+{% comment %}
+  Renders a animate-text element with a given value
+
+  Accepts:
+  - text: {String} text (required)
+  - class: {String} class (optional)
+  - type: {String} Animate type hover or active (optional)
+  - effect: {String} Animate effect random or center or ltr (optional)
+
+  Usage:
+  {% render 'animate-text', text: 'text', class: 'class', type: 'hover', effect: 'random' %}
+{% endcomment %}
+
+{% liquid
+  assign text = text
+  assign words = text | split: ' '
+  assign count = 0
+  assign class = class
+  assign type = type | default: 'default'
+  assign origin = text | replace: ' ' | split: '' | size | divided_by: 2
+  assign effect = effect | default: 'center'
+%}
+
+<div
+  class='
+    animate-text animate-text--{{ type }} {% if class %}
+       {{ class }}
+    {% endif %}
+  '
+>
+  {% for word in words %}
+    {% if forloop.index != 1 %}
+      <span class='animate-text__char'>&nbsp;</span>
+    {% endif %}
+    <span class='animate-text__word'>
+      {% assign chars = word | split: '' %}
+      {% for char in chars %}
+        {% liquid
+          assign count = count | plus: 1
+          assign order = 0
+          if effect == 'center'
+            if count > origin
+              assign order = count | minus: origin
+            else
+              assign order = origin | minus: count
+            endif
+          elsif effect == 'random'
+            assign min = 1
+            assign max = origin
+            assign diff = max | minus: min
+            assign order = count | modulo: diff | plus: min
+          elsif effect == 'ltr'
+            assign order = count
+          endif
+        %}
+        <span class='animate-text__char' style='--order: {{ order }}'>
+          <span class='animate-text__char-item'>{{ char }}</span>
+          <span class='animate-text__char-item'>{{ char }}</span>
+        </span>
+      {% endfor %}
+    </span>
+  {% endfor %}
+</div>
