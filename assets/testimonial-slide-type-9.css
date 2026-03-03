@@ -1,0 +1,161 @@
+.testimonial-slide-type-9 {
+  row-gap: 3.2rem;
+}
+
+.testimonial-slide-type-9__subheading {
+  opacity: 0.7;
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  font-weight: 400;
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+  padding-bottom: 1.2rem;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__subheading {
+    padding-bottom: 2rem;
+    font-size: calc(var(--font-body-scale) * 1.7rem);
+    line-height: calc(1 + 0.52 / var(--font-body-scale));
+  }
+}
+
+.testimonial-slide-type-9__right {
+  display: flex;
+  flex-direction: column-reverse;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__right {
+    flex-direction: row;
+  }
+}
+.testimonial-slide-type-9__right .xo-carousel-navigation {
+  position: relative;
+  width: unset;
+}
+.testimonial-slide-type-9__right .xo-carousel-navigation__button {
+  position: relative;
+}
+
+.testimonial-slide-type-9__left {
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-slide-type-9__left .xo-carousel-navigation {
+  position: relative;
+}
+.testimonial-slide-type-9__left .xo-carousel-navigation__button {
+  position: relative;
+}
+
+.testimonial-slide-type-9__image {
+  display: none;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__image {
+    display: block;
+  }
+}
+.testimonial-slide-type-9__image img,
+.testimonial-slide-type-9__image svg {
+  width: 100%;
+  height: 100%;
+}
+.testimonial-slide-type-9__image svg {
+  background-color: gray;
+}
+
+.testimonial-slide-type-9__image-mobile {
+  display: block;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__image-mobile {
+    display: none;
+  }
+}
+.testimonial-slide-type-9__image-mobile img,
+.testimonial-slide-type-9__image-mobile svg {
+  width: 100%;
+  height: 100%;
+}
+.testimonial-slide-type-9__image-mobile svg {
+  background-color: gray;
+}
+
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__content {
+    max-width: 80rem;
+  }
+}
+
+.testimonial-slide-type-9__slide-heading {
+  margin-bottom: clamp(2.4rem, calc(1vw + 2rem), 3.2rem);
+}
+.testimonial-slide-type-9__slide-heading p {
+  color: inherit;
+}
+
+.testimonial-slide-type-9__description {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-style: var(--font-body-style);
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  font-weight: 500;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__description {
+    font-size: calc(var(--font-body-scale) * 1.8rem);
+    line-height: calc(1 + 0.44 / var(--font-body-scale));
+  }
+}
+
+.testimonial-slide-type-9__author {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  padding-bottom: clamp(4rem, calc(7vw + 1.2rem), 9.6rem);
+}
+
+.testimonial-slide-type-9__author-image .xo-image {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+}
+.testimonial-slide-type-9__author-image .xo-image__placeholder {
+  width: 100%;
+}
+.testimonial-slide-type-9__author-image svg {
+  background-color: gray;
+}
+
+.testimonial-slide-type-9__name {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  font-weight: 500;
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__name {
+    font-size: calc(var(--font-body-scale) * 1.5rem);
+    line-height: calc(1 + 0.46 / var(--font-body-scale));
+  }
+}
+
+.testimonial-slide-type-9__job {
+  opacity: 0.6;
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  font-weight: 400;
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-9__job {
+    font-size: calc(var(--font-body-scale) * 1.5rem);
+    line-height: calc(1 + 0.46 / var(--font-body-scale));
+  }
+}

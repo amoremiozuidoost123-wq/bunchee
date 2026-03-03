@@ -1,0 +1,184 @@
+.testimonial-slide-type-3__left {
+  width: 61%;
+  margin: auto;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-3__left {
+    width: 100%;
+  }
+}
+
+.testimonial-slide-type-3__subheading {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+  padding-bottom: 1.4rem;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-3__subheading {
+    font-size: calc(var(--font-body-scale) * 1.5rem);
+    line-height: calc(1 + 0.46 / var(--font-body-scale));
+    padding-bottom: 2.1rem;
+  }
+}
+
+.testimonial-slide-type-3__heading {
+  margin-bottom: 1.8rem;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-3__heading {
+    margin-bottom: 2.7rem;
+  }
+}
+
+.testimonial-slide-type-3__customer {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-slide-type-3__customer-name {
+  opacity: 0.8;
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-style: var(--font-body-style);
+  font-weight: 600;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-3__customer-name {
+    font-size: calc(var(--font-body-scale) * 1.8rem);
+    line-height: calc(1 + 0.44 / var(--font-body-scale));
+  }
+}
+
+.testimonial-slide-type-3__customer-job {
+  opacity: 0.6;
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  font-weight: 600;
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-3__customer-job {
+    font-size: calc(var(--font-body-scale) * 1.6rem);
+    line-height: calc(1 + 0.5 / var(--font-body-scale));
+  }
+}
+
+.testimonial-slide-type-3__group-button {
+  display: flex;
+  gap: 0.7rem;
+  padding-top: 3.4rem;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-3__group-button {
+    gap: 0.9rem;
+    padding-top: 7.2rem;
+  }
+}
+.testimonial-slide-type-3__group-button xo-carousel-next[xo-disabled] .testimonial-slide-type-3__button {
+  cursor: not-allowed;
+  background-color: color-mix(in srgb, rgba(var(--color-button)) calc(0.1 * 100%), transparent);
+}
+.testimonial-slide-type-3__group-button xo-carousel-next[xo-disabled] svg {
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+.testimonial-slide-type-3__group-button xo-carousel-prev[xo-disabled] .testimonial-slide-type-3__button {
+  cursor: not-allowed;
+  background-color: color-mix(in srgb, rgba(var(--color-button)) calc(0.1 * 100%), transparent);
+}
+.testimonial-slide-type-3__group-button xo-carousel-prev[xo-disabled] svg {
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+
+.testimonial-slide-type-3__button {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+  transition: all 0.5s;
+}
+@media (min-width: 992px) {
+  .testimonial-slide-type-3__button {
+    width: 5.1rem;
+    height: 5.1rem;
+  }
+}
+.testimonial-slide-type-3__button svg {
+  position: absolute;
+  color: color-mix(in srgb, rgba(var(--color-button-text)) calc(1 * 100%), transparent);
+}
+.testimonial-slide-type-3__button svg:first-child {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s;
+}
+.testimonial-slide-type-3__button svg:last-child {
+  opacity: 0;
+  transition: all 0.3s;
+}
+[dir=ltr] .testimonial-slide-type-3__button svg:last-child {
+  transform: translateX(-3rem);
+}
+[dir=rtl] .testimonial-slide-type-3__button svg:last-child {
+  transform: translateX(3rem);
+}
+
+.testimonial-slide-type-3__button:hover svg:first-child {
+  opacity: 0;
+  transition: all 0.3s;
+}
+[dir=ltr] .testimonial-slide-type-3__button:hover svg:first-child {
+  transform: translateX(3rem);
+}
+[dir=rtl] .testimonial-slide-type-3__button:hover svg:first-child {
+  transform: translateX(-3rem);
+}
+.testimonial-slide-type-3__button:hover svg:last-child {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.testimonial-slide-type-3__button--previous svg:first-child {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s;
+}
+.testimonial-slide-type-3__button--previous svg:last-child {
+  opacity: 0;
+  transition: all 0.3s;
+}
+[dir=ltr] .testimonial-slide-type-3__button--previous svg:last-child {
+  transform: translateX(3rem);
+}
+[dir=rtl] .testimonial-slide-type-3__button--previous svg:last-child {
+  transform: translateX(-3rem);
+}
+
+.testimonial-slide-type-3__button--previous:hover svg:first-child {
+  opacity: 0;
+  transition: all 0.3s;
+}
+[dir=ltr] .testimonial-slide-type-3__button--previous:hover svg:first-child {
+  transform: translateX(-3rem);
+}
+[dir=rtl] .testimonial-slide-type-3__button--previous:hover svg:first-child {
+  transform: translateX(3rem);
+}
+.testimonial-slide-type-3__button--previous:hover svg:last-child {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s;
+}

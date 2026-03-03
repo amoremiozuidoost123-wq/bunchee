@@ -1,0 +1,14 @@
+.xo-share {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.xo-share__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  color: rgba(var(--color-foreground));
+  cursor: pointer;
+  transition: 0.3s;
+}

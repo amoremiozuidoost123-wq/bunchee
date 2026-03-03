@@ -1,0 +1,306 @@
+.mega-menu .xo-btn--sm .xo-btn__content {
+  padding: 1rem 1.6rem;
+  font-size: calc(var(--font-body-scale) * 1.3rem);
+  line-height: calc(1 + 0.38 / var(--font-body-scale));
+}
+
+.mega-menu__heading {
+  margin-bottom: 1.3rem;
+  transition: color 0.3s;
+}
+.mega-menu__heading:hover, .mega-menu__heading:focus-visible {
+  color: color-mix(in srgb, rgba(var(--color-hover-button)) calc(1 * 100%), transparent);
+  transition: color 0.3s;
+}
+.mega-menu__heading a {
+  color: inherit;
+}
+@media (max-width: 991px) {
+  .mega-menu__heading a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+.mega-menu__heading sup {
+  top: -1.5rem;
+  opacity: 0.7;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.4rem);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+  line-height: calc(1 + 0.57 / var(--font-body-scale));
+}
+
+.mega-menu__description {
+  opacity: 0.9;
+  color: color-mix(in srgb, rgba(var(--color-foreground-2)) calc(1 * 100%), transparent);
+  font-size: calc(var(--font-body-scale) * 1.5rem);
+  line-height: calc(1 + 0.46 / var(--font-body-scale));
+  padding-bottom: 2.1rem;
+}
+@media (min-width: 992px) {
+  .mega-menu__description {
+    max-width: 28.5rem;
+  }
+}
+
+.mega-menu__button {
+  padding-top: 2rem;
+}
+@media (max-width: 991px) {
+  .mega-menu__button {
+    padding-top: 0.3rem;
+    padding-bottom: 2.4rem;
+    border-bottom: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+  }
+  .mega-menu__button .xo-btn {
+    width: 100%;
+  }
+}
+.mega-menu__button .xo-btn__text {
+  text-transform: uppercase;
+}
+
+.mega-menu__product {
+  display: block;
+  position: relative;
+  max-width: 49rem;
+}
+.mega-menu__product:hover svg,
+.mega-menu__product:hover img {
+  scale: 1.1;
+  transition: scale 0.3s;
+}
+.mega-menu__product .xo-image {
+  border-radius: 1rem;
+}
+.mega-menu__product svg,
+.mega-menu__product img {
+  width: 100%;
+  height: 100%;
+  transition: scale 0.3s;
+}
+
+.mega-menu__product:has(a:focus-within) {
+  border: 0.1rem solid color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+}
+
+.mega-menu__product-title {
+  position: absolute;
+  z-index: 10;
+  bottom: 2.7rem;
+  margin-bottom: 0;
+  color: color-mix(in srgb, rgba(var(--color-button-text)) calc(1 * 100%), transparent);
+}
+[dir=ltr] .mega-menu__product-title {
+  left: 3rem;
+  right: 4.4rem;
+}
+[dir=rtl] .mega-menu__product-title {
+  right: 3rem;
+  left: 4.4rem;
+}
+
+.mega-menu--desktop {
+  display: none;
+}
+@media (min-width: 1200px) {
+  .mega-menu--desktop {
+    display: block;
+    padding-inline-start: 3.5rem;
+    padding-inline-end: 3.5rem;
+  }
+}
+@media (min-width: 1600px) {
+  .mega-menu--desktop {
+    padding-inline-start: 4.6rem;
+  }
+}
+.mega-menu--desktop .mega-menu__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.7rem;
+}
+.mega-menu--desktop .mega-menu__item {
+  position: relative;
+}
+.mega-menu--desktop .mega-menu__item:first-child {
+  max-width: 32.6rem;
+  min-width: 26rem;
+  padding-inline-end: 3.5rem;
+}
+@media (min-width: 1600px) {
+  .mega-menu--desktop .mega-menu__item:first-child {
+    padding-inline-end: 4.1rem;
+  }
+}
+.mega-menu--desktop .mega-menu__item:first-child::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-right: 0.1rem dashed color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+}
+[dir=ltr] .mega-menu--desktop .mega-menu__item:first-child::after {
+  right: 0;
+}
+[dir=rtl] .mega-menu--desktop .mega-menu__item:first-child::after {
+  left: 0;
+}
+.mega-menu--desktop .mega-menu__item--content {
+  width: 100%;
+  max-width: 46.5rem;
+  min-width: 32rem;
+}
+.mega-menu--desktop .mega-menu__item--introducing {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.mega-menu--desktop .mega-menu__item--collection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 21.4rem;
+  min-width: 15rem;
+}
+.mega-menu--desktop .mega-menu__item-collection-title {
+  opacity: 0.35;
+  margin-bottom: 0;
+  transition: 0.3s;
+  transition: 0.3s;
+}
+.mega-menu--desktop .mega-menu__item-collection-title:hover, .mega-menu--desktop .mega-menu__item-collection-title:focus-visible {
+  color: color-mix(in srgb, rgba(var(--color-hover-button)) calc(1 * 100%), transparent);
+  transition: 0.3s;
+}
+.mega-menu--desktop .mega-menu__item-collection-title sup {
+  top: -1.5rem;
+  opacity: 0.7;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.3rem);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+  line-height: calc(1 + 0.38 / var(--font-body-scale));
+}
+.mega-menu--desktop .mega-menu__item-collection-title[xo-active] {
+  opacity: 1;
+}
+.mega-menu--desktop .mega-menu__item-products-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1.3rem;
+  column-gap: 5.5rem;
+}
+.mega-menu--desktop .mega-menu__item-product {
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-style: var(--font-body-style);
+  font-weight: 600;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  transition: color 0.3s;
+}
+.mega-menu--desktop .mega-menu__item-product:hover, .mega-menu--desktop .mega-menu__item-product:focus-visible {
+  color: color-mix(in srgb, rgba(var(--color-hover-button)) calc(1 * 100%), transparent);
+  transition: color 0.3s;
+}
+.mega-menu--desktop .mega-menu__item-product a {
+  display: block;
+  max-width: 20.5rem;
+  color: inherit;
+}
+.mega-menu--desktop .mega-menu__product {
+  height: fit-content;
+}
+
+.mega-menu--mobile {
+  display: block;
+}
+@media (min-width: 1200px) {
+  .mega-menu--mobile {
+    display: none;
+  }
+}
+.mega-menu--mobile .mega-menu__container {
+  padding-top: 3.2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.mega-menu--mobile .mega-menu__item-products-list--mobile {
+  padding-inline-start: 2rem;
+  padding-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.3rem;
+}
+.mega-menu--mobile .mega-menu__item--introducing {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.mega-menu--mobile .mega-menu__product {
+  display: block;
+  position: relative;
+  max-width: 30rem;
+}
+.mega-menu--mobile .mega-menu__product .xo-image {
+  border-radius: 1rem;
+}
+.mega-menu--mobile .mega-menu__product svg,
+.mega-menu--mobile .mega-menu__product img {
+  width: 100%;
+  height: 100%;
+}
+.mega-menu--mobile .mega-menu__item-collection-title {
+  opacity: 0.35;
+  margin-bottom: 0;
+  transition: 0.3s;
+}
+.mega-menu--mobile .mega-menu__item-collection-title:hover, .mega-menu--mobile .mega-menu__item-collection-title:focus-visible {
+  color: color-mix(in srgb, rgba(var(--color-hover-button)) calc(1 * 100%), transparent);
+  transition: 0.3s;
+}
+.mega-menu--mobile .mega-menu__item-collection-title sup {
+  top: -1.5rem;
+  opacity: 0.7;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.3rem);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+  line-height: calc(1 + 0.38 / var(--font-body-scale));
+}
+.mega-menu--mobile xo-collapse-trigger {
+  cursor: pointer;
+  margin-top: 2.4rem;
+}
+.mega-menu--mobile xo-collapse-trigger[xo-active] .mega-menu__item-collection-title {
+  opacity: 1;
+}
+.mega-menu--mobile .mega-menu__item-product {
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.6rem);
+  font-style: var(--font-body-style);
+  font-weight: 600;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  transition: color 0.3s;
+}
+.mega-menu--mobile .mega-menu__item-product:hover, .mega-menu--mobile .mega-menu__item-product:focus-visible {
+  color: color-mix(in srgb, rgba(var(--color-hover-button)) calc(1 * 100%), transparent);
+  transition: color 0.3s;
+}
+.mega-menu--mobile .mega-menu__item-product a {
+  display: block;
+  max-width: 20.5rem;
+  color: inherit;
+}

@@ -1,0 +1,83 @@
+.sale-countdown__time {
+  display: flex;
+  justify-content: center;
+  padding-bottom: clamp(2.4rem, calc(1vw + 2rem), 3.2rem);
+}
+
+.sale-countdown__marquee {
+  gap: 4rem;
+}
+.sale-countdown__marquee xo-marquee-item {
+  gap: 4rem;
+}
+
+.sale-countdown__text {
+  position: relative;
+  margin-bottom: 0;
+}
+.sale-countdown__text::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 40%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgba(var(--color-foreground));
+  border-radius: 100rem;
+}
+[dir=ltr] .sale-countdown__text::before {
+  left: -2rem;
+}
+[dir=rtl] .sale-countdown__text::before {
+  right: -2rem;
+}
+@media (max-width: 991px) {
+  .sale-countdown__text::before {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.sale-countdown__timer {
+  min-width: 26rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.8rem 2rem;
+  border-radius: 4.8rem;
+  border: 0.1rem dashed rgba(var(--color-border));
+}
+
+.sale-countdown__timer-item {
+  display: flex;
+  position: relative;
+}
+.sale-countdown__timer-item::after {
+  content: ":";
+  position: absolute;
+  top: -15%;
+  right: -30%;
+  font-size: calc(var(--font-heading-scale) * var(--font-body-scale) * clamp(2rem, calc(0.125vw + 1.95rem), 2.1rem));
+}
+.sale-countdown__timer-item:last-child::after {
+  content: "";
+}
+@media (max-width: 991px) {
+  .sale-countdown__timer-item::after {
+    top: -45%;
+  }
+}
+
+.sale-countdown__timer-value,
+.sale-countdown__timer-label {
+  margin-bottom: 0;
+}
+
+.sale-countdown__container {
+  padding-top: clamp(4.8rem, calc(4.75vw + 2.9rem), 8.6rem);
+}
+
+.sale-countdown__product {
+  padding-inline-start: clamp(1.6rem, calc(1.1428571429vw + 1.1428571429rem), 3.2rem);
+  padding-inline-end: clamp(1.6rem, calc(1.1428571429vw + 1.1428571429rem), 3.2rem);
+}

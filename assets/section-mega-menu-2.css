@@ -1,0 +1,112 @@
+.mega-menu-2 {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, calc(2vw + 3.2rem), 5.6rem);
+  padding-inline-start: clamp(0rem, calc(460vw - 547.4rem), 4.6rem);
+  padding-inline-end: clamp(0rem, calc(460vw - 547.4rem), 4.6rem);
+}
+@media (min-width: 992px) {
+  .mega-menu-2 {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.mega-menu-2__carousel {
+  width: 100%;
+}
+@media (max-width: 1199px) {
+  .mega-menu-2__carousel {
+    display: none;
+  }
+}
+[dir=ltr] .mega-menu-2__carousel .xo-carousel-navigation--in-content {
+  left: -3%;
+}
+[dir=rtl] .mega-menu-2__carousel .xo-carousel-navigation--in-content {
+  right: -3%;
+}
+.mega-menu-2__carousel .xo-carousel-navigation {
+  width: 106%;
+}
+
+.mega-menu-2__list {
+  width: 100%;
+}
+@media (min-width: 1200px) {
+  .mega-menu-2__list {
+    display: none;
+  }
+}
+.mega-menu-2__list xo-grid {
+  gap: 2.4rem;
+}
+
+.mega-menu-2__product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.8rem;
+  padding: 0.3rem;
+}
+
+.mega-menu-2__product-title {
+  text-align: center;
+  display: block;
+  margin-bottom: 0;
+  transition: all 0.3s;
+}
+.mega-menu-2__product-title:hover {
+  color: color-mix(in srgb, rgba(var(--color-hover-button)) calc(1 * 100%), transparent);
+  transition: all 0.3s;
+}
+
+.mega-menu-2__product-image {
+  display: block;
+  overflow: hidden;
+}
+.mega-menu-2__product-image img,
+.mega-menu-2__product-image svg {
+  transform: scale(1);
+  transition: all 0.3s;
+}
+
+.mega-menu-2__product-image:hover img,
+.mega-menu-2__product-image:hover svg,
+.mega-menu-2__product-image:focus-within img,
+.mega-menu-2__product-image:focus-within svg {
+  transform: scale(1.05);
+  transition: all 0.3s;
+}
+
+.mega-menu-2__sale {
+  width: 100%;
+  max-width: 45rem;
+  max-height: 16.7rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+.mega-menu-2__sale a {
+  display: block;
+}
+.mega-menu-2__sale a .xo-image__placeholder,
+.mega-menu-2__sale a svg {
+  width: 100%;
+  height: 100%;
+}
+.mega-menu-2__sale a img,
+.mega-menu-2__sale a svg {
+  transform: scale(1);
+  transition: all 0.3s;
+}
+
+.mega-menu-2__sale:hover a img,
+.mega-menu-2__sale:hover a svg {
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+
+.mega-menu-2__sale:has(a:focus-visible) {
+  outline: 0.2rem solid color-mix(in srgb, rgba(var(--color-accent)) calc(1 * 100%), transparent);
+  outline-offset: 0.8rem;
+}

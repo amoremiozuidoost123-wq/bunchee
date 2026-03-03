@@ -1,0 +1,75 @@
+.order-detail {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+.order-detail xo-grid {
+  column-gap: 2rem;
+}
+
+.order-detail__heading {
+  margin: 0;
+  letter-spacing: calc(var(--font-heaading-scale) * -0.108rem);
+  padding-bottom: 1.6rem;
+}
+@media (min-width: 992px) {
+  .order-detail__heading {
+    letter-spacing: calc(var(--font-heaading-scale) * -0.201rem);
+    padding-bottom: 1rem;
+  }
+}
+
+.order-detail__button {
+  padding-bottom: 2.4rem;
+}
+@media (min-width: 992px) {
+  .order-detail__button {
+    padding-bottom: 3.6rem;
+  }
+}
+.order-detail__button .xo-btn {
+  background: none;
+  border-radius: unset;
+  color: color-mix(in srgb, rgba(var(--color-foreground)) calc(1 * 100%), transparent);
+  border-bottom: 0.1rem solid color-mix(in srgb, rgba(var(--color-border)) calc(1 * 100%), transparent);
+  transition: opacity 0.3s;
+}
+.order-detail__button .xo-btn:before {
+  background: none;
+}
+.order-detail__button .xo-btn .xo-btn__content {
+  text-shadow: none;
+}
+.order-detail__button .xo-btn .xo-btn__content svg {
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+.order-detail__button .xo-btn:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+.order-detail__button .xo-btn__content {
+  padding: 0;
+  min-height: unset;
+  align-items: flex-start;
+}
+.order-detail__button .xo-btn__text {
+  font-family: var(--font-body-family);
+  font-size: calc(var(--font-body-scale) * 1.5rem);
+  font-style: var(--font-body-style);
+  font-weight: 400;
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+  line-height: calc(1 + 0.46 / var(--font-body-scale));
+}
+.order-detail__button .xo-btn__icon {
+  color: color-mix(in srgb, rgba(var(--color-button)) calc(1 * 100%), transparent);
+}
+
+.order-detail__grid {
+  padding-top: 2.7rem;
+  padding-bottom: 6.3rem;
+}
+@media (min-width: 992px) {
+  .order-detail__grid {
+    padding-top: 1.6rem;
+    padding-bottom: 9.6rem;
+  }
+}

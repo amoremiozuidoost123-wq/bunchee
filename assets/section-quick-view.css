@@ -1,0 +1,37 @@
+xo-product-quick-view {
+  --xo-container-gap: 0;
+}
+
+.quick-view .shopify-payment-button__button--hidden {
+  display: none;
+}
+.quick-view form {
+  display: flex;
+  gap: 0.3rem;
+}
+@media (min-width: 992px) {
+  .quick-view .add-button .xo-btn__content {
+    padding: 1.2rem;
+  }
+}
+.quick-view xo-cart-add {
+  display: block;
+}
+.quick-view xo-cart-add[xo-loading] .xo-btn__content {
+  opacity: 0;
+}
+.quick-view .xo-modal-content__inner {
+  border-radius: 1.5rem;
+}
+@media (min-width: 992px) {
+  .quick-view .xo-modal-content__inner {
+    border-radius: 1.2rem;
+  }
+}
+.quick-view .xo-modal-content__body {
+  overflow: auto;
+}
+.quick-view .xo-modal-content__body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

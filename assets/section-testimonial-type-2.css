@@ -1,0 +1,9 @@
+.testimonial-type-2 xo-carousel-inner {
+  height: 41.2rem;
+}
+.testimonial-type-2 svg {
+  background-color: gray;
+}
+.testimonial-type-2 .testimonial-slide-type-2__button svg {
+  background: unset;
+}
