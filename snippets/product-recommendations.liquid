@@ -1,0 +1,171 @@
+{% comment %}
+  Renders a product recommendations section.
+
+  Accepts:
+  - intent: {'related' | 'complementary'} Recommendation intent (optional)
+
+  Usage:
+  {% render 'product-recommendations', intent: 'related' %}
+{% endcomment %}
+{{ 'product-recommendations.css' | asset_url | stylesheet_tag }}
+
+<div class='{% if product_recommend_style == "style_2" %} product-recommendations__space-style-2 {% endif %}'>
+  {% if intent == 'related' %}
+    <xo-product-recommendations
+      xo-url='{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&intent={{ intent }}'
+    >
+      {% if recommendations.performed? and recommendations.products_count > 0 %}
+        <xo-carousel
+          class='product-recommendations__carousel'
+          xo-per-view='3'
+          xo-per-move='1'
+          xo-gap='129'
+          xo-type='slide'
+          xo-breakpoints='
+            {
+              600: {
+                perView: 1,
+                perMove: 1,
+                gap: 20,
+              },
+              1400: {
+                perView: 2,
+                perMove: 1,
+              },
+            }
+          '
+        >
+          {% if section.settings.text_heading %}
+            <div class='product-recommendations__top'>
+              <div class='product-recommendations__heading'>
+                {% render 'text',
+                  text: section.settings.text_heading,
+                  tag_name: section.settings.text_tag_name,
+                  duration: section.settings.text_duration,
+                  effect: section.settings.text_effect
+                %}
+              </div>
+            </div>
+          {% endif %}
+          <xo-carousel-inner>
+            <xo-carousel-list>
+              {% for recommendation in recommendations.products limit: products_to_show %}
+                {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+                <xo-carousel-slide>
+                  {% render 'product-card',
+                    product: recommendation,
+                    show_image: product_card_show_image,
+                    show_secondary_image: product_card_show_secondary_image,
+                    show_vendor: product_card_show_vendor,
+                    show_description: product_card_show_description,
+                    show_quick_add: product_card_show_quick_add,
+                    show_quick_view: product_card_show_quick_view,
+                    show_price: product_card_show_price,
+                    show_badge: product_card_show_badge,
+                    turn_off_variant: true,
+                    media_aspect_ratio: product_card_aspect_ratio,
+                    color_scheme: card_color_scheme,
+                    placeholder_image: placeholder_image,
+                    animate_enabled: false,
+                    animate_constant: 30
+                  %}
+                </xo-carousel-slide>
+              {% endfor %}
+            </xo-carousel-list>
+          </xo-carousel-inner>
+          {% render 'carousel-navigation', style: '', align: 'center', position: 'in-content', disabled: false, mobile_disabled: false %}
+        </xo-carousel>
+      {% endif %}
+    </xo-product-recommendations>
+  {% else %}
+    <xo-product-recommendations
+      xo-url='{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&intent={{ intent }}'
+    >
+      {% if recommendations.performed? and recommendations.products_count > 0 %}
+        <div class='complementary'>
+          <xo-collapse-provider>
+            <xo-collapse-trigger role='button' tabindex='0'>
+              <div class='complementary__trigger'>
+                <div class='complementary__heading'>{{ heading }}</div>
+                <div class='complementary__icon'>
+                  {% render 'icon', name: 'arrow-down-product-info', size: '24' %}
+                </div>
+              </div>
+            </xo-collapse-trigger>
+            <xo-collapse>
+              <div class='product-recommendations__list'>
+                {% for recommendation in recommendations.products limit: products_to_show %}
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+                  {% comment %}  {% endcomment %}
+                  <xo-product
+                    xo-product-id='{{ recommendation.id }}'
+                    xo-section-id='{{ section.id }}'
+                    class='product-card-complementary {% if card_color_scheme %} color-{{ card_color_scheme }}{% endif %}'
+                  >
+                    <xo-animate xo-cascade class='product-card-complementary__container'>
+                      <div class='product-card-complementary__header'>
+                        {% if product_card_show_image %}
+                          <a href='{{ recommendation.url }}'>
+                            {% render 'product-image', product: recommendation, show_secondary_image: product_card_show_secondary_image, aspect_ratio: '3/4' %}
+                          </a>
+                        {% endif %}
+                      </div>
+                      <div class='product-card-complementary__inner'>
+                        <div class='product-card-complementary__information'>
+                          {% if product_card_show_badge %}
+                            <div class='product-card-complementary__badge'>
+                              {% render 'badge-sale', product: recommendation, use_variant: true %}
+                              {% render 'badge-sold-out', product: recommendation, use_variant: true %}
+                              {% render 'badge-new', product: recommendation %}
+                            </div>
+                          {% endif %}
+                          {% if product_card_show_vendor %}
+                            <div class='product-card-complementary__vendor'>
+                              {{ recommendation.vendor }}
+                            </div>
+                          {% endif %}
+                          <a class='product-card-complementary__title h6' href='{{ recommendation.url }}'>
+                            {{ recommendation.title | escape }}
+                          </a>
+                          {% if product_card_show_description %}
+                            <div class='product-card-complementary__description'>
+                              {{ recommendation.description }}
+                            </div>
+                          {% endif %}
+                          {% if product_card_show_price %}
+                            <div class='product-card-complementary__price'>
+                              {% render 'price', product: recommendation, use_variant: true, reverse: true %}
+                            </div>
+                          {% endif %}
+                        </div>
+                        <div class='product-card-complementary__action'>
+                          {% if recommendation.selected_or_first_available_variant.available %}
+                            {% assign button_text = 'products.product.add_to_cart' | t %}
+                            <xo-tooltip xo-title='{{ button_text }}'>
+                              <xo-cart-add class='product-card-complementary__cart'>
+                                {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '24', product_card: true %}
+                              </xo-cart-add>
+                            </xo-tooltip>
+                          {% else %}
+                            {% assign button_text = 'products.product.sold_out' | t %}
+                            <xo-tooltip xo-title='{{ button_text }}'>
+                              <xo-cart-add class='product-card-complementary__cart product-card-complementary__cart--sold-out'>
+                                {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '24', product_card: true %}
+                              </xo-cart-add>
+                            </xo-tooltip>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </xo-animate>
+                  </xo-product>
+                {% endfor %}
+              </div>
+            </xo-collapse>
+          </xo-collapse-provider>
+        </div>
+      {% endif %}
+    </xo-product-recommendations>
+  {% endif %}
+</div>

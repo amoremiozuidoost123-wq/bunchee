@@ -1,0 +1,127 @@
+{% liquid
+  if product.has_only_default_variant == false
+    assign tag_name = 'xo-modal-trigger'
+    assign sticky_cart_container_class = 'sticky-cart__container--trigger'
+  else
+    assign tag_name = 'div'
+  endif
+%}
+
+<xo-sticky xo-direction='down' xo-placement='bottom' xo-name='sticky-cart' class="sticky-cart">
+  <xo-container class='sticky-cart__inside'>
+    <{{ tag_name }} class='sticky-cart__container {{ sticky_cart_container_class }}'
+      {% if product.has_only_default_variant == false %}
+        xo-name="sticky-cart-{{ product.id }}"
+      {% endif %}
+    >
+      {% comment %} Sticky cart content {% endcomment %}
+      <div class='sticky-cart__content'>
+        <div class='sticky-cart__image'>
+          {% render 'image', image: product.featured_image %}
+        </div>
+        <div class='sticky-cart__info'>
+          <div class='sticky-cart__title'>{{ product.title }}</div>
+          <div class='sticky-cart__price'>
+            {% render 'price', product: product, use_variant: true %}
+          </div>
+        </div>
+      </div>
+      {% if product.has_only_default_variant == false %}
+        <div class="sticky-cart__trigger" role="button" tabindex="-1">
+          {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '28', product_card: true %}
+        </div>
+      {% else %}
+        <xo-product-will-change
+          class='sticky-cart__add-button'
+          xo-unique-id='sticky-cart__add-button-{{ product.id }}'
+          {% if product.selected_or_first_available_variant.available == false %}
+            xo-disabled
+          {% endif %}
+        >
+          <xo-cart-add>
+            {% render 'button', size: 'md', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'left', icon_size: '28', product_card: true %}
+          </xo-cart-add>
+        </xo-product-will-change>
+      {% endif %}
+    </{{ tag_name }}>
+  </xo-container>
+  {% comment %} Modal {% endcomment %}
+  <xo-modal
+    xo-animate-ready="true"
+    xo-portal
+    xo-backdrop-color="transparent"
+    xo-animate="fade-up"
+    xo-placement="bottom-center"
+    xo-name="sticky-cart-{{ product.id }}"
+    class="sticky-cart__modal"
+  >
+    <div class="sticky-cart__modal-content">
+      {% comment %} Sticky cart content {% endcomment %}
+      <xo-animate xo-cascade class='sticky-cart__content'>
+        <div class='sticky-cart__image'>
+          {% render 'image', image: product.featured_image %}
+        </div>
+        <div class='sticky-cart__info'>
+          <div class='sticky-cart__title'>{{ product.title }}</div>
+          <xo-product-will-change xo-unique-id='sticky-cart-price-{{ product.id }}' class='sticky-cart__price'>
+            {% render 'price', product: product, use_variant: true %}
+          </xo-product-will-change>
+        </div>
+      </xo-animate>
+      {% comment %} Sticky cart variant {% endcomment %}
+      <xo-product-variants class='sticky-cart__variant'>
+        {% if product.options_with_values.size > 0 %}
+          {%- for option in product.options_with_values -%}
+            <xo-animate xo-cascade>
+              {% if option.name == 'Color' %}
+                {% render 'product-variant', option: option, style: 'color', is_product_detail: true %}
+              {% else %}
+                {% render 'product-variant', option: option, style: 'boxed', is_product_detail: true %}
+              {% endif %}
+            </xo-animate>
+          {%- endfor -%}
+        {% endif %}
+      </xo-product-variants>
+      {% comment %} Action {% endcomment %}
+      <xo-grid class='sticky-cart__action'>
+        <div style="--xs: 12;--lg: 6;">
+          <xo-animate xo-cascade class='sticky-cart__quantity'>
+            {% assign form_id = 'product_form_id-' | append: section.id %}
+            {% render 'quantity', form_id: form_id %}
+          </xo-animate>
+        </div>
+        <div style="--xs: 12;--lg: 6;">
+          <xo-animate xo-cascade>
+            <xo-product-will-change
+              class='sticky-cart__add-button'
+              xo-unique-id='sticky-cart__add-button-{{ product.id }}'
+              {% if product.selected_or_first_available_variant.available == false %}
+                xo-disabled
+              {% endif %}
+            >
+            {% liquid
+              assign button_text_unavailable = 'products.product.unavailable' | t
+              if product.selected_or_first_available_variant.available == false
+                assign button_text = 'products.product.sold_out' | t
+              else
+                assign button_text = 'products.product.add_to_cart' | t
+              endif
+            %}
+
+              <xo-cart-add class="sticky-cart__add-button-normal">
+                {% render 'button', text: button_text, size: 'lg', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'right', icon_size: '24', product_card: true %}
+              </xo-cart-add>
+              <div class="sticky-cart__add-button-unavailable">
+                {% render 'button', text: button_text_unavailable, size: 'lg', block: true, style: 'primary', icon: 'add-to-cart', icon_position: 'right', icon_size: '24', product_card: true %}
+              </div>
+            </xo-product-will-change>
+          </xo-animate>
+        </div>
+        <div style="--xs: 12;--lg: 12;">
+          {% render 'cart-add-error' %}
+        </div>
+      </div>
+    </div>
+  </xo-modal>
+</xo-sticky>
+

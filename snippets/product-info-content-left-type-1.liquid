@@ -1,0 +1,54 @@
+<div class='product-info-content-left-type-1'>
+  <xo-product-will-change class='product-info-content__badge' xo-unique-id='product-badge-{{ product.id }}'>
+    {% render 'badge-sale', product: product, use_variant: true %}
+    {% render 'badge-sold-out', product: product, use_variant: true %}
+    {% render 'badge-new', product: product %}
+  </xo-product-will-change>
+
+  <xo-animate xo-cascade class='product-info-content-left-type-1__description' {{ block.shopify_attributes }}>
+    {{ product.description }}
+  </xo-animate>
+  <xo-animate xo-cascade>
+    <xo-marquee xo-speed='4' class='product-info-content-left-type-1__marquee'>
+      <h1 style='padding-inline-end: 100px;' class='product-info-content-left-type-1__title'>
+        {{ product.title }}
+      </h1>
+      <h1 style='padding-inline-end: 100px' class='product-info-content-left-type-1__title'>
+        {{ product.title }}
+      </h1>
+      <h1 style='padding-inline-end: 100px' class='product-info-content-left-type-1__title'>
+        {{ product.title }}
+      </h1>
+    </xo-marquee>
+  </xo-animate>
+  {% if product.has_only_default_variant == false %}
+    <xo-animate xo-cascade {{ block.shopify_attributes }}>
+      <xo-product-variants class='product-info-content-left-type-1__variant variant-list'>
+        {% if product.options_with_values.size > 0 %}
+          {%- for option in product.options_with_values -%}
+            {% if option.name == 'Color' %}
+              {% render 'product-variant', option: option, style: block.settings.variant_color_style, is_product_detail: true %}
+            {% else %}
+              {% render 'product-variant', option: option, style: block.settings.variant_style, is_product_detail: true %}
+            {% endif %}
+          {%- endfor -%}
+        {% endif %}
+      </xo-product-variants>
+    </xo-animate>
+  {% endif %}
+  <xo-animate xo-cascade class='xo-product-info-content__complementary'>
+    {% render 'product-recommendations',
+      intent: 'complementary',
+      is_product_detail: true,
+      heading: block.settings.heading,
+      products_to_show: block.settings.products_to_show,
+      product_card_show_image: block.settings.product_card_show_image,
+      product_card_show_secondary_image: block.settings.product_card_show_secondary_image,
+      product_card_show_vendor: block.settings.product_card_show_vendor,
+      product_card_show_description: block.settings.product_card_show_description,
+      product_card_show_price: block.settings.product_card_show_price,
+      product_card_show_badge: block.settings.product_card_show_badge,
+      card_color_scheme: block.settings.card_color_scheme
+    %}
+  </xo-animate>
+</div>

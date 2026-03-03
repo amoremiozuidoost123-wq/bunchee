@@ -1,0 +1,39 @@
+{% comment %}
+  Renders a media
+
+  Accepts:
+  - video: {Object} video object (optional)
+  - video_url: {String} Url of video, only accept youtube, vimeo (optional)
+  - class: {String} Adds a video class to the video element (optional)
+  - cover_image: {String} Image cover for video (optional)
+
+  Usage:
+
+  {% render 'video',
+    video: video,
+    video_url: 'https://www.youtube.com/watch?v=_9VUPq3SxOc',
+    class: 'video',
+  %}
+{% endcomment %}
+{%- liquid
+  assign video_id = video.id | default: video_url.id
+-%}
+<div
+  class='xo-video'
+>
+  {% if video == null and video_url != null %}
+    {% comment %} Video url {% endcomment %}
+    {% if video_url.type == 'youtube' %}
+      {% render 'media', media: video_url, type: 'youtube', enable_video_looping: true %}
+    {% else %}
+      {% render 'media', media: video_url, type: 'vimeo', enable_video_looping: true %}
+    {% endif %}
+    {% comment %} Video {% endcomment %}
+  {% elsif video != null %}
+    {% render 'media', media: video, type: 'video', enable_video_looping: true, controls: true %}
+  {% elsif video == null and video_url == null %}
+    <div class='xo-video__empty'>
+      {% render 'image', placeholder: 'hero-apparel-3' %}
+    </div>
+  {% endif %}
+</div>

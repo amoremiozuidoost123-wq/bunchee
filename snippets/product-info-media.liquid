@@ -1,0 +1,202 @@
+{% comment %}
+  Renders a product media carousel with thumbnails.
+
+  Accepts:
+  - zoom_enabled: {Boolean} Whether to enable zoom on the main image (optional)
+
+  Usage:
+  {% render 'product-info-media' %}
+{% endcomment %}
+
+{% assign featured_media = product.selected_or_first_available_variant.featured_media %}
+
+<div class='product-info-media'>
+  <xo-product-will-change xo-unique-id='product-info-media-{{ product.id }}'>
+    <xo-gallery xo-sync='false'>
+      <xo-carousel xo-autoheight>
+        <xo-carousel-inner>
+          <xo-carousel-list>
+            {% if featured_media != null %}
+              {% case featured_media.media_type %}
+                {% when 'image' %}
+                  <xo-carousel-slide xo-active xo-visible>
+                    {% if zoom_enabled %}
+                      <xo-image-zoom
+                        {% if enable_image_zoom %}
+                          xo-zoom='3'
+                        {%- else -%}
+                          xo-zoom='0'
+                        {% endif %}
+                        xo-use-wheel='false'
+                        xo-zoom-src='{{ featured_media.src | image_url: width: 1200 }}'
+                      >
+                        <xo-gallery-item xo-src='{{ featured_media.src | image_url: width: 1200 }}'>
+                          <div class='product-info-media__image'>
+                            {% render 'media', type: featured_media.media_type, media: featured_media, image_lazyload: false, image_widths: '375, 550, 750, 900' %}
+                          </div>
+                        </xo-gallery-item>
+                      </xo-image-zoom>
+                    {% else %}
+                      {% render 'media', type: featured_media.media_type, media: featured_media, image_lazyload: false, image_widths: '375, 550, 750, 900' %}
+                    {% endif %}
+                  </xo-carousel-slide>
+
+                {% when 'model' %}
+                  <xo-carousel-slide data-media-id='{{ featured_media.id }}' class='xo-product-info-media-style3__slide'>
+                    <div style='height: 100%; position: relative'>
+                      <div class='xb-product-model__btn' style='height: 10%'>
+                        <button
+                          class='xb-product-model__btn-view'
+                          type='button'
+                          aria-label='{{ 'products.product.xr_button_label' | t }}'
+                          data-shopify-xr
+                          data-shopify-model3d-id='{{ featured_media.id }}'
+                          data-shopify-title='title'
+                          data-shopify-xr-hidden
+                        >
+                          <span>
+                            {% render 'icon', name: '3d-model', icon_size: '10' %}
+                          </span>
+                          {{ 'products.product.xr_button' | t }}
+                        </button>
+                      </div>
+                      <xo-product-model style='height: 90%'>
+                        <button class='xb-product-model__poster' type='button' aria-label='xr-button'>
+                          <span class='xb-product-model__poster-button'>
+                            {% render 'icon', name: '3d-model', icon_size: '20' %}
+                          </span>
+                          <div class='xb-product-model__poster-image'>
+                            <img
+                              is='xo-lazyload'
+                              width='810'
+                              height='590'
+                              src='{{ featured_media | image_url: width: auto, height: auto }}'
+                              alt='{{ featured_media.preview_image.alt | escape }}'
+                            >
+                            <div class='xo-lazyload-overlay'></div>
+                          </div>
+                        </button>
+                        <template>{% render 'media', type: 'model', media: featured_media %}</template>
+                      </xo-product-model>
+                    </div>
+                  </xo-carousel-slide>
+                {% else %}
+                  <xo-carousel-slide>
+                    <div class='product-info-media__image'>
+                      {% render 'media', type: featured_media.media_type, media: featured_media, loop: true, controls: true, muted: true, autoplay: true %}
+                    </div>
+                  </xo-carousel-slide>
+              {% endcase %}
+            {% endif %}
+            {% for media in product.media %}
+              {% if variant_images contains media.src and hide_variants %}
+                {% continue %}
+              {% endif %}
+              {% unless media.id == featured_media.id %}
+                {% case media.media_type %}
+                  {% when 'image' %}
+                    <xo-carousel-slide xo-active xo-visible>
+                      {% if media.media_type == 'image' and zoom_enabled %}
+                        <xo-image-zoom xo-zoom='3' xo-use-wheel='false' xo-zoom-src='{{ media.src | image_url: width: 1200 }}'>
+                          <xo-gallery-item xo-src='{{ media.src | image_url: width: 1200 }}'>
+                            <div class='product-info-media__image'>
+                              {% render 'media', type: media.media_type, media: media, image_lazyload: false, image_widths: '375, 550, 750, 900' %}
+                            </div>
+                          </xo-gallery-item>
+                        </xo-image-zoom>
+                      {% else %}
+                        {% render 'media', type: media.media_type, media: media, image_lazyload: false, image_widths: '375, 550, 750, 900' %}
+                      {% endif %}
+                    </xo-carousel-slide>
+                  {% when 'model' %}
+                    <xo-carousel-slide data-media-id='{{ media.id }}' class='xo-product-info-media-style-3__slide'>
+                      <div style='height: 100%; position: relative'>
+                        <div class='xb-product-model__btn' style='height: 10%'>
+                          <button
+                            class='xb-product-model__btn-view'
+                            type='button'
+                            aria-label='{{ 'products.product.xr_button_label' | t }}'
+                            data-shopify-xr
+                            data-shopify-model3d-id='{{ media.id }}'
+                            data-shopify-title='title'
+                            data-shopify-xr-hidden
+                          >
+                            <span>
+                              {% render 'icon', name: '3d-model', icon_size: '10' %}
+                            </span>
+                            {{ 'products.product.xr_button' | t }}
+                          </button>
+                        </div>
+                        <xo-product-model style='height: 90%'>
+                          <button class='xb-product-model__poster' type='button' aria-label='xr-button'>
+                            <span class='xb-product-model__poster-button'>
+                              {% render 'icon', name: '3d-model', icon_size: '20' %}
+                            </span>
+                            <div class='xb-product-model__poster-image'>
+                              <img
+                                is='xo-lazyload'
+                                width='810'
+                                height='590'
+                                src='{{ media | image_url: width: auto, height: auto }}'
+                                alt='{{ media.preview_image.alt | escape }}'
+                              >
+                              <div class='xo-lazyload-overlay'></div>
+                            </div>
+                          </button>
+                          <template>{% render 'media', type: 'model', media: media %}</template>
+                        </xo-product-model>
+                      </div>
+                    </xo-carousel-slide>
+                  {% else %}
+                    <xo-carousel-slide>
+                      {% render 'media', type: media.media_type, media: media, loop: true, controls: true, muted: true, autoplay: true %}
+                    </xo-carousel-slide>
+                {% endcase %}
+              {% endunless %}
+            {% endfor %}
+          </xo-carousel-list>
+        </xo-carousel-inner>
+        <div class='product-info-media__content'>
+          {% if product.media.size > 1 %}
+            <xo-carousel-thumbnail class='product-info-media__thumbnails' xo-per-view='3'>
+              <xo-carousel-inner>
+                <xo-carousel-list>
+                  {%- if featured_media != null -%}
+                    {% case featured_media.media_type %}
+                      {%- when 'image' -%}
+                        <xo-carousel-slide class='product-info-media__thumb-slide' xo-active xo-visible>
+                          {% render 'media', type: featured_media.media_type, media: featured_media, image_lazyload: false, image_widths: '375, 550, 750, 900' %}
+                        </xo-carousel-slide>
+                    {% endcase %}
+                  {%- endif -%}
+                  {% for media in product.media %}
+                    {% if variant_images contains media.src and hide_variants %}
+                      {% continue %}
+                    {% endif %}
+                    {% unless media.id == featured_media.id %}
+                      <xo-carousel-slide class='product-info-media__thumb-slide' xo-active xo-visible>
+                        {% render 'media', type: 'image', media: media.preview_image, image_lazyload: false, image_widths: '375, 550, 750, 900' %}
+                      </xo-carousel-slide>
+                    {% endunless %}
+                  {% endfor %}
+                </xo-carousel-list>
+              </xo-carousel-inner>
+              <div class='carousel-navigation-controls'>
+                <xo-carousel-prev>
+                  <div class='carousel-navigation-controls__icon carousel-navigation-controls__icon--prev' role='button' tabindex='0' aria-label='previous button'>
+                    {% render 'icon', name: 'product-carousel-prev', size: '24' %}
+                  </div>
+                </xo-carousel-prev>
+                <xo-carousel-next>
+                  <div class='carousel-navigation-controls__icon carousel-navigation-controls__icon--next' role='button' tabindex='0' aria-label='next button'>
+                    {% render 'icon', name: 'product-carousel-next', size: '24' %}
+                  </div>
+                </xo-carousel-next>
+              </div>
+            </xo-carousel-thumbnail>
+          {% endif %}
+        </div>
+      </xo-carousel>
+    </xo-gallery>
+  </xo-product-will-change>
+</div>

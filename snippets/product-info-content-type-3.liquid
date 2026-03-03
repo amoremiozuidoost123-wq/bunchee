@@ -1,0 +1,129 @@
+<div class='product-info-content-type-3'>
+  <xo-product-will-change class='product-info-content__badge' xo-unique-id='product-badge-{{ product.id }}'>
+    {% render 'badge-sale', product: product, use_variant: true %}
+    {% render 'badge-sold-out', product: product, use_variant: true %}
+    {% render 'badge-new', product: product %}
+  </xo-product-will-change>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+      {% when 'custom_liquid' %}
+        <xo-bundle-properties>
+          {% if block.settings.use_custom == 'default' %}
+            {% render 'line-item-property',
+              type: block.settings.type,
+              label: block.settings.label,
+              checked_value: block.settings.checked_value,
+              uncheck_value: block.settings.uncheck_value,
+              radio_options: block.settings.radio_options,
+              dropdown_options: block.settings.dropdown_options
+            %}
+          {% else %}
+            {{ block.settings.custom_liquid }}
+          {% endif %}
+        </xo-bundle-properties>
+      {% when 'title' %}
+        <xo-animate xo-cascade>
+          <h2 class='product-info-content-type-3__title product-info-content-type-3__title--desktop' {{ block.shopify_attributes }}>
+            {{ product.title }}
+          </h2>
+          <div class='product-info-content-type-3__title-container'>
+            <h2 class='product-info-content-type-3__title' {{ block.shopify_attributes }}>
+              {{ product.title }}
+            </h2>
+          </div>
+        </xo-animate>
+
+      {% when 'price' %}
+        <xo-animate xo-cascade class='product-info-content-type-3__price'>
+          <xo-product-will-change xo-unique-id='product-price-{{ product.id }}' {{ block.shopify_attributes }}>
+            {% if cart.taxes_included and block.settings.show_tax_included == true %}
+              <span class='product-info-content-type-3__price-tax'>{{ 'products.product.price.include_tax' | t }}</span>
+            {% endif %}
+            {% render 'price', product: product, use_variant: true, reverse: true %}
+          </xo-product-will-change>
+        </xo-animate>
+      {% when 'complementary' %}
+        <xo-animate xo-cascade class='xo-product-info-content__complementary'>
+          {% render 'product-recommendations',
+            intent: 'complementary',
+            heading: block.settings.heading,
+            products_to_show: block.settings.products_to_show,
+            product_card_show_image: block.settings.product_card_show_image,
+            product_card_show_secondary_image: block.settings.product_card_show_secondary_image,
+            product_card_show_vendor: block.settings.product_card_show_vendor,
+            product_card_show_description: block.settings.product_card_show_description,
+            product_card_show_price: block.settings.product_card_show_price,
+            product_card_show_badge: block.settings.product_card_show_badge,
+            card_color_scheme: block.settings.card_color_scheme
+          %}
+        </xo-animate>
+      {% when 'description' %}
+        <xo-animate xo-cascade class='product-info-content-type-3__description' {{ block.shopify_attributes }}>
+          {{ product.description }}
+        </xo-animate>
+
+      {% when 'quantity_picker' %}
+        <xo-animate xo-cascade {{ block.shopify_attributes }}>
+          {% assign form_id = 'product_form_id-' | append: section.id %}
+          {% render 'quantity', form_id: form_id %}
+        </xo-animate>
+
+      {% when 'variants' %}
+        {% if product.has_only_default_variant == false %}
+          <xo-animate xo-cascade {{ block.shopify_attributes }}>
+            <xo-product-variants class='product-info-content-type-3__variant variant-list'>
+              {% if product.options_with_values.size > 0 %}
+                {%- for option in product.options_with_values -%}
+                  {% if option.name == 'Color' %}
+                    {% render 'product-variant', option: option, style: block.settings.variant_color_style, is_product_detail: true %}
+                  {% else %}
+                    {% render 'product-variant', option: option, style: block.settings.variant_style, is_product_detail: true %}
+                  {% endif %}
+                {%- endfor -%}
+              {% endif %}
+            </xo-product-variants>
+          </xo-animate>
+        {% endif %}
+
+      {% when 'buy_button' %}
+        <xo-animate xo-cascade {{ block.shopify_attributes }}>
+          {% render 'buy-button', block: block %}
+          {% render 'cart-add-error' %}
+        </xo-animate>
+      {% when 'pickup' %}
+        {% assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true %}
+        <div {{ block.shopify_attributes }}>
+          <xo-animate xo-cascade>
+            <xo-product-will-change xo-unique-id='product-info-content-type-3-pickup-availability-{{ product.id }}-{{ section.id }}'>
+              {% if product.selected_or_first_available_variant.available %}
+                {% render 'pickup-availability-item', pick_up_availabilities: pick_up_availabilities %}
+              {% endif %}
+            </xo-product-will-change>
+          </xo-animate>
+        </div>
+        <xo-modal
+          style='z-index: 9999;'
+          xo-portal
+          xo-name='pickup-availability'
+          xo-animate='slide-left'
+          xo-placement='top-right'
+          xo-backdrop-color=' rgba(0, 0, 0, 0.5)'
+        >
+          {% capture pickup_availability_list %}
+            {% render 'pickup-availability-list', pick_up_availabilities: pick_up_availabilities %}
+          {% endcapture %}
+          {% render 'modal-content',
+            title: product.title,
+            content: pickup_availability_list,
+            width: '40rem',
+            full_height: true,
+            title_size: '2rem',
+            header_separator: true,
+            animate: true
+          %}
+        </xo-modal>
+    {% endcase %}
+  {% endfor %}
+</div>

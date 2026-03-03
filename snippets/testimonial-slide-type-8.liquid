@@ -1,0 +1,29 @@
+{% comment %}
+  Renders a testimonial slide type 8
+
+  Accepts:
+  - review: {String} Review (required)
+  - customer_name: {String} Customer name (required)
+  - verified_user: {Boolean} Verified user
+
+  Usage:
+  {% render 'testimonial-slide-type-8',
+  review: review,
+  customer_name: customer_name,
+  verified_user: verified_user %}
+{% endcomment %}
+{{ 'testimonial-slide-type-8.css' | asset_url | stylesheet_tag }}
+
+<xo-carousel-slide>
+  <xo-animate class='testimonial-slide-type-8 {% if color_scheme %} color-{{ color_scheme }}{% endif %}'>
+    <div class='testimonial-slide-type-8__review'>
+      {{ review }}
+    </div>
+    <div class='testimonial-slide-type-8__customer'>
+      <div class='testimonial-slide-type-8__customer-name'>{{ customer_name }}</div>
+      {% if verified_user %}
+        <div class='testimonial-slide-type-8__verified'>{{ 'general.verified' | t | upcase }}</div>
+      {% endif %}
+    </div>
+  </xo-animate>
+</xo-carousel-slide>

@@ -1,0 +1,70 @@
+<div class='product-info-content-type-1'>
+  <xo-product-will-change class='product-info-content-type-1__badge' xo-unique-id='product-badge-{{ product.id }}'>
+    {% render 'badge-sale', product: product, use_variant: true %}
+    {% render 'badge-sold-out', product: product, use_variant: true %}
+    {% render 'badge-new', product: product %}
+  </xo-product-will-change>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'title' %}
+        <xo-animate xo-cascade>
+          <h2 class='product-info-content-type-1__title h3' {{ block.shopify_attributes }}>
+            {{ product.title | default: 'Product title' }}
+          </h2>
+        </xo-animate>
+      {% when 'price' %}
+        <xo-animate xo-cascade class='product-info-content-type-1__price'>
+          <xo-product-will-change xo-unique-id='product-price-{{ product.id }}' {{ block.shopify_attributes }}>
+            {% if cart.taxes_included %}
+              <span class='product-info-content-type-1__price-tax'>{{ 'products.product.price.include_tax' | t }}</span>
+            {% endif %}
+            {% render 'price', product: product, use_variant: true, reverse: true %}
+          </xo-product-will-change>
+        </xo-animate>
+      {% when 'description' %}
+        <xo-animate xo-cascade class='product-info-content-type-1__description' {{ block.shopify_attributes }}>
+          {{ product.description | default: 'Show your product description in here' }}
+        </xo-animate>
+
+      {% when 'variants' %}
+        {% if product.has_only_default_variant == false %}
+          <xo-animate xo-cascade {{ block.shopify_attributes }}>
+            <xo-product-variants class='product-info-content-type-1__variant variant-list'>
+              {% if product.options_with_values.size > 0 %}
+                {%- for option in product.options_with_values -%}
+                  {% if option.name == 'Color' %}
+                    {% render 'product-variant', option: option, style: block.settings.variant_color_style, is_product_detail: true %}
+                  {% else %}
+                    {% render 'product-variant', option: option, style: block.settings.variant_style, is_product_detail: true %}
+                  {% endif %}
+                {%- endfor -%}
+              {% endif %}
+            </xo-product-variants>
+          </xo-animate>
+        {% endif %}
+
+      {% when 'quantity_picker' %}
+        <xo-animate xo-cascade {{ block.shopify_attributes }}>
+          {% assign form_id = 'product_form_id-' | append: section.id %}
+          {% render 'quantity', form_id: form_id %}
+        </xo-animate>
+
+      {% when 'buy_button' %}
+        {% if product != blank %}
+          <xo-animate xo-cascade {{ block.shopify_attributes }}>
+            {% render 'buy-button', block: block, product: product %}
+            {% render 'cart-add-error' %}
+          </xo-animate>
+        {% else %}
+          <xo-animate xo-cascade {{ block.shopify_attributes }} class='product-info-content-type-1__placeholder'>
+            <div class='product-info-content-type-1__buy-placeholder'>
+              {% render 'button', text: 'Buy it now', size: 'lg', style: 'primary' %}
+            </div>
+            <div class='product-info-content-type-1__add-placeholder'>
+              {% render 'button', style: 'dark', icon: 'add-to-cart', icon_size: '26', size: 'md', loading_size: 8 %}
+            </div>
+          </xo-animate>
+        {% endif %}
+    {% endcase %}
+  {% endfor %}
+</div>

@@ -1,0 +1,19 @@
+{% comment %}
+  Renders a bg image
+
+  Usage:
+  {% render 'section-bg-image' %}
+{% endcomment %}
+{% if image_desktop %}
+  {% assign img_desktop = section.settings.background_image_desktop | image_url %}
+{% endif %}
+{% if image_mobile %}
+  {% assign img_mobile = section.settings.background_image_mobile | image_url %}
+{% endif %}
+
+<div
+  class='xo-section-bg-image'
+  style='{% if img_desktop != blank %}--img-desktop: url("{{ img_desktop | image_url }}");{% endif %}{% if img_mobile != blank %}--img-mobile: url("{{ img_mobile | image_url }}");{% endif %}'
+>
+  <div class='xo-section-bg-image__item'><div class='xo-section-bg-image__url'></div></div>
+</div>

@@ -1,0 +1,48 @@
+{% comment %}
+  Renders a testimonial slide type 9
+
+  Accepts:
+  - image: {Image} Image (required)
+  - photo: {Image} Photo (required)
+  - slide_heading: {String} Slile heading (required)
+  - description: {String} description (required)
+  - author_image: {Image} User image (optional)
+  - author_name: {String} User name (required)
+  - author_job: {String} User job (optional)
+
+  Usage:
+  {% render 'testimonial-slide-type-9' %}
+{% endcomment %}
+{{ 'testimonial-slide-type-9.css' | asset_url | stylesheet_tag }}
+<xo-carousel-slide>
+  <xo-grid class='testimonial-slide-type-9'>
+    <div class='testimonial-slide-type-9__left' style='--xs: 12; --md: 12; --lg: 6; --start-lg: 2;--order-xs: 1; --order-lg: 0;'>
+      <xo-animate xo-cascade class='testimonial-slide-type-9__content'>
+        <div class='testimonial-slide-type-9__subheading'>
+          {{ subheading }}
+        </div>
+        <h2 class='testimonial-slide-type-9__slide-heading'>
+          {{ slide_heading }}
+        </h2>
+      </xo-animate>
+      <div xo-cascade class='testimonial-slide-type-9__author'>
+        <div class='testimonial-slide-type-9__author-image'>
+          {% render 'image', image: author_image, placeholder: placeholder_image %}
+        </div>
+        <div class='testimonial-slide-type-9__info'>
+          <div class='testimonial-slide-type-9__name'>{{ author_name }}</div>
+          <div class='testimonial-slide-type-9__job'>{{ author_job }}</div>
+        </div>
+      </div>
+      {% render 'carousel-navigation', disabled: false, mobile_disabled: false %}
+    </div>
+    <div class='testimonial-slide-type-9__right' style='--xs: 12; --md: 12; --lg: 5;--order-xs: 0; --order-lg: 1;'>
+      <div class='testimonial-slide-type-9__image'>
+        {% render 'animate-image', image: image, aspect_ratio: aspect_ratio, border_radius: 265, max_width: 717 %}
+      </div>
+      <div class='testimonial-slide-type-9__image-mobile'>
+        {% render 'animate-image', image: image, aspect_ratio: aspect_ratio, border_radius: 189, max_width: 333 %}
+      </div>
+    </div>
+  </xo-grid>
+</xo-carousel-slide>

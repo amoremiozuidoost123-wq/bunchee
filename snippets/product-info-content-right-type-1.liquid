@@ -1,0 +1,70 @@
+<div class='product-info-content-right-type-1'>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+      {% when 'custom_liquid' %}
+        <xo-bundle-properties>
+          {% if block.settings.use_custom == 'default' %}
+            {% render 'line-item-property',
+              type: block.settings.type,
+              label: block.settings.label,
+              checked_value: block.settings.checked_value,
+              uncheck_value: block.settings.uncheck_value,
+              radio_options: block.settings.radio_options,
+              dropdown_options: block.settings.dropdown_options
+            %}
+          {% else %}
+            {{ block.settings.custom_liquid }}
+          {% endif %}
+        </xo-bundle-properties>
+    {% endcase %}
+  {% endfor %}
+  <xo-animate xo-cascade class='product-info-content-right-type-1__price'>
+    <xo-product-will-change xo-unique-id='product-price-{{ product.id }}' {{ block.shopify_attributes }}>
+      {% if cart.taxes_included and block.settings.show_tax_included == true %}
+        <span class='product-info-content-right-type-1__price-tax'>{{ 'products.product.price.include_tax' | t }}</span>
+      {% endif %}
+      {% render 'price', product: product, use_variant: true, reverse: true %}
+    </xo-product-will-change>
+  </xo-animate>
+  <xo-animate xo-cascade {{ block.shopify_attributes }}>
+    {% assign form_id = 'product_form_id-' | append: section.id %}
+    {% render 'quantity', form_id: form_id %}
+  </xo-animate>
+  <xo-animate xo-cascade {{ block.shopify_attributes }}>
+    {% render 'buy-button', block: block %}
+    {% render 'cart-add-error' %}
+  </xo-animate>
+  {% assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true %}
+  <div {{ block.shopify_attributes }}>
+    <xo-animate xo-cascade>
+      <xo-product-will-change xo-unique-id='product-info-content-right-type-1-pickup-availability-{{ product.id }}-{{ section.id }}'>
+        {% if product.selected_or_first_available_variant.available %}
+          {% render 'pickup-availability-item', pick_up_availabilities: pick_up_availabilities %}
+        {% endif %}
+      </xo-product-will-change>
+    </xo-animate>
+  </div>
+  <xo-modal
+    style='z-index: 9999;'
+    xo-portal
+    xo-name='pickup-availability'
+    xo-animate='slide-left'
+    xo-placement='top-right'
+    xo-backdrop-color=' rgba(0, 0, 0, 0.5)'
+  >
+    {% capture pickup_availability_list %}
+            {% render 'pickup-availability-list', pick_up_availabilities: pick_up_availabilities %}
+          {% endcapture %}
+    {% render 'modal-content',
+      title: product.title,
+      content: pickup_availability_list,
+      width: '40rem',
+      full_height: true,
+      title_size: '2rem',
+      header_separator: true,
+      animate: true
+    %}
+  </xo-modal>
+</div>

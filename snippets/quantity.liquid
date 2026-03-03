@@ -1,0 +1,41 @@
+{% comment %}
+  Renders a quantity selector for a product
+
+  Accepts:
+  - value: {number} value of input number
+  - form_id: {string} id of form to submit
+
+  Usage:
+  {% render 'quantity' %}
+{% endcomment %}
+
+<xo-cart-quantity
+  class='xo-quantity{% if size %} xo-quantity--{{ size }}{% endif %}'
+>
+  <xo-cart-quantity-minus
+    role='button'
+    tabindex='0'
+    aria-label='quantity button'
+    class='
+      xo-quantity__button{% if value < 2 %}
+        xo-quantity__button--blur
+      {% endif %}
+    '
+  >
+    {%- render 'icon', name: 'minus-quantity', size: '16' -%}
+  </xo-cart-quantity-minus>
+  <input
+    class='xo-quantity__number'
+    type='number'
+    name='quantity'
+    value='{{ value }}'
+    {% if form_id %}
+      form='{{ form_id }}'
+    {% endif %}
+    aria-label='Quantity number'
+    tabindex='-1'
+  >
+  <xo-cart-quantity-plus role='button' tabindex='0' aria-label='quantity button' class='xo-quantity__button'>
+    {%- render 'icon', name: 'plus-quantity', size: '16' -%}
+  </xo-cart-quantity-plus>
+</xo-cart-quantity>

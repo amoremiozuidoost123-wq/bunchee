@@ -1,0 +1,64 @@
+{% comment %}
+  Renders a testimonial slide type 2
+
+  Accepts:
+  - image: {Image} Image (required)
+  - photo: {Image} Photo (required)
+  - slide_heading: {String} Slile heading (required)
+  - description: {String} description (required)
+  - author_image: {Image} User image (optional)
+  - author_name: {String} User name (required)
+  - author_job: {String} User job (optional)
+
+  Usage:
+  {% render 'testimonial-slide-type-2' %}
+{% endcomment %}
+<xo-carousel-slide>
+  <xo-grid class='testimonial-slide-type-2'>
+    <div class='testimonial-slide-type-2__left' style='--xs: 12; --md: 12; --lg: 3;'>
+      <xo-animate xo-cascade xo-type='fade-down' class='testimonial-slide-type-2__subheading'>
+        {{ subheading }}
+      </xo-animate>
+      <xo-animate xo-cascade xo-type='fade-up' class='testimonial-slide-type-2__author'>
+        <div class='testimonial-slide-type-2__author_image'>
+          {% render 'image', image: author_image, placeholder: placeholder_image, aspect_ratio: '1' %}
+        </div>
+        <div class='testimonial-slide-type-2__info'>
+          <div class='testimonial-slide-type-2__name'>{{ author_name }}</div>
+          <div class='testimonial-slide-type-2__job'>{{ author_job }}</div>
+        </div>
+      </xo-animate>
+    </div>
+    <div class='testimonial-slide-type-2__right' style='--xs: 12; --md: 12; --lg: 9; --start-lg: 4;'>
+      <div>
+        <xo-animate xo-cascade xo-type='fade-down' class='testimonial-slide-type-2__content'>
+          <h2 class='testimonial-slide-type-2__slide-heading h4'>
+            {{ slide_heading }}
+          </h2>
+        </xo-animate>
+        <xo-animate xo-cascade xo-type='fade-up'>
+          <div class='testimonial-slide-type-2__description'>{{ description }}</div>
+        </xo-animate>
+        <div class='testimonial-slide-type-2__group-button'>
+          <xo-carousel-prev role='button' tabindex='0' aria-label='previous'>
+            <div class='testimonial-slide-type-2__button btn-carousel'>
+              {% render 'icon', name: 'arrow-testimonial-left', size: '22' %}
+            </div>
+          </xo-carousel-prev>
+          <xo-carousel-next role='button' tabindex='0' aria-label='next'>
+            <div class='testimonial-slide-type-2__button btn-carousel'>
+              {% render 'icon', name: 'arrow-testimonial-right', size: '22' %}
+            </div>
+          </xo-carousel-next>
+        </div>
+      </div>
+
+      <div class='testimonial-slide-type-2__image'>
+        <div class='testimonial-slide-type-2__photo'>
+          {% render 'animate-image', image: image, aspect_ratio: section.settings.aspect_ratio, border_radius: 164, max_width: 328 %}
+        </div>
+        <xo-animate xo-cascade xo-type='fade-left' class='testimonial-slide-type-2__decor'><div class='testimonial-slide-type-2__circle'></div></xo-animate>
+      </div>
+    </div>
+  </xo-grid>
+</xo-carousel-slide>

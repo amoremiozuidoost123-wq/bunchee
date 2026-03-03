@@ -1,0 +1,111 @@
+<div class='product-info-content-left-type-2'>
+  <xo-product-will-change class='product-info-content__badge' xo-unique-id='product-badge-{{ product.id }}'>
+    {% render 'badge-sale', product: product, use_variant: true %}
+    {% render 'badge-sold-out', product: product, use_variant: true %}
+    {% render 'badge-new', product: product %}
+  </xo-product-will-change>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'title' %}
+        <xo-animate xo-cascade>
+          <h2 class='product-info-content-left-type-2__title h4' {{ block.shopify_attributes }}>
+            {{ product.title }}
+          </h2>
+        </xo-animate>
+      {% when 'price' %}
+        <xo-animate xo-cascade class='product-info-content-left-type-2__price'>
+          <xo-product-will-change xo-unique-id='product-price-{{ product.id }}' {{ block.shopify_attributes }}>
+            {% if cart.taxes_included and block.settings.show_tax_included == true %}
+              <span class='product-info-content-left-type-2__price-tax'>{{ 'products.product.price.include_tax' | t }}</span>
+            {% endif %}
+            {% render 'price', product: product, use_variant: true, reverse: true %}
+          </xo-product-will-change>
+        </xo-animate>
+
+      {% when 'text' %}
+        <xo-animate xo-cascade class='product-info-content-left-type-2__text'>
+          {% comment %} Desktop {% endcomment %}
+          <xo-tabs class='product-info-content-left-type-2__desktop'>
+            <div class='product-info-content-left-type-2__desktop-top'>
+              <xo-tabs-trigger xo-name='tab-1' role='button' tabindex='0' xo-active>
+                <h2 class='product-info-content-left-type-2__tab-trigger h6'>{{ block.settings.category_1 }}</h2>
+              </xo-tabs-trigger>
+              <xo-tabs-trigger xo-name='tab-2' role='button' tabindex='0'>
+                <h2 class='product-info-content-left-type-2__tab-trigger h6'>{{ block.settings.category_2 }}</h2>
+              </xo-tabs-trigger>
+              <xo-tabs-trigger xo-name='tab-3' role='button' tabindex='0'>
+                <h2 class='product-info-content-left-type-2__tab-trigger h6'>{{ block.settings.category_3 }}</h2>
+              </xo-tabs-trigger>
+            </div>
+            <xo-tabs-content class='product-info-content-left-type-2__desktop-bottom'>
+              <xo-tabs-pane xo-name='tab-1' xo-active
+                ><xo-animate xo-cascade class='product-info-content-left-type-2__description'>{{ block.settings.content_1 }}</xo-animate></xo-tabs-pane
+              >
+              <xo-tabs-pane xo-name='tab-2'
+                ><xo-animate xo-cascade class='product-info-content-left-type-2__description'>{{ block.settings.content_2 }}</xo-animate></xo-tabs-pane
+              >
+              <xo-tabs-pane xo-name='tab-3'
+                ><xo-animate xo-cascade class='product-info-content-left-type-2__description'>{{ block.settings.content_3 }}</xo-animate></xo-tabs-pane
+              >
+            </xo-tabs-content>
+          </xo-tabs>
+          {% comment %} Mobile {% endcomment %}
+          <div class='product-info-content-left-type-2__mobile'>
+            {% comment %}  {% endcomment %}
+            <category-select>
+              <div class='xo-field-select-custom'>
+                <xo-popover-trigger
+                  class='xo-field-select-custom__trigger'
+                  xo-name='text-columns'
+                  role='button'
+                  tabindex='0'
+                  xo-portal
+                >
+                  <div class='category__selected'></div>
+                  {% render 'icon', name: 'arrow-down-product-info', size: '24' %}
+                </xo-popover-trigger>
+                <xo-popover
+                  class='xo-field-select-custom__popover xo-scrollbar'
+                  xo-name='text-columns'
+                  xo-placement='{{ placement | default: 'bottom-right' }}'
+                  xo-modal-scroll-selector='.xo-scrollbar'
+                >
+                  <xo-popover-trigger>
+                    <div class='category__value' tabindex='0' role='button'>
+                      <span class='xo-field-select-custom__icon'>
+                        {% render 'icon', name: 'check', size: '1.6rem' %}
+                      </span>
+                      {{ block.settings.category_1 }}
+                    </div>
+                    <div class='category__value' tabindex='0' role='button'>
+                      <span class='xo-field-select-custom__icon'>
+                        {% render 'icon', name: 'check', size: '1.6rem' %}
+                      </span>
+                      {{ block.settings.category_2 }}
+                    </div>
+                    <div class='category__value' tabindex='0' role='button'>
+                      <span class='xo-field-select-custom__icon'>
+                        {% render 'icon', name: 'check', size: '1.6rem' %}
+                      </span>
+                      {{ block.settings.category_3 }}
+                    </div>
+                  </xo-popover-trigger>
+                </xo-popover>
+              </div>
+              <div class='product-info-content-left-type-2__mobile-bottom'>
+                <xo-animate xo-cascade class='category__content'>
+                  <div class='product-info-content-left-type-2__description'>{{ block.settings.content_1 }}</div>
+                </xo-animate>
+                <xo-animate xo-cascade class='category__content'>
+                  <div class='product-info-content-left-type-2__description'>{{ block.settings.content_2 }}</div>
+                </xo-animate>
+                <xo-animate xo-cascade class='category__content'>
+                  <div class='product-info-content-left-type-2__description'>{{ block.settings.content_3 }}</div>
+                </xo-animate>
+              </div>
+            </category-select>
+          </div>
+        </xo-animate>
+    {% endcase %}
+  {% endfor %}
+</div>

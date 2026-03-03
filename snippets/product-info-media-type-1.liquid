@@ -1,0 +1,27 @@
+{% comment %}
+  Renders a product info media type 1.
+
+  Accepts:
+
+  Usage:
+  {% render 'product-info-media-type-1' %}
+{% endcomment %}
+
+<div class='product-info-media-type-1'>
+  <div xo-unique-id='product-info-media-type-1{{ product.id }}'>
+    <div class='product-info-media-type-1__container'>
+      <div class='product-info-media-type-1__gallery'>
+        <div class='product-info-media-type-1__image'>
+          {% if product != false %}
+            {% render 'image', image: product.featured_image, aspect_ratio: '1' %}
+          {% else %}
+            {% render 'image', image: blank, aspect_ratio: '1' %}
+          {% endif %}
+          {% if decor != blank %}
+            <div class='product-info-media-type-1__decor'>{% render 'image', image: decor %}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

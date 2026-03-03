@@ -1,0 +1,48 @@
+{% comment %}
+  Renders a testimonial slide type 4
+
+  Accepts:
+  - image: {Image} Image (required)
+  - review: {String} Review (required)
+  - customer_name: {String} Customer name (required)
+  - verified_user: {Boolean} Verified user
+
+  Usage:
+  {% render 'testimonial-slide-type-4',
+  product: product,
+  show_image: product_card_show_image,
+  show_price: product_card_show_price,
+  media_aspect_ratio: product_card_aspect_ratio,
+  color_scheme: card_color_scheme,
+  placeholder_image: placeholder_image,
+  review: review,
+  customer_name: customer_name,
+  verified_user: verified_user %}
+{% endcomment %}
+{{ 'testimonial-slide-type-4.css' | asset_url | stylesheet_tag }}
+<xo-animate xo-cascade class='testimonial-slide-type-4'>
+  <div class='testimonial-slide-type-4__top'>
+    <div class='testimonial-slide-type-4__review'>
+      {{ review }}
+    </div>
+    <div class='testimonial-slide-type-4__customer'>
+      <div class='testimonial-slide-type-4__customer-name'>{{ customer_name }}</div>
+      {% if verified_user %}
+        <div class='testimonial-slide-type-4__verified'>{{ 'general.verified' | t | upcase }}</div>
+      {% endif %}
+    </div>
+  </div>
+  <div class='testimonial-slide-type-4__bottom'>
+    {% render 'product-card-type-2',
+      product: product,
+      show_image: show_image,
+      show_secondary_image: show_secondary_image,
+      show_price: show_price,
+      media_aspect_ratio: media_aspect_ratio,
+      color_scheme: color_scheme,
+      placeholder_image: placeholder_image,
+      animate_enabled: true,
+      product_handle: true
+    %}
+  </div>
+</xo-animate>

@@ -1,0 +1,71 @@
+{% comment %}
+  Renders a testimonial slide type 3
+
+  Accepts:
+  - image: {Image} Image (required)
+  - photo: {Image} Photo (required)
+  - slide_heading: {String} Slile heading (required)
+  - description: {String} description (required)
+  - author_image: {Image} User image (optional)
+  - author_name: {String} User name (required)
+  - author_job: {String} User job (optional)
+
+  Usage:
+  {% render 'testimonial-slide-type-3' %}
+{% endcomment %}
+{{ 'testimonial-slide-type-3.css' | asset_url | stylesheet_tag }}
+<xo-carousel-slide>
+  <xo-animate xo-cascade>
+    <xo-grid class='testimonial-slide-type-3'>
+      <div class='testimonial-slide-type-3__left' style='--xs: 12; --md: 12; --lg: 3;--start-lg: 2;'>
+        {% render 'product-card',
+          product: product,
+          show_image: show_image,
+          show_secondary_image: show_secondary_image,
+          show_vendor: show_vendor,
+          show_description: show_description,
+          show_quick_add: show_quick_add,
+          show_quick_view: show_quick_view,
+          show_price: show_price,
+          show_badge: show_badge,
+          media_aspect_ratio: media_aspect_ratio,
+          color_scheme: color_scheme,
+          placeholder_image: placeholder_image,
+          animate_enabled: true,
+          product_handle: true,
+          price_type: 'all'
+        %}
+      </div>
+      <div class='testimonial-slide-type-3__right' style='--xs: 12; --md: 12; --lg: 5; --start-lg: 6;'>
+        <div class='testimonial-slide-type-3__subheading'>
+          {{ subheading }}
+        </div>
+        <h2 class='testimonial-slide-type-3__heading h4'>
+          {{ heading }}
+        </h2>
+        <div class='testimonial-slide-type-3__customer'>
+          <div class='testimonial-slide-type-3__customer-name'>{{ customer_name }}</div>
+          {% if customer_job %}
+            <div class='testimonial-slide-type-3__customer-job'>
+              {{ customer_job }}
+            </div>
+          {% endif %}
+        </div>
+        <div class='testimonial-slide-type-3__group-button'>
+          <xo-carousel-prev role='button' tabindex='0' aria-label='previous'>
+            <div class='testimonial-slide-type-3__button testimonial-slide-type-3__button--previous'>
+              {% render 'icon', name: 'arrow-testimonial-left', size: '22' %}
+              {% render 'icon', name: 'arrow-testimonial-left', size: '22' %}
+            </div>
+          </xo-carousel-prev>
+          <xo-carousel-next role='button' tabindex='0' aria-label='next'>
+            <div class='testimonial-slide-type-3__button'>
+              {% render 'icon', name: 'arrow-testimonial-right', size: '22' %}
+              {% render 'icon', name: 'arrow-testimonial-right', size: '22' %}
+            </div>
+          </xo-carousel-next>
+        </div>
+      </div>
+    </xo-grid>
+  </xo-animate>
+</xo-carousel-slide>

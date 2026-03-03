@@ -1,0 +1,33 @@
+{% comment %}
+  Renders a product card
+
+  Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - show_secondary_image: {Boolean} Whether to show the secondary image (optional)
+  - aspect_ratio: {Number} Aspect ratio of the image (optional)
+  - placeholder_image: {String} Placeholder image (optional)
+
+  Usage:
+  {% render 'product-image', product: product, show_secondary_image: true %}
+{% endcomment %}
+{% assign show_secondary_image = show_secondary_image %}
+<div class='xo-product-image' tabindex='-1'>
+  {% if product %}
+    {% if variant %}
+      {% render 'image', image: variant.featured_image, aspect_ratio: aspect_ratio, lazyload: lazyload %}
+    {% else %}
+      {% render 'image', image: product.featured_image, aspect_ratio: aspect_ratio, lazyload: lazyload %}
+    {% endif %}
+    {%- if product.media[1] != null and show_secondary_image -%}
+      <div class='xo-product-image__secondary' tabindex='-1'>
+        {%- render 'image', image: product.media[1].preview_image, aspect_ratio: aspect_ratio -%}
+      </div>
+    {%- endif -%}
+  {% else %}
+    {% if placeholder_image %}
+      {{ placeholder | default: placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+    {% else %}
+      {{ placeholder | default: 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  {% endif %}
+</div>

@@ -1,0 +1,43 @@
+{% comment %}
+  Renders a accordion item
+
+  Accepts:
+  * General
+  - accordion_trigger: {Boolean} Trigger accordion.
+  - accordion_content: {String} Content of accordion.
+  - name: {String} Name of accordion
+
+  Usage:
+  {% render 'accordion-item', accordion_trigger: accordion_trigger, accordion_content: accordion_content, name: name %}
+{% endcomment %}
+{{ 'accordion-item.css' | asset_url | stylesheet_tag }}
+
+<xo-animate xo-cascade class='accordion-item'>
+  <xo-collapse-trigger
+    role='button'
+    tabindex='0'
+    class='accordion-item__trigger'
+    xo-name='{{ name }}'
+  >
+    <div class='accordion-item__header'>
+      <div class='accordion-item__header-content h4'>
+        {{ accordion_trigger }}
+      </div>
+      <div class='accordion-item__header-icon'>
+        <div class='accordion-item__header-icon-default'>
+          {% render 'icon', name: 'plus-quantity', size: '24' %}
+        </div>
+        <div class='accordion-item__header-icon-active'>
+          {% render 'icon', name: 'minus-quantity', size: '24' %}
+        </div>
+      </div>
+    </div>
+  </xo-collapse-trigger>
+  <xo-collapse
+    xo-name='{{ name }}'
+  >
+    <div class='accordion-item__content'>
+      {{ accordion_content }}
+    </div>
+  </xo-collapse>
+</xo-animate>

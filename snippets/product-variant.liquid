@@ -1,0 +1,129 @@
+{% comment %}
+  Renders a product variant option as a set of radio buttons.
+
+  Accepts:
+  - option: {Object} The product variant option to render.
+  - product: {Object} The product object.
+  - style: {String} The style of the radio buttons. Accepts 'boxed' | 'select' | 'color'
+  - color_use_image: {Boolean} Whether to use the variant's featured image as the color swatch.
+  - truncate: {Boolean} truncate variant or not
+  - is_product_detail: {Boolean} check if current page is product detail
+
+  Usage:
+  {% render 'product-variant', option: option %}
+{% endcomment %}
+
+{% liquid
+  if truncate
+    assign truncate = true
+  else
+    assign truncate = false
+  endif
+
+  assign is_product_detail = is_product_detail | default: false
+%}
+
+{% if is_product_detail %}
+  <div class='xo-product-variant'>
+    {% if style == 'select' %}
+      {% capture options %}
+        <div>
+          {% liquid
+            for value in option.values
+                render 'field-select-custom-option', label: value, name: option.name, value: value, checked: value.selected, option_value_id: value.id, variant_id: value.variant.id, use_with: 'product-variant'
+            endfor
+          %}
+        </div>
+      {% endcapture %}
+      <div class='xo-product-variant__inner-name xo-product-variant__inner-name--select'>{{ option.name }}:</div>
+      {% render 'field-select-custom',
+        use_with: 'product-variant',
+        name: option.name,
+        value: option.selected_value,
+        options: options,
+        placement: 'bottom-left',
+      %}
+    {% elsif style == 'color' %}
+      <div class='xo-product-variant__inner'>
+        <div class='xo-product-variant__inner-name'>
+          {{ option.name }}:
+        </div>
+        <div class='xo-product-variant__inner-value'>
+          {% for value in option.values %}
+            {% render 'field-color', style: style, name: option.name, value: value, label: value, image: variant.featured_image, use_image: color_use_image, is_check: true %}
+          {% endfor %}
+        </div>
+      </div>
+    {% elsif style == 'variant_image' %}
+      <div class='xo-product-variant__inner'>
+        <div class='xo-product-variant__inner-name'>
+          {{ option.name }}:
+        </div>
+        <div class='xo-product-variant__inner-value'>
+          {% for value in option.values %}
+            {% render 'field-variant-image', style: style, name: option.name, value: value, label: value, use_image: true %}
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <div class='xo-product-variant__inner'>
+        <div class='xo-product-variant__inner-name xo-product-variant__inner-name--boxed'>
+          {{ option.name }}:
+        </div>
+        <div class='xo-product-variant__inner-value'>
+          {% liquid
+            for value in option.values
+              render 'field-radio', style: style, name: option.name, value: value, label: value, truncate: truncate, is_check: true
+            endfor
+          %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% else %}
+  {% comment %} Other page {% endcomment %}
+  {% if style == 'color' %}
+    <div class="xo-product-variant__inner-value xo-product-variant__inner-value--other-page">
+      {% for value in option.values %}
+        {% assign value_check = '' %}
+        {% for variant in product.variants %}
+          {% if variant.options contains value and value != value_check %}
+            {% assign value_check = value %}
+            <a href="{{ product.url }}?variant={{ variant.id }}">
+              {% render 'field-color',
+                style: style,
+                name: option.name,
+                value: value,
+                label: value,
+                image: variant.featured_image,
+                use_image: color_use_image,
+                is_check: false
+              %}
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="xo-product-variant__inner-value xo-product-variant__inner-value--other-page">
+      {% for value in option.values %}
+        {% assign value_check = '' %}
+        {% for variant in product.variants %}
+          {% if variant.options contains value and value != value_check %}
+            {% assign value_check = value %}
+            <a href="{{ product.url }}?variant={{ variant.id }}">
+              {%- render 'field-radio',
+                style: style,
+                name: option.name,
+                value: value,
+                label: value,
+                truncate: truncate,
+                is_check: false
+              -%}
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}
